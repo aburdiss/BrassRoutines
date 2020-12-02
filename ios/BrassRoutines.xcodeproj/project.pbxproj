@@ -19,6 +19,7 @@
 		3FDF85FDBA58F4D277CDA663 /* libPods-BrassRoutines-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 438917796951F1E310B72722 /* libPods-BrassRoutines-tvOSTests.a */; };
 		48F1426F65C24F86E7B614DA /* libPods-BrassRoutines-BrassRoutinesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 134D61E3702D7D4B590E62CF /* libPods-BrassRoutines-BrassRoutinesTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		DD0F2AD825772E500075DF87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD0F2ADA25772E500075DF87 /* InfoPlist.strings */; };
 		E99D4A325FE8F9E6AC32D563 /* libPods-BrassRoutines-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0C97C8A2112CD5A53A6494 /* libPods-BrassRoutines-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,14 @@
 		90B864FA9C7C5A30FCEB54EF /* Pods-BrassRoutines-BrassRoutinesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrassRoutines-BrassRoutinesTests.debug.xcconfig"; path = "Target Support Files/Pods-BrassRoutines-BrassRoutinesTests/Pods-BrassRoutines-BrassRoutinesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC5189F8E36D149AA8979F5F /* Pods-BrassRoutines-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrassRoutines-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BrassRoutines-tvOSTests/Pods-BrassRoutines-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D760E1DC6F5CC4F9E4C98073 /* Pods-BrassRoutines.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrassRoutines.debug.xcconfig"; path = "Target Support Files/Pods-BrassRoutines/Pods-BrassRoutines.debug.xcconfig"; sourceTree = "<group>"; };
+		DD0F2AD925772E500075DF87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DD0F2ADF25772E550075DF87 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		DD0F2AE025772E5A0075DF87 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DD0F2AE125772E5B0075DF87 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DD0F2AE225772E5C0075DF87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DD0F2AE325772E600075DF87 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DD0F2AE425772E610075DF87 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		DD0F2AE525772E620075DF87 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F6A592BAFEE4C7AA1AD3FFBE /* Pods-BrassRoutines-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrassRoutines-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-BrassRoutines-tvOS/Pods-BrassRoutines-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +139,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				DD0F2ADA25772E500075DF87 /* InfoPlist.strings */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -194,7 +204,6 @@
 				CC5189F8E36D149AA8979F5F /* Pods-BrassRoutines-tvOSTests.debug.xcconfig */,
 				87A6396B852CFB9B3F64C98D /* Pods-BrassRoutines-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -314,6 +323,13 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				ja,
+				"es-419",
+				fr,
+				de,
+				"pt-BR",
+				ko,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -341,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				DD0F2AD825772E500075DF87 /* InfoPlist.strings in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,6 +622,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		DD0F2ADA25772E500075DF87 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD0F2AD925772E500075DF87 /* en */,
+				DD0F2ADF25772E550075DF87 /* zh-Hans */,
+				DD0F2AE025772E5A0075DF87 /* fr */,
+				DD0F2AE125772E5B0075DF87 /* de */,
+				DD0F2AE225772E5C0075DF87 /* ja */,
+				DD0F2AE325772E600075DF87 /* ko */,
+				DD0F2AE425772E610075DF87 /* pt-BR */,
+				DD0F2AE525772E620075DF87 /* es-419 */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -664,10 +699,11 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.BrassRoutines;
 				PRODUCT_NAME = BrassRoutines;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -686,9 +722,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.BrassRoutines;
 				PRODUCT_NAME = BrassRoutines;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
