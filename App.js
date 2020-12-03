@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler';
 import React, { useEffect } from 'react';
-import {View, Text} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -25,17 +24,23 @@ import HeaderButton from './src/Components/HeaderButton';
 const translate = (word) => word;
 import { colors } from './src/Model/Model';
 
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
+/**
+ * @description Displays main functionality of the app, option to start a 
+ * daily routine, or an option to start a routine of all of the user's 
+ * favorites.
+ * @author Alexander Burdiss
+ * @since 12/2/20
+ */
 const HomeStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+        headerTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
         headerTitleStyle: {
           color: DARKMODE ? colors.white : colors.black,
         },
@@ -51,29 +56,36 @@ const HomeStack = ({ navigation }) => {
       <Stack.Screen 
         name="Home" 
         component={Home}
+        
         options={{
           title: translate("Brass Routines")
         }}
-      />
+        />
       <Stack.Screen 
         name="Daily Routine" 
         component={DailyRoutine}
-      />
-      <Stack.Screen
+        />
+        <Stack.Screen
         name="Favorites Routine"
         component={FavoritesRoutine}
-      />
+        />
     </Stack.Navigator>
   )
 }
 
 
+/**
+ * @description A stack that shows the list of all of the elements in the app,
+ * and can open each element in another screen.
+ * @author Alexander Burdiss
+ * @since 12/2/20
+ */
 const ListStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+        headerTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
         headerTitleStyle: {
           color: DARKMODE ? colors.white : colors.black,
         },
@@ -105,12 +117,18 @@ const ListStack = ({ navigation }) => {
 }
 
 
+/**
+ * @description Contains all of the screens necessary for the user to create
+ * their own routine, and save it to local storage.
+ * @author Alexander Burdiss
+ * @since 12/2/20
+ */
 const CustomStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+        headerTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
         headerTitleStyle: {
           color: DARKMODE ? colors.white : colors.black,
         },
@@ -163,12 +181,18 @@ const CustomStack = ({ navigation }) => {
 }
 
 
+/**
+ * @description Currently contains the settings of the app, but more resources,
+ * such as fingering charts could be added here.
+ * @author Alexander Burdiss
+ * @since 12/2/20
+ */
 const SettingsStack = () => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+        headerTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
         headerTitleStyle: {
           color: DARKMODE ? colors.white : colors.black,
         },
@@ -185,18 +209,19 @@ const SettingsStack = () => {
         name="Settings"
         component={Settings}
         options={{
-          title: translate("Settings"),
+          title: translate("More"),
         }}
       />
     </Stack.Navigator>
   )
 }
 
+
 // setI18nConfig();
 /**
  * @description The main tab navigation of the app.
  * @author Alexander Burdiss
- * @since 10/10/20
+ * @since 12/2/20
  */
 const App = () => {
   const DARKMODE = useDarkMode();
@@ -217,25 +242,26 @@ const App = () => {
   // };
 
   return (
+    
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({route}) => ({
           tabBarIcon: ({color, size}) => {
             let iconName;
             if (route.name === 'Home') {
-              iconName = 'md-cube';
+              iconName = 'book';
             } else if (route.name === 'List') {
-              iconName = 'md-book';
+              iconName = 'list';
             } else if (route.name === 'Custom') {
-              iconName = 'md-create';
+              iconName = 'create';
             } else if (route.name === 'Settings') {
-              iconName = 'md-settings';
+              iconName = 'options';
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{
-          activeTintColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+          activeTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
           inactiveTintColor: colors.systemGray,
           style: {
             backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
@@ -260,7 +286,7 @@ const App = () => {
         <Tab.Screen 
           name="Settings"
           component={SettingsStack} 
-          options={{title: translate('Settings')}} 
+          options={{title: translate('More')}} 
           />
       </Tab.Navigator>
     </NavigationContainer>

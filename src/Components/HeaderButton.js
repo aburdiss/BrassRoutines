@@ -14,7 +14,7 @@ const HeaderButton = ({ children, handler }) => {
   const DARKMODE = useDarkMode();
   return (
     <Pressable
-      android_ripple={{color: DARKMODE ? colors.purpleDark : colors.purpleLight }}
+      android_ripple={{color: DARKMODE ? colors.orangeDark : colors.orangeLight }}
       onPress={ handler }
       style={{
         padding: 8,
@@ -24,7 +24,7 @@ const HeaderButton = ({ children, handler }) => {
         {({ pressed }) => (
           <Text
           style={{
-            color: DARKMODE ? colors.purpleDark : colors.purpleLight,
+            color: DARKMODE ? colors.orangeDark : colors.orangeLight,
             opacity: pressed ? 0.7 : 1,
             fontSize: 16,
           }}
