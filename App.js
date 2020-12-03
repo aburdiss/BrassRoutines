@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useEffect } from 'react';
+import {View, Text} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -20,7 +21,8 @@ import Settings from './src/Settings/Settings';
 
 import HeaderButton from './src/Components/HeaderButton';
 
-import { setI18nConfig, translate } from './src/Translations/TranslationModel';
+// import { setI18nConfig, translate } from './src/Translations/TranslationModel';
+const translate = (word) => word;
 import { colors } from './src/Model/Model';
 
 
@@ -122,25 +124,39 @@ const CustomStack = ({ navigation }) => {
       }}
     >
       <Stack.Screen 
-        name="Advanced Scale Practice" 
-        component={AdvancedScale}
+        name="Custom List" 
+        component={CustomList}
         options={{
           headerRight: () => (
             <HeaderButton
-              handler={()=>{navigation.navigate("Advanced Arpeggio Practice")}}
+              handler={()=>{navigation.navigate("Create Custom")}}
             >
-              {translate("Arpeggios")}
+              {translate("Create")}
             </HeaderButton>
           ),
-          title: translate("Advanced Scale Practice"),
+          title: translate("Custom Routines"),
         }}
       />
-      <Stack.Screen 
-        name="Advanced Arpeggio Practice" 
-        component={AdvancedArpeggio}
+      <Stack.Screen
+        name="Create Custom"
+        component={CreateCustom}
         options={{
-          title: translate("Advanced Arpeggio Practice"),
+          title: translate("Create Custom Routine")
         }}
+      />
+      <Stack.Screen
+        name="Custom Routine"
+        component={CustomRoutine}
+        options={{
+          title: translate("Custom Routine")
+        }}
+      />
+      <Stack.Screen
+        name="Exercise Detail"
+        component={ExerciseDetail}
+        options={({ route }) => ({ 
+          title: translate(route.params.name),
+        })}
       />
     </Stack.Navigator>
   );
@@ -166,17 +182,17 @@ const SettingsStack = () => {
       }}
     >
       <Stack.Screen
-        name="More"
-        component={More}
+        name="Settings"
+        component={Settings}
         options={{
-          title: translate("More"),
+          title: translate("Settings"),
         }}
       />
     </Stack.Navigator>
   )
 }
 
-setI18nConfig();
+// setI18nConfig();
 /**
  * @description The main tab navigation of the app.
  * @author Alexander Burdiss
@@ -185,20 +201,20 @@ setI18nConfig();
 const App = () => {
   const DARKMODE = useDarkMode();
 
-  useEffect(() => {
-    RNLocalize.addEventListener('change', handleLocalizationChange);
-    return (() => {
-      RNLocalize.removeEventListener('change', handleLocalizationChange);
-    });
-  }, []);
+  // useEffect(() => {
+  //   RNLocalize.addEventListener('change', handleLocalizationChange);
+  //   return (() => {
+  //     RNLocalize.removeEventListener('change', handleLocalizationChange);
+  //   });
+  // }, []);
 
-  const handleLocalizationChange = () => {
-    setI18nConfig()
-    .then(() => this.forceUpdate())
-    .catch(error => {
-    console.error(error)
-    })
-  };
+  // const handleLocalizationChange = () => {
+  //   setI18nConfig()
+  //   .then(() => this.forceUpdate())
+  //   .catch(error => {
+  //   console.error(error)
+  //   })
+  // };
 
   return (
     <NavigationContainer>
@@ -206,13 +222,13 @@ const App = () => {
         screenOptions={({route}) => ({
           tabBarIcon: ({color, size}) => {
             let iconName;
-            if (route.name === 'Random') {
+            if (route.name === 'Home') {
               iconName = 'md-cube';
-            } else if (route.name === 'Resources') {
+            } else if (route.name === 'List') {
               iconName = 'md-book';
-            } else if (route.name === 'Advanced') {
+            } else if (route.name === 'Custom') {
               iconName = 'md-create';
-            } else if (route.name === 'More') {
+            } else if (route.name === 'Settings') {
               iconName = 'md-settings';
             }
             return <Ionicons name={iconName} size={size} color={color} />;
