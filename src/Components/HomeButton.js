@@ -1,18 +1,17 @@
 import React from 'react';
-import { Pressable, View, Text } from 'react-native';
-import { useDarkMode } from 'react-native-dynamic';
-import { colors } from '../Model/Model';
+import {Pressable, View, Text} from 'react-native';
+import {useDarkMode} from 'react-native-dynamic';
+import {colors} from '../Model/Model';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-
-const HomeButton = ({ onPress, children }) => {
+const HomeButton = ({onPress, children}) => {
   const DARKMODE = useDarkMode();
 
   return (
     <View>
       <Pressable
         onPress={onPress}
-        style={({ pressed }) => ({
+        style={({pressed}) => ({
           padding: 20,
           marginTop: 15,
           marginHorizontal: 10,
@@ -21,7 +20,7 @@ const HomeButton = ({ onPress, children }) => {
           borderRadius: 8,
           borderBottomColor: DARKMODE ? colors.yellowDark : colors.yellowLight,
           borderBottomWidth: 1,
-          shadowColor: DARKMODE ? colors.white: colors.black,
+          shadowColor: DARKMODE ? colors.white : colors.black,
           shadowOffset: {
             width: 0,
             height: 2,
@@ -30,24 +29,21 @@ const HomeButton = ({ onPress, children }) => {
           shadowRadius: 2.62,
 
           elevation: 4,
-        })}
-      >
+        })}>
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'flex-end',
-          }}
-        >
+          }}>
           <Text
             style={{
               fontSize: 20,
               color: colors.black,
               textAlign: 'right',
               paddingLeft: 20,
-            }}
-            >
-            { children }
+            }}>
+            {children}
           </Text>
           <Ionicons
             name="play"
@@ -60,7 +56,7 @@ const HomeButton = ({ onPress, children }) => {
         </View>
       </Pressable>
     </View>
-  )
+  );
 };
 
 export default HomeButton;

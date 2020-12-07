@@ -1,12 +1,11 @@
 import 'react-native-gesture-handler';
-import React, { useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, {useEffect} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useDarkMode } from 'react-native-dynamic'
+import {useDarkMode} from 'react-native-dynamic';
 import * as RNLocalize from 'react-native-localize';
-
 
 import Home from './src/Routine/Home';
 import DailyRoutine from './src/Routine/DailyRoutine';
@@ -22,20 +21,19 @@ import HeaderButton from './src/Components/HeaderButton';
 
 // import { setI18nConfig, translate } from './src/Translations/TranslationModel';
 const translate = (word) => word;
-import { colors } from './src/Model/Model';
+import {colors} from './src/Model/Model';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-
 /**
- * @description Displays main functionality of the app, option to start a 
- * daily routine, or an option to start a routine of all of the user's 
+ * @description Displays main functionality of the app, option to start a
+ * daily routine, or an option to start a routine of all of the user's
  * favorites.
  * @author Alexander Burdiss
  * @since 12/2/20
  */
-const HomeStack = ({ navigation }) => {
+const HomeStack = ({navigation}) => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -47,32 +45,25 @@ const HomeStack = ({ navigation }) => {
         headerStyle: {
           backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
           borderBottomWidth: 1,
-          borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+          borderBottomColor: DARKMODE
+            ? colors.systemGray5Dark
+            : colors.systemGray5Light,
           shadowColor: 'transparent',
         },
-        headerBackTitle: translate("Back"),
-      }}
-    >
-      <Stack.Screen 
-        name="Home" 
+        headerBackTitle: translate('Back'),
+      }}>
+      <Stack.Screen
+        name="Home"
         component={Home}
-        
         options={{
-          title: translate("Brass Routines")
+          title: translate('Brass Routines'),
         }}
-        />
-      <Stack.Screen 
-        name="Daily Routine" 
-        component={DailyRoutine}
-        />
-        <Stack.Screen
-        name="Favorites Routine"
-        component={FavoritesRoutine}
-        />
+      />
+      <Stack.Screen name="Daily Routine" component={DailyRoutine} />
+      <Stack.Screen name="Favorites Routine" component={FavoritesRoutine} />
     </Stack.Navigator>
-  )
-}
-
+  );
+};
 
 /**
  * @description A stack that shows the list of all of the elements in the app,
@@ -80,7 +71,7 @@ const HomeStack = ({ navigation }) => {
  * @author Alexander Burdiss
  * @since 12/2/20
  */
-const ListStack = ({ navigation }) => {
+const ListStack = ({navigation}) => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -92,30 +83,30 @@ const ListStack = ({ navigation }) => {
         headerStyle: {
           backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
           borderBottomWidth: 1,
-          borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+          borderBottomColor: DARKMODE
+            ? colors.systemGray5Dark
+            : colors.systemGray5Light,
           shadowColor: 'transparent',
         },
-        headerBackTitle: translate("Back"),
-      }}
-    >
-      <Stack.Screen 
-        name="List" 
+        headerBackTitle: translate('Back'),
+      }}>
+      <Stack.Screen
+        name="List"
         component={List}
         options={{
-          title: translate("All Exercises"),
+          title: translate('All Exercises'),
         }}
       />
       <Stack.Screen
         name="Exercise Detail"
         component={ExerciseDetail}
-        options={({ route }) => ({ 
+        options={({route}) => ({
           title: translate(route.params.name),
         })}
       />
     </Stack.Navigator>
   );
-}
-
+};
 
 /**
  * @description Contains all of the screens necessary for the user to create
@@ -123,7 +114,7 @@ const ListStack = ({ navigation }) => {
  * @author Alexander Burdiss
  * @since 12/2/20
  */
-const CustomStack = ({ navigation }) => {
+const CustomStack = ({navigation}) => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -135,51 +126,52 @@ const CustomStack = ({ navigation }) => {
         headerStyle: {
           backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
           borderBottomWidth: 1,
-          borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+          borderBottomColor: DARKMODE
+            ? colors.systemGray5Dark
+            : colors.systemGray5Light,
           shadowColor: 'transparent',
         },
-        headerBackTitle: translate("Back"),
-      }}
-    >
-      <Stack.Screen 
-        name="Custom List" 
+        headerBackTitle: translate('Back'),
+      }}>
+      <Stack.Screen
+        name="Custom List"
         component={CustomList}
         options={{
           headerRight: () => (
             <HeaderButton
-              handler={()=>{navigation.navigate("Create Custom")}}
-            >
-              {translate("Create")}
+              handler={() => {
+                navigation.navigate('Create Custom');
+              }}>
+              {translate('Create')}
             </HeaderButton>
           ),
-          title: translate("Custom Routines"),
+          title: translate('Custom Routines'),
         }}
       />
       <Stack.Screen
         name="Create Custom"
         component={CreateCustom}
         options={{
-          title: translate("Create Custom Routine")
+          title: translate('Create Custom Routine'),
         }}
       />
       <Stack.Screen
         name="Custom Routine"
         component={CustomRoutine}
         options={{
-          title: translate("Custom Routine")
+          title: translate('Custom Routine'),
         }}
       />
       <Stack.Screen
         name="Exercise Detail"
         component={ExerciseDetail}
-        options={({ route }) => ({ 
+        options={({route}) => ({
           title: translate(route.params.name),
         })}
       />
     </Stack.Navigator>
   );
-}
-
+};
 
 /**
  * @description Currently contains the settings of the app, but more resources,
@@ -199,23 +191,23 @@ const SettingsStack = () => {
         headerStyle: {
           backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
           borderBottomWidth: 1,
-          borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+          borderBottomColor: DARKMODE
+            ? colors.systemGray5Dark
+            : colors.systemGray5Light,
           shadowColor: 'transparent',
         },
-        headerBackTitle: translate("Back"),
-      }}
-    >
+        headerBackTitle: translate('Back'),
+      }}>
       <Stack.Screen
         name="Settings"
         component={Settings}
         options={{
-          title: translate("More"),
+          title: translate('More'),
         }}
       />
     </Stack.Navigator>
-  )
-}
-
+  );
+};
 
 // setI18nConfig();
 /**
@@ -242,7 +234,6 @@ const App = () => {
   // };
 
   return (
-    
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({route}) => ({
@@ -265,29 +256,31 @@ const App = () => {
           inactiveTintColor: colors.systemGray,
           style: {
             backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-            borderTopColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
-          }
+            borderTopColor: DARKMODE
+              ? colors.systemGray5Dark
+              : colors.systemGray5Light,
+          },
         }}>
         <Tab.Screen
           name="Home"
           component={HomeStack}
           options={{title: translate('Routine')}}
-          />
+        />
         <Tab.Screen
           name="List"
           component={ListStack}
           options={{title: translate('All Exercises')}}
-          />
+        />
         <Tab.Screen
           name="Custom"
           component={CustomStack}
           options={{title: translate('Custom')}}
-          />
-        <Tab.Screen 
+        />
+        <Tab.Screen
           name="Settings"
-          component={SettingsStack} 
-          options={{title: translate('More')}} 
-          />
+          component={SettingsStack}
+          options={{title: translate('More')}}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

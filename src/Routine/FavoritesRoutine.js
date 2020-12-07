@@ -1,9 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
+import {View} from 'react-native';
 import Routine from '../Components/Routine';
 
 const FavoritesRoutine = () => {
-    return <View />;
+  return <View />;
 };
 
 export default FavoritesRoutine;
