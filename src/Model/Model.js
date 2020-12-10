@@ -42,16 +42,19 @@ export const colors = {
   pinkDark: 'rgb(255, 55, 98)',
 };
 
-export const tromboneExercises = {
-  longTones: [1, 2, 3, 4, 5, 6, 7],
-  slowLipSlurs: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27],
-  articulation: [30, 31, 32, 33, 34, 35, 36, 37, 38],
-  coordination: [40, 41, 42, 43, 44, 45, 46],
-  majorScales: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61],
-  highRange: [70, 71, 72, 73, 74, 75, 76, 77, 78],
-  lowRange: [80, 81, 82, 83, 84, 85, 86, 87],
-};
+export const tromboneExercises = [
+  {title: 'Long Tones', data: [1, 2, 3, 4, 5, 6, 7]},
+  {title: 'Slow Lip Slurs', data: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]},
+  {title: 'Fast Lip Slurs', data: [21, 22, 23, 24, 25, 26, 27]},
+  {title: 'Articulation', data: [30, 31, 32, 33, 34, 35, 36, 37, 38]},
+  {title: 'Coordination', data: [40, 41, 42, 43, 44, 45, 46]},
+  {
+    title: 'Major Scales',
+    data: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61],
+  },
+  {title: 'High Range', data: [70, 71, 72, 73, 74, 75, 76, 77, 78]},
+  {title: 'Low Range', data: [80, 81, 82, 83, 84, 85, 86, 87]},
+];
 
 /**
  * @function getTromboneImagePath
