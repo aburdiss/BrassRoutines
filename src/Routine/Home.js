@@ -3,6 +3,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
 import HomeButton from '../Components/HomeButton';
+import SafeAreaView from 'react-native-safe-area-view';
 
 import {colors} from '../Model/Model';
 
@@ -19,21 +20,15 @@ const Home = () => {
   };
 
   return (
-    <View style={styles.homeContainer}>
+    <SafeAreaView>
       <HomeButton onPress={launchDailyRoutine}>Begin Routine</HomeButton>
       <HomeButton onPress={launchFavoritesRoutine}>
         Randomize Favorites
       </HomeButton>
-    </View>
+    </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  homeContainer: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
-  },
-});
+const styles = StyleSheet.create({});
 
 export default Home;

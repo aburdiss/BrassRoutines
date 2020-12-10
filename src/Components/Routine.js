@@ -4,6 +4,7 @@ import {getTromboneImagePath} from '../Model/Model';
 import HeaderButton from '../Components/HeaderButton';
 import {useNavigation} from '@react-navigation/native';
 import RoutineHeaderRightComponent from '../Components/RoutineHeaderRightComponent';
+import SafeAreaView from 'react-native-safe-area-view';
 
 const Routine = ({exercises}) => {
   const navigation = useNavigation();
@@ -54,14 +55,14 @@ const Routine = ({exercises}) => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} forceInset="top">
       <View style={styles.imageContainer}>
         <Image
           source={getTromboneImagePath(exercises[currentExerciseIndex])}
           style={styles.image}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

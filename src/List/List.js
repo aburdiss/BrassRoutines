@@ -3,12 +3,13 @@ import React from 'react';
 import {View, SectionList, Text, StyleSheet} from 'react-native';
 import {colors, tromboneExercises} from '../Model/Model';
 import ListRow from './ListRow';
+import SafeAreaView from 'react-native-safe-area-view';
 
 // TODO: Make a preprocess function that adds Major Scale Names to exercises.
 const List = () => {
   const navigation = useNavigation();
   return (
-    <View>
+    <SafeAreaView>
       <SectionList
         android_ripple={{
           color: colors.systemGray,
@@ -28,7 +29,7 @@ const List = () => {
         )}
         stickySectionHeadersEnabled={false}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingTop: 30,
     paddingBottom: 10,
-    // color: new DynamicValue(colors.systemGray, colors.systemGray),
+    color: colors.systemGray,
   },
 });
 

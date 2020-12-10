@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useDarkMode} from 'react-native-dynamic';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import * as RNLocalize from 'react-native-localize';
 
 import Home from './src/Routine/Home';
@@ -234,55 +235,57 @@ const App = () => {
   // };
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({color, size}) => {
-            let iconName;
-            if (route.name === 'Home') {
-              iconName = 'book';
-            } else if (route.name === 'List') {
-              iconName = 'list';
-            } else if (route.name === 'Custom') {
-              iconName = 'create';
-            } else if (route.name === 'Settings') {
-              iconName = 'options';
-            }
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
-          inactiveTintColor: colors.systemGray,
-          style: {
-            backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-            borderTopColor: DARKMODE
-              ? colors.systemGray5Dark
-              : colors.systemGray5Light,
-          },
-        }}>
-        <Tab.Screen
-          name="Home"
-          component={HomeStack}
-          options={{title: translate('Routine')}}
-        />
-        <Tab.Screen
-          name="List"
-          component={ListStack}
-          options={{title: translate('All Exercises')}}
-        />
-        <Tab.Screen
-          name="Custom"
-          component={CustomStack}
-          options={{title: translate('Custom')}}
-        />
-        <Tab.Screen
-          name="Settings"
-          component={SettingsStack}
-          options={{title: translate('More')}}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({route}) => ({
+            tabBarIcon: ({color, size}) => {
+              let iconName;
+              if (route.name === 'Home') {
+                iconName = 'book';
+              } else if (route.name === 'List') {
+                iconName = 'list';
+              } else if (route.name === 'Custom') {
+                iconName = 'create';
+              } else if (route.name === 'Settings') {
+                iconName = 'options';
+              }
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
+            inactiveTintColor: colors.systemGray,
+            style: {
+              backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+              borderTopColor: DARKMODE
+                ? colors.systemGray5Dark
+                : colors.systemGray5Light,
+            },
+          }}>
+          <Tab.Screen
+            name="Home"
+            component={HomeStack}
+            options={{title: translate('Routine')}}
+          />
+          <Tab.Screen
+            name="List"
+            component={ListStack}
+            options={{title: translate('All Exercises')}}
+          />
+          <Tab.Screen
+            name="Custom"
+            component={CustomStack}
+            options={{title: translate('Custom')}}
+          />
+          <Tab.Screen
+            name="Settings"
+            component={SettingsStack}
+            options={{title: translate('More')}}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
