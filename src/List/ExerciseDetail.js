@@ -6,7 +6,6 @@ import {getTromboneImagePath} from '../Model/Model';
 
 const ExerciseDetail = () => {
   const route = useRoute();
-  console.log(route);
 
   return (
     <SafeAreaView style={styles.container} forceInset="top">
