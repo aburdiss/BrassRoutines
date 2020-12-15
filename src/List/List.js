@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {View, SectionList, Text, StyleSheet} from 'react-native';
+import {SectionList, Text, StyleSheet} from 'react-native';
 import {colors, tromboneExercises} from '../Model/Model';
 import ListRow from './ListRow';
 import SafeAreaView from 'react-native-safe-area-view';
