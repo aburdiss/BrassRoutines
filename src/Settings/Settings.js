@@ -13,6 +13,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {
   DynamicStyleSheet,
   DynamicValue,
+  useDynamicStyleSheet,
   useDynamicValue,
 } from 'react-native-dynamic';
 import {colors} from '../Model/Model';
@@ -23,6 +24,76 @@ const GOOGLE_PLAY_LINK =
   'https://play.google.com/store/apps/developer?id=Alexander+Burdiss';
 const APPLE_STORE_LINK =
   'https://apps.apple.com/us/developer/alexander-burdiss/id1496727055';
+
+const FUNDAMENTALS = [
+  {
+    id: '0',
+    type: 'switch',
+    value: 'Long Tones',
+  },
+  {
+    id: '1',
+    type: 'switch',
+    value: 'Slow Lip Slurs',
+  },
+  {
+    id: '2',
+    type: 'switch',
+    value: 'Fast Lip Slurs',
+  },
+  {
+    id: '3',
+    type: 'switch',
+    value: 'Single Note Articulation',
+  },
+  {
+    id: '4',
+    type: 'switch',
+    value: 'Changing Note Articulation',
+  },
+  {
+    id: '5',
+    type: 'switch',
+    value: 'Major Scales',
+  },
+  {
+    id: '6',
+    type: 'switch',
+    value: 'High Range',
+  },
+  {
+    id: '7',
+    type: 'switch',
+    value: 'Low Range',
+  },
+];
+
+const ROUTINE_LENGTH = [
+  {
+    id: '8',
+    type: 'segmentedFilter',
+    choices: ['Short', 'Medium', 'Long'],
+    setting: 'routineLength',
+  },
+];
+
+const FAVORITES = [
+  {
+    id: '9',
+    type: 'button',
+    value: 'Reset Favorites',
+    icon: 'heart-dislike-outline',
+  },
+];
+
+const CUSTOM_ROUTINES = [
+  {
+    id: '10',
+    type: 'button',
+    value: 'Reset Custom Routines',
+    icon: 'trash-outline',
+  },
+];
 
 const RESOURCES = [
   {
@@ -51,7 +122,6 @@ const ABOUT = [
     id: '3',
     type: 'text',
     value: `© ${new Date().getFullYear()} ` + 'Alexander Burdiss',
-    link: null,
   },
   {
     id: '4',
@@ -111,8 +181,42 @@ const SwitchListItem = ({item}) => {
 
   return (
     <View style={styles.listRowContainer}>
-      <Text>{item}</Text>
+      <Text>{item.value}</Text>
       <Switch onValueChange={() => {}} />
+    </View>
+  );
+};
+
+/**
+ * @description A rendered Button list item that updates saved preferences.
+ * @author Alexander Burdiss
+ * @since 12/17/20
+ */
+const ButtonListItem = ({item}) => {
+  const styles = useDynamicValue(dynamicStyles);
+
+  return (
+    <Pressable>
+      <View style={styles.listRowContainer}>
+        <Text style={styles.linkText}>{translate(item.value)}</Text>
+        <Ionicons name={item.icon} size={25} color={styles.linkText.color} />
+      </View>
+    </Pressable>
+  );
+};
+
+/**
+ * @description A rendered Segmented filter list item that updates saved
+ * preferences.
+ * @author Alexander Burdiss
+ * @since 12/17/20
+ */
+const SegmentedFilterListItem = ({item}) => {
+  const styles = useDynamicValue(dynamicStyles);
+
+  return (
+    <View style={styles.listRowContainer}>
+      <Text>{item.choices}</Text>
     </View>
   );
 };
@@ -131,17 +235,29 @@ const Settings = () => {
     <SafeAreaView>
       <SectionList
         sections={[
+          {title: translate('Fundamentals'), data: FUNDAMENTALS},
+          {title: translate('Routine Length'), data: ROUTINE_LENGTH},
+          {title: translate('Favorites'), data: FAVORITES},
+          {title: translate('Custom Routines'), data: CUSTOM_ROUTINES},
           {title: translate('Resources'), data: RESOURCES},
           {title: translate('About'), data: ABOUT},
         ]}
         keyExtractor={(item, index) => index}
-        renderItem={({item}) =>
-          item.type === 'link' ? (
-            <LinkListItem item={item} />
-          ) : (
-            <TextListItem item={item} />
-          )
-        }
+        renderItem={({item}) => {
+          if (item.type == 'link') {
+            return <LinkListItem item={item} />;
+          } else if (item.type === 'text') {
+            return <TextListItem item={item} />;
+          } else if (item.type === 'switch') {
+            return <SwitchListItem item={item} />;
+          } else if (item.type === 'button') {
+            return <ButtonListItem item={item} />;
+          } else if (item.type === 'segmentedFilter') {
+            return <SegmentedFilterListItem item={item} />;
+          } else {
+            return null;
+          }
+        }}
         renderSectionHeader={({section: {title}}) => (
           <Text style={styles.listHeader}>{title}</Text>
         )}
