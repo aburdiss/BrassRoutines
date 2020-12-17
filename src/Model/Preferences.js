@@ -1,4 +1,4 @@
-import React, {createContext, useReducer} from 'react';
+import React, {createContext, useReducer, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
@@ -39,23 +39,66 @@ export async function save(data) {
 const PreferencesContext = createContext();
 
 const preferencesReducer = (state, action) => {
+  console.log(action);
+  let newState;
   switch (action.type) {
     case 'SET_ALL_PREFERENCES':
-      return {...action.payload};
+      newState = {...action.payload};
+      break;
     case 'ADD_TO_FAVORITES':
-      // TODO: Logic for adding item to favorites
-      return {...state, favorites: action.payload};
+      newState = {...state, favorites: action.payload};
+      break;
     case 'REMOVE_FROM_FAVORITES':
-      // TODO: Logic for removing item from favorites
-      return {...state, favorites: action.payload};
+      newState = {...state, favorites: action.payload};
+      break;
+    case 'SET_SWITCH':
+      newState = {...state, ...action.payload};
+      break;
+    case 'RESET_FAVORITES':
+      newState = {...state, favorites: []};
+      break;
+    case 'RESET_CUSTOM_ROUTINES':
+      newState = {...state, customRoutines: []};
+      break;
     default:
       throw new Error(`Unknown Action: ${action.type}`);
   }
+  return newState;
+};
+
+const initialPreferencesState = {
+  instrument: 'trombone',
+  longTones: true,
+  slowLipSlurs: true,
+  fastLipSlurs: true,
+  singleNoteArticulation: true,
+  changingNoteArticulation: true,
+  majorScales: true,
+  highRange: true,
+  lowRange: true,
+  routineLength: 1,
+  favorites: [],
+  customRoutines: [],
 };
 
 const PreferencesProvider = ({children}) => {
-  const [state, dispatch] = useReducer(preferencesReducer);
-  return <PreferencesContext.Provider>{children}</PreferencesContext.Provider>;
+  const [state, dispatch] = useReducer(
+    preferencesReducer,
+    initialPreferencesState,
+  );
+
+  useEffect(() => {
+    load().then((data) => {
+      console.log(data);
+      dispatch({type: 'SET_ALL_PREFERENCES', payload: data});
+    });
+  }, []);
+
+  return (
+    <PreferencesContext.Provider value={{state, dispatch}}>
+      {children}
+    </PreferencesContext.Provider>
+  );
 };
 
 export {PreferencesContext, PreferencesProvider};

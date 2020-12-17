@@ -24,6 +24,7 @@ import {PreferencesProvider} from './src/Model/Preferences';
 // import { setI18nConfig, translate } from './src/Translations/TranslationModel';
 const translate = (word) => word;
 import {colors} from './src/Model/Model';
+import Licenses from './src/Settings/Licenses';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -205,6 +206,13 @@ const SettingsStack = () => {
         component={Settings}
         options={{
           title: translate('More'),
+        }}
+      />
+      <Stack.Screen
+        name="Licenses"
+        component={Licenses}
+        options={{
+          title: translate('Licenses'),
         }}
       />
     </Stack.Navigator>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {
   SectionList,
   View,
@@ -9,127 +9,29 @@ import {
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import SafeAreaView from 'react-native-safe-area-view';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicStyleSheet,
   useDynamicValue,
 } from 'react-native-dynamic';
+import SegmentedControl from '@react-native-community/segmented-control';
 import {colors} from '../Model/Model';
+import {
+  FUNDAMENTALS,
+  ROUTINE_LENGTH,
+  FAVORITES,
+  CUSTOM_ROUTINES,
+  ABOUT,
+  RESOURCES,
+} from './SettingsModel';
+import {set} from 'react-native-reanimated';
+import {PreferencesContext} from '../Model/Preferences';
+import {Alert} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 // import {translate} from '../Translations/TranslationModel';
 const translate = (text) => text;
-
-const GOOGLE_PLAY_LINK =
-  'https://play.google.com/store/apps/developer?id=Alexander+Burdiss';
-const APPLE_STORE_LINK =
-  'https://apps.apple.com/us/developer/alexander-burdiss/id1496727055';
-
-const FUNDAMENTALS = [
-  {
-    id: '0',
-    type: 'switch',
-    value: 'Long Tones',
-  },
-  {
-    id: '1',
-    type: 'switch',
-    value: 'Slow Lip Slurs',
-  },
-  {
-    id: '2',
-    type: 'switch',
-    value: 'Fast Lip Slurs',
-  },
-  {
-    id: '3',
-    type: 'switch',
-    value: 'Single Note Articulation',
-  },
-  {
-    id: '4',
-    type: 'switch',
-    value: 'Changing Note Articulation',
-  },
-  {
-    id: '5',
-    type: 'switch',
-    value: 'Major Scales',
-  },
-  {
-    id: '6',
-    type: 'switch',
-    value: 'High Range',
-  },
-  {
-    id: '7',
-    type: 'switch',
-    value: 'Low Range',
-  },
-];
-
-const ROUTINE_LENGTH = [
-  {
-    id: '8',
-    type: 'segmentedFilter',
-    choices: ['Short', 'Medium', 'Long'],
-    setting: 'routineLength',
-  },
-];
-
-const FAVORITES = [
-  {
-    id: '9',
-    type: 'button',
-    value: 'Reset Favorites',
-    icon: 'heart-dislike-outline',
-  },
-];
-
-const CUSTOM_ROUTINES = [
-  {
-    id: '10',
-    type: 'button',
-    value: 'Reset Custom Routines',
-    icon: 'trash-outline',
-  },
-];
-
-const RESOURCES = [
-  {
-    id: '0',
-    type: 'link',
-    value: 'More Apps by Alexander Burdiss',
-    link:
-      DeviceInfo.getBrand() === 'Apple' ? APPLE_STORE_LINK : GOOGLE_PLAY_LINK,
-  },
-  {
-    id: '1',
-    type: 'link',
-    value: 'Visit Ars Nova Publishing',
-    link: 'https://www.arsnovapublishing.com/',
-  },
-  {
-    id: '2',
-    type: 'link',
-    value: 'Visit Band Room Online',
-    link: 'https://www.bandroomonline.com/',
-  },
-];
-
-const ABOUT = [
-  {
-    id: '3',
-    type: 'text',
-    value: `© ${new Date().getFullYear()} ` + 'Alexander Burdiss',
-  },
-  {
-    id: '4',
-    type: 'link',
-    value: 'Send Feedback',
-    link: 'mailto:aburdiss@icloud.com',
-  },
-];
 
 /**
  * @description A rendered Text list item.
@@ -156,8 +58,41 @@ const LinkListItem = ({item}) => {
 
   return (
     <Pressable
+      style={({pressed}) => ({
+        opacity: pressed ? 0.7 : 1,
+      })}
       onPress={() => {
         Linking.openURL(item.link);
+      }}>
+      <View style={styles.listRowContainer}>
+        <Text style={styles.linkText}>{translate(item.value)}</Text>
+        <Ionicons
+          name={'chevron-forward-outline'}
+          size={25}
+          color={styles.linkText.color}
+        />
+      </View>
+    </Pressable>
+  );
+};
+
+/**
+ * @description A rendered link list item that opens a page inside the app on
+ * the current stack.
+ * @author Alexander Burdiss
+ * @since 12/17/20
+ */
+const InternalListItem = ({item}) => {
+  const styles = useDynamicValue(dynamicStyles);
+  const navigation = useNavigation();
+
+  return (
+    <Pressable
+      style={({pressed}) => ({
+        opacity: pressed ? 0.7 : 1,
+      })}
+      onPress={() => {
+        navigation.navigate(item.component);
       }}>
       <View style={styles.listRowContainer}>
         <Text style={styles.linkText}>{translate(item.value)}</Text>
@@ -178,11 +113,10 @@ const LinkListItem = ({item}) => {
  */
 const SwitchListItem = ({item}) => {
   const styles = useDynamicValue(dynamicStyles);
-
   return (
     <View style={styles.listRowContainer}>
-      <Text>{item.value}</Text>
-      <Switch onValueChange={() => {}} />
+      <Text style={styles.listRowText}>{item.value}</Text>
+      <Switch onValueChange={() => {}} value={true} />
     </View>
   );
 };
@@ -192,14 +126,56 @@ const SwitchListItem = ({item}) => {
  * @author Alexander Burdiss
  * @since 12/17/20
  */
-const ButtonListItem = ({item}) => {
+const ButtonListItem = ({item, dispatch}) => {
   const styles = useDynamicValue(dynamicStyles);
 
   return (
-    <Pressable>
-      <View style={styles.listRowContainer}>
+    <Pressable
+      onPress={() => {
+        if (item.value === 'Reset Favorites') {
+          Alert.alert(
+            translate('All favorites will be removed'),
+            translate('This cannot be undone!'),
+            [
+              {
+                text: translate('Return'),
+                style: 'cancel',
+              },
+              {
+                text: translate('Reset'),
+                style: 'destructive',
+                onPress: () => {
+                  dispatch({type: 'RESET_FAVORITES'});
+                },
+              },
+            ],
+          );
+        } else if (item.value === 'Reset Custom Routines') {
+          Alert.alert(
+            translate('All custom routines will be removed'),
+            translate('This cannot be undone!'),
+            [
+              {
+                text: translate('Return'),
+                style: 'cancel',
+              },
+              {
+                text: translate('Reset'),
+                style: 'destructive',
+                onPress: () => {
+                  dispatch({type: 'RESET_CUSTOM_ROUTINES'});
+                },
+              },
+            ],
+          );
+        }
+      }}
+      style={({pressed}) => ({
+        opacity: pressed ? 0.7 : 1,
+      })}>
+      <View style={styles.listButtonRowContainer}>
         <Text style={styles.linkText}>{translate(item.value)}</Text>
-        <Ionicons name={item.icon} size={25} color={styles.linkText.color} />
+        <Ionicons name={item.icon} size={22} color={styles.linkText.color} />
       </View>
     </Pressable>
   );
@@ -213,10 +189,15 @@ const ButtonListItem = ({item}) => {
  */
 const SegmentedFilterListItem = ({item}) => {
   const styles = useDynamicValue(dynamicStyles);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <View style={styles.listRowContainer}>
-      <Text>{item.choices}</Text>
+    <View style={styles.listSegmentedRowContainer}>
+      <SegmentedControl
+        values={item.choices}
+        selectedIndex={0}
+        onChange={(index) => setSelectedIndex(index)}
+      />
     </View>
   );
 };
@@ -228,8 +209,11 @@ const SegmentedFilterListItem = ({item}) => {
  * @since 12/14/20
  * @version 1.0
  */
+
+// TODO: Setup Instrument Picker to open a sheet.
 const Settings = () => {
   const styles = useDynamicValue(dynamicStyles);
+  const {state, dispatch} = useContext(PreferencesContext);
 
   return (
     <SafeAreaView>
@@ -244,18 +228,31 @@ const Settings = () => {
         ]}
         keyExtractor={(item, index) => index}
         renderItem={({item}) => {
-          if (item.type == 'link') {
-            return <LinkListItem item={item} />;
-          } else if (item.type === 'text') {
-            return <TextListItem item={item} />;
-          } else if (item.type === 'switch') {
-            return <SwitchListItem item={item} />;
-          } else if (item.type === 'button') {
-            return <ButtonListItem item={item} />;
-          } else if (item.type === 'segmentedFilter') {
-            return <SegmentedFilterListItem item={item} />;
-          } else {
-            return null;
+          switch (item.type) {
+            case 'link':
+              return <LinkListItem item={item} />;
+            case 'navigate':
+              return <InternalListItem item={item} />;
+            case 'text':
+              return <TextListItem item={item} />;
+            case 'switch':
+              return (
+                <SwitchListItem item={item} state={state} dispatch={dispatch} />
+              );
+            case 'button':
+              return (
+                <ButtonListItem item={item} state={state} dispatch={dispatch} />
+              );
+            case 'segmentedFilter':
+              return (
+                <SegmentedFilterListItem
+                  item={item}
+                  state={state}
+                  dispatch={dispatch}
+                />
+              );
+            default:
+              return null;
           }
         }}
         renderSectionHeader={({section: {title}}) => (
@@ -284,6 +281,31 @@ const dynamicStyles = new DynamicStyleSheet({
     paddingBottom: 10,
     color: new DynamicValue(colors.systemGray, colors.systemGray),
   },
+  listSegmentedRowContainer: {
+    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    height: 45,
+  },
+  listButtonRowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    height: 45,
+  },
   listRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -303,6 +325,7 @@ const dynamicStyles = new DynamicStyleSheet({
   },
   linkText: {
     color: new DynamicValue(colors.orangeLight, colors.orangeDark),
+    paddingRight: 5,
   },
   sectionList: {
     height: '100%',
