@@ -13,12 +13,14 @@ import SafeAreaView from 'react-native-safe-area-view';
 import {
   DynamicStyleSheet,
   DynamicValue,
-  useDynamicStyleSheet,
+  useDarkMode,
   useDynamicValue,
 } from 'react-native-dynamic';
 import SegmentedControl from '@react-native-community/segmented-control';
+import RNPickerSelect from 'react-native-picker-select';
 import {colors} from '../Model/Model';
 import {
+  INSTRUMENT,
   FUNDAMENTALS,
   ROUTINE_LENGTH,
   FAVORITES,
@@ -210,6 +212,51 @@ const SegmentedFilterListItem = ({item, state, dispatch}) => {
   );
 };
 
+const PickerListItem = ({item, dispatch}) => {
+  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+
+  return (
+    <View style={styles.listSegmentedRowContainer}>
+      <RNPickerSelect
+        onValueChange={(value) => {
+          console.log(value);
+        }}
+        items={item.values}
+        placeholder={{}}
+        style={{
+          iconContainer: {
+            top: -4,
+          },
+          inputIOS: {
+            color: DARKMODE ? colors.white : colors.black,
+          },
+          inputAndroid: {
+            color: DARKMODE ? colors.white : colors.black,
+          },
+          modalViewMiddle: {
+            backgroundColor: DARKMODE
+              ? colors.systemGray6Dark
+              : colors.systemGray6Light,
+          },
+          modalViewBottom: {
+            backgroundColor: DARKMODE ? colors.black : colors.white,
+          },
+        }}
+        Icon={() => {
+          return (
+            <Ionicons
+              name={'chevron-down-outline'}
+              size={24}
+              color={styles.linkText.color}
+            />
+          );
+        }}
+      />
+    </View>
+  );
+};
+
 /**
  * @description A View that allows the user to set custom settings, or view
  * additional resources.
@@ -227,6 +274,7 @@ const Settings = () => {
     <SafeAreaView>
       <SectionList
         sections={[
+          {title: translate('Instrument'), data: INSTRUMENT},
           {title: translate('Fundamentals'), data: FUNDAMENTALS},
           {title: translate('Routine Length'), data: ROUTINE_LENGTH},
           {title: translate('Favorites'), data: FAVORITES},
@@ -257,6 +305,8 @@ const Settings = () => {
                   dispatch={dispatch}
                 />
               );
+            case 'picker':
+              return <PickerListItem dispatch={dispatch} item={item} />;
             default:
               return null;
           }
@@ -311,6 +361,12 @@ const dynamicStyles = new DynamicStyleSheet({
       colors.systemGray5Dark,
     ),
     height: 45,
+  },
+  listPickerContainer: {
+    flexDirection: 'row',
+    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
+    height: 45,
+    alignItems: 'center',
   },
   listRowContainer: {
     flexDirection: 'row',
