@@ -26,7 +26,6 @@ import {
   ABOUT,
   RESOURCES,
 } from './SettingsModel';
-import {set} from 'react-native-reanimated';
 import {PreferencesContext} from '../Model/Preferences';
 import {Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -111,12 +110,18 @@ const InternalListItem = ({item}) => {
  * @author Alexander Burdiss
  * @since 12/14/20
  */
-const SwitchListItem = ({item}) => {
+const SwitchListItem = ({item, state, dispatch}) => {
   const styles = useDynamicValue(dynamicStyles);
   return (
     <View style={styles.listRowContainer}>
       <Text style={styles.listRowText}>{item.value}</Text>
-      <Switch onValueChange={() => {}} value={true} />
+      <Switch
+        value={state[item.setting]}
+        onValueChange={(state) => {
+          let newSetting = {[item.setting]: state};
+          dispatch({type: 'SET_SETTING', payload: newSetting});
+        }}
+      />
     </View>
   );
 };
@@ -187,16 +192,19 @@ const ButtonListItem = ({item, dispatch}) => {
  * @author Alexander Burdiss
  * @since 12/17/20
  */
-const SegmentedFilterListItem = ({item}) => {
+const SegmentedFilterListItem = ({item, state, dispatch}) => {
   const styles = useDynamicValue(dynamicStyles);
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
     <View style={styles.listSegmentedRowContainer}>
       <SegmentedControl
         values={item.choices}
-        selectedIndex={0}
-        onChange={(index) => setSelectedIndex(index)}
+        selectedIndex={state[item.setting]}
+        onChange={(event) => {
+          let index = event.nativeEvent.selectedSegmentIndex;
+          let setting = {[item.setting]: index};
+          dispatch({type: 'SET_SETTING', payload: setting});
+        }}
       />
     </View>
   );
@@ -240,9 +248,7 @@ const Settings = () => {
                 <SwitchListItem item={item} state={state} dispatch={dispatch} />
               );
             case 'button':
-              return (
-                <ButtonListItem item={item} state={state} dispatch={dispatch} />
-              );
+              return <ButtonListItem item={item} dispatch={dispatch} />;
             case 'segmentedFilter':
               return (
                 <SegmentedFilterListItem

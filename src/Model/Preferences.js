@@ -43,7 +43,7 @@ const preferencesReducer = (state, action) => {
   let newState;
   switch (action.type) {
     case 'SET_ALL_PREFERENCES':
-      newState = {...action.payload};
+      newState = {...state, ...action.payload};
       break;
     case 'ADD_TO_FAVORITES':
       newState = {...state, favorites: action.payload};
@@ -51,7 +51,7 @@ const preferencesReducer = (state, action) => {
     case 'REMOVE_FROM_FAVORITES':
       newState = {...state, favorites: action.payload};
       break;
-    case 'SET_SWITCH':
+    case 'SET_SETTING':
       newState = {...state, ...action.payload};
       break;
     case 'RESET_FAVORITES':
@@ -63,6 +63,7 @@ const preferencesReducer = (state, action) => {
     default:
       throw new Error(`Unknown Action: ${action.type}`);
   }
+  save(newState);
   return newState;
 };
 
