@@ -20,7 +20,11 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+      }}>
       <HomeButton onPress={launchDailyRoutine}>Begin Routine</HomeButton>
       <HomeButton onPress={launchFavoritesRoutine}>
         Randomize Favorites

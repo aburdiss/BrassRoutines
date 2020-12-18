@@ -5,11 +5,10 @@ import {colors, tromboneExercises} from '../Model/Model';
 import ListRow from './ListRow';
 import SafeAreaView from 'react-native-safe-area-view';
 
-// TODO: Make a preprocess function that adds Major Scale Names to exercises.
 const List = () => {
   const navigation = useNavigation();
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <SectionList
         android_ripple={{
           color: colors.systemGray,
@@ -34,6 +33,9 @@ const List = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'black',
+  },
   sectionHeader: {
     textTransform: 'uppercase',
     paddingLeft: 20,

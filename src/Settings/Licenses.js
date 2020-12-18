@@ -18,6 +18,7 @@ import {useDarkMode} from 'react-native-dynamic';
 import {colors} from '../Model/Model';
 
 import Data from './Licenses/data';
+import SafeAreaView from 'react-native-safe-area-view';
 
 function extractNameFromGithubUrl(url) {
   if (!url) {
@@ -78,13 +79,13 @@ sortDataByKey(licenses, 'username');
 const Licenses = () => {
   const DARKMODE = useDarkMode();
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray2Light,
       }}>
       <LicensesList licenses={licenses} />
-    </View>
+    </SafeAreaView>
   );
 };
 

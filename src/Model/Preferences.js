@@ -83,15 +83,18 @@ const initialPreferencesState = {
 };
 
 const PreferencesProvider = ({children}) => {
-  const [state, dispatch] = useReducer(
-    preferencesReducer,
-    initialPreferencesState,
-  );
+  const [state, dispatch] = useReducer(preferencesReducer);
 
   useEffect(() => {
     load().then((data) => {
-      console.log(data);
-      dispatch({type: 'SET_ALL_PREFERENCES', payload: data});
+      if (data !== null) {
+        dispatch({type: 'SET_ALL_PREFERENCES', payload: data});
+      } else {
+        dispatch({
+          type: 'SET_ALL_PREFERENCES',
+          payload: initialPreferencesState,
+        });
+      }
     });
   }, []);
 
