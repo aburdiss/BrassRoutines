@@ -68,7 +68,7 @@ const preferencesReducer = (state, action) => {
 };
 
 const initialPreferencesState = {
-  instrument: 'trombone',
+  instrument: 'horn',
   longTones: true,
   slowLipSlurs: true,
   fastLipSlurs: true,

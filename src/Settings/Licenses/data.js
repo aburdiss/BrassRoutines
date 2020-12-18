@@ -91,6 +91,13 @@ export default {
       'https://github.com/zoontek/react-native-localize/raw/master/LICENSE',
     parents: 'BrassRoutines',
   },
+  'react-native-picker-select@8.0.4': {
+    licenses: 'MIT',
+    repository: 'https://github.com/lawnstarter/react-native-picker-select',
+    licenseUrl:
+      'https://github.com/lawnstarter/react-native-picker-select/raw/master/LICENSE',
+    parents: 'BrassRoutines',
+  },
   'react-native-reanimated@1.13.2': {
     licenses: 'MIT',
     repository: 'https://github.com/software-mansion/react-native-reanimated',

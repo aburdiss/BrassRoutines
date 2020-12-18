@@ -1,5 +1,4 @@
 import DeviceInfo from 'react-native-device-info';
-import {DynamicValue} from 'react-native-dynamic';
 import {colors} from '../Model/Model';
 
 export const GOOGLE_PLAY_LINK =
