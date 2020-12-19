@@ -212,24 +212,28 @@ const SegmentedFilterListItem = ({item, state, dispatch}) => {
   );
 };
 
-const PickerListItem = ({item, dispatch}) => {
+const PickerListItem = ({item, state, dispatch}) => {
   const styles = useDynamicValue(dynamicStyles);
   const DARKMODE = useDarkMode();
+  const [currentInstrument, setCurrentInstrument] = useState(state.instrument);
 
   return (
     <View style={styles.listSegmentedRowContainer}>
       <RNPickerSelect
         onValueChange={(value) => {
-          console.log(value);
+          setCurrentInstrument(value);
+          dispatch({type: 'SET_SETTING', payload: {instrument: value}});
         }}
+        value={currentInstrument}
         items={item.values}
         placeholder={{}}
         style={{
           iconContainer: {
-            top: -4,
+            top: 9,
           },
           inputIOS: {
             color: DARKMODE ? colors.white : colors.black,
+            height: '100%',
           },
           inputAndroid: {
             color: DARKMODE ? colors.white : colors.black,
@@ -306,7 +310,9 @@ const Settings = () => {
                 />
               );
             case 'picker':
-              return <PickerListItem dispatch={dispatch} item={item} />;
+              return (
+                <PickerListItem dispatch={dispatch} state={state} item={item} />
+              );
             default:
               return null;
           }

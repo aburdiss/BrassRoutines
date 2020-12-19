@@ -1,12 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Image, Alert} from 'react-native';
-import {getTromboneImagePath} from '../Model/Model';
+import {
+  getHornImagePath,
+  getTrumpetImagePath,
+  getTromboneImagePath,
+  getEuphoniumImagePath,
+  getTubaImagePath,
+} from '../Model/Model';
 import HeaderButton from '../Components/HeaderButton';
 import {useNavigation} from '@react-navigation/native';
 import RoutineHeaderRightComponent from '../Components/RoutineHeaderRightComponent';
 import SafeAreaView from 'react-native-safe-area-view';
 
-const Routine = ({exercises}) => {
+const Routine = ({exercises, instrument}) => {
   const navigation = useNavigation();
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   useEffect(
@@ -23,8 +29,27 @@ const Routine = ({exercises}) => {
         headerLeft: () => <HeaderButton handler={reverse}>Back</HeaderButton>,
       });
     },
-    [currentExerciseIndex],
+    [currentExerciseIndex, exercises],
   );
+
+  let getInstrumentImagePath;
+  switch (instrument) {
+    case 'horn':
+      getInstrumentImagePath = getHornImagePath;
+      break;
+    case 'trumpet':
+      getInstrumentImagePath = getTrumpetImagePath;
+      break;
+    case 'trombone':
+      getInstrumentImagePath = getTromboneImagePath;
+      break;
+    case 'euphonium':
+      getInstrumentImagePath = getEuphoniumImagePath;
+      break;
+    case 'tuba':
+      getInstrumentImagePath = getTubaImagePath;
+      break;
+  }
 
   function getIsElementInFavorites() {
     return false;
@@ -58,7 +83,7 @@ const Routine = ({exercises}) => {
     <SafeAreaView style={styles.container} forceInset="top">
       <View style={styles.imageContainer}>
         <Image
-          source={getTromboneImagePath(exercises[currentExerciseIndex])}
+          source={getInstrumentImagePath(exercises[currentExerciseIndex])}
           style={styles.image}
         />
       </View>

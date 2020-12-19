@@ -104,7 +104,7 @@ const ListStack = ({navigation}) => {
         name="Exercise Detail"
         component={ExerciseDetail}
         options={({route}) => ({
-          title: translate(route.params),
+          title: translate(route.params.item),
         })}
       />
     </Stack.Navigator>

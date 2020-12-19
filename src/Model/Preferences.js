@@ -63,6 +63,7 @@ const preferencesReducer = (state, action) => {
     default:
       throw new Error(`Unknown Action: ${action.type}`);
   }
+  console.log(newState);
   save(newState);
   return newState;
 };
@@ -72,8 +73,8 @@ const initialPreferencesState = {
   longTones: true,
   slowLipSlurs: true,
   fastLipSlurs: true,
-  singleNoteArticulation: true,
-  changingNoteArticulation: true,
+  articulation: true,
+  coordination: true,
   majorScales: true,
   highRange: true,
   lowRange: true,
