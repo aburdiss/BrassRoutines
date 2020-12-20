@@ -60,6 +60,9 @@ const preferencesReducer = (state, action) => {
     case 'RESET_CUSTOM_ROUTINES':
       newState = {...state, customRoutines: []};
       break;
+    case 'RESET_PREFERENCES':
+      newState = initialPreferencesState;
+      break;
     default:
       throw new Error(`Unknown Action: ${action.type}`);
   }

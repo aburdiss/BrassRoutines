@@ -21,7 +21,13 @@ export const INSTRUMENT = [
   },
 ];
 
-export const FUNDAMENTALS = [
+export const ROUTINE = [
+  {
+    id: '8',
+    type: 'segmentedFilter',
+    choices: ['Short', 'Medium', 'Long'],
+    setting: 'routineLength',
+  },
   {
     id: '0',
     type: 'switch',
@@ -43,14 +49,14 @@ export const FUNDAMENTALS = [
   {
     id: '3',
     type: 'switch',
-    value: 'Single Note Articulation',
-    setting: 'singleNoteArticulation',
+    value: 'Articulation',
+    setting: 'articulation',
   },
   {
     id: '4',
     type: 'switch',
-    value: 'Changing Note Articulation',
-    setting: 'changingNoteArticulation',
+    value: 'Coordination',
+    setting: 'coordination',
   },
   {
     id: '5',
@@ -70,14 +76,11 @@ export const FUNDAMENTALS = [
     value: 'Low Range',
     setting: 'lowRange',
   },
-];
-
-export const ROUTINE_LENGTH = [
   {
-    id: '8',
-    type: 'segmentedFilter',
-    choices: ['Short', 'Medium', 'Long'],
-    setting: 'routineLength',
+    id: '7.5',
+    type: 'button',
+    value: 'Restore Defaults',
+    icon: 'refresh',
   },
 ];
 

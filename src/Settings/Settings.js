@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {
   SectionList,
   View,
@@ -21,7 +21,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import {colors} from '../Model/Model';
 import {
   INSTRUMENT,
-  FUNDAMENTALS,
+  ROUTINE,
   ROUTINE_LENGTH,
   FAVORITES,
   CUSTOM_ROUTINES,
@@ -175,6 +175,24 @@ const ButtonListItem = ({item, dispatch}) => {
               },
             ],
           );
+        } else if (item.value === 'Restore Defaults') {
+          Alert.alert(
+            translate('All settings will be restored to defaults'),
+            translate('This cannot be undone!'),
+            [
+              {
+                text: translate('Return'),
+                style: 'cancel',
+              },
+              {
+                text: translate('Reset'),
+                style: 'destructive',
+                onPress: () => {
+                  dispatch({type: 'RESET_PREFERENCES'});
+                },
+              },
+            ],
+          );
         }
       }}
       style={({pressed}) => ({
@@ -216,6 +234,9 @@ const PickerListItem = ({item, state, dispatch}) => {
   const styles = useDynamicValue(dynamicStyles);
   const DARKMODE = useDarkMode();
   const [currentInstrument, setCurrentInstrument] = useState(state.instrument);
+  useEffect(() => {
+    setCurrentInstrument(state.instrument);
+  }, [state.instrument]);
 
   return (
     <View style={styles.listSegmentedRowContainer}>
@@ -279,8 +300,7 @@ const Settings = () => {
       <SectionList
         sections={[
           {title: translate('Instrument'), data: INSTRUMENT},
-          {title: translate('Fundamentals'), data: FUNDAMENTALS},
-          {title: translate('Routine Length'), data: ROUTINE_LENGTH},
+          {title: translate('Routine'), data: ROUTINE},
           {title: translate('Favorites'), data: FAVORITES},
           {title: translate('Custom Routines'), data: CUSTOM_ROUTINES},
           {title: translate('Resources'), data: RESOURCES},
