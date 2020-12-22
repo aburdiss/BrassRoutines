@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useContext} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Alert} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
 import HomeButton from '../Components/HomeButton';
 import SafeAreaView from 'react-native-safe-area-view';
@@ -14,11 +14,49 @@ const Home = () => {
   const {state} = useContext(PreferencesContext);
 
   const launchDailyRoutine = () => {
-    navigation.navigate('Daily Routine');
+    if (
+      !state.longTones &&
+      !state.slowLipSlurs &&
+      !state.fastLipSlurs &&
+      !state.articulation &&
+      !state.coordination &&
+      !state.majorScales &&
+      !state.highRange &&
+      !state.lowRange
+    ) {
+      Alert.alert(
+        'No Exercise Types Selected!',
+        'Please select at least one exercise.',
+        [
+          {
+            text: 'Return',
+            style: 'cancel',
+          },
+          {
+            text: 'Go to Settings',
+            onPress: () => {
+              navigation.navigate('Settings');
+            },
+            style: 'default',
+          },
+        ],
+      );
+    } else {
+      navigation.navigate('Daily Routine');
+    }
   };
 
   const launchFavoritesRoutine = () => {
-    navigation.navigate('Favorites Routine');
+    if (state.favorites.length === 0) {
+      Alert.alert('No Favorites Selected!', '', [
+        {
+          text: 'Return',
+          style: 'cancel',
+        },
+      ]);
+    } else {
+      navigation.navigate('Favorites Routine');
+    }
   };
 
   return (
