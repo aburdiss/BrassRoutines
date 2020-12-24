@@ -3,6 +3,12 @@ import {View, Image, StyleSheet} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {
+  DynamicValue,
+  DynamicStyleSheet,
+  useDynamicValue,
+} from 'react-native-dynamic';
+import {
+  colors,
   getHornImagePath,
   getTrumpetImagePath,
   getTromboneImagePath,
@@ -10,9 +16,16 @@ import {
   getTubaImagePath,
 } from '../Model/Model';
 
+/**
+ * @description Shows an individual exercise, and allows the user to select the
+ * exercise as a favorite.
+ * @todo Add the 'Add to favorite' button.
+ * @todo Add Zoom in on image functionality.
+ * @todo Add Change instrument functionality.
+ */
 const ExerciseDetail = () => {
+  const styles = useDynamicValue(dynamicStyles);
   const route = useRoute();
-  console.log(route.params);
   let getInstrumentImagePath;
   switch (route.params.instrument) {
     case 'horn':
@@ -43,9 +56,10 @@ const ExerciseDetail = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const dynamicStyles = new DynamicStyleSheet({
   container: {
-    height: '100%',
+    flex: 1,
+    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
   imageContainer: {
     flex: 1,
