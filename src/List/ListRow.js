@@ -18,6 +18,7 @@ const translate = (text) => {
 const ListRow = ({onPress, text}) => {
   const {state} = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
+
   /**
    * @description A preprocess function to render The Major Scale Labels
    * correctly for the different instruments and for the different languages.
@@ -129,39 +130,74 @@ const ListRow = ({onPress, text}) => {
             return text;
         }
       case 'euphonium':
-        switch (text) {
-          case 1:
-            return text + ' (' + translate('Remington Pattern') + ')';
-          case 5:
-            return text + ' (' + translate('Remington Variation') + ')';
-          case 50:
-            return text + ' (' + translate('B♭ Major') + ')';
-          case 51:
-            return text + ' (' + translate('B Major') + ')';
-          case 52:
-            return text + ' (' + translate('C Major') + ')';
-          case 53:
-            return text + ' (' + translate('D♭ Major') + ')';
-          case 54:
-            return text + ' (' + translate('D Major') + ')';
-          case 55:
-            return text + ' (' + translate('E♭ Major') + ')';
-          case 56:
-            return text + ' (' + translate('E Major') + ')';
-          case 57:
-            return text + ' (' + translate('F Major') + ')';
-          case 58:
-            return text + ' (' + translate('G♭ Major') + ')';
-          case 59:
-            return text + ' (' + translate('G Major') + ')';
-          case 60:
-            return text + ' (' + translate('A♭ Major') + ')';
-          case 61:
-            return text + ' (' + translate('A Major') + ')';
-          case 86:
-            return text + ' (' + translate('Low Smears') + ')';
-          default:
-            return text;
+        if (state.bassClef == 1) {
+          switch (text) {
+            case 1:
+              return text + ' (' + translate('Remington Pattern') + ')';
+            case 5:
+              return text + ' (' + translate('Remington Variation') + ')';
+            case 50:
+              return text + ' (' + translate('B♭ Major') + ')';
+            case 51:
+              return text + ' (' + translate('B Major') + ')';
+            case 52:
+              return text + ' (' + translate('C Major') + ')';
+            case 53:
+              return text + ' (' + translate('D♭ Major') + ')';
+            case 54:
+              return text + ' (' + translate('D Major') + ')';
+            case 55:
+              return text + ' (' + translate('E♭ Major') + ')';
+            case 56:
+              return text + ' (' + translate('E Major') + ')';
+            case 57:
+              return text + ' (' + translate('F Major') + ')';
+            case 58:
+              return text + ' (' + translate('G♭ Major') + ')';
+            case 59:
+              return text + ' (' + translate('G Major') + ')';
+            case 60:
+              return text + ' (' + translate('A♭ Major') + ')';
+            case 61:
+              return text + ' (' + translate('A Major') + ')';
+            case 86:
+              return text + ' (' + translate('Low Smears') + ')';
+            default:
+              return text;
+          }
+        } else {
+          switch (text) {
+            case 1:
+              return text + ' (' + translate('Remington Pattern') + ')';
+            case 5:
+              return text + ' (' + translate('Remington Variation') + ')';
+            case 50:
+              return text + ' (' + translate('C Major') + ')';
+            case 51:
+              return text + ' (' + translate('D♭ Major') + ')';
+            case 52:
+              return text + ' (' + translate('D Major') + ')';
+            case 53:
+              return text + ' (' + translate('E♭ Major') + ')';
+            case 54:
+              return text + ' (' + translate('E Major') + ')';
+            case 55:
+              return text + ' (' + translate('F Major') + ')';
+            case 56:
+              return text + ' (' + translate('F♯ Major') + ')';
+            case 57:
+              return text + ' (' + translate('G Major') + ')';
+            case 58:
+              return text + ' (' + translate('A♭ Major') + ')';
+            case 59:
+              return text + ' (' + translate('A Major') + ')';
+            case 60:
+              return text + ' (' + translate('B♭ Major') + ')';
+            case 61:
+              return text + ' (' + translate('B Major') + ')';
+            default:
+              return text;
+          }
         }
       case 'tuba':
         switch (text) {
