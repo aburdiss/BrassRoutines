@@ -4,7 +4,8 @@ import {
   getHornImagePath,
   getTrumpetImagePath,
   getTromboneImagePath,
-  getEuphoniumImagePath,
+  getEuphoniumBassClefImagePath,
+  getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
 } from '../Model/Model';
 import HeaderButton from '../Components/HeaderButton';
@@ -56,7 +57,11 @@ const Routine = ({exercises, instrument}) => {
       getInstrumentImagePath = getTromboneImagePath;
       break;
     case 'euphonium':
-      getInstrumentImagePath = getEuphoniumImagePath;
+      if (state.bassClef == 1) {
+        getInstrumentImagePath = getEuphoniumBassClefImagePath;
+      } else {
+        getInstrumentImagePath = getEuphoniumTrebleClefImagePath;
+      }
       break;
     case 'tuba':
       getInstrumentImagePath = getTubaImagePath;

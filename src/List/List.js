@@ -12,8 +12,14 @@ import {
 import ListRow from './ListRow';
 import SafeAreaView from 'react-native-safe-area-view';
 import {PreferencesContext} from '../Model/Preferences';
+import {
+  useDynamicValue,
+  DynamicStyleSheet,
+  DynamicValue,
+} from 'react-native-dynamic';
 
 const List = () => {
+  const styles = useDynamicValue(dynamicStyles);
   const navigation = useNavigation();
   const {state} = useContext(PreferencesContext);
 
@@ -78,9 +84,10 @@ const List = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const dynamicStyles = new DynamicStyleSheet({
   container: {
-    backgroundColor: 'black',
+    height: '100%',
+    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
   sectionHeader: {
     textTransform: 'uppercase',

@@ -1,5 +1,5 @@
 import DeviceInfo from 'react-native-device-info';
-import {colors} from '../Model/Model';
+import {colors} from './Model';
 
 export const GOOGLE_PLAY_LINK =
   'https://play.google.com/store/apps/developer?id=Alexander+Burdiss';
@@ -18,6 +18,12 @@ export const INSTRUMENT = [
       {label: 'Tuba', value: 'tuba', color: colors.orangeLight},
     ],
     setting: 'instrument',
+  },
+  {
+    id: 'B',
+    type: 'segmentedFilter',
+    choices: ['Treble Clef', 'Bass Clef'],
+    setting: 'bassClef',
   },
 ];
 

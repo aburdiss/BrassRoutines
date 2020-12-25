@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Image, StyleSheet} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Image, StyleSheet, Alert, Pressable} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {
@@ -7,12 +7,15 @@ import {
   DynamicStyleSheet,
   useDynamicValue,
 } from 'react-native-dynamic';
+import {PreferencesContext} from '../Model/Preferences';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   colors,
   getHornImagePath,
   getTrumpetImagePath,
   getTromboneImagePath,
-  getEuphoniumImagePath,
+  getEuphoniumBassClefImagePath,
+  getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
 } from '../Model/Model';
 
@@ -25,8 +28,26 @@ import {
  */
 const ExerciseDetail = () => {
   const styles = useDynamicValue(dynamicStyles);
+  const {state, dispatch} = useContext(PreferencesContext);
   const route = useRoute();
   let getInstrumentImagePath;
+
+  function addToFavorites() {
+    let currentExercise = route.params.item;
+    if (state.favorites.includes(currentExercise)) {
+      let tempFavorites = state.favorites.filter((item) => {
+        return item != currentExercise;
+      });
+      dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
+      Alert.alert('Item removed from favorites');
+    } else {
+      let tempFavorites = [...state.favorites];
+      tempFavorites.push(currentExercise);
+      dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
+      Alert.alert('Item added to favorites');
+    }
+  }
+
   switch (route.params.instrument) {
     case 'horn':
       getInstrumentImagePath = getHornImagePath;
@@ -38,7 +59,11 @@ const ExerciseDetail = () => {
       getInstrumentImagePath = getTromboneImagePath;
       break;
     case 'euphonium':
-      getInstrumentImagePath = getEuphoniumImagePath;
+      if (state.bassClef == 1) {
+        getInstrumentImagePath = getEuphoniumBassClefImagePath;
+      } else {
+        getInstrumentImagePath = getEuphoniumTrebleClefImagePath;
+      }
       break;
     case 'tuba':
       getInstrumentImagePath = getTubaImagePath;
@@ -46,6 +71,24 @@ const ExerciseDetail = () => {
   }
   return (
     <SafeAreaView style={styles.container} forceInset="top">
+      <View style={styles.heartContainer}>
+        <Pressable onPress={addToFavorites}>
+          <Ionicons
+            name={
+              state.favorites.includes(route.params.item)
+                ? 'heart'
+                : 'heart-outline'
+            }
+            size={28}
+            color={
+              state.favorites.includes(route.params.item)
+                ? colors.pinkLight
+                : colors.orangeLight
+            }
+            style={styles.heart}
+          />
+        </Pressable>
+      </View>
       <View style={styles.imageContainer}>
         <Image
           source={getInstrumentImagePath(route.params.item)}
@@ -69,6 +112,16 @@ const dynamicStyles = new DynamicStyleSheet({
   image: {
     width: '100%',
     resizeMode: 'contain',
+  },
+  heartContainer: {
+    alignItems: 'flex-end',
+    zIndex: 5,
+    marginBottom: -34,
+  },
+  heart: {
+    paddingRight: 10,
+    paddingTop: 6,
+    opacity: 0.8,
   },
 });
 
