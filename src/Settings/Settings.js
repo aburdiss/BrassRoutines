@@ -54,7 +54,7 @@ const Settings = () => {
         renderItem={({item}) => {
           switch (item.type) {
             case 'link':
-              return <LinkListItem item={item} />;
+              return <LinkListItem item={item} state={state} />;
             case 'navigate':
               return <InternalListItem item={item} />;
             case 'text':

@@ -2,11 +2,11 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useContext} from 'react';
 import {StyleSheet, Alert} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
-import HomeButton from '../Components/HomeButton';
+import HomeButton from './Components/HomeButton';
 import SafeAreaView from 'react-native-safe-area-view';
 
-import {colors} from '../Model/Model';
-import {PreferencesContext} from '../Model/Preferences';
+import {colors} from './Model/Model';
+import {PreferencesContext} from './Model/Preferences';
 
 const Home = () => {
   const DARKMODE = useDarkMode();
@@ -70,6 +70,12 @@ const Home = () => {
       </HomeButton>
       <HomeButton onPress={launchFavoritesRoutine}>
         Randomize Favorites
+      </HomeButton>
+      <HomeButton
+        onPress={() => {
+          navigation.navigate('Scale Practice');
+        }}>
+        Scale Practice
       </HomeButton>
     </SafeAreaView>
   );

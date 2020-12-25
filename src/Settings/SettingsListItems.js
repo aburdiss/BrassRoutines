@@ -34,10 +34,11 @@ export const TextListItem = ({item}) => {
  * @author Alexander Burdiss
  * @since 11/15/20
  */
-export const LinkListItem = ({item}) => {
+export const LinkListItem = ({item, state}) => {
   const styles = useDynamicValue(dynamicStyles);
+  const isHidden = item.instrument && state.instrument != item.instrument;
 
-  return (
+  return isHidden ? null : (
     <Pressable
       style={({pressed}) => ({
         opacity: pressed ? 0.7 : 1,

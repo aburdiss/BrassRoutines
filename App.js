@@ -8,9 +8,11 @@ import {useDarkMode} from 'react-native-dynamic';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import * as RNLocalize from 'react-native-localize';
 
-import Home from './src/Routine/Home';
+import Home from './src/Home';
 import DailyRoutine from './src/Routine/DailyRoutine';
 import FavoritesRoutine from './src/Routine/FavoritesRoutine';
+import ScalePractice from './src/Scales/ScalePractice';
+import ArpeggioPractice from './src/Scales/ArpeggioPractice';
 import List from './src/List/List';
 import ExerciseDetail from './src/List/ExerciseDetail';
 import CreateCustom from './src/Custom/CreateCustom';
@@ -64,6 +66,22 @@ const HomeStack = ({navigation}) => {
       />
       <Stack.Screen name="Daily Routine" component={DailyRoutine} />
       <Stack.Screen name="Favorites Routine" component={FavoritesRoutine} />
+      <Stack.Screen
+        name="Scale Practice"
+        component={ScalePractice}
+        options={{
+          headerRight: () => (
+            <HeaderButton
+              handler={() => {
+                navigation.navigate('Arpeggio Practice');
+              }}>
+              {translate('Arpeggios')}
+            </HeaderButton>
+          ),
+          title: translate('Scale Practice'),
+        }}
+      />
+      <Stack.Screen name="Arpeggio Practice" component={ArpeggioPractice} />
     </Stack.Navigator>
   );
 };

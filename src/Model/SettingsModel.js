@@ -128,6 +128,62 @@ export const RESOURCES = [
     value: 'Visit Band Room Online',
     link: 'https://www.bandroomonline.com/',
   },
+  {
+    id: '13AHorn',
+    type: 'link',
+    instrument: 'horn',
+    value: 'Visit Do i need a mute?',
+    link: 'https://doineedamute.com/horn',
+  },
+  {
+    id: '13ATrumpet',
+    type: 'link',
+    instrument: 'trumpet',
+    value: 'Visit Do i need a mute?',
+    link: 'https://doineedamute.com/trumpet',
+  },
+  {
+    id: '13ATrombone',
+    type: 'link',
+    instrument: 'trombone',
+    value: 'Visit Do i need a mute?',
+    link: 'https://doineedamute.com/trombone',
+  },
+  {
+    id: '13ATuba',
+    type: 'link',
+    instrument: 'tuba',
+    value: 'Visit Do i need a mute?',
+    link: 'https://doineedamute.com/tuba',
+  },
+  {
+    id: '13B',
+    type: 'link',
+    instrument: 'trombone',
+    value: 'Visit TromboneTools',
+    link: 'https://trombonetools.com/',
+  },
+  {
+    id: '13C',
+    type: 'link',
+    instrument: 'trombone',
+    value: 'Visit TromboneExcerpts.org',
+    link: 'http://www.tromboneexcerpts.org/',
+  },
+  {
+    id: '13D',
+    type: 'link',
+    instrument: 'horn',
+    value: 'Visit Horn Excerpts',
+    link: 'https://www.hornsociety.org/hornexcerpts-org',
+  },
+  {
+    id: '13E',
+    type: 'link',
+    instrument: 'trumpet',
+    value: 'Visit www.TrumpetExcerpts.org',
+    link: 'https://www.trumpetexcerpts.org/',
+  },
 ];
 
 export const ABOUT = [
