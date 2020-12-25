@@ -1,5 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {View, StyleSheet, Image, Alert, Pressable} from 'react-native';
+import {View, Image, Alert, Pressable} from 'react-native';
+import Modal from 'react-native-modal';
+import ImageViewer from 'react-native-image-zoom-viewer';
 import {
   getHornImagePath,
   getTrumpetImagePath,
@@ -34,6 +36,7 @@ const Routine = ({exercises, instrument}) => {
   const {state, dispatch} = useContext(PreferencesContext);
   const navigation = useNavigation();
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
+  const [zoomModalIsShowing, setZoomModalIsShowing] = useState(false);
   useEffect(
     function () {
       navigation.setOptions({
@@ -126,12 +129,32 @@ const Routine = ({exercises, instrument}) => {
           />
         </Pressable>
       </View>
-      <View style={styles.imageContainer}>
+      <Pressable
+        style={styles.imageContainer}
+        onPress={() => {
+          setZoomModalIsShowing(true);
+        }}>
         <Image
           source={getInstrumentImagePath(exercises[currentExerciseIndex])}
           style={styles.image}
         />
-      </View>
+      </Pressable>
+      <Modal isVisible={zoomModalIsShowing}>
+        <ImageViewer
+          imageUrls={[
+            {
+              url: '',
+              props: {
+                source: getInstrumentImagePath(exercises[currentExerciseIndex]),
+              },
+            },
+          ]}
+          renderIndicator={() => null}
+          onSwipeDown={() => setZoomModalIsShowing(false)}
+          onDoubleClick={() => setZoomModalIsShowing(false)}
+          enableSwipeDown={true}
+        />
+      </Modal>
     </SafeAreaView>
   );
 };
