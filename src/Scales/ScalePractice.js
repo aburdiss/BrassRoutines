@@ -399,6 +399,7 @@ const ScalePractice = () => {
         <RandomzieButton
           handler={generateScales}
           accessibilityValue={{text: `${translate(currentScale)}`}}
+          text={'Randomize'}
         />
       </View>
     </View>

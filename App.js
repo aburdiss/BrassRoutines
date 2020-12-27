@@ -173,7 +173,7 @@ const CustomStack = ({navigation}) => {
         name="Create Custom"
         component={CreateCustom}
         options={{
-          title: translate('Create Custom Routine'),
+          title: translate('Create Routine'),
         }}
       />
       <Stack.Screen
@@ -187,7 +187,7 @@ const CustomStack = ({navigation}) => {
         name="Exercise Detail"
         component={ExerciseDetail}
         options={({route}) => ({
-          title: translate(route.params.name),
+          title: translate(route.params.item),
         })}
       />
     </Stack.Navigator>

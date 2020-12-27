@@ -53,6 +53,17 @@ export const hornExercises = {
   lowRange: [80, 81, 82, 83, 84, 85, 86, 87],
 };
 
+export const allHornExercises = [
+  ...hornExercises.longTones,
+  ...hornExercises.slowLipSlurs,
+  ...hornExercises.fastLipSlurs,
+  ...hornExercises.articulation,
+  ...hornExercises.coordination,
+  ...hornExercises.majorScales,
+  ...hornExercises.highRange,
+  ...hornExercises.lowRange,
+];
+
 export const trumpetExercises = {
   longTones: [1, 2, 3, 4, 5, 6, 7],
   slowLipSlurs: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
@@ -63,6 +74,17 @@ export const trumpetExercises = {
   highRange: [70, 71, 72, 73, 74, 75, 76, 77, 78],
   lowRange: [80, 81, 82, 83, 84, 85, 86, 87],
 };
+
+export const allTrumpetExercises = [
+  ...trumpetExercises.longTones,
+  ...trumpetExercises.slowLipSlurs,
+  ...trumpetExercises.fastLipSlurs,
+  ...trumpetExercises.articulation,
+  ...trumpetExercises.coordination,
+  ...trumpetExercises.majorScales,
+  ...trumpetExercises.highRange,
+  ...trumpetExercises.lowRange,
+];
 
 export const tromboneExercises = {
   longTones: [1, 2, 3, 4, 5, 6, 7],
@@ -75,6 +97,17 @@ export const tromboneExercises = {
   lowRange: [80, 81, 82, 83, 84, 85, 86, 87],
 };
 
+export const allTromboneExercises = [
+  ...tromboneExercises.longTones,
+  ...tromboneExercises.slowLipSlurs,
+  ...tromboneExercises.fastLipSlurs,
+  ...tromboneExercises.articulation,
+  ...tromboneExercises.coordination,
+  ...tromboneExercises.majorScales,
+  ...tromboneExercises.highRange,
+  ...tromboneExercises.lowRange,
+];
+
 export const euphoniumExercises = {
   longTones: [1, 2, 3, 4, 5, 6, 7],
   slowLipSlurs: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
@@ -86,6 +119,17 @@ export const euphoniumExercises = {
   lowRange: [80, 81, 82, 83, 84, 85, 86, 87],
 };
 
+export const allEuphoniumExcercises = [
+  ...euphoniumExercises.longTones,
+  ...euphoniumExercises.slowLipSlurs,
+  ...euphoniumExercises.fastLipSlurs,
+  ...euphoniumExercises.articulation,
+  ...euphoniumExercises.coordination,
+  ...euphoniumExercises.majorScales,
+  ...euphoniumExercises.highRange,
+  ...euphoniumExercises.lowRange,
+];
+
 export const tubaExercises = {
   longTones: [1, 2, 3, 4, 5, 6, 7],
   slowLipSlurs: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
@@ -96,6 +140,17 @@ export const tubaExercises = {
   highRange: [70, 71, 72, 73, 74, 75, 76, 77, 78],
   lowRange: [80, 81, 82, 83, 84, 85, 86, 87],
 };
+
+export const allTubaExercises = [
+  ...tubaExercises.longTones,
+  ...tubaExercises.slowLipSlurs,
+  ...tubaExercises.fastLipSlurs,
+  ...tubaExercises.articulation,
+  ...tubaExercises.coordination,
+  ...tubaExercises.majorScales,
+  ...tubaExercises.highRange,
+  ...tubaExercises.lowRange,
+];
 
 /**
  * @function getHornImagePath

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import SafeAreaView from 'react-native-safe-area-view';
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {PreferencesContext} from '../Model/Preferences';
 import {useNavigation} from '@react-navigation/native';
 import {colors} from '../Model/Model';

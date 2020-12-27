@@ -14,17 +14,17 @@ const translate = (text) => {
  * @author Alexander Burdiss
  * @since 10/11/20
  */
-const RandomizeButton = ({handler}) => {
+const RandomizeButton = ({handler, text}) => {
   const DARKMODE = useDarkMode();
   return (
     <Pressable
       android_ripple={{
-        color: DARKMODE ? colors.purpleDark : colors.purpleLight,
+        color: DARKMODE ? colors.orangeDark : colors.orangeLight,
       }}
       onPress={handler}
       style={({pressed}) => ({
         borderRadius: 8,
-        borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+        borderColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
         borderWidth: 1,
         margin: 10,
         padding: 10,
@@ -34,10 +34,10 @@ const RandomizeButton = ({handler}) => {
       <Text
         style={{
           textAlign: 'center',
-          color: DARKMODE ? colors.purpleDark : colors.purpleLight,
+          color: DARKMODE ? colors.orangeDark : colors.orangeLight,
           fontSize: 24,
         }}>
-        {translate('Randomize')}
+        {translate(text)}
       </Text>
     </Pressable>
   );

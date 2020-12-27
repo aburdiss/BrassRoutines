@@ -376,6 +376,7 @@ const ArpeggioPractice = () => {
         <RandomzieButton
           handler={generateArpeggios}
           accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+          text={'Randomize'}
         />
       </View>
     </View>
