@@ -6,9 +6,9 @@ import {
   useDynamicValue,
 } from 'react-native-dynamic';
 
-import ScaleDisplay from '../Components/ScaleDisplay';
-import AllScalesButton from '../Components/AllScalesButton';
-import RandomzieButton from '../Components/RandomizeButton';
+import ScaleDisplay from './ScaleDisplay';
+import AllScalesButton from './AllScalesButton';
+import MainActionButton from '../Components/MainActionButton';
 
 import {colors} from '../Model/Model';
 // import {translate} from '../Translations/TranslationModel';
@@ -373,7 +373,7 @@ const ArpeggioPractice = () => {
         </View>
       </View>
       <View>
-        <RandomzieButton
+        <MainActionButton
           handler={generateArpeggios}
           accessibilityValue={{text: `${translate(currentArpeggio)}`}}
           text={'Randomize'}

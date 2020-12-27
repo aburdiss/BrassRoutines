@@ -14,7 +14,7 @@ const translate = (text) => {
  * @author Alexander Burdiss
  * @since 10/11/20
  */
-const RandomizeButton = ({handler, text}) => {
+const MainActionButton = ({handler, text}) => {
   const DARKMODE = useDarkMode();
   return (
     <Pressable
@@ -43,4 +43,4 @@ const RandomizeButton = ({handler, text}) => {
   );
 };
 
-export default RandomizeButton;
+export default MainActionButton;

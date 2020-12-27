@@ -10,8 +10,12 @@ import {
   allTromboneExercises,
   allEuphoniumExcercises,
   allTubaExercises,
+  getExerciseDisplayName,
 } from '../Model/Model';
 import {useNavigation} from '@react-navigation/native';
+
+// Placeholder for Translate funciton
+const translate = (text) => text;
 
 /**
  * @description Renders an iOS styled picker displaying all of the exercises
@@ -40,8 +44,27 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
     });
   };
 
+  /**
+   * @description Gets the proper list of exercises depending on the selected
+   * instrument
+   * @author Alexander Burdiss
+   * @since 12/27/20
+   */
   const getInstrumentExercises = () => {
-    return allTromboneExercises;
+    switch (state.instrument) {
+      case 'horn':
+        return allHornExercises;
+      case 'trumpet':
+        return allTrumpetExercises;
+      case 'trombone':
+        return allTromboneExercises;
+      case 'euphonium':
+        return allEuphoniumExcercises;
+      case 'tuba':
+        return allTubaExercises;
+      default:
+        throw new Error('Invalid Instrument');
+    }
   };
 
   return (
@@ -66,7 +89,7 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
             <Picker.Item
               label={`${
                 state.favorites.includes(exercise) ? '❤️' : ''
-              } ${exercise}`}
+              } ${getExerciseDisplayName(exercise, state)}`}
               value={exercise}
               key={exercise}
             />
@@ -76,13 +99,14 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
       <View>
         <Pressable
           onPress={previewExercise}
+          hitSlop={10}
           style={({pressed}) => ({opacity: pressed ? 0.7 : 1})}>
           <Text
             style={{
               color: DARKMODE ? colors.orangeDark : colors.orangeLight,
               fontSize: 16,
             }}>
-            Preview
+            {translate('Preview')}
           </Text>
         </Pressable>
       </View>

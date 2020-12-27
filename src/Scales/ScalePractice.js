@@ -6,9 +6,9 @@ import {
   useDynamicValue,
 } from 'react-native-dynamic';
 
-import ScaleDisplay from '../Components/ScaleDisplay';
-import AllScalesButton from '../Components/AllScalesButton';
-import RandomzieButton from '../Components/RandomizeButton';
+import ScaleDisplay from './ScaleDisplay';
+import AllScalesButton from './AllScalesButton';
+import MainActionButton from '../Components/MainActionButton';
 
 import {colors} from '../Model/Model';
 // import {translate} from '../Translations/TranslationModel';
@@ -396,7 +396,7 @@ const ScalePractice = () => {
         </View>
       </View>
       <View>
-        <RandomzieButton
+        <MainActionButton
           handler={generateScales}
           accessibilityValue={{text: `${translate(currentScale)}`}}
           text={'Randomize'}

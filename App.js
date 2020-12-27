@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -22,10 +22,10 @@ import Settings from './src/Settings/Settings';
 
 import HeaderButton from './src/Components/HeaderButton';
 
-import {PreferencesProvider} from './src/Model/Preferences';
+import {PreferencesContext, PreferencesProvider} from './src/Model/Preferences';
 // import { setI18nConfig, translate } from './src/Translations/TranslationModel';
 const translate = (word) => word;
-import {colors} from './src/Model/Model';
+import {colors, getExerciseDisplayName} from './src/Model/Model';
 import Licenses from './src/Settings/Licenses';
 
 const Tab = createBottomTabNavigator();
@@ -93,6 +93,7 @@ const HomeStack = ({navigation}) => {
  * @since 12/2/20
  */
 const ListStack = ({navigation}) => {
+  const {state} = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -122,7 +123,7 @@ const ListStack = ({navigation}) => {
         name="Exercise Detail"
         component={ExerciseDetail}
         options={({route}) => ({
-          title: translate(route.params.item),
+          title: getExerciseDisplayName(route.params.item, state),
         })}
       />
     </Stack.Navigator>
@@ -136,6 +137,7 @@ const ListStack = ({navigation}) => {
  * @since 12/2/20
  */
 const CustomStack = ({navigation}) => {
+  const {state} = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -187,7 +189,7 @@ const CustomStack = ({navigation}) => {
         name="Exercise Detail"
         component={ExerciseDetail}
         options={({route}) => ({
-          title: translate(route.params.item),
+          title: getExerciseDisplayName(route.params.item, state),
         })}
       />
     </Stack.Navigator>

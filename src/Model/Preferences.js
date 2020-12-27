@@ -48,6 +48,9 @@ const preferencesReducer = (state, action) => {
     case 'ADD_TO_FAVORITES':
       newState = {...state, favorites: action.payload};
       break;
+    case 'ADD_TO_CUSTOM_ROUTINES':
+      newState = {...state, customRoutines: action.payload};
+      break;
     case 'REMOVE_FROM_FAVORITES':
       newState = {...state, favorites: action.payload};
       break;
