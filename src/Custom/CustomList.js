@@ -1,22 +1,21 @@
 import React, {useContext} from 'react';
 import SafeAreaView from 'react-native-safe-area-view';
-import {View, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import {PreferencesContext} from '../Model/Preferences';
 import {useNavigation} from '@react-navigation/native';
 import {colors} from '../Model/Model';
 import {
   DynamicValue,
-  useDarkMode,
   DynamicStyleSheet,
   useDynamicValue,
 } from 'react-native-dynamic';
 import HomeButton from '../Components/HomeButton';
+import CustomListRow from './CustomListRow';
 
 const CustomList = () => {
   const styles = useDynamicValue(dynamicStyles);
   const {state} = useContext(PreferencesContext);
   const navigation = useNavigation();
-  const DARKMODE = useDarkMode();
   return (
     <SafeAreaView style={styles.container}>
       {state.customRoutines.length == 0 ? (
@@ -27,9 +26,11 @@ const CustomList = () => {
           Create Custom Routine
         </HomeButton>
       ) : (
-        // TODO: Create list to show different user created routines. Allow
-        // user to name them, and change color of routines.
-        <View />
+        <FlatList
+          data={state.customRoutines}
+          keyExtractor={(item) => item.name}
+          renderItem={(item) => <CustomListRow item={item} />}
+        />
       )}
     </SafeAreaView>
   );

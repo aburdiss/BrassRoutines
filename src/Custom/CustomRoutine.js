@@ -1,9 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View} from 'react-native';
+import {useRoute} from '@react-navigation/native';
 import Routine from '../Components/Routine';
+import {PreferencesContext} from '../Model/Preferences';
 
+/**
+ * @description Displays a custom routine.
+ * @author Alexander Burdiss
+ * @since 12/29/20
+ */
 const CustomRoutine = () => {
-  return <View />;
+  const route = useRoute();
+  const {state} = useContext(PreferencesContext);
+  const exercises = route.params.item.exercises.split(',').map(function (x) {
+    return parseInt(x, 10);
+  });
+  return (
+    <View>
+      <Routine exercises={exercises} instrument={state.instrument} />
+    </View>
+  );
 };
 
 export default CustomRoutine;

@@ -12,7 +12,7 @@ const FavoritesRoutine = () => {
 
   return (
     <View>
-      <Routine exercises={currentRoutine} instrument={state.instrument} />
+      <Routine exercises={currentRoutine} />
     </View>
   );
 };

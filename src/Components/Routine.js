@@ -31,7 +31,7 @@ import {
  * @todo Take out the instrument param and use state, since it is being
  * imported for favorites and the heart.
  */
-const Routine = ({exercises, instrument}) => {
+const Routine = ({exercises}) => {
   const styles = useDynamicStyleSheet(dynamicStyles);
   const {state, dispatch} = useContext(PreferencesContext);
   const navigation = useNavigation();
@@ -49,7 +49,7 @@ const Routine = ({exercises, instrument}) => {
   );
 
   let getInstrumentImagePath;
-  switch (instrument) {
+  switch (state.instrument) {
     case 'horn':
       getInstrumentImagePath = getHornImagePath;
       break;

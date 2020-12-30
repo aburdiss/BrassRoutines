@@ -38,6 +38,7 @@ const CreateCustom = () => {
    * @since 12/27/20
    */
   const createRoutine = () => {
+    // TODO: Check if name is unique!
     if (routineName == '') {
       Alert.alert('Please enter a name');
     } else if (currentRoutine.length == 0) {
@@ -91,6 +92,7 @@ const CreateCustom = () => {
       <FlatList
         style={styles.list}
         data={currentRoutine}
+        keyExtractor={(item, index) => String(index)}
         renderItem={({item}) => (
           <SwipeableRow
             key={`${item}${counter}`}
