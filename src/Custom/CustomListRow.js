@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, Pressable} from 'react-native';
 import {
   DynamicValue,
@@ -8,6 +8,7 @@ import {
 import SwipeableRow from './SwipeableRow';
 import {colors} from '../Model/Model';
 import {useNavigation} from '@react-navigation/native';
+import {PreferencesContext} from '../Model/Preferences';
 // Placeholder for translate function
 const translate = (text) => text;
 
@@ -16,12 +17,19 @@ const translate = (text) => text;
  */
 const CustomListRow = ({item}) => {
   const navigation = useNavigation();
+  const {state, dispatch} = useContext(PreferencesContext);
   /**
    * @description Removes the routine from the app.
    * @author Alexander Burdiss
    * @since 12/29/20
    */
-  function deleteItem() {}
+  function deleteItem(item) {
+    console.log(item.item);
+    let filteredRoutines = state.customRoutines.filter(function (routine) {
+      return routine.name !== item.item.name;
+    });
+    dispatch({type: 'ADD_TO_CUSTOM_ROUTINES', payload: filteredRoutines});
+  }
 
   /**
    * @description Opens the Create Custom Routine View with the current list
@@ -31,7 +39,7 @@ const CustomListRow = ({item}) => {
    * @author Alexander Burdiss
    * @since 12/29/20
    */
-  function openEditRoutine() {}
+  function openEditRoutine(item) {}
 
   /**
    * @description Gets the Length of the custom routine and returns a string
@@ -60,16 +68,17 @@ const CustomListRow = ({item}) => {
   const styles = useDynamicValue(dynamicStyles);
 
   return (
-    <SwipeableRow styles={styles} delete={deleteItem} item={item}>
+    <SwipeableRow
+      styles={styles}
+      delete={deleteItem}
+      item={item}
+      edit={openEditRoutine}>
       <Pressable
         style={({pressed}) => ({
           opacity: pressed ? 0.7 : 1,
         })}
         onPress={() => {
           startCustomRoutine(item.item);
-        }}
-        onLongPress={() => {
-          openEditRoutine(item.item);
         }}>
         <View style={styles.listItemContainer}>
           <View style={styles.listItemTextContainer}>
@@ -105,11 +114,21 @@ const dynamicStyles = new DynamicStyleSheet({
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
-    flex: 1,
     justifyContent: 'flex-end',
   },
   trashIcon: {
     paddingRight: 10,
+    paddingLeft: 50,
+  },
+  pencilIcon: {
+    paddingLeft: 10,
+    paddingRight: 50,
+  },
+  leftAction: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: new DynamicValue(colors.orangeLight, colors.orangeDark),
+    justifyContent: 'flex-end',
   },
 });
 

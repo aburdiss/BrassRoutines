@@ -16,6 +16,7 @@ import {colors, getExerciseDisplayName} from '../Model/Model';
 import {PreferencesContext} from '../Model/Preferences';
 import {useNavigation} from '@react-navigation/native';
 import {Alert} from 'react-native';
+import {Pressable} from 'react-native';
 
 // Placeholder for translate function
 const translate = (text) => text;
@@ -36,9 +37,9 @@ const CreateCustom = () => {
    * message.
    * @author Alexander Burdiss
    * @since 12/27/20
+   * @todo Check if name is unique, and if not, alert the user.
    */
   const createRoutine = () => {
-    // TODO: Check if name is unique!
     if (routineName == '') {
       Alert.alert('Please enter a name');
     } else if (currentRoutine.length == 0) {
@@ -99,21 +100,30 @@ const CreateCustom = () => {
             styles={styles}
             delete={deleteElement}
             item={item}>
-            <View style={styles.listItemContainer}>
-              <View style={styles.listItemTextContainer}>
-                {state.favorites.includes(item) ? (
-                  <Ionicons
-                    name={'heart'}
-                    color={styles.listIcon.color}
-                    size={20}
-                    style={{paddingRight: 5}}
-                  />
-                ) : null}
-                <Text style={styles.listItemText}>
-                  {getExerciseDisplayName(item, state)}
-                </Text>
+            <Pressable
+              onPress={() => {
+                navigation.navigate('Exercise Detail', {
+                  instrument: state.instrument,
+                  item: selectedExercise,
+                });
+              }}
+              style={({pressed}) => ({opacity: pressed ? 0.7 : 1})}>
+              <View style={styles.listItemContainer}>
+                <View style={styles.listItemTextContainer}>
+                  {state.favorites.includes(item) ? (
+                    <Ionicons
+                      name={'heart'}
+                      color={styles.listIcon.color}
+                      size={20}
+                      style={{paddingRight: 5}}
+                    />
+                  ) : null}
+                  <Text style={styles.listItemText}>
+                    {getExerciseDisplayName(item, state)}
+                  </Text>
+                </View>
               </View>
-            </View>
+            </Pressable>
           </SwipeableRow>
         )}
       />
@@ -171,11 +181,17 @@ const dynamicStyles = new DynamicStyleSheet({
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
-    flex: 1,
     justifyContent: 'flex-end',
   },
   trashIcon: {
     paddingRight: 10,
+    paddingLeft: 50,
+  },
+  leftAction: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
+    justifyContent: 'flex-end',
   },
 });
 

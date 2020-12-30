@@ -5,6 +5,25 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../Model/Model';
 
 class SwipeableRow extends Component {
+  renderLeftActions = (progress, dragX) => {
+    const scale = dragX.interpolate({
+      inputRange: [0, 80],
+      outputRange: [0, 1],
+      extrapolate: 'clamp',
+    });
+    return this.props.edit ? (
+      <RectButton
+        style={this.props.styles.leftAction}
+        onPress={() => this.props.edit(this.props.item)}>
+        <Ionicons
+          name="pencil"
+          size={20}
+          style={this.props.styles.pencilIcon}
+          color={colors.white}
+        />
+      </RectButton>
+    ) : null;
+  };
   renderRightActions = (progress, dragX) => {
     const scale = dragX.interpolate({
       inputRange: [-80, 0],
@@ -26,6 +45,7 @@ class SwipeableRow extends Component {
       </RectButton>
     );
   };
+
   render() {
     const {children} = this.props;
     return (
@@ -33,7 +53,8 @@ class SwipeableRow extends Component {
         ref={this.updateRef}
         friction={2}
         leftThreshold={80}
-        rightThreshold={41}
+        rightThreshold={20}
+        renderLeftActions={this.renderLeftActions}
         renderRightActions={this.renderRightActions}>
         {children}
       </Swipeable>
