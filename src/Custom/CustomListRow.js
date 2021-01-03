@@ -24,7 +24,6 @@ const CustomListRow = ({item}) => {
    * @since 12/29/20
    */
   function deleteItem(item) {
-    console.log(item.item);
     let filteredRoutines = state.customRoutines.filter(function (routine) {
       return routine.name !== item.item.name;
     });
@@ -39,7 +38,12 @@ const CustomListRow = ({item}) => {
    * @author Alexander Burdiss
    * @since 12/29/20
    */
-  function openEditRoutine(item) {}
+  function openEditRoutine(item) {
+    navigation.navigate('Create Custom', {
+      item: item.item,
+      index: item.index,
+    });
+  }
 
   /**
    * @description Gets the Length of the custom routine and returns a string
@@ -79,7 +83,8 @@ const CustomListRow = ({item}) => {
         })}
         onPress={() => {
           startCustomRoutine(item.item);
-        }}>
+        }}
+        onLongPress={item.drag}>
         <View style={styles.listItemContainer}>
           <View style={styles.listItemTextContainer}>
             <Text style={styles.listItemText}>{`${

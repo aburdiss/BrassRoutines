@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import SafeAreaView from 'react-native-safe-area-view';
-import {FlatList} from 'react-native';
 import {PreferencesContext} from '../Model/Preferences';
 import {useNavigation} from '@react-navigation/native';
 import {colors} from '../Model/Model';
@@ -11,11 +10,15 @@ import {
 } from 'react-native-dynamic';
 import HomeButton from '../Components/HomeButton';
 import CustomListRow from './CustomListRow';
+import DraggableFlatList from 'react-native-draggable-flatlist';
 
 const CustomList = () => {
   const styles = useDynamicValue(dynamicStyles);
-  const {state} = useContext(PreferencesContext);
+  const {state, dispatch} = useContext(PreferencesContext);
   const navigation = useNavigation();
+  function updateCustomRoutines({data}) {
+    dispatch({type: 'SET_SETTING', payload: {customRoutines: data}});
+  }
   return (
     <SafeAreaView style={styles.container}>
       {state.customRoutines.length == 0 ? (
@@ -26,10 +29,11 @@ const CustomList = () => {
           Create Custom Routine
         </HomeButton>
       ) : (
-        <FlatList
+        <DraggableFlatList
           data={state.customRoutines}
           keyExtractor={(item) => item.name}
           renderItem={(item) => <CustomListRow item={item} />}
+          onDragEnd={updateCustomRoutines}
         />
       )}
     </SafeAreaView>
