@@ -44,7 +44,9 @@ export const LinkListItem = ({item, state}) => {
         opacity: pressed ? 0.7 : 1,
       })}
       onPress={() => {
-        Linking.openURL(item.link);
+        Linking.openURL(item.link).catch((err) =>
+          console.error("Couldn't load page", err),
+        );
       }}>
       <View style={styles.listRowContainer}>
         <Text style={styles.linkText}>{translate(item.value)}</Text>

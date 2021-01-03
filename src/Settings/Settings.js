@@ -40,7 +40,7 @@ const Settings = () => {
   const {state, dispatch} = useContext(PreferencesContext);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.sectionList}>
       <SectionList
         sections={[
           {title: translate('Instrument'), data: INSTRUMENT},
@@ -84,7 +84,6 @@ const Settings = () => {
         renderSectionHeader={({section: {title}}) => (
           <Text style={styles.listHeader}>{title}</Text>
         )}
-        style={styles.sectionList}
         stickySectionHeadersEnabled={false}
       />
     </SafeAreaView>
