@@ -69,6 +69,14 @@ export default {
       'https://github.com/react-native-device-info/react-native-device-info/raw/master/LICENSE',
     parents: 'BrassRoutines',
   },
+  'react-native-draggable-flatlist@2.5.1': {
+    licenses: 'MIT',
+    repository:
+      'https://github.com/computerjazz/react-native-draggable-flatlist',
+    licenseUrl:
+      'https://github.com/computerjazz/react-native-draggable-flatlist/raw/master/LICENSE.txt',
+    parents: 'BrassRoutines',
+  },
   'react-native-dynamic@1.0.0': {
     licenses: 'MIT',
     repository: 'https://github.com/codemotionapps/react-native-dynamic',
@@ -84,11 +92,25 @@ export default {
       'https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE',
     parents: 'BrassRoutines',
   },
+  'react-native-image-zoom-viewer@3.0.1': {
+    licenses: 'MIT',
+    repository: 'https://github.com/ascoders/react-native-image-viewer',
+    licenseUrl:
+      'https://github.com/ascoders/react-native-image-viewer/raw/master/LICENSE',
+    parents: 'BrassRoutines',
+  },
   'react-native-localize@2.0.1': {
     licenses: 'MIT',
     repository: 'https://github.com/zoontek/react-native-localize',
     licenseUrl:
       'https://github.com/zoontek/react-native-localize/raw/master/LICENSE',
+    parents: 'BrassRoutines',
+  },
+  'react-native-modal@11.6.1': {
+    licenses: 'MIT',
+    repository: 'https://github.com/react-native-community/react-native-modal',
+    licenseUrl:
+      'https://github.com/react-native-community/react-native-modal/raw/master/LICENSE.md',
     parents: 'BrassRoutines',
   },
   'react-native-picker-select@8.0.4': {
