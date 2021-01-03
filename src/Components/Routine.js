@@ -1,8 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {View, Image, Alert, Pressable} from 'react-native';
-import Modal from 'react-native-modal';
-import ImageViewer from 'react-native-image-zoom-viewer';
 import {
+  colors,
   getHornImagePath,
   getTrumpetImagePath,
   getTromboneImagePath,
@@ -15,12 +14,12 @@ import {useNavigation} from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {PreferencesContext} from '../Model/Preferences';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {colors} from '../Model/Model';
 import {
   useDynamicStyleSheet,
   DynamicStyleSheet,
   DynamicValue,
 } from 'react-native-dynamic';
+import ZoomModal from './ZoomModal';
 
 /**
  * @description Handles the funcitonality for making a routine from a list of
@@ -139,22 +138,11 @@ const Routine = ({exercises}) => {
           style={styles.image}
         />
       </Pressable>
-      <Modal isVisible={zoomModalIsShowing}>
-        <ImageViewer
-          imageUrls={[
-            {
-              url: '',
-              props: {
-                source: getInstrumentImagePath(exercises[currentExerciseIndex]),
-              },
-            },
-          ]}
-          renderIndicator={() => null}
-          onSwipeDown={() => setZoomModalIsShowing(false)}
-          onDoubleClick={() => setZoomModalIsShowing(false)}
-          enableSwipeDown={true}
-        />
-      </Modal>
+      <ZoomModal
+        imagePath={getInstrumentImagePath(exercises[currentExerciseIndex])}
+        zoomModalIsShowing={zoomModalIsShowing}
+        setZoomModalIsShowing={setZoomModalIsShowing}
+      />
     </SafeAreaView>
   );
 };
@@ -168,6 +156,9 @@ const dynamicStyles = new DynamicStyleSheet({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageModal: {
+    backgroundColor: new DynamicValue(colors.orangeLight, colors.orangeDark),
   },
   image: {
     width: '100%',

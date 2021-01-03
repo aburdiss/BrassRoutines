@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {View, Image, StyleSheet, Alert, Pressable} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {View, Image, Alert, Pressable} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {
@@ -18,6 +18,7 @@ import {
   getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
 } from '../Model/Model';
+import ZoomModal from '../Components/ZoomModal';
 
 /**
  * @description Shows an individual exercise, and allows the user to select the
@@ -28,6 +29,7 @@ import {
  */
 const ExerciseDetail = () => {
   const styles = useDynamicValue(dynamicStyles);
+  const [zoomModalIsShowing, setZoomModalIsShowing] = useState(false);
   const {state, dispatch} = useContext(PreferencesContext);
   const route = useRoute();
   let getInstrumentImagePath;
@@ -89,12 +91,21 @@ const ExerciseDetail = () => {
           />
         </Pressable>
       </View>
-      <View style={styles.imageContainer}>
+      <Pressable
+        style={styles.imageContainer}
+        onPress={() => {
+          setZoomModalIsShowing(true);
+        }}>
         <Image
           source={getInstrumentImagePath(route.params.item)}
           style={styles.image}
         />
-      </View>
+      </Pressable>
+      <ZoomModal
+        imagePath={getInstrumentImagePath(route.params.item)}
+        zoomModalIsShowing={zoomModalIsShowing}
+        setZoomModalIsShowing={setZoomModalIsShowing}
+      />
     </SafeAreaView>
   );
 };
