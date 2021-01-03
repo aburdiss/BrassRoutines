@@ -1,18 +1,27 @@
-import {useNavigation} from '@react-navigation/native';
 import React, {useContext} from 'react';
-import {StyleSheet, Alert} from 'react-native';
+import {Alert} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import {useDarkMode} from 'react-native-dynamic';
-import HomeButton from './Components/HomeButton';
 import SafeAreaView from 'react-native-safe-area-view';
 
+import HomeButton from './Components/HomeButton';
 import {colors} from './Model/Model';
 import {PreferencesContext} from './Model/Preferences';
+import {translate} from './Translations/TranslationModel';
 
 const Home = () => {
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
   const {state} = useContext(PreferencesContext);
 
+  /**
+   * @description Launches the main function of the app, the daily routine.
+   * This function checks to make sure the configuration will allow a daily
+   * routine to exist, and will alert the user if not, and will not allow them
+   * to navigate if not.
+   * @author Alexander Burdiss
+   * @since 1/3/21
+   */
   const launchDailyRoutine = () => {
     if (
       !state.longTones &&
@@ -25,15 +34,15 @@ const Home = () => {
       !state.lowRange
     ) {
       Alert.alert(
-        'No Exercise Types Selected!',
-        'Please select at least one exercise.',
+        translate('No Exercise Types Selected!'),
+        translate('Please select at least one exercise'),
         [
           {
-            text: 'Return',
+            text: translate('Return'),
             style: 'cancel',
           },
           {
-            text: 'Go to Settings',
+            text: translate('Go to Settings'),
             onPress: () => {
               navigation.navigate('Settings');
             },
@@ -46,17 +55,32 @@ const Home = () => {
     }
   };
 
+  /**
+   * @description Launches a daily routine with the favorites the user has
+   * selected.
+   * @author Alexander Burdiss
+   * @since 1/3/21
+   */
   const launchFavoritesRoutine = () => {
     if (state.favorites.length === 0) {
-      Alert.alert('No Favorites Selected!', '', [
-        {
-          text: 'Return',
-          style: 'cancel',
-        },
-      ]);
+      Alert.alert(translate('No Favorites Selected!'));
     } else {
       navigation.navigate('Favorites Routine');
     }
+  };
+
+  /**
+   * @description Capitalizes the first letter of a word. Used to take the
+   * instrument name in state and pass it into the translate funciton.
+   * https://flaviocopes.com/how-to-uppercase-first-letter-javascript/
+   * @author Alexander Burdiss
+   * @since 1/3/21
+   */
+  const capitalize = (input) => {
+    if (typeof input !== 'string') {
+      return '';
+    }
+    return input.charAt(0).toUpperCase() + input.slice(1);
   };
 
   return (
@@ -66,21 +90,22 @@ const Home = () => {
         backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
       }}>
       <HomeButton onPress={launchDailyRoutine}>
-        {'Begin Routine (' + state?.instrument + ')'}
+        {translate('Begin Routine') +
+          ' (' +
+          translate(capitalize(state?.instrument)) +
+          ')'}
       </HomeButton>
       <HomeButton onPress={launchFavoritesRoutine}>
-        Randomize Favorites
+        {translate('Randomize Favorites')}
       </HomeButton>
       <HomeButton
         onPress={() => {
           navigation.navigate('Scale Practice');
         }}>
-        Scale Practice
+        {translate('Scale Practice')}
       </HomeButton>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default Home;

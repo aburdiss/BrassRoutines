@@ -23,8 +23,7 @@ import Settings from './src/Settings/Settings';
 import HeaderButton from './src/Components/HeaderButton';
 
 import {PreferencesContext, PreferencesProvider} from './src/Model/Preferences';
-// import { setI18nConfig, translate } from './src/Translations/TranslationModel';
-const translate = (word) => word;
+import {setI18nConfig, translate} from './src/Translations/TranslationModel';
 import {colors, getExerciseDisplayName} from './src/Model/Model';
 import Licenses from './src/Settings/Licenses';
 
@@ -225,7 +224,7 @@ const SettingsStack = () => {
         name="Settings"
         component={Settings}
         options={{
-          title: translate('More'),
+          title: translate('Settings'),
         }}
       />
       <Stack.Screen
@@ -239,7 +238,7 @@ const SettingsStack = () => {
   );
 };
 
-// setI18nConfig();
+setI18nConfig();
 /**
  * @description The main tab navigation of the app.
  * @author Alexander Burdiss
@@ -248,20 +247,20 @@ const SettingsStack = () => {
 const App = () => {
   const DARKMODE = useDarkMode();
 
-  // useEffect(() => {
-  //   RNLocalize.addEventListener('change', handleLocalizationChange);
-  //   return (() => {
-  //     RNLocalize.removeEventListener('change', handleLocalizationChange);
-  //   });
-  // }, []);
+  useEffect(() => {
+    RNLocalize.addEventListener('change', handleLocalizationChange);
+    return () => {
+      RNLocalize.removeEventListener('change', handleLocalizationChange);
+    };
+  }, []);
 
-  // const handleLocalizationChange = () => {
-  //   setI18nConfig()
-  //   .then(() => this.forceUpdate())
-  //   .catch(error => {
-  //   console.error(error)
-  //   })
-  // };
+  const handleLocalizationChange = () => {
+    setI18nConfig()
+      .then(() => this.forceUpdate())
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <SafeAreaProvider>
@@ -315,7 +314,7 @@ const App = () => {
             <Tab.Screen
               name="Settings"
               component={SettingsStack}
-              options={{title: translate('More')}}
+              options={{title: translate('Settings')}}
             />
           </Tab.Navigator>
         </NavigationContainer>

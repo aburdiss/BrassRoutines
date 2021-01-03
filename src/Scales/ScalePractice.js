@@ -11,11 +11,7 @@ import AllScalesButton from './AllScalesButton';
 import MainActionButton from '../Components/MainActionButton';
 
 import {colors} from '../Model/Model';
-// import {translate} from '../Translations/TranslationModel';
-
-const translate = (text) => {
-  return text;
-};
+import {translate} from '../Translations/TranslationModel';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -271,13 +267,6 @@ const ScalePractice = () => {
       Alert.alert(
         translate('No Scale Selected'),
         translate('Please select at least one category'),
-        [
-          {
-            text: translate('Dismiss'),
-            style: 'cancel',
-          },
-        ],
-        {cancelable: true},
       );
     } else {
       let newScale;

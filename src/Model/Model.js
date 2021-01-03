@@ -1,5 +1,4 @@
-// Placeholder for translate function
-const translate = (text) => text;
+import {translate} from '../Translations/TranslationModel';
 
 // iOS System Colors
 export const colors = {
@@ -1323,8 +1322,6 @@ export function getExerciseDisplayName(text, state) {
             return text + ' (' + translate('A♭ Major') + ')';
           case 61:
             return text + ' (' + translate('A Major') + ')';
-          case 86:
-            return text + ' (' + translate('Low Smears') + ')';
           default:
             return text;
         }
@@ -1392,8 +1389,6 @@ export function getExerciseDisplayName(text, state) {
           return text + ' (' + translate('A♭ Major') + ')';
         case 61:
           return text + ' (' + translate('A Major') + ')';
-        case 86:
-          return text + ' (' + translate('Low Smears') + ')';
         default:
           return text;
       }

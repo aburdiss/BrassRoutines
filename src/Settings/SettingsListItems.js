@@ -11,20 +11,20 @@ import SegmentedControl from '@react-native-community/segmented-control';
 import RNPickerSelect from 'react-native-picker-select';
 import {useNavigation} from '@react-navigation/native';
 import {colors} from '../Model/Model';
-// import {translate} from '../Translations/TranslationModel';
-const translate = (text) => text;
+import {translate} from '../Translations/TranslationModel';
 
 /**
- * @description A rendered Text list item.
+ * @description A rendered Text list item. Currently, this is used only to
+ * render the copyright information, so it is not translated.
  * @author Alexander Burdiss
- * @since 11/15/20
+ * @since 1/3/21
  */
 export const TextListItem = ({item}) => {
   const styles = useDynamicValue(dynamicStyles);
 
   return (
     <View style={styles.listRowContainer}>
-      <Text style={styles.listRowText}>{translate(item.value)}</Text>
+      <Text style={styles.listRowText}>{item.value}</Text>
     </View>
   );
 };
@@ -99,7 +99,7 @@ export const SwitchListItem = ({item, state, dispatch}) => {
   const styles = useDynamicValue(dynamicStyles);
   return (
     <View style={styles.listRowContainer}>
-      <Text style={styles.listRowText}>{item.value}</Text>
+      <Text style={styles.listRowText}>{translate(item.value)}</Text>
       <Switch
         value={state[item.setting]}
         onValueChange={(state) => {

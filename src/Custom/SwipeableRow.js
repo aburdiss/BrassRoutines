@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {RectButton, Swipeable} from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import {translate} from '../Translations/TranslationModel';
 import {colors} from '../Model/Model';
 
 class SwipeableRow extends Component {

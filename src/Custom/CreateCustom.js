@@ -16,9 +16,7 @@ import ExercisePicker from './ExercisePicker';
 import SwipeableRow from './SwipeableRow';
 import {colors, getExerciseDisplayName} from '../Model/Model';
 import {PreferencesContext} from '../Model/Preferences';
-
-// Placeholder for translate function
-const translate = (text) => text;
+import {translate} from '../Translations/TranslationModel';
 
 /**
  * @description A Component that allows the user to create a routine using the
@@ -65,9 +63,9 @@ const CreateCustom = () => {
    */
   const createRoutine = () => {
     if (routineName == '') {
-      Alert.alert('Please enter a name');
+      Alert.alert(translate('Please enter a name'));
     } else if (currentRoutine.length == 0) {
-      Alert.alert('Please select at least one exercise');
+      Alert.alert(translate('Please select at least one exercise'));
     } else {
       const tempRoutines = [...state.customRoutines];
       let currentRoutineObject = {
@@ -110,7 +108,7 @@ const CreateCustom = () => {
     <View style={styles.container}>
       <TextInput
         value={routineName}
-        placeholder={'Routine Name'}
+        placeholder={translate('Routine Name')}
         onChangeText={(text) => setRoutineName(text)}
         style={styles.textInput}
       />

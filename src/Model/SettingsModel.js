@@ -1,5 +1,6 @@
 import DeviceInfo from 'react-native-device-info';
 import {colors} from './Model';
+import {translate} from '../Translations/TranslationModel';
 
 export const GOOGLE_PLAY_LINK =
   'https://play.google.com/store/apps/developer?id=Alexander+Burdiss';
@@ -11,18 +12,38 @@ export const INSTRUMENT = [
     id: 'A',
     type: 'picker',
     values: [
-      {label: 'Horn', value: 'horn', color: colors.orangeLight},
-      {label: 'Trumpet', value: 'trumpet', color: colors.orangeLight},
-      {label: 'Trombone', value: 'trombone', color: colors.orangeLight},
-      {label: 'Euphonium', value: 'euphonium', color: colors.orangeLight},
-      {label: 'Tuba', value: 'tuba', color: colors.orangeLight},
+      {
+        label: translate('Horn'),
+        value: 'horn',
+        color: colors.orangeLight,
+      },
+      {
+        label: translate('Trumpet'),
+        value: 'trumpet',
+        color: colors.orangeLight,
+      },
+      {
+        label: translate('Trombone'),
+        value: 'trombone',
+        color: colors.orangeLight,
+      },
+      {
+        label: translate('Euphonium'),
+        value: 'euphonium',
+        color: colors.orangeLight,
+      },
+      {
+        label: translate('Tuba'),
+        value: 'tuba',
+        color: colors.orangeLight,
+      },
     ],
     setting: 'instrument',
   },
   {
     id: 'B',
     type: 'segmentedFilter',
-    choices: ['Treble Clef', 'Bass Clef'],
+    choices: [translate('Treble Clef'), translate('Bass Clef')],
     setting: 'bassClef',
   },
 ];
@@ -31,7 +52,7 @@ export const ROUTINE = [
   {
     id: '8',
     type: 'segmentedFilter',
-    choices: ['Short', 'Medium', 'Long'],
+    choices: [translate('Short'), translate('Medium'), translate('Long')],
     setting: 'routineLength',
   },
   {

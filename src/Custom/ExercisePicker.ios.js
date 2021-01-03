@@ -13,9 +13,7 @@ import {
   getExerciseDisplayName,
 } from '../Model/Model';
 import {useNavigation} from '@react-navigation/native';
-
-// Placeholder for Translate funciton
-const translate = (text) => text;
+import {translate} from '../Translations/TranslationModel';
 
 /**
  * @description Renders an iOS styled picker displaying all of the exercises

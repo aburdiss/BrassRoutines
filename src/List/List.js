@@ -17,6 +17,7 @@ import {
   DynamicStyleSheet,
   DynamicValue,
 } from 'react-native-dynamic';
+import {translate} from '../Translations/TranslationModel';
 
 const List = () => {
   const styles = useDynamicValue(dynamicStyles);
@@ -45,14 +46,14 @@ const List = () => {
         throw new Error('Invalid Instrument');
     }
     return [
-      {title: 'Long Tones', data: instrument.longTones},
-      {title: 'Slow Lip Slurs', data: instrument.slowLipSlurs},
-      {title: 'Fast Lip Slurs', data: instrument.fastLipSlurs},
-      {title: 'Articulation', data: instrument.articulation},
-      {title: 'Coordination', data: instrument.coordination},
-      {title: 'Major Scales', data: instrument.majorScales},
-      {title: 'High Range', data: instrument.highRange},
-      {title: 'Low Range', data: instrument.lowRange},
+      {title: translate('Long Tones'), data: instrument.longTones},
+      {title: translate('Slow Lip Slurs'), data: instrument.slowLipSlurs},
+      {title: translate('Fast Lip Slurs'), data: instrument.fastLipSlurs},
+      {title: translate('Articulation'), data: instrument.articulation},
+      {title: translate('Coordination'), data: instrument.coordination},
+      {title: translate('Major Scales'), data: instrument.majorScales},
+      {title: translate('High Range'), data: instrument.highRange},
+      {title: translate('Low Range'), data: instrument.lowRange},
     ];
   };
 

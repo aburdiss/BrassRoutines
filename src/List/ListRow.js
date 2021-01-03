@@ -5,11 +5,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors, getExerciseDisplayName} from '../Model/Model';
 import {PreferencesContext} from '../Model/Preferences';
 
-/// Placeholder for translate function
-const translate = (text) => {
-  return text;
-};
-
 /**
  * @description A component that renders the default list row on the listView.
  * @author Alexander Burdiss
@@ -42,13 +37,23 @@ const ListRow = ({onPress, text}) => {
         <Text style={{color: DARKMODE ? colors.white : colors.black}}>
           {getExerciseDisplayName(text, state)}
         </Text>
-        {state.favorites.includes(text) ? (
+        <View
+          style={{
+            flexDirection: 'row',
+          }}>
+          {state.favorites.includes(text) ? (
+            <Ionicons
+              name="heart"
+              size={24}
+              color={DARKMODE ? colors.pinkDark : colors.pinkLight}
+            />
+          ) : null}
           <Ionicons
-            name="heart"
-            size={24}
-            color={DARKMODE ? colors.pinkDark : colors.pinkLight}
+            name="chevron-forward-outline"
+            size={25}
+            color={colors.systemGray}
           />
-        ) : null}
+        </View>
       </View>
     </Pressable>
   );

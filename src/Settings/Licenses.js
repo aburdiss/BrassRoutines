@@ -6,12 +6,11 @@ I did it globally: `npm i npm-license-crawler -g`
 Run this command to get the data
 `npm-license-crawler --onlyDirectDependencies --json licenses.json`
 
-Paste that data into ./data.js
+Paste that data into ./Licenses/data.js
 
 */
 
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
 
 import LicensesList from './Licenses/LicensesList';
 import {useDarkMode} from 'react-native-dynamic';

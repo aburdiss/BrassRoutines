@@ -20,6 +20,7 @@ import {
   DynamicValue,
 } from 'react-native-dynamic';
 import ZoomModal from './ZoomModal';
+import {translate} from '../Translations/TranslationModel';
 
 /**
  * @description Handles the funcitonality for making a routine from a list of
@@ -77,12 +78,12 @@ const Routine = ({exercises}) => {
         return item != currentExercise;
       });
       dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
-      Alert.alert('Item removed from favorites');
+      Alert.alert(translate('Item removed from favorites'));
     } else {
       let tempFavorites = [...state.favorites];
       tempFavorites.push(currentExercise);
       dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
-      Alert.alert('Item added to favorites');
+      Alert.alert(translate('Item added to favorites'));
     }
   }
 

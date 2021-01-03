@@ -25,8 +25,7 @@ import {
   SegmentedFilterListItem,
   PickerListItem,
 } from './SettingsListItems';
-// import {translate} from '../Translations/TranslationModel';
-const translate = (text) => text;
+import {translate} from '../Translations/TranslationModel';
 
 /**
  * @description A View that allows the user to set custom settings, or view

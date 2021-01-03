@@ -9,11 +9,14 @@ import SwipeableRow from './SwipeableRow';
 import {colors} from '../Model/Model';
 import {useNavigation} from '@react-navigation/native';
 import {PreferencesContext} from '../Model/Preferences';
-// Placeholder for translate function
-const translate = (text) => text;
+import {translate} from '../Translations/TranslationModel';
 
 /**
- * @todo Add Exercise Count
+ * @description One list row on the CustomList.js screen. Displays the user
+ * inputted name as well as number of exercises. Allows user to delete or edit
+ * routine from this swipeable row.
+ * @author Alexander Burdiss
+ * @since 1/3/21
  */
 const CustomListRow = ({item}) => {
   const navigation = useNavigation();

@@ -11,6 +11,7 @@ import {
 import HomeButton from '../Components/HomeButton';
 import CustomListRow from './CustomListRow';
 import DraggableFlatList from 'react-native-draggable-flatlist';
+import {translate} from '../Translations/TranslationModel';
 
 const CustomList = () => {
   const styles = useDynamicValue(dynamicStyles);
@@ -26,7 +27,7 @@ const CustomList = () => {
           onPress={() => {
             navigation.navigate('Create Custom');
           }}>
-          Create Custom Routine
+          {translate('Create Routine')}
         </HomeButton>
       ) : (
         <DraggableFlatList

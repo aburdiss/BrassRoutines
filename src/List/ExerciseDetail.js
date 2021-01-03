@@ -19,6 +19,7 @@ import {
   getTubaImagePath,
 } from '../Model/Model';
 import ZoomModal from '../Components/ZoomModal';
+import {translate} from '../Translations/TranslationModel';
 
 /**
  * @description Shows an individual exercise, and allows the user to select the
@@ -41,12 +42,12 @@ const ExerciseDetail = () => {
         return item != currentExercise;
       });
       dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
-      Alert.alert('Item removed from favorites');
+      Alert.alert(translate('Item removed from favorites'));
     } else {
       let tempFavorites = [...state.favorites];
       tempFavorites.push(currentExercise);
       dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
-      Alert.alert('Item added to favorites');
+      Alert.alert(translate('Item added to favorites'));
     }
   }
 
