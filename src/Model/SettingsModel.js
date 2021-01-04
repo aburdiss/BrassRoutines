@@ -188,7 +188,7 @@ export const RESOURCES = [
     id: '13C',
     type: 'link',
     instrument: 'trombone',
-    value: 'Visit TromboneExcerpts.org',
+    value: 'Visit Trombone Excerpts',
     link: 'http://www.tromboneexcerpts.org/',
   },
   {
@@ -202,7 +202,7 @@ export const RESOURCES = [
     id: '13E',
     type: 'link',
     instrument: 'trumpet',
-    value: 'Visit www.TrumpetExcerpts.org',
+    value: 'Visit Trumpet Excerpts',
     link: 'https://www.trumpetexcerpts.org/',
   },
 ];

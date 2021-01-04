@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, View, Text, Switch} from 'react-native';
+import {Alert, View, Text, Switch, ScrollView} from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -299,10 +299,11 @@ const ScalePractice = () => {
 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.scaleDisplay}>
         <ScaleDisplay>{currentScale}</ScaleDisplay>
-
-        <View style={styles.switchesContainer}>
+      </View>
+      <View style={styles.switchesContainer}>
+        <ScrollView>
           <View style={styles.switchRow}>
             <Text style={styles.switchText}>{translate('Major')}</Text>
             <Switch onValueChange={toggleMajorSwitch} value={majorSwitch} />
@@ -378,13 +379,14 @@ const ScalePractice = () => {
               value={wholeToneSwitch}
             />
           </View>
-
-          <AllScalesButton handler={selectAllScales}>
-            {translate('All Scales')}
-          </AllScalesButton>
-        </View>
+          <View style={styles.allScaleButton}>
+            <AllScalesButton handler={selectAllScales}>
+              {translate('All Scales')}
+            </AllScalesButton>
+          </View>
+        </ScrollView>
       </View>
-      <View>
+      <View style={styles.mainActionButton}>
         <MainActionButton
           handler={generateScales}
           accessibilityValue={{text: `${translate(currentScale)}`}}
@@ -399,19 +401,38 @@ const ScalePractice = () => {
  * @description Styles for RandomScale component.
  */
 const dynamicStyles = new DynamicStyleSheet({
+  allScaleButton: {
+    paddingHorizontal: 10,
+  },
   container: {
     flex: 1,
-    justifyContent: 'space-between',
     backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
+  mainActionButton: {
+    borderColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
+  },
+  scaleDisplay: {
+    borderBottomWidth: 1,
+    borderColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+  },
   switchesContainer: {
-    width: '70%',
+    flex: 1,
     alignSelf: 'center',
+    width: '100%',
+    marginHorizontal: 10,
   },
   switchRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingVertical: 4,
+    paddingHorizontal: 40,
   },
   switchText: {
     color: new DynamicValue(colors.black, colors.white),
