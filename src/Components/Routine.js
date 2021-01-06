@@ -111,7 +111,7 @@ const Routine = ({exercises}) => {
 
   return (
     <SafeAreaView style={styles.container} forceInset="top">
-      <View style={styles.heartContainer}>
+      <View style={styles.heartContainer} accessibilityRole="toolbar">
         <Pressable
           onPress={addToFavorites}
           accessibilityLabel={
@@ -139,6 +139,8 @@ const Routine = ({exercises}) => {
       </View>
       <Pressable
         style={styles.imageContainer}
+        accessibilityRole="imagebutton"
+        accessibilityLabel={translate('Opens exercise modal')}
         onPress={() => {
           setZoomModalIsShowing(true);
         }}>
@@ -149,8 +151,6 @@ const Routine = ({exercises}) => {
         />
       </Pressable>
       <ZoomModal
-        importantForAccessibility="no-hide-descendants"
-        accessibilityElementsHidden={true}
         imagePath={getInstrumentImagePath(exercises[currentExerciseIndex])}
         zoomModalIsShowing={zoomModalIsShowing}
         setZoomModalIsShowing={setZoomModalIsShowing}

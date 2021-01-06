@@ -138,12 +138,23 @@ const CreateCustom = () => {
                   item: item,
                 });
               }}
+              accessibilityRole="link"
+              accessibilityHint={translate('Opens Exercise')}
+              accessibilityLabel={
+                getExerciseDisplayName(item, state) +
+                (state.favorites.includes(item)
+                  ? translate('This is a favorite exercise')
+                  : '')
+              }
               onLongPress={drag}
               style={({pressed}) => ({opacity: pressed ? 0.7 : 1})}>
               <View style={styles.listItemContainer}>
                 <View style={styles.listItemTextContainer}>
                   {state.favorites.includes(item) ? (
                     <Ionicons
+                      accessibilityLabel={translate(
+                        'This is a favorite exercise',
+                      )}
                       name={'heart'}
                       color={styles.listIcon.color}
                       size={20}
@@ -160,7 +171,9 @@ const CreateCustom = () => {
         )}
       />
       <MainActionButton
-        accessibilityValue={{text: `${translate('Create Custom Routine')}`}}
+        accessibilityLabel={
+          editMode ? translate('Save Routine') : translate('Create Routine')
+        }
         handler={createRoutine}
         text={editMode ? 'Save' : 'Create'}
       />

@@ -15,6 +15,8 @@ const ResetButton = ({handler}) => {
         android_ripple={{
           color: DARKMODE ? colors.redDark : colors.redLight,
         }}
+        accessibilityRole="button"
+        accessibilityHint={translate('Resets exercise list')}
         style={({pressed}) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.redDark : colors.redLight,

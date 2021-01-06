@@ -10,8 +10,8 @@
   "No Favorites Selected!": "No Favorites Selected!",
   "No Exercise Types Selected!": "No Exercise Types Selected!",
   "Go to Settings": "Go to Settings",
-
-  "Opens Exercise": "Opens Exercise",
+  "Navigates to": "Navigates to",
+  "Opens exercise modal": "Opens exercise modal",
 
   "Daily Routine Complete!": "Daily Routine Complete!",
   "Return": "Return",
@@ -28,6 +28,7 @@
 
   "This is a favorite exercise": "This is a favorite exercise",
   "This is not a favorite exercise": "This is not a favorite exercise",
+  "Opens Exercise": "Opens Exercise",
   "Long Tones": "Long Tones",
   "Slow Lip Slurs": "Slow Lip Slurs",
   "Fast Lip Slurs": "Fast Lip Slurs",
@@ -40,13 +41,17 @@
   "Custom Routines": "Custom Routines",
   "Create": "Create",
   "Save": "Save",
+  "Delete Routine": "Delete Routine",
   "(1 exercise)": "(1 exercise)",
   "exercises": "exercises",
   "Create Routine": "Create Routine",
+  "Save Routine": "Save Routine",
   "Edit Routine": "Edit Routine",
   "Routine Name": "Routine Name",
   "Preview": "Preview",
   "Add To List": "Add to List",
+  "Adds the selected exercise to the list": "Adds the selected exercise to the list",
+  "Resets exercise list": "Resets exercise list",
   "Please enter a name": "Please enter a name",
   "Please select at least one exercise": "Please select at least one exercise",
 

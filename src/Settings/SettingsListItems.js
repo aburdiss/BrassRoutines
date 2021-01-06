@@ -21,10 +21,11 @@ import {translate} from '../Translations/TranslationModel';
  */
 export const TextListItem = ({item}) => {
   const styles = useDynamicValue(dynamicStyles);
-
   return (
     <View style={styles.listRowContainer}>
-      <Text style={styles.listRowText}>{item.value}</Text>
+      <Text style={styles.listRowText} accessibilityRole="text">
+        {item.value}
+      </Text>
     </View>
   );
 };

@@ -76,6 +76,7 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
           width: '80%',
         }}>
         <Picker
+          accessibilityLabel={selectedExercise}
           selectedValue={selectedExercise}
           onValueChange={(itemValue, itemIndex) =>
             setSelectedExercise(itemValue)
@@ -96,6 +97,8 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
       </View>
       <View>
         <Pressable
+          accessibilityRole="link"
+          accessibilityHint="Opens Exercise"
           onPress={previewExercise}
           hitSlop={10}
           style={({pressed}) => ({opacity: pressed ? 0.7 : 1})}>

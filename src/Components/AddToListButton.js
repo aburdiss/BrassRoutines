@@ -3,8 +3,7 @@ import {View, Pressable, Text} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
 
 import {colors} from '../Model/Model';
-// import {translate} from '../Translations/TranslationModel';
-const translate = (text) => text;
+import {translate} from '../Translations/TranslationModel';
 
 const AddToListButton = ({handler}) => {
   const DARKMODE = useDarkMode();
@@ -15,6 +14,8 @@ const AddToListButton = ({handler}) => {
         android_ripple={{
           color: DARKMODE ? colors.greenDark : colors.greenLight,
         }}
+        accessibilityRole="button"
+        accessibilityHint={translate('Adds the selected exercise to the list')}
         style={({pressed}) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.greenDark : colors.greenLight,

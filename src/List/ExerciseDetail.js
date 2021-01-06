@@ -74,8 +74,16 @@ const ExerciseDetail = () => {
   }
   return (
     <SafeAreaView style={styles.container} forceInset="top">
-      <View style={styles.heartContainer}>
-        <Pressable onPress={addToFavorites}>
+      <View style={styles.heartContainer} accessibilityRole="toolbar">
+        <Pressable
+          onPress={addToFavorites}
+          accessibilityLabel={
+            state.favorites.includes(route.params.item)
+              ? translate('This is a favorite exercise')
+              : translate('This is not a favorite exercise')
+          }
+          accessible={true}
+          accessibilityHint={translate('Add exercise to favorites')}>
           <Ionicons
             name={
               state.favorites.includes(route.params.item)
@@ -94,6 +102,8 @@ const ExerciseDetail = () => {
       </View>
       <Pressable
         style={styles.imageContainer}
+        accessibilityRole="imagebutton"
+        accessibilityLabel={translate('Opens exercise modal')}
         onPress={() => {
           setZoomModalIsShowing(true);
         }}>

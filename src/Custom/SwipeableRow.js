@@ -13,6 +13,9 @@ class SwipeableRow extends Component {
     });
     return this.props.edit ? (
       <RectButton
+        accessible={true}
+        accessibilityLabel={translate('Edit Routine')}
+        accessibilityRole="button"
         style={this.props.styles.leftAction}
         onPress={() => this.props.edit(this.props.item)}>
         <Ionicons
@@ -32,10 +35,11 @@ class SwipeableRow extends Component {
     });
     return (
       <RectButton
+        accessible={true}
+        accessibilityLabel={translate('Delete Routine')}
+        accessibilityRole="button"
         style={this.props.styles.rightAction}
-        onPress={() => this.props.delete(this.props.item)}
-        // TODO: Add Accessibility Label and translate
-      >
+        onPress={() => this.props.delete(this.props.item)}>
         <Ionicons
           name="trash"
           size={20}

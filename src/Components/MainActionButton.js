@@ -18,6 +18,7 @@ const MainActionButton = ({handler, text}) => {
       android_ripple={{
         color: DARKMODE ? colors.orangeDark : colors.orangeLight,
       }}
+      accessibilityRole="button"
       onPress={handler}
       style={({pressed}) => ({
         borderRadius: 8,

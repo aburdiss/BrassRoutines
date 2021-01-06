@@ -22,6 +22,10 @@ const HeaderButton = ({children, handler}) => {
         color: DARKMODE ? colors.orangeDark : colors.orangeLight,
       }}
       onPress={handler}
+      accessibilityRole="link"
+      accessible={true}
+      accessibilityLabel={translate(children)}
+      accessibilityHint={translate('Navigates to') + ' ' + translate(children)}
       style={{
         padding: 8,
         marginRight: 4,
