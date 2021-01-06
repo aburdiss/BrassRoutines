@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, View, Text, Switch} from 'react-native';
+import {Alert, View, ScrollView} from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -9,6 +9,7 @@ import {
 import ScaleDisplay from './ScaleDisplay';
 import AllScalesButton from './AllScalesButton';
 import MainActionButton from '../Components/MainActionButton';
+import SwitchRow from './SwitchRow';
 
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
@@ -256,117 +257,81 @@ const ArpeggioPractice = () => {
 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.scaleDisplay}>
         <ScaleDisplay>{currentArpeggio}</ScaleDisplay>
-        <View>
-          <View style={styles.switchesContainer}>
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>{translate('Major')}</Text>
-              <Switch onValueChange={toggleMajorSwitch} value={majorSwitch} />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>{translate('Minor')}</Text>
-              <Switch onValueChange={toggleMinorSwitch} value={minorSwitch} />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>{translate('Augmented')}</Text>
-              <Switch
-                onValueChange={toggleAugmentedSwitch}
-                value={augmentedSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>{translate('Diminished')}</Text>
-              <Switch
-                onValueChange={toggleDiminishedSwitch}
-                value={diminishedSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Dominant Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleDominantSeventhSwitch}
-                value={dominantSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Major Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleMajorSeventhSwitch}
-                value={majorSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Minor Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleMinorSeventhSwitch}
-                value={minorSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Minor Major Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleMinorMajorSeventhSwitch}
-                value={minorMajorSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Augmented Minor Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleAugmentedSeventhSwitch}
-                value={augmentedSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Half Diminished Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleHalfDiminishedSeventhSwitch}
-                value={halfDiminishedSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Diminished Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleDiminishedSeventhSwitch}
-                value={diminishedSeventhSwitch}
-              />
-            </View>
-
-            <AllScalesButton handler={selectAllArpeggios}>
+      </View>
+      <View style={styles.switchesContainer}>
+        <ScrollView>
+          <SwitchRow
+            onValueChange={toggleMajorSwitch}
+            value={majorSwitch}
+            text={translate('Major')}
+          />
+          <SwitchRow
+            onValueChange={toggleMinorSwitch}
+            value={minorSwitch}
+            text={translate('Minor')}
+          />
+          <SwitchRow
+            onValueChange={toggleAugmentedSwitch}
+            value={augmentedSwitch}
+            text={translate('Augmented')}
+          />
+          <SwitchRow
+            onValueChange={toggleDiminishedSwitch}
+            value={diminishedSwitch}
+            text={translate('Diminished')}
+          />
+          <SwitchRow
+            onValueChange={toggleDominantSeventhSwitch}
+            value={dominantSeventhSwitch}
+            text={translate('Dominant Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleMajorSeventhSwitch}
+            value={majorSeventhSwitch}
+            text={translate('Major Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleMinorSeventhSwitch}
+            value={minorSeventhSwitch}
+            text={translate('Minor Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleMinorMajorSeventhSwitch}
+            value={minorMajorSeventhSwitch}
+            text={translate('Minor Major Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleAugmentedSeventhSwitch}
+            value={augmentedSeventhSwitch}
+            text={translate('Augmented Minor Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleHalfDiminishedSeventhSwitch}
+            value={halfDiminishedSeventhSwitch}
+            text={translate('Half Diminished Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleDiminishedSeventhSwitch}
+            value={diminishedSeventhSwitch}
+            text={translate('Diminished Seventh')}
+          />
+          <View style={styles.allScaleButton}>
+            <AllScalesButton
+              handler={selectAllArpeggios}
+              accessibilityHint={translate('Toggles All Arpeggios')}>
               {translate('All Arpeggios')}
             </AllScalesButton>
           </View>
-        </View>
+        </ScrollView>
       </View>
-      <View>
+      <View style={styles.mainActionButton}>
         <MainActionButton
           handler={generateArpeggios}
           accessibilityValue={{text: `${translate(currentArpeggio)}`}}
-          text={'Randomize'}
+          accessibilityHint={translate('Randomizes a new arpeggio')}
+          text={translate('Randomize')}
         />
       </View>
     </View>
@@ -374,25 +339,35 @@ const ArpeggioPractice = () => {
 };
 
 /**
- * @description Styles for RandomScale component.
+ * @description Styles for RandomArpeggio component.
  */
 const dynamicStyles = new DynamicStyleSheet({
+  allScaleButton: {
+    paddingHorizontal: 10,
+  },
   container: {
     flex: 1,
-    justifyContent: 'space-between',
     backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
+  mainActionButton: {
+    borderColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
+  },
+  scaleDisplay: {
+    borderBottomWidth: 1,
+    borderColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+  },
   switchesContainer: {
-    width: '70%',
+    flex: 1,
     alignSelf: 'center',
-  },
-  switchRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 4,
-  },
-  switchText: {
-    color: new DynamicValue(colors.black, colors.white),
+    width: '100%',
+    marginHorizontal: 10,
   },
 });
 

@@ -10,6 +10,8 @@ const HomeButton = ({onPress, children}) => {
   return (
     <View>
       <Pressable
+        accessible={true}
+        accessibilityLabel={children}
         onPress={onPress}
         style={({pressed}) => ({
           padding: 20,

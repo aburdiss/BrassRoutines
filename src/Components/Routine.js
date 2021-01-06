@@ -112,7 +112,15 @@ const Routine = ({exercises}) => {
   return (
     <SafeAreaView style={styles.container} forceInset="top">
       <View style={styles.heartContainer}>
-        <Pressable onPress={addToFavorites}>
+        <Pressable
+          onPress={addToFavorites}
+          accessibilityLabel={
+            state.favorites.includes(exercises[currentExerciseIndex])
+              ? translate('This is a favorite exercise')
+              : translate('This is not a favorite exercise')
+          }
+          accessible={true}
+          accessibilityHint={translate('Add exercise to favorites')}>
           <Ionicons
             name={
               state.favorites.includes(exercises[currentExerciseIndex])
@@ -135,11 +143,14 @@ const Routine = ({exercises}) => {
           setZoomModalIsShowing(true);
         }}>
         <Image
+          accessibilityLiveRegion="polite"
           source={getInstrumentImagePath(exercises[currentExerciseIndex])}
           style={styles.image}
         />
       </Pressable>
       <ZoomModal
+        importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden={true}
         imagePath={getInstrumentImagePath(exercises[currentExerciseIndex])}
         zoomModalIsShowing={zoomModalIsShowing}
         setZoomModalIsShowing={setZoomModalIsShowing}

@@ -9,9 +9,11 @@ import {
 import ScaleDisplay from './ScaleDisplay';
 import AllScalesButton from './AllScalesButton';
 import MainActionButton from '../Components/MainActionButton';
+import SwitchRow from './SwitchRow';
 
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
+import {debounce} from '../Model/debounce';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -278,6 +280,8 @@ const ScalePractice = () => {
     }
   }
 
+  const debouncedGenerateScales = debounce(generateScales, 1000, true);
+
   /**
    * @description Constructs the scale name and scale note together to form one
    * string to display on the screen.
@@ -300,87 +304,66 @@ const ScalePractice = () => {
   return (
     <View style={styles.container}>
       <View style={styles.scaleDisplay}>
-        <ScaleDisplay>{currentScale}</ScaleDisplay>
+        <ScaleDisplay accessibilityLiveRegion="assertive">
+          {currentScale}
+        </ScaleDisplay>
       </View>
       <View style={styles.switchesContainer}>
         <ScrollView>
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>{translate('Major')}</Text>
-            <Switch onValueChange={toggleMajorSwitch} value={majorSwitch} />
-          </View>
-
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>{translate('Natural Minor')}</Text>
-            <Switch
-              onValueChange={toggleNaturalMinorSwitch}
-              value={naturalMinorSwitch}
-            />
-          </View>
-
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>{translate('Harmonic Minor')}</Text>
-            <Switch
-              onValueChange={toggleHarmonicMinorSwitch}
-              value={harmonicMinorSwitch}
-            />
-          </View>
-
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>{translate('Melodic Minor')}</Text>
-            <Switch
-              onValueChange={toggleMelodicMinorSwitch}
-              value={melodicMinorSwitch}
-            />
-          </View>
-
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>{translate('Major Modes')}</Text>
-            <Switch
-              onValueChange={toggleMajorModesSwitch}
-              value={majorModesSwitch}
-            />
-          </View>
-
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>
-              {translate('Melodic Minor Modes')}
-            </Text>
-            <Switch
-              onValueChange={toggleMelodicMinorModesSwitch}
-              value={melodicMinorModesSwitch}
-            />
-          </View>
-
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>{translate('Blues')}</Text>
-            <Switch onValueChange={toggleBluesSwitch} value={bluesSwitch} />
-          </View>
-
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>{translate('Pentatonic')}</Text>
-            <Switch
-              onValueChange={togglePentatonicSwitch}
-              value={pentatonicSwitch}
-            />
-          </View>
-
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>{translate('Octatonic')}</Text>
-            <Switch
-              onValueChange={toggleOctatonicSwitch}
-              value={octatonicSwtich}
-            />
-          </View>
-
-          <View style={styles.switchRow}>
-            <Text style={styles.switchText}>{translate('Whole Tone')}</Text>
-            <Switch
-              onValueChange={toggleWholeToneSwitch}
-              value={wholeToneSwitch}
-            />
-          </View>
+          <SwitchRow
+            onValueChange={toggleMajorSwitch}
+            value={majorSwitch}
+            text={translate('Major')}
+          />
+          <SwitchRow
+            onValueChange={toggleNaturalMinorSwitch}
+            value={naturalMinorSwitch}
+            text={translate('Natural Minor')}
+          />
+          <SwitchRow
+            onValueChange={toggleHarmonicMinorSwitch}
+            value={harmonicMinorSwitch}
+            text={translate('Harmonic Minor')}
+          />
+          <SwitchRow
+            onValueChange={toggleMelodicMinorSwitch}
+            value={melodicMinorSwitch}
+            text={translate('Melodic Minor')}
+          />
+          <SwitchRow
+            onValueChange={toggleMajorModesSwitch}
+            value={majorModesSwitch}
+            text={translate('Major Modes')}
+          />
+          <SwitchRow
+            onValueChange={toggleMelodicMinorModesSwitch}
+            value={melodicMinorModesSwitch}
+            text={translate('Melodic Minor Modes')}
+          />
+          <SwitchRow
+            onValueChange={toggleBluesSwitch}
+            value={bluesSwitch}
+            text={translate('Blues')}
+          />
+          <SwitchRow
+            onValueChange={togglePentatonicSwitch}
+            value={pentatonicSwitch}
+            text={translate('Pentatonic')}
+          />
+          <SwitchRow
+            onValueChange={toggleOctatonicSwitch}
+            value={octatonicSwtich}
+            text={translate('Octatonic')}
+          />
+          <SwitchRow
+            onValueChange={toggleWholeToneSwitch}
+            value={wholeToneSwitch}
+            text={translate('Whole Tone')}
+          />
           <View style={styles.allScaleButton}>
-            <AllScalesButton handler={selectAllScales}>
+            <AllScalesButton
+              handler={selectAllScales}
+              accessibilityHint={translate('Toggles All Scales')}>
               {translate('All Scales')}
             </AllScalesButton>
           </View>
@@ -388,9 +371,10 @@ const ScalePractice = () => {
       </View>
       <View style={styles.mainActionButton}>
         <MainActionButton
-          handler={generateScales}
+          handler={debouncedGenerateScales}
           accessibilityValue={{text: `${translate(currentScale)}`}}
-          text={'Randomize'}
+          accessibilityHint={translate('Randomizes a new scale')}
+          text={translate('Randomize')}
         />
       </View>
     </View>
@@ -427,15 +411,6 @@ const dynamicStyles = new DynamicStyleSheet({
     alignSelf: 'center',
     width: '100%',
     marginHorizontal: 10,
-  },
-  switchRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 4,
-    paddingHorizontal: 40,
-  },
-  switchText: {
-    color: new DynamicValue(colors.black, colors.white),
   },
 });
 
