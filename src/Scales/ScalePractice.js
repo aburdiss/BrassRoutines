@@ -13,7 +13,6 @@ import SwitchRow from './SwitchRow';
 
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
-import {debounce} from '../Model/debounce';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -280,8 +279,6 @@ const ScalePractice = () => {
     }
   }
 
-  const debouncedGenerateScales = debounce(generateScales, 1000, true);
-
   /**
    * @description Constructs the scale name and scale note together to form one
    * string to display on the screen.
@@ -371,7 +368,7 @@ const ScalePractice = () => {
       </View>
       <View style={styles.mainActionButton}>
         <MainActionButton
-          handler={debouncedGenerateScales}
+          handler={generateScales}
           accessibilityValue={{text: `${translate(currentScale)}`}}
           accessibilityHint={translate('Randomizes a new scale')}
           text={translate('Randomize')}
