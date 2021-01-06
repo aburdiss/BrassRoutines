@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Alert, View, Text, Switch, ScrollView} from 'react-native';
 import {
   DynamicStyleSheet,
@@ -13,6 +13,7 @@ import SwitchRow from './SwitchRow';
 
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
+import {debounce} from 'underscore';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -298,6 +299,11 @@ const ScalePractice = () => {
     return allLetterNamesOfScale;
   }
 
+  const debouncedGenerateScales = useCallback(
+    debounce(generateScales, 150, true),
+    [],
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.scaleDisplay}>
@@ -368,7 +374,7 @@ const ScalePractice = () => {
       </View>
       <View style={styles.mainActionButton}>
         <MainActionButton
-          handler={generateScales}
+          handler={debouncedGenerateScales}
           accessibilityValue={{text: `${translate(currentScale)}`}}
           accessibilityHint={translate('Randomizes a new scale')}
           text={translate('Randomize')}
