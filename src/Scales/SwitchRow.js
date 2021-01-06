@@ -24,6 +24,8 @@ const SwitchRow = ({value, onValueChange, text}) => {
     <Pressable
       style={styles.switchRow}
       accessible={true}
+      accessibilityState={{checked: value}}
+      accessibilityRole="switch"
       accessibilityLabel={translate('Toggles Switch') + ' ' + text}
       onPress={onValueChange}>
       <Text style={styles.switchText}>{text}</Text>

@@ -43,6 +43,9 @@ export const LinkListItem = ({item, state}) => {
       style={({pressed}) => ({
         opacity: pressed ? 0.7 : 1,
       })}
+      accessible={true}
+      accessibilityLabel={translate(item.value)}
+      accessibilityRole="link"
       onPress={() => {
         Linking.openURL(item.link).catch((err) =>
           console.error("Couldn't load page", err),
@@ -75,6 +78,9 @@ export const InternalListItem = ({item}) => {
       style={({pressed}) => ({
         opacity: pressed ? 0.7 : 1,
       })}
+      accessible={true}
+      accessibilityLabel={translate(item.value)}
+      accessibilityRole="link"
       onPress={() => {
         navigation.navigate(item.component);
       }}>
@@ -93,21 +99,29 @@ export const InternalListItem = ({item}) => {
 /**
  * @description A rendered Switch list item that updates saved preferences.
  * @author Alexander Burdiss
- * @since 12/14/20
+ * @since 1/5/21
  */
 export const SwitchListItem = ({item, state, dispatch}) => {
   const styles = useDynamicValue(dynamicStyles);
+  function updateValue() {
+    let updatedState = !state[item.setting];
+    let newSetting = {[item.setting]: updatedState};
+    dispatch({type: 'SET_SETTING', payload: newSetting});
+  }
   return (
-    <View style={styles.listRowContainer}>
+    <Pressable
+      style={styles.listRowContainer}
+      onPress={updateValue}
+      accessible={true}
+      accessibilityLabel={translate(item.value)}
+      accessibilityState={{checked: state[item.setting]}}
+      accessibilityRole="switch"
+      accessibilityHint={
+        translate('Toggles setting') + ' ' + translate(item.value)
+      }>
       <Text style={styles.listRowText}>{translate(item.value)}</Text>
-      <Switch
-        value={state[item.setting]}
-        onValueChange={(state) => {
-          let newSetting = {[item.setting]: state};
-          dispatch({type: 'SET_SETTING', payload: newSetting});
-        }}
-      />
-    </View>
+      <Switch value={state[item.setting]} onValueChange={updateValue} />
+    </Pressable>
   );
 };
 
@@ -178,6 +192,8 @@ export const ButtonListItem = ({item, dispatch}) => {
           );
         }
       }}
+      accessible={true}
+      accessibilityLabel={translate(item.value)}
       style={({pressed}) => ({
         opacity: pressed ? 0.7 : 1,
       })}>

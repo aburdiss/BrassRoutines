@@ -11,6 +11,8 @@
   "No Exercise Types Selected!": "No Exercise Types Selected!",
   "Go to Settings": "Go to Settings",
 
+  "Opens Exercise": "Opens Exercise",
+
   "Daily Routine Complete!": "Daily Routine Complete!",
   "Return": "Return",
   "Back": "Back",
@@ -52,6 +54,7 @@
   "Fundamentals": "Fundamentals",
   "Routine Length": "Routine Length",
   "Favorites": "Favorites",
+  "Toggles setting": "Toggles setting",
   "Restore Defaults": "Restore Defaults",
   "Reset Favorites": "Reset Favorites",
   "Reset Custom Routines": "Reset Custom Routines",

@@ -4,6 +4,7 @@ import {useDarkMode} from 'react-native-dynamic';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors, getExerciseDisplayName} from '../Model/Model';
 import {PreferencesContext} from '../Model/Preferences';
+import {translate} from '../Translations/TranslationModel';
 
 /**
  * @description A component that renders the default list row on the listView.
@@ -16,6 +17,15 @@ const ListRow = ({onPress, text}) => {
 
   return (
     <Pressable
+      accessible={true}
+      accessibilityRole="link"
+      accessibilityHint={translate('Opens Exercise')}
+      accessibilityLabel={
+        getExerciseDisplayName(text, state) +
+        (state.favorites.includes(text)
+          ? translate('This is a favorite exercise')
+          : '')
+      }
       onPress={onPress}
       style={({pressed}) => ({
         opacity: pressed ? 0.7 : 1,

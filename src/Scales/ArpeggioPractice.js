@@ -258,7 +258,9 @@ const ArpeggioPractice = () => {
   return (
     <View style={styles.container}>
       <View style={styles.scaleDisplay}>
-        <ScaleDisplay>{currentArpeggio}</ScaleDisplay>
+        <ScaleDisplay accessibilityLiveRegion="assertive">
+          {currentArpeggio}
+        </ScaleDisplay>
       </View>
       <View style={styles.switchesContainer}>
         <ScrollView>
