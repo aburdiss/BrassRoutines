@@ -89,16 +89,21 @@ const Home = () => {
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
       }}>
-      <HomeButton onPress={launchDailyRoutine}>
+      <HomeButton
+        accessibilityHint={translate('Starts daily routine')}
+        onPress={launchDailyRoutine}>
         {translate('Begin Routine') +
           ' (' +
           translate(capitalize(state?.instrument)) +
           ')'}
       </HomeButton>
-      <HomeButton onPress={launchFavoritesRoutine}>
+      <HomeButton
+        accessibilityHint={translate('Randomizes favorite exercises')}
+        onPress={launchFavoritesRoutine}>
         {translate('Randomize Favorites')}
       </HomeButton>
       <HomeButton
+        accessibilityHint={translate('Opens Scale Practice')}
         onPress={() => {
           navigation.navigate('Scale Practice');
         }}>
