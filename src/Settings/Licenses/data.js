@@ -168,4 +168,10 @@ export default {
     licenseUrl: 'https://github.com/facebook/react/raw/master/LICENSE',
     parents: 'BrassRoutines',
   },
+  'underscore@1.12.0': {
+    licenses: 'MIT',
+    repository: 'https://github.com/jashkenas/underscore',
+    licenseUrl: 'https://github.com/jashkenas/underscore/raw/master/LICENSE',
+    parents: 'BrassRoutines',
+  },
 };
