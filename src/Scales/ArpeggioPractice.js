@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {Alert, View, ScrollView} from 'react-native';
 import {
   DynamicStyleSheet,
@@ -13,6 +13,7 @@ import SwitchRow from './SwitchRow';
 
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
+import {debounce, random} from 'underscore';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios
@@ -212,10 +213,7 @@ const ArpeggioPractice = () => {
     } else {
       let newArpeggio;
       do {
-        newArpeggio =
-          possibleArpeggios[
-            Math.floor(Math.random() * possibleArpeggios.length)
-          ];
+        newArpeggio = possibleArpeggios[random(possibleArpeggios.length - 1)];
       } while (newArpeggio === currentArpeggio);
       setCurrentArpeggio(
         newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
@@ -254,6 +252,11 @@ const ArpeggioPractice = () => {
     }
     return allLetterNamesOfScale;
   }
+
+  const debouncedGenerateArpeggios = useCallback(
+    debounce(generateArpeggios, 150, true),
+    [],
+  );
 
   return (
     <View style={styles.container}>
@@ -330,7 +333,7 @@ const ArpeggioPractice = () => {
       </View>
       <View style={styles.mainActionButton}>
         <MainActionButton
-          handler={generateArpeggios}
+          handler={debouncedGenerateArpeggios}
           accessibilityValue={{text: `${translate(currentArpeggio)}`}}
           accessibilityHint={translate('Randomizes a new arpeggio')}
           text={translate('Randomize')}

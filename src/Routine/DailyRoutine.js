@@ -9,6 +9,7 @@ import {
   euphoniumExercises,
   tubaExercises,
 } from '../Model/Model';
+import {random} from 'underscore';
 
 // TODO: on mount, check user settings and generate routine. Pass array of numbers into RoutineView.
 const DailyRoutine = () => {
@@ -156,15 +157,17 @@ const generateRoutine = (state, exercises) => {
 };
 
 /**
+ * @function randomElement
  * @description Takes a string array and returns a random element from the
  * input array
  * @author Alexander Burdiss
- * @since 12/18/20
+ * @since 1/13/21
+ * @version 1.1.0
  * @param {[String]} array
  * @returns A random element from the parameter
  */
 const randomElement = (array) => {
-  return array[Math.floor(Math.random() * array.length)];
+  return array[random(array.length - 1)];
 };
 
 export default DailyRoutine;

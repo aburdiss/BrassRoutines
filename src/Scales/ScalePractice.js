@@ -13,7 +13,7 @@ import SwitchRow from './SwitchRow';
 
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
-import {debounce} from 'underscore';
+import {debounce, random} from 'underscore';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -273,8 +273,7 @@ const ScalePractice = () => {
     } else {
       let newScale;
       do {
-        newScale =
-          possibleScales[Math.floor(Math.random() * possibleScales.length)];
+        newScale = possibleScales[random(possibleScales.length - 1)];
       } while (newScale == currentScale);
       setCurrentScale(newScale ? newScale : translate('No Scale Selected'));
     }
