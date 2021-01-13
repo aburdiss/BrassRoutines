@@ -10,6 +10,11 @@ import {translate} from '../Translations/TranslationModel';
  * @description A component that renders the default list row on the listView.
  * @author Alexander Burdiss
  * @since 12/14/2020
+ * @version 1.1.0
+ *
+ * @component
+ * @example
+ *   <ListRow onPress={onPress} text="Hello, World!" />
  */
 const ListRow = ({onPress, text}) => {
   const {state} = useContext(PreferencesContext);

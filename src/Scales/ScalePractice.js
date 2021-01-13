@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {Alert, View, Text, Switch, ScrollView} from 'react-native';
+import React, {useCallback, useState} from 'react';
+import {Alert, View, ScrollView} from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -20,6 +20,11 @@ import {debounce, random} from 'underscore';
  * a particular category.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.1.0
+ *
+ * @component
+ * @example
+ *   <ScalePractice />
  */
 const ScalePractice = () => {
   const styles = useDynamicValue(dynamicStyles);
@@ -69,9 +74,12 @@ const ScalePractice = () => {
     setWholeToneSwitch((previousState) => !previousState);
 
   /**
+   * @function ScalePractice~selectAllScales
    * @description A function that toggles all scale switches to true. If all are
    * currently selected, toggles all off except major.
+   * @author Alexander Burdiss
    * @since 10/12/20
+   * @version 1.0.1
    */
   function selectAllScales() {
     let allOn = true;
@@ -131,9 +139,12 @@ const ScalePractice = () => {
   }
 
   /**
+   * @function ScalePractice~generateScales
    * @description A function that parses what switches are turned on, and
    * generates a random scale based on the user preferences.
+   * @author Alexander Burdiss
    * @since 10/11/20
+   * @version 1.0.1
    */
   function generateScales() {
     const majorLetterNames = [
@@ -280,9 +291,12 @@ const ScalePractice = () => {
   }
 
   /**
+   * @function ScalePractice~createScaleArrayFromParts
    * @description Constructs the scale name and scale note together to form one
    * string to display on the screen.
+   * @author Alexander Burdiss
    * @since 10/12/20
+   * @version 1.0.1
    *
    * @param {[String]} letterNames
    * @param {[String]} scaleNames
@@ -298,6 +312,14 @@ const ScalePractice = () => {
     return allLetterNamesOfScale;
   }
 
+  /**
+   * @function ScalePractice~debouncedGenerateScales
+   * @description Prevents the user from clicking the generate button within
+   * 150 ms of another press.
+   * @author Alexander Burdiss
+   * @since 1/5/21
+   * @version 1.0.0
+   */
   const debouncedGenerateScales = useCallback(
     debounce(generateScales, 150, true),
     [],
@@ -383,9 +405,6 @@ const ScalePractice = () => {
   );
 };
 
-/**
- * @description Styles for RandomScale component.
- */
 const dynamicStyles = new DynamicStyleSheet({
   allScaleButton: {
     paddingHorizontal: 10,

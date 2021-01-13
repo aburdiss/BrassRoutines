@@ -162,7 +162,7 @@ export const allTubaExercises = [
  * @return require(path) of desired Horn Exercise
  * @author Alexander Burdiss
  * @since 12/17/20
- * @version 1.0
+ * @version 1.0.0
  */
 export function getHornImagePath(number) {
   switch (number) {
@@ -333,7 +333,7 @@ export function getHornImagePath(number) {
  * @return require(path) of desired Horn Exercise
  * @author Alexander Burdiss
  * @since 12/17/20
- * @version 1.0
+ * @version 1.0.0
  */
 export function getTrumpetImagePath(number) {
   switch (number) {
@@ -504,7 +504,7 @@ export function getTrumpetImagePath(number) {
  * @return require(path) of desired Trombone Exercise
  * @author Alexander Burdiss
  * @since 12/9/20
- * @version 1.0
+ * @version 1.0.0
  */
 export function getTromboneImagePath(number) {
   switch (number) {
@@ -675,7 +675,7 @@ export function getTromboneImagePath(number) {
  * @return require(path) of desired Euphonium Exercise
  * @author Alexander Burdiss
  * @since 12/25/20
- * @version 1.1
+ * @version 1.1.0
  */
 export function getEuphoniumBassClefImagePath(number) {
   switch (number) {
@@ -847,7 +847,7 @@ export function getEuphoniumBassClefImagePath(number) {
  * @return require(path) of desired Euphonium Exercise
  * @author Alexander Burdiss
  * @since 12/25/20
- * @version 1.1
+ * @version 1.1.0
  */
 export function getEuphoniumTrebleClefImagePath(number) {
   switch (number) {
@@ -1018,7 +1018,7 @@ export function getEuphoniumTrebleClefImagePath(number) {
  * @return require(path) of desired Tuba Exercise
  * @author Alexander Burdiss
  * @since 12/17/20
- * @version 1.0
+ * @version 1.0.0
  */
 export function getTubaImagePath(number) {
   switch (number) {
@@ -1186,6 +1186,7 @@ export function getTubaImagePath(number) {
  * correctly for the different instruments and for the different languages.
  * @author Alexander Burdiss
  * @since 12/17/20
+ * @version 1.0.0
  * @param {String} text Exercise Number to be preprocessed.
  */
 export function getExerciseDisplayName(text, state) {

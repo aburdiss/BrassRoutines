@@ -11,7 +11,17 @@ import {
 } from '../Model/Model';
 import {random} from 'underscore';
 
-// TODO: on mount, check user settings and generate routine. Pass array of numbers into RoutineView.
+/**
+ * @description The main routine of the app, that takes the user's settings and
+ * generates a randomized routine based on their preferences.
+ * @author Alexander Burdiss
+ * @since 12/18/20
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <DailyRoutine />
+ */
 const DailyRoutine = () => {
   const {state} = useContext(PreferencesContext);
   const [currentRoutine, setCurrentRoutine] = useState([]);
@@ -19,6 +29,16 @@ const DailyRoutine = () => {
     setCurrentRoutine(generateDailyRoutine());
   }, []);
 
+  /**
+   * @function DailyRoutine~generateDailyRoutine
+   * @description Generates a daily routine based off the user settings. This
+   * function is called on mount so that a new routine is always created. This
+   * function calls the generateRoutine function, passing in the necessary
+   * exercises and state.
+   * @author Alexander Burdiss
+   * @since 12/18/20
+   * @version 1.0.0
+   */
   const generateDailyRoutine = () => {
     switch (state.instrument) {
       case 'horn':
@@ -43,6 +63,17 @@ const DailyRoutine = () => {
   );
 };
 
+/**
+ * @function generateRoutine
+ * @description Generates a routine of random exercises based on the users'
+ * settings.
+ * @author Alexander Burdiss
+ * @since 12/18/20
+ * @version 1.0.0
+ * @param {*} state The preferences state of the app.
+ * @param {*} exercises The exercises for the selected instrument in state.
+ * @returns An array of Numbers that can be passed into the Routine component.
+ */
 const generateRoutine = (state, exercises) => {
   let tempExercise;
   let newRoutine = [];

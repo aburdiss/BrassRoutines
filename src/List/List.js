@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {SectionList, Text, StyleSheet} from 'react-native';
+import {SectionList, Text} from 'react-native';
 import {
   colors,
   hornExercises,
@@ -19,11 +19,32 @@ import {
 } from 'react-native-dynamic';
 import {translate} from '../Translations/TranslationModel';
 
+/**
+ * @description A list of all of the exercises in the app, with icons to show
+ * if they are in favorites or not.
+ * @author Alexander Burdiss
+ * @since 12/18/20
+ * @version 1.1.0
+ *
+ * @component
+ * @example
+ *   <List />
+ */
 const List = () => {
   const styles = useDynamicValue(dynamicStyles);
   const navigation = useNavigation();
   const {state} = useContext(PreferencesContext);
 
+  /**
+   * @function List~getSections
+   * @description Gets the section data depending on the instrument that is
+   * selected, and returns a formatted list ready to pass into a
+   * SectionList component.
+   * @author Alexander Burdiss
+   * @since 12/18/20
+   * @version 1.0.0
+   * @returns A formatted list of data ready to be passed into the SectionList.
+   */
   const getSections = () => {
     let instrument;
     switch (state.instrument) {

@@ -16,6 +16,15 @@ import {Pressable} from 'react-native';
  * switch row.
  * @author Alexander Burdiss
  * @since 1/5/21
+ * @version 1.0.1
+ *
+ * @component
+ * @example
+ *   <SwitchRow
+ *     value={value}
+ *     onValueChange={onValueChange}
+ *     text="Hello, World!"
+ *   />
  */
 const SwitchRow = ({value, onValueChange, text}) => {
   const styles = useDynamicValue(dynamicStyles);

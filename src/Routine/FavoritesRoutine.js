@@ -4,6 +4,17 @@ import Routine from '../Components/Routine';
 import {PreferencesContext} from '../Model/Preferences';
 import {shuffle} from 'underscore';
 
+/**
+ * @description A routine that randomizes the users' favorites and passes
+ * the array into Routine.
+ * @author Alexander Burdiss
+ * @since 12/22/20
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <FavoritesRoutine />
+ */
 const FavoritesRoutine = () => {
   const {state} = useContext(PreferencesContext);
   const [currentRoutine, setCurrentRoutine] = useState([]);

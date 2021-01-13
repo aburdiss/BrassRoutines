@@ -24,8 +24,14 @@ import {translate} from '../Translations/TranslationModel';
 /**
  * @description Shows an individual exercise, and allows the user to select the
  * exercise as a favorite.
- * @todo Add the 'Add to favorite' button.
- * @todo Add Zoom in on image functionality.
+ * @author Alexander Burdiss
+ * @since 12/25/20
+ * @version 1.1.0
+ *
+ * @component
+ * @example
+ *   <ExerciseDetail />
+ *
  * @todo Add Change instrument functionality.
  */
 const ExerciseDetail = () => {
@@ -35,6 +41,14 @@ const ExerciseDetail = () => {
   const route = useRoute();
   let getInstrumentImagePath;
 
+  /**
+   * @function ExerciseDetail~addToFavorites
+   * @description Adds the current exercise to favorites, or removes it if it
+   * already exists.
+   * @author Alexander Burdiss
+   * @since 12/25/20
+   * @version 1.0.0
+   */
   function addToFavorites() {
     let currentExercise = route.params.item;
     if (state.favorites.includes(currentExercise)) {
@@ -72,6 +86,7 @@ const ExerciseDetail = () => {
       getInstrumentImagePath = getTubaImagePath;
       break;
   }
+
   return (
     <SafeAreaView style={styles.container} forceInset="top">
       <View style={styles.heartContainer} accessibilityRole="toolbar">

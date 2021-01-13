@@ -8,6 +8,13 @@ import {colors} from '../Model/Model';
  * @description A styled text box that shows the currently selected scale
  * @author Alexander Burdiss
  * @since 10/11/20
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <ScaleDisplay>
+ *     Hello, World!
+ *   </ScaleDisplay>
  */
 const ScaleDisplay = ({children}) => {
   const DARKMODE = useDarkMode();

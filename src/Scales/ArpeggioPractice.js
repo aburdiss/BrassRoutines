@@ -20,6 +20,11 @@ import {debounce, random} from 'underscore';
  * in a particular category.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <ArpeggioPractice />
  */
 const ArpeggioPractice = () => {
   const styles = useDynamicValue(dynamicStyles);
@@ -76,9 +81,12 @@ const ArpeggioPractice = () => {
     setDiminishedSeventhSwitch((previousState) => !previousState);
 
   /**
+   * @function ArpeggioPractice~selectAllArpeggios
    * @description A function that toggles all arpeggio switches to true. If all
    * are currently selected, toggles all off except major.
+   * @author Alexander Burdiss
    * @since 10/14/20
+   * @version 1.0.1
    */
   function selectAllArpeggios() {
     let allOn = true;
@@ -153,9 +161,12 @@ const ArpeggioPractice = () => {
   }
 
   /**
+   * @function ArpeggioPractice~generateArpeggios
    * @description A function that parses what switches are turned on, and
    * generates a random arpeggio based on the user preferences.
+   * @author Alexander Burdiss
    * @since 10/13/20
+   * @version 1.0.1
    */
   function generateArpeggios() {
     let possibleArpeggios = [];
@@ -222,12 +233,13 @@ const ArpeggioPractice = () => {
   }
 
   /**
-   * @description Constructs the scale name and scale note together to form one
-   * string to display on the screen.
+   * @function ArpeggioPractice~createArpeggioArrayFromParts
+   * @description Constructs the arpeggio name and arpeggio note together to
+   * form one string to display on the screen.
+   * @author Alexander Burdiss
    * @since 10/12/20
+   * @version 1.0.1
    *
-   * @param {[String]} letterNames
-   * @param {[String]} scaleNames
    * @returns [String] array of all transpositions of a scale
    */
   function createArpeggioArrayFromParts(scaleName) {
@@ -253,6 +265,14 @@ const ArpeggioPractice = () => {
     return allLetterNamesOfScale;
   }
 
+  /**
+   * @function ArpeggioPractice~debouncedGenerateArpeggios
+   * @description Prevents the user from clicking the generate button within
+   * 150 ms of another click.
+   * @author Alexander Burdiss
+   * @since 1/13/21
+   * @version 1.0.0
+   */
   const debouncedGenerateArpeggios = useCallback(
     debounce(generateArpeggios, 150, true),
     [],
@@ -343,9 +363,6 @@ const ArpeggioPractice = () => {
   );
 };
 
-/**
- * @description Styles for RandomArpeggio component.
- */
 const dynamicStyles = new DynamicStyleSheet({
   allScaleButton: {
     paddingHorizontal: 10,

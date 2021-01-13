@@ -9,6 +9,13 @@ import {colors} from '../Model/Model';
  * Basic styles are already applied.
  * @author Alexander Burdiss
  * @since 10/12/20
+ * @version 1.1.0
+ *
+ * @component
+ * @example
+ *   <AllScalesButton handler={handler}>
+ *     {..}
+ *   </AllScalesButton>
  */
 const AllScalesButton = ({children, handler}) => {
   const DARKMODE = useDarkMode();

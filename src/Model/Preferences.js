@@ -2,11 +2,11 @@ import React, {createContext, useReducer, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
+ * @function load
  * @description Loads Data from Local Storage
  * @author Alexander Burdiss
  * @since 12/11/20
- * @version 1.0
- *
+ * @version 1.0.1
  * @param {String} type Type of data to load.
  */
 export async function load() {
@@ -19,11 +19,11 @@ export async function load() {
 }
 
 /**
+ * @function save
  * @description Stores Data in Local Storage
  * @author Alexander Burdiss
  * @since 12/11/20
- * @version 1.0
- *
+ * @version 1.0.1
  * @param {String} type Type of data to store.
  * @param {Object} data Data to be stored in local storage
  */
@@ -38,6 +38,16 @@ export async function save(data) {
 
 const PreferencesContext = createContext();
 
+/**
+ * @function preferencesReducer
+ * @description A reducer that handles updating the state stored in context,
+ * and updates the same state in local storage on the device.
+ * @author Alexander Burdiss
+ * @since 12/14/20
+ * @version 1.0.0
+ * @param {*} state
+ * @param {*} action
+ */
 const preferencesReducer = (state, action) => {
   let newState;
   switch (action.type) {
@@ -68,7 +78,6 @@ const preferencesReducer = (state, action) => {
     default:
       throw new Error(`Unknown Action: ${action.type}`);
   }
-  console.log(newState);
   save(newState);
   return newState;
 };
@@ -89,6 +98,19 @@ const initialPreferencesState = {
   customRoutines: [],
 };
 
+/**
+ * @description Provides the user preferences throughout the app.
+ * @author Alexander Burdiss
+ * @since 12/14/20
+ * @version 1.0.0
+ * @param {*} props
+ *
+ * @component
+ * @example
+ *   <PreferencesProvider>
+ *     {..}
+ *   </PreferencesProvider>
+ */
 const PreferencesProvider = ({children}) => {
   const [state, dispatch] = useReducer(preferencesReducer);
 
