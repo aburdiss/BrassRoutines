@@ -25,6 +25,13 @@ import {translate} from '../Translations/TranslationModel';
  * in memory, and save the current routine in its place.
  * @author Alexander Burdiss
  * @since 1/2/21
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <CreateCustom />
+ *
+ * @todo Create a landscape view for this component.
  */
 const CreateCustom = () => {
   const styles = useDynamicValue(dynamicStyles);
@@ -37,28 +44,44 @@ const CreateCustom = () => {
   const [counter, setCounter] = useState(0);
   const [editMode, setEditMode] = useState(false);
   const [routineCurrentIndex, setRoutineCurrentIndex] = useState(undefined);
-  useEffect(function checkIfEditRoutine() {
-    if (route.params != undefined) {
-      setEditMode(true);
-      setRoutineCurrentIndex(route.params.index);
-      let routine = route.params.item.exercises.split(',').map(function (x) {
-        return parseInt(x, 10);
-      });
-      setCurrentRoutine(routine);
-      setRoutineName(route.params.item.name);
-      navigation.setOptions({
-        title: translate('Edit Routine'),
-      });
-    }
-  }, []);
+  useEffect(
+    /**
+     * @function CreateCustom~useEffect~checkIfEditRoutine
+     * @summary Sets component up for edit mode.
+     * @description Checks to see if there are params passed in, and if so
+     * sets the params passed in as the current routine, and sets the variables
+     * necessary to edit the routine instead of create a new one.
+     * @author Alexander Burdiss
+     * @since 1/2/21
+     * @version 1.0.0
+     */
+    function checkIfEditRoutine() {
+      if (route.params != undefined) {
+        setEditMode(true);
+        setRoutineCurrentIndex(route.params.index);
+        let routine = route.params.item.exercises.split(',').map(function (x) {
+          return parseInt(x, 10);
+        });
+        setCurrentRoutine(routine);
+        setRoutineName(route.params.item.name);
+        navigation.setOptions({
+          title: translate('Edit Routine'),
+        });
+      }
+    },
+    [],
+  );
 
   /**
+   * @function CreateCustom~createRoutine
    * @description Adds the user generated routine to local storage, and
    * navigates back to the custom routine list. If no exercises have been
    * added, or no title has been entered, displays the appropriate error
    * message.
    * @author Alexander Burdiss
    * @since 12/27/20
+   * @version 1.0.0
+   *
    * @todo Check if name is unique, and if not, alert the user.
    */
   const createRoutine = () => {
@@ -82,15 +105,38 @@ const CreateCustom = () => {
     }
   };
 
+  /**
+   * @function CreateCustom~removeAllExercises
+   * @description Removes all exercises from current routine.
+   * @author Alexander Burdiss
+   * @since 12/27/20
+   * @version 1.0.0
+   */
   const removeAllExercises = () => {
     setCurrentRoutine([]);
   };
 
+  /**
+   * @function CreateCustom~addToExerciseList
+   * @description Adds the currently selected exercise to the list.
+   * @author Alexander Burdiss
+   * @since 12/27/20
+   * @version 1.0.0
+   */
   const addToExerciseList = () => {
     setCurrentRoutine([...currentRoutine, selectedExercise]);
     setCounter(counter + 1);
   };
 
+  /**
+   * @function CreateCustom~deleteElement
+   * @description Removes an exercise from the list. This function is passed
+   * down to the right action on the swipeable elements.
+   * @author Alexander Burdiss
+   * @since 12/27/20
+   * @version 1.0.0
+   * @param {Number} element The exercise to be removed from the list.
+   */
   const deleteElement = (element) => {
     let temporaryExercises = [...currentRoutine];
     let index = temporaryExercises.indexOf(element);
@@ -100,6 +146,15 @@ const CreateCustom = () => {
     setCurrentRoutine(temporaryExercises);
   };
 
+  /**
+   * @function CreateCustom~setNewRoutineOrder
+   * @description Sets a new routine order. This function is called when the
+   * drag operation is complete.
+   * @author Alexander Burdiss
+   * @since 1/2/21
+   * @version 1.0
+   * @param {{[Number]}} {data} The new order that the routine should be in.
+   */
   function setNewRoutineOrder({data}) {
     setCurrentRoutine(data);
   }

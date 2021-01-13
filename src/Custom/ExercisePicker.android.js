@@ -3,67 +3,34 @@ import {View, Pressable, Text} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {useDarkMode} from 'react-native-dynamic';
 import {PreferencesContext} from '../Model/Preferences';
-import {
-  colors,
-  allHornExercises,
-  allTrumpetExercises,
-  allTromboneExercises,
-  allEuphoniumExcercises,
-  allTubaExercises,
-  getExerciseDisplayName,
-} from '../Model/Model';
+import {colors, getExerciseDisplayName} from '../Model/Model';
 import {useNavigation} from '@react-navigation/native';
 import {translate} from '../Translations/TranslationModel';
+import {previewExercise, getInstrumentExercises} from './exercisePickerHelpers';
 
 /**
- * @description Renders an iOS styled picker displaying all of the exercises
- * for whatever instrument is selected. Handles the logic for checking the
- * current instrument, and displays a preview button that will open
- * ExerciseDetail.js with the correct instrument exercise. Will also indicate
- * whether or not the exercise is a favorite in the picker.
+ * @description Renders an android styled picker displaying all of the
+ * exercises for whatever instrument is selected. Handles the logic for
+ * checking the current instrument, and displays a preview button that will
+ * open ExerciseDetail.js with the correct instrument exercise. Will also
+ * indicate whether or not the exercise is a favorite in the picker.
  * @author Alexander Burdiss
- * @since 12/27/20
+ * @since 1/13/21
+ * @version 1.1.0
+ *
+ * @component
+ * @example
+ *   <ExercisePicker
+ *     selectedExercise={selectedExercise}
+ *     setSelectedExercise={setSelectedExercise}
+ *   />
+ *
+ * @todo Restyle these to work on android.
  */
 const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
   const {state} = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
-
-  /**
-   * @description Opens the Exercise preview for the selected exercise and
-   * selected instrument
-   * @author Alexander Burdiss
-   * @since 12/27/20
-   */
-  const previewExercise = () => {
-    navigation.navigate('Exercise Detail', {
-      instrument: state.instrument,
-      item: selectedExercise,
-    });
-  };
-
-  /**
-   * @description Gets the proper list of exercises depending on the selected
-   * instrument
-   * @author Alexander Burdiss
-   * @since 12/27/20
-   */
-  const getInstrumentExercises = () => {
-    switch (state.instrument) {
-      case 'horn':
-        return allHornExercises;
-      case 'trumpet':
-        return allTrumpetExercises;
-      case 'trombone':
-        return allTromboneExercises;
-      case 'euphonium':
-        return allEuphoniumExcercises;
-      case 'tuba':
-        return allTubaExercises;
-      default:
-        throw new Error('Invalid Instrument');
-    }
-  };
 
   return (
     <View
@@ -85,7 +52,7 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
           itemStyle={{
             color: DARKMODE ? colors.white : colors.black,
           }}>
-          {getInstrumentExercises().map((exercise) => (
+          {getInstrumentExercises(state).map((exercise) => (
             <Picker.Item
               label={`${
                 state.favorites.includes(exercise) ? '❤️' : ''
@@ -100,7 +67,7 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
         <Pressable
           accessibilityRole="link"
           accessibilityHint="Opens Exercise"
-          onPress={previewExercise}
+          onPress={() => previewExercise(state, navigation, selectedExercise)}
           hitSlop={10}
           style={({pressed}) => ({opacity: pressed ? 0.7 : 1})}>
           <Text

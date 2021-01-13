@@ -4,7 +4,34 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {translate} from '../Translations/TranslationModel';
 import {colors} from '../Model/Model';
 
+/**
+ * @class SwipeableRow
+ * @description A swipeable row that has a delete as a right action and an edit
+ * as a left action.
+ * @author Alexander Burdiss
+ * @since 1/6/21
+ * @version 1.1.0
+ *
+ * @component
+ * @example
+ *   <SwipeableRow
+ *     styles={styles}
+ *     delete={deleteItem}
+ *     item={item}
+ *     edit={openEditRoutine}>
+ *     {..}
+ *   </SwipeableRow>
+ */
 class SwipeableRow extends Component {
+  /**
+   * @function SwipeableRow~renderLeftActions
+   * @description Renders the left button of the swipeable.
+   * @author Alexander Burdiss
+   * @since 12/30/20
+   * @version 1.0.1
+   * @param {Number} progress Passed in from Swipeable
+   * @param {Number} dragX Passed in from Swipeable
+   */
   renderLeftActions = (progress, dragX) => {
     const scale = dragX.interpolate({
       inputRange: [0, 80],
@@ -27,6 +54,16 @@ class SwipeableRow extends Component {
       </RectButton>
     ) : null;
   };
+
+  /**
+   * @function SwipeableRow~renderRightActions
+   * @description Renders the right action of the swipeable
+   * @author Alexander Burdiss
+   * @since 12/27/20
+   * @version 1.0.0
+   * @param {Number} progress Passed in from Swipeable
+   * @param {Number} dragX Passed in from Swipeable
+   */
   renderRightActions = (progress, dragX) => {
     const scale = dragX.interpolate({
       inputRange: [-80, 0],
@@ -50,6 +87,13 @@ class SwipeableRow extends Component {
     );
   };
 
+  /**
+   * @function SwipeableRow~render
+   * @description The Interface for the swipeable row component
+   * @author Alexander Burdiss
+   * @since 12/27/20
+   * @version 1.0
+   */
   render() {
     const {children} = this.props;
     return (

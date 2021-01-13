@@ -17,14 +17,23 @@ import {translate} from '../Translations/TranslationModel';
  * routine from this swipeable row.
  * @author Alexander Burdiss
  * @since 1/3/21
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <CustomListRow item={item} />
  */
 const CustomListRow = ({item}) => {
+  const styles = useDynamicValue(dynamicStyles);
   const navigation = useNavigation();
   const {state, dispatch} = useContext(PreferencesContext);
+
   /**
+   * @function CustomListRow~deleteItem
    * @description Removes the routine from the app.
    * @author Alexander Burdiss
    * @since 12/29/20
+   * @version 1.0.0
    */
   function deleteItem(item) {
     let filteredRoutines = state.customRoutines.filter(function (routine) {
@@ -34,12 +43,15 @@ const CustomListRow = ({item}) => {
   }
 
   /**
+   * @function CustomListRow~openEditRoutine
    * @description Opens the Create Custom Routine View with the current list
    * of exercises already loaded into the list, to edit the routine.
-   * @todo make sure editing this routine either deletes the old one from state
-   * or modifies the old one.
    * @author Alexander Burdiss
    * @since 12/29/20
+   * @version 1.0.0
+   *
+   * @todo make sure editing this routine either deletes the old one from state
+   * or modifies the old one.
    */
   function openEditRoutine(item) {
     navigation.navigate('Create Custom', {
@@ -49,8 +61,12 @@ const CustomListRow = ({item}) => {
   }
 
   /**
+   * @function CustomListRow~getExerciseLengthDescription
    * @description Gets the Length of the custom routine and returns a string
    * to print on the row of the length.
+   * @author Alexander Burdiss
+   * @since 12/29/20
+   * @version 1.0.0
    */
   function getExerciseLengthDescription() {
     const customRoutineLength = item.item.exercises.split(',').length;
@@ -63,16 +79,18 @@ const CustomListRow = ({item}) => {
   }
 
   /**
+   * @function CustomListRow~startCustomRoutine
    * @description Gets the routine data from the item, and passes it into the
    * Routine View as it opens it.
-   * @param {*} item The Routine Object to pass to the Custom Routine
+   * @author Alexander Burdiss
+   * @since 12/29/20
+   * @version 1.0.0
+   * @param {[Number]} item The Routine Object to pass to the Custom Routine
    * Component.
    */
   function startCustomRoutine(item) {
     navigation.navigate('Custom Routine', {item});
   }
-
-  const styles = useDynamicValue(dynamicStyles);
 
   return (
     <SwipeableRow

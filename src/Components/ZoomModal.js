@@ -9,6 +9,15 @@ import {colors} from '../Model/Model';
  * and out, and can be cancelled by swiping down, or tapping.
  * @author Alexander Burdiss
  * @since 1/2/21
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <ZoomModal
+ *     imagePath={imagePath}
+ *     zoomModalIsShowing={zoomModalIsShowing}
+ *     setZoomModalIsShowing={setZoomModalIsShowing}
+ *   />
  */
 const ZoomModal = ({imagePath, zoomModalIsShowing, setZoomModalIsShowing}) => {
   const DARKMODE = useDarkMode();

@@ -4,6 +4,19 @@ import {useDarkMode} from 'react-native-dynamic';
 import {colors} from '../Model/Model';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+/**
+ * @description A styled button that renders on the home page of the app. This
+ * is the main stylistic component of the front page of the app.
+ * @author Alexander Burdiss
+ * @since 12/3/20
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <HomeButton onPress={function}>
+ *     Hello, World!
+ *   </HomeButton>
+ */
 const HomeButton = ({onPress, children}) => {
   const DARKMODE = useDarkMode();
 

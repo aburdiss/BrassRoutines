@@ -27,9 +27,11 @@ import {translate} from '../Translations/TranslationModel';
  * exercises
  * @author Alexander Burdiss
  * @since 12/21/20
- * @param {*} param0
- * @todo Take out the instrument param and use state, since it is being
- * imported for favorites and the heart.
+ * @version 1.1.0
+ *
+ * @component
+ * @example
+ *   <Routine exercises={[1, 2, 3, 4, 5]} />
  */
 const Routine = ({exercises}) => {
   const styles = useDynamicStyleSheet(dynamicStyles);
@@ -38,7 +40,15 @@ const Routine = ({exercises}) => {
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [zoomModalIsShowing, setZoomModalIsShowing] = useState(false);
   useEffect(
-    function () {
+    /**
+     * @function Routine~useEffect~updateHeaderItems
+     * @description Updates the header items whenever the exercise in the
+     * routine is updated.
+     * @author Alexander Burdiss
+     * @since 12/9/20
+     * @version 1.0
+     */
+    function updateHeaderItems() {
       navigation.setOptions({
         title: `${currentExerciseIndex + 1} / ${exercises.length}`,
         headerRight: () => <HeaderButton handler={advance}>Next</HeaderButton>,
@@ -71,6 +81,14 @@ const Routine = ({exercises}) => {
       break;
   }
 
+  /**
+   * @function Routine~addToFavorites
+   * @description Adds the currently selected exercise to the favorites state,
+   * and alerts the user of the addition.
+   * @author Alexander Burdiss
+   * @since 12/22/20
+   * @version 1.0
+   */
   function addToFavorites() {
     let currentExercise = exercises[currentExerciseIndex];
     if (state.favorites.includes(currentExercise)) {
@@ -87,6 +105,14 @@ const Routine = ({exercises}) => {
     }
   }
 
+  /**
+   * @function Routine~advance
+   * @description Advances the current exercise to the next in the list. If
+   * there are no more exercises, ends the routine.
+   * @author Alexander Burdiss
+   * @since 12/9/20
+   * @version 1.0.0
+   */
   function advance() {
     if (currentExerciseIndex === exercises.length - 1) {
       Alert.alert('Daily Routine Complete', '', [
@@ -101,6 +127,14 @@ const Routine = ({exercises}) => {
     }
   }
 
+  /**
+   * @function Routine~reverse
+   * @description Goes back one exercise in the routine. If there are no
+   * previous exercises, closes the routine view.
+   * @author Alexander Burdiss
+   * @since 12/9/20
+   * @version 1.0.0
+   */
   function reverse() {
     if (currentExerciseIndex === 0) {
       navigation.pop();

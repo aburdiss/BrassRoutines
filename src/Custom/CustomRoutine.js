@@ -8,6 +8,11 @@ import {PreferencesContext} from '../Model/Preferences';
  * @description Displays a custom routine.
  * @author Alexander Burdiss
  * @since 12/29/20
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <CustomRoutine />
  */
 const CustomRoutine = () => {
   const route = useRoute();

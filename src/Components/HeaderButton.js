@@ -13,6 +13,13 @@ import {translate} from '../Translations/TranslationModel';
  * text that is passed in to it.
  * @author Alexander Burdiss
  * @since 1/3/21
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <HeaderButton handler={handler}>
+ *     Hello, World!
+ *   </HeaderButton />
  */
 const HeaderButton = ({children, handler}) => {
   const DARKMODE = useDarkMode();

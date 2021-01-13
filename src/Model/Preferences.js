@@ -39,7 +39,6 @@ export async function save(data) {
 const PreferencesContext = createContext();
 
 const preferencesReducer = (state, action) => {
-  console.log(action);
   let newState;
   switch (action.type) {
     case 'SET_ALL_PREFERENCES':

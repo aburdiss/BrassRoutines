@@ -10,6 +10,13 @@ import {translate} from '../Translations/TranslationModel';
  * app. Basic styles are already applied.
  * @author Alexander Burdiss
  * @since 10/11/20
+ * @version 1.0
+ *
+ * @component
+ * @example
+ *   <MainActionButton handler={function}>
+ *     Hello, World!
+ *   </MainActionButton>
  */
 const MainActionButton = ({handler, text}) => {
   const DARKMODE = useDarkMode();
