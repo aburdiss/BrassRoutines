@@ -10,6 +10,11 @@ import {colors} from '../Model/Model';
  * @author Alexander Burdiss
  * @since 1/2/21
  * @version 1.0.0
+ * @param {Object} props.imagePath The path to the image. The return value from the
+ * require() function.
+ * @param {Boolean} props.zoomModalIsShowing A state variable on whether or not to
+ * render this component.
+ * @param
  *
  * @component
  * @example

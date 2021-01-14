@@ -27,7 +27,8 @@ import {translate} from '../Translations/TranslationModel';
  * exercises
  * @author Alexander Burdiss
  * @since 12/21/20
- * @version 1.1.0
+ * @version 1.1.1
+ * @param {Array} props.exercises The list of exercises to play in the Routine.
  *
  * @component
  * @example

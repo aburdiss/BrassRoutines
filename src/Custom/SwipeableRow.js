@@ -11,6 +11,15 @@ import {colors} from '../Model/Model';
  * @author Alexander Burdiss
  * @since 1/6/21
  * @version 1.1.0
+ * @param {Component} props.children The content to render inside the
+ * swipeable.
+ * @param {Function} props.delete A function to call when the delete
+ * button is pressed
+ * @param {Function} props.edit A function to call when the edit button is
+ * pressed
+ * @param {Object} props.sytles The styles to be applied to the component.
+ * @param {Object} props.item The reference to the item, used for dragging and
+ * dropping.
  *
  * @component
  * @example

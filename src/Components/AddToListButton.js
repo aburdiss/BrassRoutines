@@ -10,7 +10,9 @@ import {translate} from '../Translations/TranslationModel';
  * list
  * @author Alexander Burdiss
  * @since 12/27/20
- * @version 1.0.0
+ * @version 1.0.1
+ * @param {function} props.handler The function to call when the button is
+ * pressed.
  *
  * @component
  * @example

@@ -12,7 +12,11 @@ import {
  * selected instrument
  * @author Alexander Burdiss
  * @since 1/13/21
- * @version 1.1.0
+ * @version 1.1.1
+ * @param {Object} state The current app state.
+ * @param {Object} navigation The current navigation object, provided by React
+ * Navigation.
+ * @param {Number} selectedExercise The currently selected Exercise.
  */
 export const previewExercise = (state, navigation, selectedExercise) => {
   navigation.navigate('Exercise Detail', {
@@ -27,7 +31,10 @@ export const previewExercise = (state, navigation, selectedExercise) => {
  * instrument
  * @author Alexander Burdiss
  * @since 1/13/21
- * @version 1.1.0
+ * @version 1.1.1
+ * @param {Object} state The current app state.
+ * @returns {Array} An array of all instrument exercises for the currently
+ * selected instrument.
  */
 export const getInstrumentExercises = (state) => {
   switch (state.instrument) {

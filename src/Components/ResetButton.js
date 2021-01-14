@@ -9,7 +9,9 @@ import {translate} from '../Translations/TranslationModel';
  * @description A styled button that is used as a reset button on lists.
  * @author Alexander Burdiss
  * @since 12/27/20
- * @version 1.0.0
+ * @version 1.0.1
+ * @param {Function} props.handler The function to call when the button is
+ * pressed.
  *
  * @component
  * @example

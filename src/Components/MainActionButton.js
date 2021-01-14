@@ -10,7 +10,10 @@ import {translate} from '../Translations/TranslationModel';
  * app. Basic styles are already applied.
  * @author Alexander Burdiss
  * @since 10/11/20
- * @version 1.0
+ * @version 1.0.1
+ * @param {Function} props.handler The function to call when the button is
+ * pressed.
+ * @param {String} props.text The text rendered on the button.
  *
  * @component
  * @example

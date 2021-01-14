@@ -18,6 +18,7 @@ import {translate} from '../Translations/TranslationModel';
  * @author Alexander Burdiss
  * @since 1/3/21
  * @version 1.0.0
+ * @param {Object} props.item The custom Routine item.
  *
  * @component
  * @example

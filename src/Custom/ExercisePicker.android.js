@@ -16,7 +16,10 @@ import {previewExercise, getInstrumentExercises} from './exercisePickerHelpers';
  * indicate whether or not the exercise is a favorite in the picker.
  * @author Alexander Burdiss
  * @since 1/13/21
- * @version 1.1.0
+ * @version 1.1.1
+ * @param {Number} props.selectedExercise The currently selected exercise.
+ * @param {Function} props.setSelectedExercise A function to update
+ * props.selectedExercise
  *
  * @component
  * @example
