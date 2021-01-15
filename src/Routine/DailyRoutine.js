@@ -37,7 +37,9 @@ const DailyRoutine = () => {
    * exercises and state.
    * @author Alexander Burdiss
    * @since 12/18/20
-   * @version 1.0.0
+   * @version 1.0.1
+   * @returns {Array} A daily routine of exercises ready to plug into the
+   * Routine component.
    */
   const generateDailyRoutine = () => {
     switch (state.instrument) {
@@ -66,10 +68,10 @@ const DailyRoutine = () => {
 /**
  * @function generateRoutine
  * @description Generates a routine of random exercises based on the users'
- * settings.
+ * settings and instrument selected.
  * @author Alexander Burdiss
  * @since 12/18/20
- * @version 1.0.0
+ * @version 1.0.1
  * @param {*} state The preferences state of the app.
  * @param {*} exercises The exercises for the selected instrument in state.
  * @returns An array of Numbers that can be passed into the Routine component.

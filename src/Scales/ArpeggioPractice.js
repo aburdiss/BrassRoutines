@@ -238,9 +238,9 @@ const ArpeggioPractice = () => {
    * form one string to display on the screen.
    * @author Alexander Burdiss
    * @since 10/12/20
-   * @version 1.0.1
+   * @version 1.0.2
    *
-   * @returns [String] array of all transpositions of a scale
+   * @returns {[String]} array of all transpositions of a scale
    */
   function createArpeggioArrayFromParts(scaleName) {
     const letterNames = [

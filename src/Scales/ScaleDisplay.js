@@ -8,7 +8,8 @@ import {colors} from '../Model/Model';
  * @description A styled text box that shows the currently selected scale
  * @author Alexander Burdiss
  * @since 10/11/20
- * @version 1.0.0
+ * @version 1.0.1
+ * @param {Text} props.children The text to display in this component.
  *
  * @component
  * @example

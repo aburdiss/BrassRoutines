@@ -35,8 +35,9 @@ const FavoritesRoutine = () => {
  * this component.
  * @author Alexander Burdiss
  * @since 1/13/21
- * @version 1.1.0
+ * @version 1.1.1
  * @param {[String]} state The array of items to be shuffled.
+ * @returns {Array} A shuffled array of the users' favorites.
  */
 const generateFavoritesRoutine = (state) => {
   let tempFavorites = shuffle(state.favorites);

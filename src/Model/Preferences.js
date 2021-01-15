@@ -6,8 +6,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  * @description Loads Data from Local Storage
  * @author Alexander Burdiss
  * @since 12/11/20
- * @version 1.0.1
+ * @version 1.0.2
  * @param {String} type Type of data to load.
+ * @returns {JSON|null} The stored value or null, depending on if the data is
+ * successfully retrieved.
  */
 export async function load() {
   try {

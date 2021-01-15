@@ -10,7 +10,10 @@ import {translate} from '../Translations/TranslationModel';
  * @description A component that renders the default list row on the listView.
  * @author Alexander Burdiss
  * @since 12/14/2020
- * @version 1.1.0
+ * @version 1.1.1
+ * @param {Function} props.onPress The function to call when this exercise is
+ * pressed
+ * @param {String} props.text The text to render in this row.
  *
  * @component
  * @example

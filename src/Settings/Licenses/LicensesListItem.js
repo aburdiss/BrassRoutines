@@ -9,6 +9,23 @@ import {
   useDarkMode,
 } from 'react-native-dynamic';
 
+/**
+ * @description
+ * @author Alexander Burdiss
+ * @date 12/17/20
+ * @version 1.0.1
+ * @param {*} props.image
+ * @param {*} props.userUrl
+ * @param {*} props.username
+ * @param {*} props.name
+ * @param {*} props.version
+ * @param {*} props.licenses
+ * @param {*} props.repository
+ * @param {*} props.licenseUrl
+ *
+ * @component
+ * @example
+ */
 const LicensesListItem = ({
   image,
   userUrl,
@@ -65,6 +82,18 @@ const LicensesListItem = ({
   );
 };
 
+/**
+ * @description
+ * @author Alexander Burdiss
+ * @since 12/17/20
+ * @version 1.0.1
+ * @param {*} props.url
+ * @param {Object} props.style Style to be applied to the element
+ * @param {String} props.children Text to be rendered inside this element.
+ *
+ * @component
+ * @example
+ */
 const Link = ({url, style, children}) => (
   <Text
     style={style}
