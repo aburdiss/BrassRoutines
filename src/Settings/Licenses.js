@@ -18,6 +18,7 @@ import {colors} from '../Model/Model';
 
 import Data from './Licenses/data';
 import SafeAreaView from 'react-native-safe-area-view';
+import {capitalize} from 'underscore.string';
 
 /**
  * @function extractNameFromGithubUrl
@@ -62,21 +63,6 @@ function sortDataByKey(data, key) {
   return data;
 }
 
-/**
- * @function capitalizeFirstLetter
- * @description Takes a string, and returns a version of the string with the
- * first letter capitalized.
- * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
- * @author Alexander Burdiss
- * @since 12/17/20
- * @version 1.0.1
- * @param {String} string The string to be transformed
- * @returns The input string with the first letter capitalized.
- */
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 let licenses = Object.keys(Data).map((key) => {
   let {licenses, ...license} = Data[key];
   let [name, version] = key.split('@');
@@ -89,7 +75,7 @@ let licenses = Object.keys(Data).map((key) => {
   let userUrl;
   let image;
   if (username) {
-    username = capitalizeFirstLetter(username);
+    username = capitalize(username);
     image = `http://github.com/${username}.png`;
     userUrl = `http://github.com/${username}`;
   }
