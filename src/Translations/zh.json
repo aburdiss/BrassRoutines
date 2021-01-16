@@ -17,9 +17,9 @@
   "Long Tones": "长音",
   "Slow Lip Slurs": "慢嘴唇连音",
   "Fast Lip Slurs": "快嘴唇连音",
-  "Single Note Articulation": "单音符点舌",
-  "Moving Note Articulation": "改变音符点舌",
-  "Scales": "大调音阶",
+  "Articulation": "单音符点舌",
+  "Coordination": "改变音符点舌",
+  "Major Scales": "大调音阶",
   "High Range": "高音",
   "Low Range": "高音",
 
@@ -53,5 +53,19 @@
 
   "Short": "短",
   "Medium": "中",
-  "Long": "长"
+  "Long": "长",
+
+  "A♭ Major": "A♭大尺度",
+  "A Major": "A大尺度",
+  "B♭ Major": "B♭大尺度",
+  "B Major": "B大尺度",
+  "C Major": "C大尺度",
+  "D♭ Major": "D♭大尺度",
+  "D Major": "D大尺度",
+  "E♭ Major": "E♭大尺度",
+  "E Major": "E大尺度",
+  "F Major": "F大尺度",
+  "F♯ Major": "F♯大尺度",
+  "G♭ Major": "G♭大尺度",
+  "G Major": "G大尺度"
 }
