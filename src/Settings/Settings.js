@@ -32,7 +32,13 @@ import {translate} from '../Translations/TranslationModel';
  * additional resources.
  * @author Alexander Burdiss
  * @since 12/14/20
- * @version 1.0
+ * @version 1.0.1
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Settings />
+```
  */
 const Settings = () => {
   const styles = useDynamicValue(dynamicStyles);

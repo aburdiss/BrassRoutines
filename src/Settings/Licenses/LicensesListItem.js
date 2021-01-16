@@ -10,21 +10,33 @@ import {
 } from 'react-native-dynamic';
 
 /**
- * @description
+ * @description A styled list item that contains links to the authors of the
+ * various softwares used throughout the app, and the users who contributed
+ * to them.
+ * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
  * @author Alexander Burdiss
  * @date 12/17/20
- * @version 1.0.1
- * @param {*} props.image
- * @param {*} props.userUrl
- * @param {*} props.username
- * @param {*} props.name
- * @param {*} props.version
- * @param {*} props.licenses
- * @param {*} props.repository
- * @param {*} props.licenseUrl
+ * @version 1.0.2
+ * @param {String} props.image The url of the image to display.
+ * @param {String} props.userUrl The url of the author of this software.
+ * @param {String} props.username The username of the author of the software
+ * using this license.
+ * @param {String} props.name The name of the author of the software using this
+ * license.
+ * @param {String} props.version The version number of the software using this
+ * license.
+ * @param {String} props.licenses The text to render inside the main section
+ * of this license link.
+ * @param {String} props.repository The url of the Github repository to link
+ * to.
+ * @param {String} props.licenseUrl The url to the currently referenced
+ * license.
  *
  * @component
  * @example
+ * ```jsx
+<LicensesListItem {...item} />
+```
  */
 const LicensesListItem = ({
   image,
@@ -83,16 +95,23 @@ const LicensesListItem = ({
 };
 
 /**
- * @description
+ * @description One link item that opens the main software link in the
+ * LicensesListItem component. Text is limited to one line.
+ * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
  * @author Alexander Burdiss
  * @since 12/17/20
  * @version 1.0.1
- * @param {*} props.url
+ * @param {String} props.url The url to open when the element is tapped.
  * @param {Object} props.style Style to be applied to the element
  * @param {String} props.children Text to be rendered inside this element.
  *
  * @component
  * @example
+ * ```jsx
+<Link style={styles.text} url={licenseUrl}>
+  {licenses}
+</Link>
+```
  */
 const Link = ({url, style, children}) => (
   <Text

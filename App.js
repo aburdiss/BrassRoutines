@@ -36,6 +36,19 @@ const Stack = createStackNavigator();
  * favorites.
  * @author Alexander Burdiss
  * @since 12/2/20
+ * @version 1.0.1
+ * @param {Object} navigation The navigation object provided by React 
+ * Navigation
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Tab.Screen
+  name="Home"
+  component={HomeStack}
+  options={{title: translate('Routine')}}
+/>
+```
  */
 const HomeStack = ({navigation}) => {
   const DARKMODE = useDarkMode();
@@ -90,6 +103,19 @@ const HomeStack = ({navigation}) => {
  * and can open each element in another screen.
  * @author Alexander Burdiss
  * @since 12/2/20
+ * @version 1.0.1
+ * @param {Object} navigation The navigation object provided by React
+ * Navigation
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Tab.Screen
+  name="List"
+  component={ListStack}
+  options={{title: translate('All Exercises')}}
+/>
+```
  */
 const ListStack = ({navigation}) => {
   const {state} = useContext(PreferencesContext);
@@ -134,6 +160,19 @@ const ListStack = ({navigation}) => {
  * their own routine, and save it to local storage.
  * @author Alexander Burdiss
  * @since 12/2/20
+ * @version 1.0.1
+ * @param {Object} navigation The navigation object provided by React
+ * Navigation
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Tab.Screen
+              name="Custom"
+              component={CustomStack}
+              options={{title: translate('Custom')}}
+            />
+ ```
  */
 const CustomStack = ({navigation}) => {
   const {state} = useContext(PreferencesContext);
@@ -200,8 +239,21 @@ const CustomStack = ({navigation}) => {
  * such as fingering charts could be added here.
  * @author Alexander Burdiss
  * @since 12/2/20
+ * @version 1.0.1
+ * @param {Object} navigation The navigation object provided by React
+ * Navigation
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Tab.Screen
+  name="Settings"
+  component={SettingsStack}
+  options={{title: translate('Settings')}}
+/>
+ ```
  */
-const SettingsStack = () => {
+const SettingsStack = ({navigation}) => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -239,21 +291,49 @@ const SettingsStack = () => {
 };
 
 setI18nConfig();
+
 /**
  * @description The main tab navigation of the app.
  * @author Alexander Burdiss
  * @since 12/2/20
+ * @version 1.0.1
+ * 
+ * @component
+ * @example
+ * ```jsx
+<App />
+```
  */
 const App = () => {
   const DARKMODE = useDarkMode();
 
-  useEffect(() => {
-    RNLocalize.addEventListener('change', handleLocalizationChange);
-    return () => {
-      RNLocalize.removeEventListener('change', handleLocalizationChange);
-    };
-  }, []);
+  useEffect(
+    /**
+     * @function App~useEffect~updateLocalizationOnChange
+     * @description On App mount and unmount, check to see if the localization
+     * has changed, and translate the app accordingly
+     * @author Alexander Burdiss
+     * @since 1/3/21
+     * @version 1.0.1
+     * @returns {Function} A callback to clean up the localization settings on
+     * component unmount.
+     */
+    function updateLocalizationOnChange() {
+      RNLocalize.addEventListener('change', handleLocalizationChange);
+      return () => {
+        RNLocalize.removeEventListener('change', handleLocalizationChange);
+      };
+    },
+    [],
+  );
 
+  /**
+   * @function App~handleLocalizationChange
+   * @description Updates internationalization settings in the app.
+   * @author Alexander Burdiss
+   * @since 1/3/21
+   * @version 1.0.1
+   */
   const handleLocalizationChange = () => {
     setI18nConfig()
       .then(() => this.forceUpdate())
