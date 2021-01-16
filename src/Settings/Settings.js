@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {SectionList, Text} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {
@@ -25,7 +25,7 @@ import {
   SegmentedFilterListItem,
   PickerListItem,
 } from './SettingsListItems';
-import {translate} from '../Translations/TranslationModel';
+import {setI18nConfig, translate} from '../Translations/TranslationModel';
 
 /**
  * @description A View that allows the user to set custom settings, or view
@@ -43,6 +43,8 @@ import {translate} from '../Translations/TranslationModel';
 const Settings = () => {
   const styles = useDynamicValue(dynamicStyles);
   const {state, dispatch} = useContext(PreferencesContext);
+
+  useEffect(() => {}, []);
 
   return (
     <SafeAreaView style={styles.sectionList}>

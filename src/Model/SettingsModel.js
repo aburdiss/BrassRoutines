@@ -11,39 +11,11 @@ export const INSTRUMENT = [
   {
     id: 'A',
     type: 'picker',
-    values: [
-      {
-        label: translate('Horn'),
-        value: 'horn',
-        color: colors.orangeLight,
-      },
-      {
-        label: translate('Trumpet'),
-        value: 'trumpet',
-        color: colors.orangeLight,
-      },
-      {
-        label: translate('Trombone'),
-        value: 'trombone',
-        color: colors.orangeLight,
-      },
-      {
-        label: translate('Euphonium'),
-        value: 'euphonium',
-        color: colors.orangeLight,
-      },
-      {
-        label: translate('Tuba'),
-        value: 'tuba',
-        color: colors.orangeLight,
-      },
-    ],
     setting: 'instrument',
   },
   {
     id: 'B',
     type: 'segmentedFilter',
-    choices: [translate('Treble Clef'), translate('Bass Clef')],
     setting: 'bassClef',
   },
 ];
@@ -52,7 +24,6 @@ export const ROUTINE = [
   {
     id: '8',
     type: 'segmentedFilter',
-    choices: [translate('Short'), translate('Medium'), translate('Long')],
     setting: 'routineLength',
   },
   {

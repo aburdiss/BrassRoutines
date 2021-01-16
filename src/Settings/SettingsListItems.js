@@ -299,13 +299,25 @@ export const ButtonListItem = ({item, dispatch}) => {
 ```
  */
 export const SegmentedFilterListItem = ({item, state, dispatch}) => {
+  let choices;
+  switch (item.setting) {
+    case 'routineLength':
+      choices = [translate('Short'), translate('Medium'), translate('Long')];
+      break;
+    case 'bassClef':
+      choices = [translate('Treble Clef'), translate('Bass Clef')];
+      break;
+    default:
+      throw new Error('Item Setting does not match any choices.');
+  }
+
   const styles = useDynamicValue(dynamicStyles);
   // Hide Filter if the setting is "bassClef" and instrument is not Euphonium
   let isHidden = state.instrument != 'euphonium' && item.setting == 'bassClef';
   return isHidden ? null : (
     <View style={styles.listSegmentedRowContainer}>
       <SegmentedControl
-        values={item.choices}
+        values={choices}
         selectedIndex={state[item.setting]}
         onChange={(event) => {
           let index = event.nativeEvent.selectedSegmentIndex;
@@ -346,6 +358,41 @@ export const PickerListItem = ({item, state, dispatch}) => {
     setCurrentInstrument(state.instrument);
   }, [state.instrument]);
 
+  let values;
+  switch (item.setting) {
+    case 'instrument':
+      values = [
+        {
+          label: translate('Horn'),
+          value: 'horn',
+          color: colors.orangeLight,
+        },
+        {
+          label: translate('Trumpet'),
+          value: 'trumpet',
+          color: colors.orangeLight,
+        },
+        {
+          label: translate('Trombone'),
+          value: 'trombone',
+          color: colors.orangeLight,
+        },
+        {
+          label: translate('Euphonium'),
+          value: 'euphonium',
+          color: colors.orangeLight,
+        },
+        {
+          label: translate('Tuba'),
+          value: 'tuba',
+          color: colors.orangeLight,
+        },
+      ];
+      break;
+    default:
+      throw new Error('Item setting does not match any values');
+  }
+
   return (
     <View style={styles.listSegmentedRowContainer}>
       <RNPickerSelect
@@ -354,7 +401,7 @@ export const PickerListItem = ({item, state, dispatch}) => {
           dispatch({type: 'SET_SETTING', payload: {instrument: value}});
         }}
         value={currentInstrument}
-        items={item.values}
+        items={values}
         placeholder={{}}
         style={{
           iconContainer: {
