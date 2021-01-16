@@ -18,7 +18,7 @@ import {translate} from '../Translations/TranslationModel';
  * render the copyright information, so it is not translated.
  * @author Alexander Burdiss
  * @since 1/3/21
- * @version 1.0.1
+ * @version 1.0.2
  * @param {Object} props.item The text to be rendered in the list item.
  * 
  * @component
@@ -31,7 +31,10 @@ export const TextListItem = ({item}) => {
   const styles = useDynamicValue(dynamicStyles);
   return (
     <View style={styles.listRowContainer}>
-      <Text style={styles.listRowText} accessibilityRole="text">
+      <Text
+        maxFontSizeMultiplier={1.8}
+        style={styles.listRowText}
+        accessibilityRole="text">
         {item.value}
       </Text>
     </View>
@@ -42,7 +45,7 @@ export const TextListItem = ({item}) => {
  * @description A rendered Link list item with a chevron and theme colored text
  * @author Alexander Burdiss
  * @since 11/15/20
- * @version 1.0.1
+ * @version 1.0.2
  * @param {Object} props.item The list item containing a link and some text.
  * @param {Object} props.state The app state, containing all of the user's
  * preferences.
@@ -74,7 +77,9 @@ export const LinkListItem = ({item, state}) => {
         );
       }}>
       <View style={styles.listRowContainer}>
-        <Text style={styles.linkText}>{translate(item.value)}</Text>
+        <Text maxFontSizeMultiplier={1.8} style={styles.linkText}>
+          {translate(item.value)}
+        </Text>
         <Ionicons
           name={'chevron-forward-outline'}
           size={25}
@@ -91,7 +96,7 @@ export const LinkListItem = ({item, state}) => {
  * a similar function.
  * @author Alexander Burdiss
  * @since 12/17/20
- * @version 1.0.1
+ * @version 1.0.2
  * @param {Object} props.item The Internal list item to be rendered containing
  * a Component name to render to, and the text to be rendered.
  * 
@@ -117,7 +122,9 @@ export const InternalListItem = ({item}) => {
         navigation.navigate(item.component);
       }}>
       <View style={styles.listRowContainer}>
-        <Text style={styles.linkText}>{translate(item.value)}</Text>
+        <Text maxFontSizeMultiplier={1.8} style={styles.linkText}>
+          {translate(item.value)}
+        </Text>
         <Ionicons
           name={'chevron-forward-outline'}
           size={25}
@@ -132,7 +139,7 @@ export const InternalListItem = ({item}) => {
  * @description A rendered Switch list item that updates saved preferences.
  * @author Alexander Burdiss
  * @since 1/5/21
- * @version 1.0.1
+ * @version 1.0.2
  * @param {Object} props.item The data to be rendered in this component.
  * @param {Object} props.state The current state of the app, including user
  * preferences.
@@ -167,7 +174,9 @@ export const SwitchListItem = ({item, state, dispatch}) => {
       accessibilityHint={
         translate('Toggles setting') + ' ' + translate(item.value)
       }>
-      <Text style={styles.listRowText}>{translate(item.value)}</Text>
+      <Text maxFontSizeMultiplier={1.8} style={styles.listRowText}>
+        {translate(item.value)}
+      </Text>
       <Switch value={state[item.setting]} onValueChange={updateValue} />
     </Pressable>
   );
@@ -177,7 +186,7 @@ export const SwitchListItem = ({item, state, dispatch}) => {
  * @description A rendered Button list item that updates saved preferences.
  * @author Alexander Burdiss
  * @since 12/17/20
- * @version 1.0.1
+ * @version 1.0.2
  * @param {Object} props.item The data to be rendered in this list item
  * @param {Function} props.dispatch A function to call a reducer and update
  * app state.
@@ -259,7 +268,9 @@ export const ButtonListItem = ({item, dispatch}) => {
         opacity: pressed ? 0.7 : 1,
       })}>
       <View style={styles.listButtonRowContainer}>
-        <Text style={styles.linkText}>{translate(item.value)}</Text>
+        <Text maxFontSizeMultiplier={1.8} style={styles.linkText}>
+          {translate(item.value)}
+        </Text>
         <Ionicons name={item.icon} size={22} color={styles.linkText.color} />
       </View>
     </Pressable>

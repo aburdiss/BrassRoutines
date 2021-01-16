@@ -8,19 +8,35 @@ import HomeButton from './Components/HomeButton';
 import {colors} from './Model/Model';
 import {PreferencesContext} from './Model/Preferences';
 import {translate} from './Translations/TranslationModel';
+import {capitalize} from 'underscore.string';
+import {ScrollView} from 'react-native-gesture-handler';
 
+/**
+ * @description The initial view when the app starts.
+ * @author Alexander Burdiss
+ * @since 12/3/20
+ * @version 1.2.0
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Home />
+```
+ */
 const Home = () => {
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
   const {state} = useContext(PreferencesContext);
 
   /**
+   * @function Home~launchDailyRoutine
    * @description Launches the main function of the app, the daily routine.
    * This function checks to make sure the configuration will allow a daily
    * routine to exist, and will alert the user if not, and will not allow them
    * to navigate if not.
    * @author Alexander Burdiss
    * @since 1/3/21
+   * @version 1.0.1
    */
   const launchDailyRoutine = () => {
     if (
@@ -56,10 +72,12 @@ const Home = () => {
   };
 
   /**
+   * @function Home~launchFavoritesRoutine
    * @description Launches a daily routine with the favorites the user has
    * selected.
    * @author Alexander Burdiss
    * @since 1/3/21
+   * @version 1.0.1
    */
   const launchFavoritesRoutine = () => {
     if (state.favorites.length === 0) {
@@ -69,46 +87,34 @@ const Home = () => {
     }
   };
 
-  /**
-   * @description Capitalizes the first letter of a word. Used to take the
-   * instrument name in state and pass it into the translate funciton.
-   * https://flaviocopes.com/how-to-uppercase-first-letter-javascript/
-   * @author Alexander Burdiss
-   * @since 1/3/21
-   */
-  const capitalize = (input) => {
-    if (typeof input !== 'string') {
-      return '';
-    }
-    return input.charAt(0).toUpperCase() + input.slice(1);
-  };
-
   return (
     <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
       }}>
-      <HomeButton
-        accessibilityHint={translate('Starts daily routine')}
-        onPress={launchDailyRoutine}>
-        {translate('Begin Routine') +
-          ' (' +
-          translate(capitalize(state?.instrument)) +
-          ')'}
-      </HomeButton>
-      <HomeButton
-        accessibilityHint={translate('Randomizes favorite exercises')}
-        onPress={launchFavoritesRoutine}>
-        {translate('Randomize Favorites')}
-      </HomeButton>
-      <HomeButton
-        accessibilityHint={translate('Opens Scale Practice')}
-        onPress={() => {
-          navigation.navigate('Scale Practice');
-        }}>
-        {translate('Scale Practice')}
-      </HomeButton>
+      <ScrollView>
+        <HomeButton
+          accessibilityHint={translate('Starts daily routine')}
+          onPress={launchDailyRoutine}>
+          {translate('Begin Routine') +
+            ' (' +
+            translate(capitalize(state?.instrument)) +
+            ')'}
+        </HomeButton>
+        <HomeButton
+          accessibilityHint={translate('Randomizes favorite exercises')}
+          onPress={launchFavoritesRoutine}>
+          {translate('Randomize Favorites')}
+        </HomeButton>
+        <HomeButton
+          accessibilityHint={translate('Opens Scale Practice')}
+          onPress={() => {
+            navigation.navigate('Scale Practice');
+          }}>
+          {translate('Scale Practice')}
+        </HomeButton>
+      </ScrollView>
     </SafeAreaView>
   );
 };

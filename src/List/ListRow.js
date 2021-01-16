@@ -10,7 +10,7 @@ import {translate} from '../Translations/TranslationModel';
  * @description A component that renders the default list row on the listView.
  * @author Alexander Burdiss
  * @since 12/14/2020
- * @version 1.1.1
+ * @version 1.1.2
  * @param {Function} props.onPress The function to call when this exercise is
  * pressed
  * @param {String} props.text The text to render in this row.
@@ -52,7 +52,9 @@ const ListRow = ({onPress, text}) => {
             ? colors.systemGray5Dark
             : colors.systemGray5Light,
         }}>
-        <Text style={{color: DARKMODE ? colors.white : colors.black}}>
+        <Text
+          maxFontSizeMultiplier={1.8}
+          style={{color: DARKMODE ? colors.white : colors.black}}>
           {getExerciseDisplayName(text, state)}
         </Text>
         <View
