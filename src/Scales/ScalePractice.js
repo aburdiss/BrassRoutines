@@ -322,7 +322,18 @@ const ScalePractice = () => {
    */
   const debouncedGenerateScales = useCallback(
     debounce(generateScales, 150, true),
-    [],
+    [
+      majorSwitch,
+      naturalMinorSwitch,
+      harmonicMinorSwitch,
+      melodicMinorSwitch,
+      majorModesSwitch,
+      melodicMinorModesSwitch,
+      bluesSwitch,
+      pentatonicSwitch,
+      octatonicSwtich,
+      wholeToneSwitch,
+    ],
   );
 
   return (

@@ -275,7 +275,19 @@ const ArpeggioPractice = () => {
    */
   const debouncedGenerateArpeggios = useCallback(
     debounce(generateArpeggios, 150, true),
-    [],
+    [
+      majorSwitch,
+      minorSwitch,
+      augmentedSwitch,
+      diminishedSwitch,
+      dominantSeventhSwitch,
+      majorSeventhSwitch,
+      minorSeventhSwitch,
+      minorMajorSeventhSwitch,
+      augmentedSeventhSwitch,
+      halfDiminishedSeventhSwitch,
+      diminishedSeventhSwitch,
+    ],
   );
 
   return (
