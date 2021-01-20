@@ -44,10 +44,10 @@
   "Custom Routines": "Custom Routines",
   "Create": "Create",
   "Save": "Save",
-  "Delete Routine": "Delete Routine",
   "(1 exercise)": "(1 exercise)",
   "exercises": "exercises",
   "Create Routine": "Create Routine",
+  "Delete Routine": "Delete Routine",
   "Save Routine": "Save Routine",
   "Edit Routine": "Edit Routine",
   "Routine Name": "Routine Name",
@@ -81,12 +81,11 @@
   "Visit TromboneTools": "Visit TromboneTools",
   "About": "About",
   "Send Feedback": "Send Feedback",
+  "Licenses": "Licenses",
 
   "Short": "Short",
   "Medium": "Medium",
   "Long": "Long",
-
-  "Licenses": "Licenses",
 
   "Scale Practice": "Scale Practice",
   "Arpeggio Practice": "Arpeggio Practice",
