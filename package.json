@@ -59,7 +59,7 @@
       "node"
     ],
     "setupFiles": [
-      "./jest/setup.js",
+      "<rootDir>/jest/setup.js",
       "./node_modules/react-native-gesture-handler/jestSetup.js"
     ],
     "moduleNameMapper": {
@@ -69,7 +69,7 @@
       "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(react-native|react-native-image-zoom-viewer|react-native-animatable|react-native-modal|react-native-dynamic|react-native-iphone-x-helper|react-native-reanimated|react-native-vector-icons|react-native-screens|react-native-splash-screen|react-navigation-tabs|@?react-navigation|react-native-gesture-handler|@react-native-community/picker)/)"
+      "node_modules/(?!(react-native|react-native-image-zoom-viewer|react-native-animatable|react-native-modal|react-native-dynamic|react-native-iphone-x-helper|react-native-reanimated|react-native-vector-icons|react-native-screens|react-native-splash-screen|react-navigation-tabs|@?react-navigation|react-native-gesture-handler|@react-native-community/segmented-control|react-native-picker-select|@react-native-picker/picker)/)"
     ]
   }
 }
