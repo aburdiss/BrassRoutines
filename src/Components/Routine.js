@@ -1,5 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {View, Image, Alert, Pressable} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import SafeAreaView from 'react-native-safe-area-view';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {
+  useDynamicStyleSheet,
+  DynamicStyleSheet,
+  DynamicValue,
+} from 'react-native-dynamic';
 import {
   colors,
   getHornImagePath,
@@ -9,17 +17,9 @@ import {
   getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
 } from '../Model/Model';
-import HeaderButton from '../Components/HeaderButton';
-import {useNavigation} from '@react-navigation/native';
-import SafeAreaView from 'react-native-safe-area-view';
-import {PreferencesContext} from '../Model/Preferences';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {
-  useDynamicStyleSheet,
-  DynamicStyleSheet,
-  DynamicValue,
-} from 'react-native-dynamic';
 import ZoomModal from './ZoomModal';
+import HeaderButton from '../Components/HeaderButton';
+import {PreferencesContext} from '../Model/Preferences';
 import {translate} from '../Translations/TranslationModel';
 
 /**
