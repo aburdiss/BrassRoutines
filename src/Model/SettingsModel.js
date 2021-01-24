@@ -1,10 +1,8 @@
 import DeviceInfo from 'react-native-device-info';
-import {colors} from './Model';
-import {translate} from '../Translations/TranslationModel';
 
-export const GOOGLE_PLAY_LINK =
+const GOOGLE_PLAY_LINK =
   'https://play.google.com/store/apps/developer?id=Alexander+Burdiss';
-export const APPLE_STORE_LINK =
+const APPLE_STORE_LINK =
   'https://apps.apple.com/us/developer/alexander-burdiss/id1496727055';
 
 export const INSTRUMENT = [
