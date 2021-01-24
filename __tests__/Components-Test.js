@@ -7,7 +7,7 @@ import MainActionButton from '../src/Components/MainActionButton';
 import ResetButton from '../src/Components/ResetButton';
 import Routine from '../src/Components/Routine';
 import ZoomModal from '../src/Components/ZoomModal';
-import MockNavigator from '../src/_TestComponents/MockNavigator';
+import MockNavigator from '../jest/MockNavigator';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';

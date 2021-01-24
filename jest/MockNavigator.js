@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {PreferencesContext} from '../Model/Preferences';
+import {PreferencesContext} from '../src/Model/Preferences';
 
 const Stack = createStackNavigator();
 const MockedNavigator = ({component, params = {}}) => {
