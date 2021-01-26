@@ -5,15 +5,14 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
+import {debounce, random} from 'underscore';
 
 import ScaleDisplay from './ScaleDisplay';
 import AllScalesButton from './AllScalesButton';
 import MainActionButton from '../Components/MainActionButton';
 import SwitchRow from './SwitchRow';
-
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
-import {debounce, random} from 'underscore';
 
 /**
  * @description A View that allows the user to randomize all of the scales in

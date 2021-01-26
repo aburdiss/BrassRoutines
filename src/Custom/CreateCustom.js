@@ -19,6 +19,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 
 import MainActionButton from '../Components/MainActionButton';
 import ResetButton from '../Components/ResetButton';
+import HeaderButton from '../Components/HeaderButton';
 import AddToListButton from '../Components/AddToListButton';
 import ExercisePicker from './ExercisePicker';
 import SwipeableRow from './SwipeableRow';
@@ -53,6 +54,40 @@ const CreateCustom = () => {
   const [editMode, setEditMode] = useState(false);
   const [routineCurrentIndex, setRoutineCurrentIndex] = useState(undefined);
   const [isPortrait, setIsPortrait] = useState(true);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <HeaderButton handler={handleBackButtonPress}>Back</HeaderButton>
+      ),
+    });
+  }, [navigation]);
+
+  /**
+   * @function CreateCustom~handleBackButtonPress
+   * @description Alerts the user that they will lose changes, and navigates
+   * them on Alert button press.
+   * @author Alexander Burdiss
+   * @since 1/25/21
+   * @version 1.0.0
+   */
+  function handleBackButtonPress() {
+    Alert.alert(
+      translate('All changes will be lost!'),
+      translate('This cannot be undone!'),
+      [
+        {
+          text: translate('Exit without saving'),
+          onPress: () => navigation.goBack(),
+        },
+        {
+          text: translate('Cancel'),
+          style: 'cancel',
+        },
+      ],
+    );
+  }
+
   useEffect(
     /**
      * @function CreateCustom~useEffect~setupComponent
