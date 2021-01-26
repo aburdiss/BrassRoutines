@@ -1,7 +1,8 @@
-import React, {useContext, useState} from 'react';
-import {View, Image, Alert, Pressable} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {View, Image, Alert, Pressable, Text} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
+import Modal from 'react-native-modal';
 import {
   DynamicValue,
   DynamicStyleSheet,
@@ -37,9 +38,40 @@ import {translate} from '../Translations/TranslationModel';
 const ExerciseDetail = () => {
   const styles = useDynamicValue(dynamicStyles);
   const [zoomModalIsShowing, setZoomModalIsShowing] = useState(false);
+  const [imagePath, setImagePath] = useState(undefined);
+  const [
+    changeInstrumentModalIsShowing,
+    setChangeInstrumentModalIsShowing,
+  ] = useState(false);
   const {state, dispatch} = useContext(PreferencesContext);
   const route = useRoute();
-  let getInstrumentImagePath;
+
+  useEffect(
+    function getInstrumentImagePath() {
+      switch (state.instrument) {
+        case 'horn':
+          setImagePath(getHornImagePath(route.params.item));
+          break;
+        case 'trumpet':
+          setImagePath(getTrumpetImagePath(route.params.item));
+          break;
+        case 'trombone':
+          setImagePath(getTromboneImagePath(route.params.item));
+          break;
+        case 'euphonium':
+          if (state.bassClef == 1) {
+            setImagePath(getEuphoniumBassClefImagePath(route.params.item));
+          } else {
+            setImagePath(getEuphoniumTrebleClefImagePath(route.params.item));
+          }
+          break;
+        case 'tuba':
+          setImagePath(getTubaImagePath(route.params.item));
+          break;
+      }
+    },
+    [changeInstrumentModalIsShowing, state.instrument, state.bassClef],
+  );
 
   /**
    * @function ExerciseDetail~addToFavorites
@@ -65,31 +97,31 @@ const ExerciseDetail = () => {
     }
   }
 
-  switch (route.params.instrument) {
-    case 'horn':
-      getInstrumentImagePath = getHornImagePath;
-      break;
-    case 'trumpet':
-      getInstrumentImagePath = getTrumpetImagePath;
-      break;
-    case 'trombone':
-      getInstrumentImagePath = getTromboneImagePath;
-      break;
-    case 'euphonium':
-      if (state.bassClef == 1) {
-        getInstrumentImagePath = getEuphoniumBassClefImagePath;
-      } else {
-        getInstrumentImagePath = getEuphoniumTrebleClefImagePath;
-      }
-      break;
-    case 'tuba':
-      getInstrumentImagePath = getTubaImagePath;
-      break;
+  /**
+   * @function ExerciseDetail~toggleChangeInstrumentModal
+   * @description Opens the change instrument modal, to view the current
+   * exercise in a different instrument.
+   * @author Alexander Burdiss
+   * @since 1/25/21
+   * @version 1.0.0
+   */
+  function toggleChangeInstrumentModal() {
+    setChangeInstrumentModalIsShowing(true);
   }
 
   return (
     <SafeAreaView style={styles.container} forceInset="top">
       <View style={styles.heartContainer} accessibilityRole="toolbar">
+        <Pressable
+          onPress={toggleChangeInstrumentModal}
+          accessibilityLabel={'Opens change instrument modal'}
+          accessible={true}>
+          <Ionicons
+            name="menu-outline"
+            size={28}
+            color={styles.iconColor.color}
+          />
+        </Pressable>
         <Pressable
           onPress={addToFavorites}
           accessibilityLabel={
@@ -108,8 +140,8 @@ const ExerciseDetail = () => {
             size={28}
             color={
               state.favorites.includes(route.params.item)
-                ? colors.pinkLight
-                : colors.orangeLight
+                ? styles.heartSelectedColor.color
+                : styles.iconColor.color
             }
             style={styles.heart}
           />
@@ -122,17 +154,77 @@ const ExerciseDetail = () => {
         onPress={() => {
           setZoomModalIsShowing(true);
         }}>
-        <Image
-          source={getInstrumentImagePath(route.params.item)}
-          style={styles.image}
-        />
+        <Image source={imagePath} style={styles.image} />
       </Pressable>
       <ZoomModal
-        imagePath={getInstrumentImagePath(route.params.item)}
+        imagePath={imagePath}
         zoomModalIsShowing={zoomModalIsShowing}
         setZoomModalIsShowing={setZoomModalIsShowing}
       />
+      <Modal
+        isVisible={changeInstrumentModalIsShowing}
+        onSwipeComplete={() => setChangeInstrumentModalIsShowing(false)}
+        swipeDirection={['down']}
+        style={{margin: 0, justifyContent: 'flex-end'}}
+        onBackdropPress={() => setChangeInstrumentModalIsShowing(false)}>
+        <SafeAreaView style={styles.changeInstrumentModal}>
+          <InstrumentButton
+            text="Horn"
+            setIsShowing={setChangeInstrumentModalIsShowing}
+          />
+          <InstrumentButton
+            text="Trumpet"
+            setIsShowing={setChangeInstrumentModalIsShowing}
+          />
+          <InstrumentButton
+            text="Trombone"
+            setIsShowing={setChangeInstrumentModalIsShowing}
+          />
+          <InstrumentButton
+            text="Euphonium"
+            setIsShowing={setChangeInstrumentModalIsShowing}
+          />
+          <InstrumentButton
+            text="Tuba"
+            setIsShowing={setChangeInstrumentModalIsShowing}
+          />
+        </SafeAreaView>
+      </Modal>
     </SafeAreaView>
+  );
+};
+
+/**
+ * @todo Separate into separate component
+ * @todo Style this to work with dark mode.
+ */
+const InstrumentButton = ({text, setIsShowing}) => {
+  const {state, dispatch} = useContext(PreferencesContext);
+
+  return (
+    <Pressable
+      onPress={() => {
+        console.log(text.toLowerCase());
+        dispatch({
+          type: 'SET_SETTING',
+          payload: {instrument: text.toLowerCase()},
+        });
+        setIsShowing(false);
+      }}
+      style={
+        {
+          // padding: 20,
+        }
+      }>
+      <Text
+        style={{
+          padding: 20,
+          backgroundColor:
+            state.instrument == text.toLowerCase() ? 'orange' : null,
+        }}>
+        {text}
+      </Text>
+    </Pressable>
   );
 };
 
@@ -140,6 +232,11 @@ const dynamicStyles = new DynamicStyleSheet({
   container: {
     flex: 1,
     backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
+  },
+  changeInstrumentModal: {
+    backgroundColor: new DynamicValue(colors.white, colors.systemGray5Dark),
+    width: '100%',
+    marginHorizontal: 0,
   },
   imageContainer: {
     flex: 1,
@@ -151,6 +248,8 @@ const dynamicStyles = new DynamicStyleSheet({
     resizeMode: 'contain',
   },
   heartContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     alignItems: 'flex-end',
     zIndex: 5,
     marginBottom: -34,
@@ -159,6 +258,12 @@ const dynamicStyles = new DynamicStyleSheet({
     paddingRight: 10,
     paddingTop: 6,
     opacity: 0.8,
+  },
+  heartSelectedColor: {
+    color: new DynamicValue(colors.pinkLight, colors.pinkDark),
+  },
+  iconColor: {
+    color: new DynamicValue(colors.orangeLight, colors.orangeDark),
   },
 });
 
