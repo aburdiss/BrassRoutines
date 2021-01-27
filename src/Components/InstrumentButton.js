@@ -28,7 +28,6 @@ const InstrumentButton = ({text, setIsShowing}) => {
   return (
     <Pressable
       onPress={() => {
-        console.log(text.toLowerCase());
         dispatch({
           type: 'SET_SETTING',
           payload: {instrument: text.toLowerCase()},

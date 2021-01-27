@@ -3,6 +3,7 @@ import {Pressable, View, Text} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
 import {colors} from '../Model/Model';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {translate} from '../Translations/TranslationModel';
 
 /**
  * @description A styled button that renders on the home page of the app. This
@@ -33,6 +34,7 @@ const HomeButton = ({onPress, children, onLongPress}) => {
         onLongPress={onLongPress}
         style={({pressed}) => ({
           padding: 20,
+          paddingBottom: children.startsWith('Begin Routine') ? 5 : 20,
           marginTop: 15,
           marginHorizontal: 10,
           backgroundColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
@@ -47,7 +49,6 @@ const HomeButton = ({onPress, children, onLongPress}) => {
           },
           shadowOpacity: 0.23,
           shadowRadius: 2.62,
-
           elevation: 4,
         })}>
         <View
@@ -61,7 +62,6 @@ const HomeButton = ({onPress, children, onLongPress}) => {
               fontSize: 20,
               color: colors.black,
               textAlign: 'right',
-              paddingLeft: 20,
             }}>
             {children}
           </Text>
@@ -74,6 +74,15 @@ const HomeButton = ({onPress, children, onLongPress}) => {
             }}
           />
         </View>
+        {children.startsWith('Begin Routine') ? (
+          <Text
+            style={{
+              alignSelf: 'flex-end',
+              paddingRight: 27,
+            }}>
+            {translate('Hold to change instrument')}
+          </Text>
+        ) : null}
       </Pressable>
     </View>
   );
