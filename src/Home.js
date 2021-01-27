@@ -1,8 +1,9 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDarkMode} from 'react-native-dynamic';
 import SafeAreaView from 'react-native-safe-area-view';
+import {Modal} from 'react-native-modal';
 
 import HomeButton from './Components/HomeButton';
 import {colors} from './Model/Model';
@@ -10,6 +11,7 @@ import {PreferencesContext} from './Model/Preferences';
 import {translate} from './Translations/TranslationModel';
 import {capitalize} from 'underscore.string';
 import {ScrollView} from 'react-native-gesture-handler';
+import ChangeInstrumentModal from './Components/ChangeInstrumentModal';
 
 /**
  * @description The initial view when the app starts.
@@ -27,6 +29,10 @@ const Home = () => {
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
   const {state} = useContext(PreferencesContext);
+  const [
+    changeInstrumentModalIsShowing,
+    setChangeInstrumentModalIsShowing,
+  ] = useState(false);
 
   /**
    * @function Home~launchDailyRoutine
@@ -96,7 +102,8 @@ const Home = () => {
       <ScrollView>
         <HomeButton
           accessibilityHint={translate('Starts daily routine')}
-          onPress={launchDailyRoutine}>
+          onPress={launchDailyRoutine}
+          onLongPress={() => setChangeInstrumentModalIsShowing(true)}>
           {translate('Begin Routine') +
             ' (' +
             translate(capitalize(state?.instrument)) +
@@ -115,6 +122,10 @@ const Home = () => {
           {translate('Scale Practice')}
         </HomeButton>
       </ScrollView>
+      <ChangeInstrumentModal
+        changeInstrumentModalIsShowing={changeInstrumentModalIsShowing}
+        setChangeInstrumentModalIsShowing={setChangeInstrumentModalIsShowing}
+      />
     </SafeAreaView>
   );
 };

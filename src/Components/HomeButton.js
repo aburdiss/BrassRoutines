@@ -20,7 +20,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
  *     Hello, World!
  *   </HomeButton>
  */
-const HomeButton = ({onPress, children}) => {
+const HomeButton = ({onPress, children, onLongPress}) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -30,6 +30,7 @@ const HomeButton = ({onPress, children}) => {
         accessibilityLabel={children}
         accessibilityRole="link"
         onPress={onPress}
+        onLongPress={onLongPress}
         style={({pressed}) => ({
           padding: 20,
           marginTop: 15,

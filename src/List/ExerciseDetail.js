@@ -21,6 +21,8 @@ import {
 } from '../Model/Model';
 import ZoomModal from '../Components/ZoomModal';
 import {translate} from '../Translations/TranslationModel';
+import InstrumentButton from '../Components/InstrumentButton';
+import ChangeInstrumentModal from '../Components/ChangeInstrumentModal';
 
 /**
  * @description Shows an individual exercise, and allows the user to select the
@@ -32,8 +34,6 @@ import {translate} from '../Translations/TranslationModel';
  * @component
  * @example
  *   <ExerciseDetail />
- *
- * @todo Add Change instrument functionality.
  */
 const ExerciseDetail = () => {
   const styles = useDynamicValue(dynamicStyles);
@@ -161,70 +161,11 @@ const ExerciseDetail = () => {
         zoomModalIsShowing={zoomModalIsShowing}
         setZoomModalIsShowing={setZoomModalIsShowing}
       />
-      <Modal
-        isVisible={changeInstrumentModalIsShowing}
-        onSwipeComplete={() => setChangeInstrumentModalIsShowing(false)}
-        swipeDirection={['down']}
-        style={{margin: 0, justifyContent: 'flex-end'}}
-        onBackdropPress={() => setChangeInstrumentModalIsShowing(false)}>
-        <SafeAreaView style={styles.changeInstrumentModal}>
-          <InstrumentButton
-            text="Horn"
-            setIsShowing={setChangeInstrumentModalIsShowing}
-          />
-          <InstrumentButton
-            text="Trumpet"
-            setIsShowing={setChangeInstrumentModalIsShowing}
-          />
-          <InstrumentButton
-            text="Trombone"
-            setIsShowing={setChangeInstrumentModalIsShowing}
-          />
-          <InstrumentButton
-            text="Euphonium"
-            setIsShowing={setChangeInstrumentModalIsShowing}
-          />
-          <InstrumentButton
-            text="Tuba"
-            setIsShowing={setChangeInstrumentModalIsShowing}
-          />
-        </SafeAreaView>
-      </Modal>
+      <ChangeInstrumentModal
+        changeInstrumentModalIsShowing={changeInstrumentModalIsShowing}
+        setChangeInstrumentModalIsShowing={setChangeInstrumentModalIsShowing}
+      />
     </SafeAreaView>
-  );
-};
-
-/**
- * @todo Separate into separate component
- * @todo Style this to work with dark mode.
- */
-const InstrumentButton = ({text, setIsShowing}) => {
-  const {state, dispatch} = useContext(PreferencesContext);
-
-  return (
-    <Pressable
-      onPress={() => {
-        console.log(text.toLowerCase());
-        dispatch({
-          type: 'SET_SETTING',
-          payload: {instrument: text.toLowerCase()},
-        });
-        setIsShowing(false);
-      }}
-      style={
-        {
-          // padding: 20,
-        }
-      }>
-      <Text
-        style={{
-          padding: 20,
-          backgroundColor:
-            state.instrument == text.toLowerCase() ? 'orange' : null,
-        }}>
-        {text}
-      </Text>
-    </Pressable>
   );
 };
 
