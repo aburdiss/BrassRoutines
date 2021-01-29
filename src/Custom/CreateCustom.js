@@ -54,6 +54,7 @@ const CreateCustom = () => {
   const [editMode, setEditMode] = useState(false);
   const [routineCurrentIndex, setRoutineCurrentIndex] = useState(undefined);
   const [isPortrait, setIsPortrait] = useState(true);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -115,6 +116,8 @@ const CreateCustom = () => {
         });
       }
       setIsPortrait(getIsPortrait());
+      setIsSmallScreen(getIsSmallScreen());
+      console.log(Dimensions.get('screen'));
     },
     [],
   );
@@ -132,6 +135,24 @@ const CreateCustom = () => {
     const dim = Dimensions.get('screen');
     return dim.height >= dim.width;
   };
+
+  /**
+   * @function CreateCustom~getIsSmallScreen
+   * @description Checks whether the screen is small by checking it's longest
+   * edge's width.
+   * @author Alexander Burdiss
+   * @since 1/28/21
+   * @version 1.0.0
+   * @returns {Boolean} A boolean of whether or not the screen is small.
+   */
+  function getIsSmallScreen() {
+    const SMALL_SCREEN_HEIGHT = 675;
+    if (getIsPortrait()) {
+      return Dimensions.get('screen').height < SMALL_SCREEN_HEIGHT;
+    } else {
+      return Dimensions.get('screen').width < SMALL_SCREEN_HEIGHT;
+    }
+  }
 
   Dimensions.addEventListener(
     'change',
@@ -247,10 +268,12 @@ const CreateCustom = () => {
         selectedExercise={selectedExercise}
         setSelectedExercise={setSelectedExercise}
       />
-      <View style={styles.buttonContainer}>
-        <ResetButton handler={removeAllExercises} />
-        <AddToListButton handler={addToExerciseList} />
-      </View>
+      {!isSmallScreen ? (
+        <View style={styles.buttonContainer}>
+          <ResetButton handler={removeAllExercises} />
+          <AddToListButton handler={addToExerciseList} />
+        </View>
+      ) : null}
       <DraggableFlatList
         style={styles.list}
         data={currentRoutine}
@@ -301,13 +324,29 @@ const CreateCustom = () => {
           </SwipeableRow>
         )}
       />
-      <MainActionButton
-        accessibilityLabel={
-          editMode ? translate('Save Routine') : translate('Create Routine')
-        }
-        handler={createRoutine}
-        text={editMode ? 'Save' : 'Create'}
-      />
+      {isSmallScreen ? (
+        <View style={styles.smallScreenButtonContainer}>
+          <ResetButton handler={removeAllExercises} />
+          <MainActionButton
+            accessibilityLabel={
+              editMode ? translate('Save Routine') : translate('Create Routine')
+            }
+            handler={createRoutine}
+            text={editMode ? 'Save' : 'Create'}
+          />
+          <AddToListButton handler={addToExerciseList} />
+        </View>
+      ) : (
+        <View style={styles.mainActionButton}>
+          <MainActionButton
+            accessibilityLabel={
+              editMode ? translate('Save Routine') : translate('Create Routine')
+            }
+            handler={createRoutine}
+            text={editMode ? 'Save' : 'Create'}
+          />
+        </View>
+      )}
     </View>
   ) : (
     <SafeAreaView
@@ -408,12 +447,26 @@ const dynamicStyles = new DynamicStyleSheet({
     justifyContent: 'space-between',
     marginHorizontal: 20,
   },
+  smallScreenButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    borderTopColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
   list: {
     flex: 1,
+    borderTopColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
   },
   landscapeList: {
     flex: 1,
@@ -439,6 +492,13 @@ const dynamicStyles = new DynamicStyleSheet({
       colors.systemGray5Dark,
     ),
     borderBottomWidth: 1,
+  },
+  mainActionButton: {
+    borderTopColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
   },
   textInput: {
     borderColor: 'gray',

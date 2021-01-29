@@ -52,6 +52,10 @@ const HeaderButton = ({children, handler}) => {
               name="chevron-back-outline"
               size={25}
               color={DARKMODE ? colors.orangeDark : colors.orangeLight}
+              style={{
+                marginBottom: -10,
+                marginTop: -8,
+              }}
             />
           ) : null}
           <Text
@@ -67,15 +71,21 @@ const HeaderButton = ({children, handler}) => {
               name="chevron-forward-outline"
               size={25}
               color={DARKMODE ? colors.orangeDark : colors.orangeLight}
+              style={{
+                marginBottom: -10,
+                marginTop: -8,
+              }}
             />
           ) : null}
           {children == 'Create' ? (
             <Ionicons
               name="pencil"
-              size={25}
+              size={20}
               color={DARKMODE ? colors.orangeDark : colors.orangeLight}
               style={{
-                paddingLeft: 5,
+                paddingLeft: 3,
+                marginBottom: -10,
+                marginTop: -8,
               }}
             />
           ) : null}

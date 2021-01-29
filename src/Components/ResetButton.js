@@ -1,4 +1,5 @@
 import React from 'react';
+import {Alert} from 'react-native';
 import {View, Pressable, Text} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
 
@@ -37,7 +38,23 @@ const ResetButton = ({handler}) => {
           padding: 14,
           overflow: 'hidden',
         })}
-        onPress={handler}>
+        onPress={() => {
+          Alert.alert(
+            translate('All list items will be removed'),
+            translate('This cannot be undone!'),
+            [
+              {
+                text: translate('Reset'),
+                onPress: handler,
+                style: 'destructive',
+              },
+              {
+                text: translate('Cancel'),
+                style: 'cancel',
+              },
+            ],
+          );
+        }}>
         <Text
           style={{
             textAlign: 'center',
