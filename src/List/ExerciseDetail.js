@@ -1,8 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {View, Image, Alert, Pressable, Text} from 'react-native';
+import {View, Image, Alert, Pressable} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
-import Modal from 'react-native-modal';
 import {
   DynamicValue,
   DynamicStyleSheet,
@@ -21,7 +20,6 @@ import {
 } from '../Model/Model';
 import ZoomModal from '../Components/ZoomModal';
 import {translate} from '../Translations/TranslationModel';
-import InstrumentButton from '../Components/InstrumentButton';
 import ChangeInstrumentModal from '../Components/ChangeInstrumentModal';
 
 /**
