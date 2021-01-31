@@ -117,7 +117,6 @@ const CreateCustom = () => {
       }
       setIsPortrait(getIsPortrait());
       setIsSmallScreen(getIsSmallScreen());
-      console.log(Dimensions.get('screen'));
     },
     [],
   );
@@ -178,14 +177,22 @@ const CreateCustom = () => {
    * @author Alexander Burdiss
    * @since 12/27/20
    * @version 1.0.0
-   *
-   * @todo Check if name is unique, and if not, alert the user.
    */
   const createRoutine = () => {
     if (routineName == '') {
       Alert.alert(translate('Please enter a name'));
     } else if (currentRoutine.length == 0) {
       Alert.alert(translate('Please select at least one exercise'));
+    } else if (
+      state.customRoutines.find((element) => element.name == routineName)
+    ) {
+      Alert.alert(
+        translate('Routine') +
+          " '" +
+          routineName +
+          "' " +
+          translate('already exists'),
+      );
     } else {
       const tempRoutines = [...state.customRoutines];
       let currentRoutineObject = {

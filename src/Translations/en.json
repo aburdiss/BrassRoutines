@@ -58,6 +58,7 @@
   "Routine Name": "Routine Name",
   "Preview": "Preview",
   "Add To List": "Add to List",
+  "already exists": "already exists",
   "Adds the selected exercise to the list": "Adds the selected exercise to the list",
   "All list items will be removed": "All list items will be removed",
   "Resets exercise list": "Resets exercise list",
