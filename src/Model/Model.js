@@ -260,7 +260,7 @@ export function getHornImagePath(number) {
 
     // Major Scales
     case 50:
-      return require('../../img/Horn/50.png');
+      return require('../../img/Trumpet/50.png');
     case 51:
       return require('../../img/Horn/51.png');
     case 52:
@@ -272,17 +272,17 @@ export function getHornImagePath(number) {
     case 55:
       return require('../../img/Horn/55.png');
     case 56:
-      return require('../../img/Horn/56.png');
+      return require('../../img/Trumpet/56.png');
     case 57:
-      return require('../../img/Horn/57.png');
+      return require('../../img/Trumpet/57.png');
     case 58:
-      return require('../../img/Horn/58.png');
+      return require('../../img/Trumpet/58.png');
     case 59:
-      return require('../../img/Horn/59.png');
+      return require('../../img/Trumpet/59.png');
     case 60:
-      return require('../../img/Horn/60.png');
+      return require('../../img/Trumpet/60.png');
     case 61:
-      return require('../../img/Horn/61.png');
+      return require('../../img/Trumpet/61.png');
 
     // High Range
     case 70:
