@@ -47,7 +47,7 @@ export const colors = {
 export const hornExercises = {
   longTones: [1, 2, 3, 4, 5, 6, 7],
   slowLipSlurs: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27],
+  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27, 28],
   articulation: [30, 31, 32, 33, 34, 35, 36, 37, 38],
   coordination: [40, 41, 42, 43, 44, 45, 46],
   majorScales: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61],
@@ -69,7 +69,7 @@ export const allHornExercises = [
 export const trumpetExercises = {
   longTones: [1, 2, 3, 4, 5, 6, 7],
   slowLipSlurs: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27],
+  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27, 28],
   articulation: [30, 31, 32, 33, 34, 35, 36, 37, 38],
   coordination: [40, 41, 42, 43, 44, 45, 46],
   majorScales: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61],
@@ -91,7 +91,7 @@ export const allTrumpetExercises = [
 export const tromboneExercises = {
   longTones: [1, 2, 3, 4, 5, 6, 7],
   slowLipSlurs: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27],
+  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27, 28],
   articulation: [30, 31, 32, 33, 34, 35, 36, 37, 38],
   coordination: [40, 41, 42, 43, 44, 45, 46],
   majorScales: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61],
@@ -113,7 +113,7 @@ export const allTromboneExercises = [
 export const euphoniumExercises = {
   longTones: [1, 2, 3, 4, 5, 6, 7],
   slowLipSlurs: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27],
+  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27, 28],
   articulation: [30, 31, 32, 33, 34, 35, 36, 37, 38],
   coordination: [40, 41, 42, 43, 44, 45, 46],
   majorScales: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61],
@@ -135,7 +135,7 @@ export const allEuphoniumExcercises = [
 export const tubaExercises = {
   longTones: [1, 2, 3, 4, 5, 6, 7],
   slowLipSlurs: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27],
+  fastLipSlurs: [21, 22, 23, 24, 25, 26, 27, 28],
   articulation: [30, 31, 32, 33, 34, 35, 36, 37, 38],
   coordination: [40, 41, 42, 43, 44, 45, 46],
   majorScales: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61],
@@ -221,6 +221,8 @@ export function getHornImagePath(number) {
       return require('../../img/Horn/26.png');
     case 27:
       return require('../../img/Horn/27.png');
+    case 28:
+      return require('../../img/Trumpet/28.png');
 
     // Articulation
     case 30:
@@ -392,6 +394,8 @@ export function getTrumpetImagePath(number) {
       return require('../../img/Trumpet/26.png');
     case 27:
       return require('../../img/Trumpet/27.png');
+    case 28:
+      return require('../../img/Trumpet/28.png');
 
     // Articulation
     case 30:
@@ -563,6 +567,8 @@ export function getTromboneImagePath(number) {
       return require('../../img/Trombone/26.png');
     case 27:
       return require('../../img/Trombone/27.png');
+    case 28:
+      return require('../../img/Trombone/28.png');
 
     // Articulation
     case 30:
@@ -734,6 +740,8 @@ export function getEuphoniumBassClefImagePath(number) {
       return require('../../img/Trombone/26.png');
     case 27:
       return require('../../img/Trombone/27.png');
+    case 28:
+      return require('../../img/Trombone/28.png');
 
     // Articulation
     case 30:
@@ -906,6 +914,8 @@ export function getEuphoniumTrebleClefImagePath(number) {
       return require('../../img/Trumpet/26.png');
     case 27:
       return require('../../img/Trumpet/27.png');
+    case 28:
+      return require('../../img/Trumpet/28.png');
 
     // Articulation
     case 30:
@@ -1077,6 +1087,8 @@ export function getTubaImagePath(number) {
       return require('../../img/Tuba/26.png');
     case 27:
       return require('../../img/Tuba/27.png');
+    case 28:
+      return require('../../img/Tuba/28.png');
 
     // Articulation
     case 30:

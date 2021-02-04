@@ -30,7 +30,7 @@
   "Randomizes a new arpeggio": "Randomizes a new arpeggio",
 
   "This is a favorite exercise": "这是最喜欢的练习",
-  "This is not a favorite exercise": "This is not a favorite exercise",
+  "This is not a favorite exercise": "这不是最喜欢的练习",
   "Opens Exercise": "Opens Exercise",
   "Long Tones": "长音",
   "Slow Lip Slurs": "慢嘴唇连音",
@@ -39,7 +39,7 @@
   "Coordination": "改变音符点舌",
   "Major Scales": "大调音阶",
   "High Range": "高音",
-  "Low Range": "高音",
+  "Low Range": "低音",
 
   "Custom Routines": "定制套路",
   "Create": "建立",
