@@ -97,7 +97,7 @@ const Settings = () => {
         ListFooterComponent={
           <View
             style={styles.footerContainer}
-            importantForAccessibility={false}>
+            importantForAccessibility="no">
             <View style={styles.iconContainer}>
               <Ionicons
                 accessibilityLabel={translate('React Native Icon')}
