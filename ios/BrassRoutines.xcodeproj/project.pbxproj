@@ -78,6 +78,7 @@
 		A5F3380DF430472EB3B847A0 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		CA13B2DFE8A742C0AEB7DA20 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		CC5189F8E36D149AA8979F5F /* Pods-BrassRoutines-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrassRoutines-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BrassRoutines-tvOSTests/Pods-BrassRoutines-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC73049B25CEEBB800C73F99 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D760E1DC6F5CC4F9E4C98073 /* Pods-BrassRoutines.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrassRoutines.debug.xcconfig"; path = "Target Support Files/Pods-BrassRoutines/Pods-BrassRoutines.debug.xcconfig"; sourceTree = "<group>"; };
 		DD0F2AD925772E500075DF87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DD0F2ADF25772E550075DF87 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -371,6 +372,7 @@
 				de,
 				"pt-BR",
 				ko,
+				it,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -739,6 +741,7 @@
 				DD0F2AE325772E600075DF87 /* ko */,
 				DD0F2AE425772E610075DF87 /* pt-BR */,
 				DD0F2AE525772E620075DF87 /* es-419 */,
+				CC73049B25CEEBB800C73F99 /* it */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
