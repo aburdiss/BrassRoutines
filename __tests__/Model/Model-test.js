@@ -40,7 +40,7 @@ test.each(allTromboneExercises)('trombone exercises have path', (item) => {
 test.each(allTromboneExercises)(
   'trombone bass clef exercises have path',
   (item) => {
-    expect(getTromboneBassClefOnlyImagePath(item)).no.toBe(null);
+    expect(getTromboneBassClefOnlyImagePath(item)).not.toBe(null);
   },
 );
 
