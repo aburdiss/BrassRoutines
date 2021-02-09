@@ -190,6 +190,12 @@ export const ABOUT = [
   },
   {
     id: '16',
+    type: 'navigate',
+    value: 'Acknowledgements',
+    component: 'Acknowledgements',
+  },
+  {
+    id: '17',
     type: 'link',
     value: 'Send Feedback',
     link: 'mailto:aburdiss@icloud.com',

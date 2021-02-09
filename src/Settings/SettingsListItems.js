@@ -14,11 +14,11 @@ import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
 
 /**
- * @description A rendered Text list item. Currently, this is used only to
- * render the copyright information, so it is not translated.
+ * @description A rendered Text list item. This will not translate 
+ * copyright information.
  * @author Alexander Burdiss
  * @since 1/3/21
- * @version 1.0.2
+ * @version 1.1.0
  * @param {Object} props.item The text to be rendered in the list item.
  * 
  * @component
@@ -35,7 +35,7 @@ export const TextListItem = ({item}) => {
         maxFontSizeMultiplier={1.8}
         style={styles.listRowText}
         accessibilityRole="text">
-        {item.value}
+        {item.value.startsWith('©') ? item.value : translate(item.value)}
       </Text>
     </View>
   );
@@ -483,7 +483,6 @@ const dynamicStyles = new DynamicStyleSheet({
     justifyContent: 'space-between',
     backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
     paddingVertical: 8,
-    height: 45,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: new DynamicValue(
@@ -493,6 +492,7 @@ const dynamicStyles = new DynamicStyleSheet({
   },
   listRowText: {
     color: new DynamicValue(colors.black, colors.white),
+    paddingVertical: 5,
   },
   linkText: {
     color: new DynamicValue(colors.orangeLight, colors.orangeDark),

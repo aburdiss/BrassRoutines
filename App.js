@@ -26,6 +26,7 @@ import {PreferencesContext, PreferencesProvider} from './src/Model/Preferences';
 import {setI18nConfig, translate} from './src/Translations/TranslationModel';
 import {colors, getExerciseDisplayName} from './src/Model/Model';
 import Licenses from './src/Settings/Licenses';
+import Acknowledgements from './src/Settings/Acknowledgements';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -284,6 +285,13 @@ const SettingsStack = ({navigation}) => {
         component={Licenses}
         options={{
           title: translate('Licenses'),
+        }}
+      />
+      <Stack.Screen
+        name="Acknowledgements"
+        component={Acknowledgements}
+        options={{
+          title: translate('Acknowledgements'),
         }}
       />
     </Stack.Navigator>
