@@ -1,4 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useLayoutEffect,
+  useCallback,
+} from 'react';
 import {
   View,
   TextInput,
@@ -6,6 +12,7 @@ import {
   Alert,
   Pressable,
   Dimensions,
+  BackHandler,
 } from 'react-native';
 import {
   DynamicStyleSheet,
@@ -15,7 +22,11 @@ import {
 import SafeAreaView from 'react-native-safe-area-view';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {
+  useNavigation,
+  useRoute,
+  useFocusEffect,
+} from '@react-navigation/native';
 
 import MainActionButton from '../Components/MainActionButton';
 import ResetButton from '../Components/ResetButton';
@@ -56,13 +67,73 @@ const CreateCustom = () => {
   const [isPortrait, setIsPortrait] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <HeaderButton handler={handleBackButtonPress}>Back</HeaderButton>
-      ),
-    });
-  }, [navigation]);
+  useLayoutEffect(
+    /**
+     * @function CreateCustom~useLayoutEffect~setupNavigationOptions
+     * @description On component mount and navigation update, this function
+     * will add a custom back button with a custom handler that will prompt
+     * the user about leaving with unsaved changes if they try to go back.
+     * @author Alexander Burdiss
+     * @since 2/8/21
+     * @version 1.1.0
+     */
+    function setupNavigationOptions() {
+      navigation.setOptions({
+        headerLeft: () => (
+          <HeaderButton handler={handleBackButtonPress}>Back</HeaderButton>
+        ),
+      });
+    },
+    [navigation],
+  );
+
+  useFocusEffect(
+    useCallback(
+      /**
+       * @function CreateCustom~useFocusEffect~useCallback~handleAndroidBackButton
+       * @description Handles the android back button press to prevent the user
+       * from losing their custom routine.
+       * @returns {Function} Cleanup function to remove the added event
+       * listener.
+       * @see CreateCustom~useFocusEffect~useCallback~handleAndroidBackButton~cleanupAndroidBackButton
+       * @author Alexander Burdiss
+       * @since 2/8/21
+       * @version 1.0.0
+       */
+      function handleAndroidBackButton() {
+        /**
+         * @function CreateCustom~useFocusEffect~useCallback~handleAndroidBackButton~onBackPress
+         * @description Calls the handleBackButtonPress function, and returns
+         * true. Returning true is necessary to prevent the hardware back
+         * button event from bubbling up to React Navigation, and will allow
+         * the alert to show and let the user go back to save their work before
+         * losing it all.
+         * @see handleBackButtonPress
+         * @author Alexander Burdiss
+         * @since 2/8/21
+         * @version 1.0.0
+         * @returns {Boolean} true
+         */
+        function onBackPress() {
+          handleBackButtonPress();
+          return true;
+        }
+        BackHandler.addEventListener('hardwareBackPress', onBackPress);
+        /**
+         * @function CreateCustom~useFocusEffect~useCallback~handleAndroidBackButton~cleanupAndroidBackButton
+         * @description Cleans up the event listener for the hardware back
+         * button.
+         * @author Alexander Burdiss
+         * @since 2/8/21
+         * @version 1.0.0
+         */
+        return function cleanupAndroidBackButton() {
+          BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+        };
+      },
+      [handleBackButtonPress],
+    ),
+  );
 
   /**
    * @function CreateCustom~handleBackButtonPress
@@ -184,6 +255,7 @@ const CreateCustom = () => {
     } else if (currentRoutine.length == 0) {
       Alert.alert(translate('Please select at least one exercise'));
     } else if (
+      !editMode &&
       state.customRoutines.find((element) => element.name == routineName)
     ) {
       Alert.alert(
