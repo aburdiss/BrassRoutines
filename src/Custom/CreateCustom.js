@@ -27,6 +27,7 @@ import {
   useRoute,
   useFocusEffect,
 } from '@react-navigation/native';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import MainActionButton from '../Components/MainActionButton';
 import ResetButton from '../Components/ResetButton';
@@ -335,6 +336,20 @@ const CreateCustom = () => {
     setCurrentRoutine(data);
   }
 
+  /**
+   * @function CreateCustom~triggerHapticFeedback
+   * @description Triggers the standard haptic feedback option.
+   * @author Alexander Burdiss
+   * @since 2/8/21
+   * @version 1.0.0
+   */
+  function triggerHapticFeedback() {
+    ReactNativeHapticFeedback.trigger('selection', {
+      enableVibrateFallback: true,
+      ignoreAndroidSystemSettings: false,
+    });
+  }
+
   return isPortrait ? (
     <View style={styles.container}>
       <TextInput
@@ -359,6 +374,7 @@ const CreateCustom = () => {
         data={currentRoutine}
         keyExtractor={(item, index) => String(index)}
         onDragEnd={setNewRoutineOrder}
+        onDragBegin={triggerHapticFeedback}
         renderItem={({item, drag}) => (
           <SwipeableRow
             key={`${item}${counter}`}
@@ -461,6 +477,7 @@ const CreateCustom = () => {
           data={currentRoutine}
           keyExtractor={(item, index) => String(index)}
           onDragEnd={setNewRoutineOrder}
+          onDragBegin={triggerHapticFeedback}
           renderItem={({item, drag}) => (
             <SwipeableRow
               key={`${item}${counter}`}

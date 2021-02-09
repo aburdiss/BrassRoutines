@@ -2,6 +2,8 @@ import React, {useContext} from 'react';
 import SafeAreaView from 'react-native-safe-area-view';
 import {PreferencesContext} from '../Model/Preferences';
 import {useNavigation} from '@react-navigation/native';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+
 import {colors} from '../Model/Model';
 import {
   DynamicValue,
@@ -42,6 +44,20 @@ const CustomList = () => {
     dispatch({type: 'SET_SETTING', payload: {customRoutines: data}});
   }
 
+  /**
+   * @function CustomList~triggerHapticFeedback
+   * @description Triggers the standard haptic feedback option.
+   * @author Alexander Burdiss
+   * @since 2/8/21
+   * @version 1.0.0
+   */
+  function triggerHapticFeedback() {
+    ReactNativeHapticFeedback.trigger('selection', {
+      enableVibrateFallback: true,
+      ignoreAndroidSystemSettings: false,
+    });
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       {state.customRoutines.length == 0 ? (
@@ -57,6 +73,7 @@ const CustomList = () => {
           keyExtractor={(item) => item.name}
           renderItem={(item) => <CustomListRow item={item} />}
           onDragEnd={updateCustomRoutines}
+          onDragBegin={triggerHapticFeedback}
         />
       )}
     </SafeAreaView>

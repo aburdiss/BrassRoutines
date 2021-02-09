@@ -3,7 +3,7 @@ import {Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDarkMode} from 'react-native-dynamic';
 import SafeAreaView from 'react-native-safe-area-view';
-import {Modal} from 'react-native-modal';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import HomeButton from './Components/HomeButton';
 import {colors} from './Model/Model';
@@ -93,6 +93,20 @@ const Home = () => {
     }
   };
 
+  /**
+   * @function Home~triggerHapticFeedback
+   * @description Triggers the standard haptic feedback option.
+   * @author Alexander Burdiss
+   * @since 2/8/21
+   * @version 1.0.0
+   */
+  function triggerHapticFeedback() {
+    ReactNativeHapticFeedback.trigger('selection', {
+      enableVibrateFallback: true,
+      ignoreAndroidSystemSettings: false,
+    });
+  }
+
   return (
     <SafeAreaView
       style={{
@@ -103,7 +117,10 @@ const Home = () => {
         <HomeButton
           accessibilityHint={translate('Starts daily routine')}
           onPress={launchDailyRoutine}
-          onLongPress={() => setChangeInstrumentModalIsShowing(true)}>
+          onLongPress={() => {
+            setChangeInstrumentModalIsShowing(true);
+            triggerHapticFeedback();
+          }}>
           {translate('Begin Routine') +
             ' (' +
             translate(capitalize(state?.instrument)) +
