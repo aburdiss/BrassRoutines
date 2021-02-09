@@ -92,6 +92,13 @@ export default {
       'https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE',
     parents: 'BrassRoutines',
   },
+  'react-native-haptic-feedback@1.11.0': {
+    licenses: 'MIT',
+    repository: 'https://github.com/mkuczera/react-native-haptic-feedback',
+    licenseUrl:
+      'https://github.com/mkuczera/react-native-haptic-feedback/raw/master/LICENSE',
+    parents: 'BrassRoutines',
+  },
   'react-native-image-zoom-viewer@3.0.1': {
     licenses: 'MIT',
     repository: 'https://github.com/ascoders/react-native-image-viewer',

@@ -13,7 +13,7 @@ import {
   getEuphoniumBassClefImagePath,
   getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
-} from '../src/Model/Model';
+} from '../../src/Model/Model';
 
 import {
   INSTRUMENT,
@@ -22,7 +22,7 @@ import {
   CUSTOM_ROUTINES,
   RESOURCES,
   ABOUT,
-} from '../src/Model/SettingsModel';
+} from '../../src/Model/SettingsModel';
 
 test.each(allHornExercises)('horn excercises have path', (item) => {
   expect(getHornImagePath(item)).not.toBe(null);
@@ -76,3 +76,5 @@ test.each(allTubaExercises)('tuba exercises have path', (item) => {
   }
   expect(duplicatedItem).not.toBeTruthy();
 })();
+
+// Check if all the links actually work in the model.
