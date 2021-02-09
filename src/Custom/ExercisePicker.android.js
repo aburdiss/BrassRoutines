@@ -44,14 +44,19 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
       <View
         style={{
           width: '80%',
+          borderColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
+          borderWidth: 1,
+          borderRadius: 8,
+          marginHorizontal: 10,
         }}>
         <Picker
           accessibilityLiveRegion="assertive"
-          accessibilityLabel={selectedExercise}
+          accessibilityLabel={String(selectedExercise)}
           selectedValue={selectedExercise}
           onValueChange={(itemValue, itemIndex) =>
             setSelectedExercise(itemValue)
           }
+          dropdownIconColor={DARKMODE ? '#FF9F0A' : '#FF9500'}
           itemStyle={{
             color: DARKMODE ? colors.white : colors.black,
           }}>
@@ -62,6 +67,7 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
               } ${getExerciseDisplayName(exercise, state)}`}
               value={exercise}
               key={exercise}
+              color={DARKMODE ? colors.orangeDark : colors.orangeLight}
             />
           ))}
         </Picker>

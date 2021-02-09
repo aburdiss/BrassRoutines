@@ -270,6 +270,7 @@ const CreateCustom = () => {
         placeholder={translate('Routine Name')}
         onChangeText={(text) => setRoutineName(text)}
         style={styles.textInput}
+        placeholderTextColor={styles.placeholder.color}
       />
       <ExercisePicker
         selectedExercise={selectedExercise}
@@ -358,14 +359,10 @@ const CreateCustom = () => {
   ) : (
     <SafeAreaView
       style={{
-        flex: 1,
+        ...styles.container,
         flexDirection: 'row',
-        backgroundColor: new DynamicValue(
-          colors.systemGray6Light,
-          colors.black,
-        ),
       }}>
-      <View style={{width: '50%'}}>
+      <View style={{flex: 1}}>
         <ExercisePicker
           selectedExercise={selectedExercise}
           setSelectedExercise={setSelectedExercise}
@@ -385,6 +382,7 @@ const CreateCustom = () => {
           placeholder={translate('Routine Name')}
           onChangeText={(text) => setRoutineName(text)}
           style={styles.textInput}
+          placeholderTextColor={styles.placeholder.color}
         />
         <DraggableFlatList
           style={styles.landscapeList}
@@ -452,7 +450,7 @@ const dynamicStyles = new DynamicStyleSheet({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 20,
+    marginHorizontal: 0,
   },
   smallScreenButtonContainer: {
     flexDirection: 'row',
@@ -507,8 +505,11 @@ const dynamicStyles = new DynamicStyleSheet({
     ),
     borderTopWidth: 1,
   },
+  placeholder: {
+    color: colors.systemGray,
+  },
   textInput: {
-    borderColor: 'gray',
+    borderColor: colors.systemGray,
     borderWidth: 1,
     borderRadius: 8,
     margin: 10,
