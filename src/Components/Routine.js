@@ -13,6 +13,7 @@ import {
   getHornImagePath,
   getTrumpetImagePath,
   getTromboneImagePath,
+  getTromboneBassClefOnlyImagePath,
   getEuphoniumBassClefImagePath,
   getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
@@ -68,7 +69,11 @@ const Routine = ({exercises}) => {
       getInstrumentImagePath = getTrumpetImagePath;
       break;
     case 'trombone':
-      getInstrumentImagePath = getTromboneImagePath;
+      if (state.bassClef == 1) {
+        getInstrumentImagePath = getTromboneBassClefOnlyImagePath;
+      } else {
+        getInstrumentImagePath = getTromboneImagePath;
+      }
       break;
     case 'euphonium':
       if (state.bassClef == 1) {

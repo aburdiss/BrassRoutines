@@ -84,8 +84,8 @@ const LicensesListItem = ({
             <Ionicons
               style={{alignSelf: 'center'}}
               color={DARKMODE ? colors.orangeDark : colors.orangeLight}
-              size={24}
-              name={'chevron-forward'}
+              size={25}
+              name={'chevron-forward-outline'}
             />
           </Pressable>
         </View>

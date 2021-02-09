@@ -305,7 +305,11 @@ export const SegmentedFilterListItem = ({item, state, dispatch}) => {
       choices = [translate('Short'), translate('Medium'), translate('Long')];
       break;
     case 'bassClef':
-      choices = [translate('Treble Clef'), translate('Bass Clef')];
+      if (state.instrument == 'euphonium') {
+        choices = [translate('Treble Clef'), translate('Bass Clef')];
+      } else if (state.instrument == 'trombone') {
+        choices = [translate('Tenor/Bass Clef'), translate('Bass Clef Only')];
+      }
       break;
     default:
       throw new Error('Item Setting does not match any choices.');
@@ -313,7 +317,10 @@ export const SegmentedFilterListItem = ({item, state, dispatch}) => {
 
   const styles = useDynamicValue(dynamicStyles);
   // Hide Filter if the setting is "bassClef" and instrument is not Euphonium
-  let isHidden = state.instrument != 'euphonium' && item.setting == 'bassClef';
+  let isHidden =
+    state.instrument != 'euphonium' &&
+    state.instrument != 'trombone' &&
+    item.setting == 'bassClef';
   return isHidden ? null : (
     <View style={styles.listSegmentedRowContainer}>
       <SegmentedControl

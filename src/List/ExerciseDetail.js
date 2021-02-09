@@ -14,6 +14,7 @@ import {
   getHornImagePath,
   getTrumpetImagePath,
   getTromboneImagePath,
+  getTromboneBassClefOnlyImagePath,
   getEuphoniumBassClefImagePath,
   getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
@@ -54,7 +55,11 @@ const ExerciseDetail = () => {
           setImagePath(getTrumpetImagePath(route.params.item));
           break;
         case 'trombone':
-          setImagePath(getTromboneImagePath(route.params.item));
+          if (state.bassClef == 1) {
+            setImagePath(getTromboneBassClefOnlyImagePath(route.params.item));
+          } else {
+            setImagePath(getTromboneImagePath(route.params.item));
+          }
           break;
         case 'euphonium':
           if (state.bassClef == 1) {

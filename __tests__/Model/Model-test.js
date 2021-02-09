@@ -10,6 +10,7 @@ import {
   getHornImagePath,
   getTrumpetImagePath,
   getTromboneImagePath,
+  getTromboneBassClefOnlyImagePath,
   getEuphoniumBassClefImagePath,
   getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
@@ -35,6 +36,13 @@ test.each(allTrumpetExercises)('trumpet exercises have path', (item) => {
 test.each(allTromboneExercises)('trombone exercises have path', (item) => {
   expect(getTromboneImagePath(item)).not.toBe(null);
 });
+
+test.each(allTromboneExercises)(
+  'trombone bass clef exercises have path',
+  (item) => {
+    expect(getTromboneBassClefOnlyImagePath(item)).no.toBe(null);
+  },
+);
 
 test.each(allEuphoniumExcercises)(
   'euphonium treble clef exercises have path',
