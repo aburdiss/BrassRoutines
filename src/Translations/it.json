@@ -107,13 +107,13 @@
 
   "Scale Practice": "Scala pratica",
   "Arpeggio Practice": "Pratica di Arpeggio",
-  "Arpeggios": "Arpeggios",
+  "Arpeggios": "Arpeggi",
   "Randomize": "Randomizza",
-  "Please select at least one category": "Please select at least one category",
-  "All Scales": "All Scales",
-  "All Arpeggios": "All Arpeggios",
+  "Please select at least one category": "Seleziona almeno una categoria",
+  "All Scales": "Tutte le scale",
+  "All Arpeggios": "Tutti gli arpeggi",
 
-  "No Scale Selected": "No Scale Selected",
+  "No Scale Selected": "Nessuna scala selezionata",
   "Major": "Major",
   "Natural Minor": "Natural Minor",
   "Harmonic Minor": "Harmonic Minor",
@@ -143,7 +143,7 @@
   "Whole-Half Octatonic": "Whole-Half Octatonic",
   "Half-Whole Octatonic": "Half-Whole Octatonic",
 
-  "No Arpeggio Selected": "No Arpeggio Selected",
+  "No Arpeggio Selected": "Nessun arpeggio selezionato",
   "MajorChord": "Major",
   "Minor": "Minor",
   "Augmented": "Augmented",
