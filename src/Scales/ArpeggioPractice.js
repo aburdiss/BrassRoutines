@@ -367,7 +367,7 @@ const ArpeggioPractice = () => {
           handler={debouncedGenerateArpeggios}
           accessibilityValue={{text: `${translate(currentArpeggio)}`}}
           accessibilityHint={translate('Randomizes a new arpeggio')}
-          text={translate('Randomize')}
+          text={'Randomize'}
         />
       </View>
     </View>

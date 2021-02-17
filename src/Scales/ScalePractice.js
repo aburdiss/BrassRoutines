@@ -408,7 +408,7 @@ const ScalePractice = () => {
           handler={debouncedGenerateScales}
           accessibilityValue={{text: `${translate(currentScale)}`}}
           accessibilityHint={translate('Randomizes a new scale')}
-          text={translate('Randomize')}
+          text={'Randomize'}
         />
       </View>
     </View>

@@ -35,7 +35,9 @@ export const TextListItem = ({item}) => {
         maxFontSizeMultiplier={1.8}
         style={styles.listRowText}
         accessibilityRole="text">
-        {item.value.startsWith('©') ? item.value : translate(item.value)}
+        {item.value.includes('Alexander Burdiss')
+          ? item.value
+          : translate(item.value)}
       </Text>
     </View>
   );

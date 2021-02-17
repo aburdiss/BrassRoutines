@@ -88,7 +88,7 @@ const HomeStack = ({navigation}) => {
               handler={() => {
                 navigation.navigate('Arpeggio Practice');
               }}>
-              {translate('Arpeggios')}
+              Arpeggios
             </HeaderButton>
           ),
           title: translate('Scale Practice'),
