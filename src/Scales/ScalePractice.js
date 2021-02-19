@@ -13,6 +13,7 @@ import MainActionButton from '../Components/MainActionButton';
 import SwitchRow from './SwitchRow';
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
+import SafeAreaView from 'react-native-safe-area-view';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -336,7 +337,7 @@ const ScalePractice = () => {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.scaleDisplay}>
         <ScaleDisplay accessibilityLiveRegion="assertive">
           {currentScale}
@@ -411,7 +412,7 @@ const ScalePractice = () => {
           text={'Randomize'}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

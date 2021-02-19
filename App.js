@@ -94,7 +94,13 @@ const HomeStack = ({navigation}) => {
           title: translate('Scale Practice'),
         }}
       />
-      <Stack.Screen name="Arpeggio Practice" component={ArpeggioPractice} />
+      <Stack.Screen
+        name="Arpeggio Practice"
+        component={ArpeggioPractice}
+        options={{
+          title: translate('Arpeggio Practice'),
+        }}
+      />
     </Stack.Navigator>
   );
 };

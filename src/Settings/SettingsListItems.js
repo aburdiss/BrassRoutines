@@ -75,7 +75,7 @@ export const LinkListItem = ({item, state}) => {
       accessibilityRole="link"
       onPress={() => {
         Linking.openURL(item.link).catch((err) =>
-          console.error("Couldn't load page", err),
+          console.warn("Couldn't load page", err),
         );
       }}>
       <View style={styles.listRowContainer}>

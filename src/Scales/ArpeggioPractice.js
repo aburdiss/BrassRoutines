@@ -5,6 +5,7 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
+import SafeAreaView from 'react-native-safe-area-view';
 import {debounce, random} from 'underscore';
 
 import ScaleDisplay from './ScaleDisplay';
@@ -290,7 +291,7 @@ const ArpeggioPractice = () => {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.scaleDisplay}>
         <ScaleDisplay accessibilityLiveRegion="assertive">
           {currentArpeggio}
@@ -370,7 +371,7 @@ const ArpeggioPractice = () => {
           text={'Randomize'}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
