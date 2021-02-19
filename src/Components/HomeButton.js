@@ -74,7 +74,7 @@ const HomeButton = ({onPress, children, onLongPress}) => {
             }}
           />
         </View>
-        {children.startsWith('Begin Routine') ? (
+        {children.endsWith(')') ? (
           <Text
             style={{
               alignSelf: 'flex-end',

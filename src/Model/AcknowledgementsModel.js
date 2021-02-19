@@ -1,25 +1,21 @@
 export const TRANSLATIONS = [
   {
     id: '1',
-    value: 'Alexander Burdiss',
-  },
-  {
-    id: '2',
     value: 'Courtney Carmack',
   },
   {
-    id: '3',
+    id: '2',
     value: 'Mishi Laplante',
   },
   {
-    id: '4',
+    id: '3',
     value: 'Qian Yu',
   },
 ];
 
 export const EXERCISES = [
   {
-    id: '5',
+    id: '4',
     value: 'Brian Wilson',
   },
 ];

@@ -169,10 +169,10 @@ const ListStack = ({navigation}) => {
  * @example
  * ```jsx
 <Tab.Screen
-              name="Custom"
-              component={CustomStack}
-              options={{title: translate('Custom')}}
-            />
+  name="Custom"
+  component={CustomStack}
+  options={{title: translate('Custom')}}
+/>
  ```
  */
 const CustomStack = ({navigation}) => {
@@ -204,7 +204,7 @@ const CustomStack = ({navigation}) => {
               handler={() => {
                 navigation.navigate('Create Custom');
               }}>
-              {translate('Create')}
+              Create
             </HeaderButton>
           ),
           title: translate('Custom Routines'),
