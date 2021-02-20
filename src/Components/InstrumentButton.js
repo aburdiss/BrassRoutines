@@ -60,19 +60,8 @@ const InstrumentButton = ({text, setIsShowing}) => {
               ? colors.white
               : colors.black,
         }}>
-        {text}
+        {translate(text)}
       </Text>
-      <Ionicons
-        name="swap-horizontal"
-        size={24}
-        color={
-          state.instrument == text.toLowerCase()
-            ? colors.black
-            : DARKMODE
-            ? colors.white
-            : colors.black
-        }
-      />
     </Pressable>
   );
 };
