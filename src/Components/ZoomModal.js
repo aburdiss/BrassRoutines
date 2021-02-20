@@ -34,7 +34,7 @@ const ZoomModal = ({imagePath, zoomModalIsShowing, setZoomModalIsShowing}) => {
       style={{margin: 0}}
       isVisible={zoomModalIsShowing}>
       <ImageViewer
-        backgroundColor={DARKMODE ? colors.orangeDark : colors.orangeLight}
+        backgroundColor={DARKMODE ? colors.black : colors.white}
         imageUrls={[
           {
             url: '',
