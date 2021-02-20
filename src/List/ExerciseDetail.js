@@ -91,12 +91,10 @@ const ExerciseDetail = () => {
         return item != currentExercise;
       });
       dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
-      Alert.alert(translate('Item removed from favorites'));
     } else {
       let tempFavorites = [...state.favorites];
       tempFavorites.push(currentExercise);
       dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
-      Alert.alert(translate('Item added to favorites'));
     }
   }
 
@@ -117,6 +115,7 @@ const ExerciseDetail = () => {
       <View style={styles.heartContainer} accessibilityRole="toolbar">
         <Pressable
           onPress={toggleChangeInstrumentModal}
+          style={styles.iconPadding}
           accessibilityLabel={'Opens change instrument modal'}
           accessible={true}>
           <Ionicons
@@ -132,6 +131,7 @@ const ExerciseDetail = () => {
               ? translate('This is a favorite exercise')
               : translate('This is not a favorite exercise')
           }
+          style={styles.iconPadding}
           accessible={true}
           accessibilityHint={translate('Add exercise to favorites')}>
           <Ionicons
@@ -181,6 +181,10 @@ const dynamicStyles = new DynamicStyleSheet({
     backgroundColor: new DynamicValue(colors.white, colors.systemGray5Dark),
     width: '100%',
     marginHorizontal: 0,
+  },
+  iconPadding: {
+    paddingHorizontal: 6,
+    paddingVertical: 6,
   },
   imageContainer: {
     flex: 1,
