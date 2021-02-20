@@ -1,12 +1,11 @@
-import React, {useContext, useEffect} from 'react';
-import {View, SectionList, Text} from 'react-native';
+import React from 'react';
+import {SectionList, Text} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {colors} from '../Model/Model';
 import {TRANSLATIONS, EXERCISES} from '../Model/AcknowledgementsModel';
@@ -14,22 +13,20 @@ import {TextListItem} from './SettingsListItems';
 import {translate} from '../Translations/TranslationModel';
 
 /**
- * @description A View that allows the user to set custom settings, or view
- * additional resources.
+ * @description A View that displays the people who directly assisted with
+ * this project
  * @author Alexander Burdiss
  * @since 12/14/20
- * @version 1.0.1
+ * @version 1.0.2
  * 
  * @component
  * @example
  * ```jsx
-<Settings />
+<Acknowledgements />
 ```
  */
 const Acknowledgements = () => {
   const styles = useDynamicValue(dynamicStyles);
-
-  useEffect(() => {}, []);
 
   return (
     <SafeAreaView style={styles.sectionList}>
