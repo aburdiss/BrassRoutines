@@ -102,12 +102,10 @@ const Routine = ({exercises}) => {
         return item != currentExercise;
       });
       dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
-      Alert.alert(translate('Item removed from favorites'));
     } else {
       let tempFavorites = [...state.favorites];
       tempFavorites.push(currentExercise);
       dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
-      Alert.alert(translate('Item added to favorites'));
     }
   }
 

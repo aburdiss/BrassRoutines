@@ -62,6 +62,7 @@ const HomeButton = ({onPress, children, onLongPress}) => {
               fontSize: 20,
               color: colors.black,
               textAlign: 'right',
+              flex: 1,
             }}>
             {children}
           </Text>

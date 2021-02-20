@@ -43,7 +43,7 @@
   "High Range": "Hohe Töne",
   "Low Range": "Tiefe Töne",
 
-  "Custom Routines": "Benutzerdefinierte Routinen",
+  "Custom Routines": "Benutzerdefinierte",
   "Create": "Erstellen",
   "Save": "Sparen",
   "Exit without saving": "Beenden ohne Speichern",
@@ -57,7 +57,7 @@
   "Edit Routine": "Routine bearbeiten",
   "Routine Name": "Routinenname",
   "Preview": "Vorschau",
-  "Add To List": "Zur Liste hinzufügen",
+  "Add To List": "Hinzufügen",
   "already exists": "ist bereits vorhanden",
   "Adds the selected exercise to the list": "Fügt die ausgewählte Übung der Liste hinzu",
   "All list items will be removed": "Alle Listenelemente werden entfernt",
