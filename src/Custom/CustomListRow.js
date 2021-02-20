@@ -5,6 +5,8 @@ import {
   DynamicStyleSheet,
   useDynamicValue,
 } from 'react-native-dynamic';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import SwipeableRow from './SwipeableRow';
 import {colors} from '../Model/Model';
 import {useNavigation} from '@react-navigation/native';
@@ -112,6 +114,17 @@ const CustomListRow = ({item}) => {
             <Text style={styles.listItemText}>{`${
               item.item.name
             } ${getExerciseLengthDescription()}`}</Text>
+            <Pressable
+              hitSlop={10}
+              onPress={() => {
+                openEditRoutine(item);
+              }}>
+              <Ionicons
+                name="pencil-outline"
+                size={20}
+                color={styles.listItemText.color}
+              />
+            </Pressable>
           </View>
         </View>
       </Pressable>
@@ -121,7 +134,7 @@ const CustomListRow = ({item}) => {
 
 const dynamicStyles = new DynamicStyleSheet({
   listItemContainer: {
-    paddingLeft: 20,
+    paddingHorizontal: 20,
     backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
   },
   listItemText: {
@@ -131,6 +144,7 @@ const dynamicStyles = new DynamicStyleSheet({
   listItemTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     borderBottomColor: new DynamicValue(
       colors.systemGray5Light,
       colors.systemGray5Dark,

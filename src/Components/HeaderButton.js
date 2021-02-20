@@ -77,18 +77,6 @@ const HeaderButton = ({children, handler}) => {
               }}
             />
           ) : null}
-          {children == 'Create' ? (
-            <Ionicons
-              name="pencil"
-              size={20}
-              color={DARKMODE ? colors.orangeDark : colors.orangeLight}
-              style={{
-                paddingLeft: 3,
-                marginBottom: -10,
-                marginTop: -8,
-              }}
-            />
-          ) : null}
         </View>
       )}
     </Pressable>
