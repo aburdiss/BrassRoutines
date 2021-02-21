@@ -809,7 +809,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.BrassRoutines;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.TromboneRoutines;
 				PRODUCT_NAME = BrassRoutines;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -834,7 +834,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.BrassRoutines;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.TromboneRoutines;
 				PRODUCT_NAME = BrassRoutines;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
