@@ -85,4 +85,12 @@ test.each(allTubaExercises)('tuba exercises have path', (item) => {
   expect(duplicatedItem).not.toBeTruthy();
 })();
 
-// Check if all the links actually work in the model.
+// it('has all valid links', async () => {
+//   expect.assertions(RESOURCES.length);
+
+//   console.log(RESOURCES);
+//   for (let item of RESOURCES) {
+//     let response = await fetch(item.link);
+//     expect(response.status).toBe('200');
+//   }
+// });
