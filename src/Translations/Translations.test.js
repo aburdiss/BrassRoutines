@@ -1,15 +1,15 @@
 import 'react-native';
 import React from 'react';
 
-import englishTranslations from '../../src/Translations/en.json';
-import germanTranslations from '../../src/Translations/de.json';
-import frenchTranslations from '../../src/Translations/fr.json';
-import spanishTranslations from '../../src/Translations/es.json';
-import portugueseTranslations from '../../src/Translations/pt.json';
-import italianTranslations from '../../src/Translations/it.json';
-import chineseTranslations from '../../src/Translations/zh.json';
-import japaneseTranslations from '../../src/Translations/ja.json';
-import koreanTranslations from '../../src/Translations/ko.json';
+import englishTranslations from './en.json';
+import germanTranslations from './de.json';
+import frenchTranslations from './fr.json';
+import spanishTranslations from './es.json';
+import portugueseTranslations from './pt.json';
+import italianTranslations from './it.json';
+import chineseTranslations from './zh.json';
+import japaneseTranslations from './ja.json';
+import koreanTranslations from './ko.json';
 
 let englishTranslationList = Object.keys(englishTranslations);
 

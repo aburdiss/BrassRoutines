@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
-import Licenses from '../../src/Settings/Licenses';
-import data from '../../src/Settings/Licenses/data';
+import Licenses from './Licenses';
+import data from './Licenses/data';
 import json from '../../package.json';
 
 // Note: test renderer must be required after react-native.

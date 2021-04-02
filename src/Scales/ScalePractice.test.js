@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import ArpeggioPractice from '../../src/Scales/ArpeggioPractice';
+import ScalePractice from './ScalePractice';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 // Note: test renderer must be required after react-native.
@@ -9,7 +9,7 @@ import renderer from 'react-test-renderer';
 it('renders correctly', () => {
   renderer.create(
     <SafeAreaProvider>
-      <ArpeggioPractice />
+      <ScalePractice />
     </SafeAreaProvider>,
   );
 });

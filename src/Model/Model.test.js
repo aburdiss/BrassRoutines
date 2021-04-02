@@ -14,7 +14,7 @@ import {
   getEuphoniumBassClefImagePath,
   getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
-} from '../../src/Model/Model';
+} from './Model';
 
 import {
   INSTRUMENT,
@@ -23,7 +23,7 @@ import {
   CUSTOM_ROUTINES,
   RESOURCES,
   ABOUT,
-} from '../../src/Model/SettingsModel';
+} from './SettingsModel';
 
 test.each(allHornExercises)('horn excercises have path', (item) => {
   expect(getHornImagePath(item)).not.toBe(null);
