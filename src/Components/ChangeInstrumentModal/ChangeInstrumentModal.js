@@ -1,23 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {View, Image, Alert, Pressable, Text} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import React from 'react';
 import SafeAreaView from 'react-native-safe-area-view';
 import Modal from 'react-native-modal';
 import {useDarkMode} from 'react-native-dynamic';
-import {PreferencesContext} from '../Model/Preferences';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {
-  colors,
-  getHornImagePath,
-  getTrumpetImagePath,
-  getTromboneImagePath,
-  getEuphoniumBassClefImagePath,
-  getEuphoniumTrebleClefImagePath,
-  getTubaImagePath,
-} from '../Model/Model';
-import ZoomModal from '../Components/ZoomModal';
-import {translate} from '../Translations/TranslationModel';
-import InstrumentButton from '../Components/InstrumentButton';
+
+import {colors} from '../../Model/Model';
+import InstrumentButton from '../InstrumentButton/InstrumentButton';
 
 const ChangeInstrumentModal = ({
   changeInstrumentModalIsShowing,

@@ -17,11 +17,11 @@ import {
   getEuphoniumBassClefImagePath,
   getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
-} from '../Model/Model';
-import ZoomModal from './ZoomModal';
-import HeaderButton from '../Components/HeaderButton';
-import {PreferencesContext} from '../Model/Preferences';
-import {translate} from '../Translations/TranslationModel';
+} from '../../Model/Model';
+import ZoomModal from '../ZoomModal/ZoomModal';
+import HeaderButton from '../HeaderButton/HeaderButton';
+import {PreferencesContext} from '../../Model/Preferences';
+import {translate} from '../../Translations/TranslationModel';
 
 /**
  * @description Handles the funcitonality for making a routine from a list of

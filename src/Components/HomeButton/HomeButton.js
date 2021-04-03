@@ -1,9 +1,9 @@
 import React from 'react';
 import {Pressable, View, Text} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
-import {colors} from '../Model/Model';
+import {colors} from '../../Model/Model';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {translate} from '../Translations/TranslationModel';
+import {translate} from '../../Translations/TranslationModel';
 
 /**
  * @description A styled button that renders on the home page of the app. This

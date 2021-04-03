@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {View} from 'react-native';
-import Routine from '../Components/Routine';
+import Routine from '../Components/Routine/Routine';
 import {PreferencesContext} from '../Model/Preferences';
 import {
   hornExercises,

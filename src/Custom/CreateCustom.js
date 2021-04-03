@@ -29,10 +29,10 @@ import {
 } from '@react-navigation/native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
-import MainActionButton from '../Components/MainActionButton';
-import ResetButton from '../Components/ResetButton';
-import HeaderButton from '../Components/HeaderButton';
-import AddToListButton from '../Components/AddToListButton';
+import MainActionButton from '../Components/MainActionButton/MainActionButton';
+import ResetButton from '../Components/ResetButton/ResetButton';
+import HeaderButton from '../Components/HeaderButton/HeaderButton';
+import AddToListButton from '../Components/AddToListButton/AddToListButton';
 import ExercisePicker from './ExercisePicker';
 import SwipeableRow from './SwipeableRow';
 import {colors, getExerciseDisplayName} from '../Model/Model';

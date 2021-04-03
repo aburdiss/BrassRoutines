@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
 import {Pressable, Text} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
-import {PreferencesContext} from '../Model/Preferences';
+import {PreferencesContext} from '../../Model/Preferences';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {colors} from '../Model/Model';
-import {translate} from '../Translations/TranslationModel';
+import {colors} from '../../Model/Model';
+import {translate} from '../../Translations/TranslationModel';
 
 /**
  * @description One button on the Change Instrument Modal.

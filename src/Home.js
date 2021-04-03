@@ -5,13 +5,13 @@ import {useDarkMode} from 'react-native-dynamic';
 import SafeAreaView from 'react-native-safe-area-view';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
-import HomeButton from './Components/HomeButton';
 import {colors} from './Model/Model';
 import {PreferencesContext} from './Model/Preferences';
 import {translate} from './Translations/TranslationModel';
 import {capitalize} from 'underscore.string';
 import {ScrollView} from 'react-native-gesture-handler';
-import ChangeInstrumentModal from './Components/ChangeInstrumentModal';
+import HomeButton from './Components/HomeButton/HomeButton';
+import ChangeInstrumentModal from './Components/ChangeInstrumentModal/ChangeInstrumentModal';
 
 /**
  * @description The initial view when the app starts.

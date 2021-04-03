@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {View} from 'react-native';
-import Routine from '../Components/Routine';
+import Routine from '../Components/Routine/Routine';
 import {PreferencesContext} from '../Model/Preferences';
 import {shuffle} from 'underscore';
 

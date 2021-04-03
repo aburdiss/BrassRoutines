@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-native-modal';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import {useDarkMode} from 'react-native-dynamic';
-import {colors} from '../Model/Model';
+import {colors} from '../../Model/Model';
 
 /**
  * @description A modal that allows the user to zoom in on the image. Fades in

@@ -3,8 +3,8 @@ import {Alert} from 'react-native';
 import {View, Pressable, Text} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
 
-import {colors} from '../Model/Model';
-import {translate} from '../Translations/TranslationModel';
+import {colors} from '../../Model/Model';
+import {translate} from '../../Translations/TranslationModel';
 
 /**
  * @description A styled button that is used as a reset button on lists.

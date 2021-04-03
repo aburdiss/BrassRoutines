@@ -10,7 +10,7 @@ import {
   DynamicStyleSheet,
   useDynamicValue,
 } from 'react-native-dynamic';
-import HomeButton from '../Components/HomeButton';
+import HomeButton from '../Components/HomeButton/HomeButton';
 import CustomListRow from './CustomListRow';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import {translate} from '../Translations/TranslationModel';

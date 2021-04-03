@@ -19,14 +19,13 @@ import CreateCustom from './src/Custom/CreateCustom';
 import CustomList from './src/Custom/CustomList';
 import CustomRoutine from './src/Custom/CustomRoutine';
 import Settings from './src/Settings/Settings';
-
-import HeaderButton from './src/Components/HeaderButton';
+import Licenses from './src/Settings/Licenses';
+import Acknowledgements from './src/Settings/Acknowledgements';
+import HeaderButton from './src/Components/HeaderButton/HeaderButton';
 
 import {PreferencesContext, PreferencesProvider} from './src/Model/Preferences';
 import {setI18nConfig, translate} from './src/Translations/TranslationModel';
 import {colors, getExerciseDisplayName} from './src/Model/Model';
-import Licenses from './src/Settings/Licenses';
-import Acknowledgements from './src/Settings/Acknowledgements';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

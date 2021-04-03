@@ -19,9 +19,9 @@ import {
   getEuphoniumTrebleClefImagePath,
   getTubaImagePath,
 } from '../Model/Model';
-import ZoomModal from '../Components/ZoomModal';
+import ZoomModal from '../Components/ZoomModal/ZoomModal';
 import {translate} from '../Translations/TranslationModel';
-import ChangeInstrumentModal from '../Components/ChangeInstrumentModal';
+import ChangeInstrumentModal from '../Components/ChangeInstrumentModal/ChangeInstrumentModal';
 
 /**
  * @description Shows an individual exercise, and allows the user to select the

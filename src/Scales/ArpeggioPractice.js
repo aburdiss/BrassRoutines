@@ -10,7 +10,7 @@ import {debounce, random} from 'underscore';
 
 import ScaleDisplay from './ScaleDisplay';
 import AllScalesButton from './AllScalesButton';
-import MainActionButton from '../Components/MainActionButton';
+import MainActionButton from '../Components/MainActionButton/MainActionButton';
 import SwitchRow from './SwitchRow';
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';

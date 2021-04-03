@@ -4,8 +4,8 @@ import {Text, Pressable} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {colors} from '../Model/Model';
-import {translate} from '../Translations/TranslationModel';
+import {colors} from '../../Model/Model';
+import {translate} from '../../Translations/TranslationModel';
 
 /**
  * @description A simple button to live on the header and provide additional
