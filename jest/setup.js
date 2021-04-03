@@ -23,6 +23,8 @@ jest.mock('react-native-localize', () => {
       languageTag: 'en',
       isRTL: false,
     })),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
     // you can add other functions mock here that you are using
   };
 });

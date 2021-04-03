@@ -1,15 +1,14 @@
 import 'react-native';
 import React from 'react';
-import ArpeggioPractice from './ArpeggioPractice';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {render} from '@testing-library/react-native';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import ArpeggioPractice from './ArpeggioPractice';
+import MockContext from '../../jest/MockContext';
 
 it('renders correctly', () => {
-  renderer.create(
-    <SafeAreaProvider>
+  render(
+    <MockContext>
       <ArpeggioPractice />
-    </SafeAreaProvider>,
+    </MockContext>,
   );
 });

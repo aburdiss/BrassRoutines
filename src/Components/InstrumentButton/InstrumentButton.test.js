@@ -1,10 +1,14 @@
 import 'react-native';
 import React from 'react';
+import {render} from '@testing-library/react-native';
+
 import InstrumentButton from './InstrumentButton';
+import MockContext from '../../../jest/MockContext';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
-test('placeholder test', () => {
-  expect(true).toBeTruthy();
+test('renders InstrumentButton correctly', () => {
+  render(
+    <MockContext>
+      <InstrumentButton text={'Hello, world!'} setIsShowing={false} />
+    </MockContext>,
+  );
 });

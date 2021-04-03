@@ -1,13 +1,12 @@
 import 'react-native';
 import React from 'react';
+import {render} from '@testing-library/react-native';
+
 import ZoomModal from './ZoomModal';
 import MockContext from '../../../jest/MockContext';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
 it('renders ZoomModal correctly', () => {
-  renderer.create(
+  render(
     <MockContext>
       <ZoomModal
         imagePath={null}

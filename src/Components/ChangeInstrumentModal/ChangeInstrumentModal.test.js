@@ -1,10 +1,17 @@
 import 'react-native';
 import React from 'react';
+import {render} from '@testing-library/react-native';
+
 import ChangeInstrumentModal from './ChangeInstrumentModal';
+import MockContext from '../../../jest/MockContext';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
-test('placeholder', () => {
-  expect(true).toBeTruthy();
+test('changeInstrumentModal renders correctly', () => {
+  render(
+    <MockContext>
+      <ChangeInstrumentModal
+        changeInstrumentModalIsShowing={true}
+        setChangeInstrumentModalIsShowing={jest.fn}
+      />
+    </MockContext>,
+  );
 });

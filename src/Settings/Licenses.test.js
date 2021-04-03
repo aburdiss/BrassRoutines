@@ -1,18 +1,17 @@
 import 'react-native';
 import React from 'react';
+import {render} from '@testing-library/react-native';
+
 import Licenses from './Licenses';
+import MockContext from '../../jest/MockContext';
 import data from './Licenses/data';
 import json from '../../package.json';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-
 it('renders correctly', () => {
-  renderer.create(
-    <SafeAreaProvider>
+  render(
+    <MockContext>
       <Licenses />
-    </SafeAreaProvider>,
+    </MockContext>,
   );
 });
 
