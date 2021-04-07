@@ -1,307 +1,22 @@
 import 'react-native-gesture-handler';
-import React, {useContext, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useDarkMode} from 'react-native-dynamic';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import * as RNLocalize from 'react-native-localize';
 
-import Home from './src/RoutineStack/Home/Home';
-import DailyRoutine from './src/RoutineStack/DailyRoutine/DailyRoutine';
-import FavoritesRoutine from './src/RoutineStack/FavoritesRoutine/FavoritesRoutine';
-import ScalePractice from './src/RoutineStack/Scales/ScalePractice/ScalePractice';
-import ArpeggioPractice from './src/RoutineStack/Scales/ArpeggioPractice/ArpeggioPractice';
-import List from './src/AllExercisesStack/List/List';
-import ExerciseDetail from './src/AllExercisesStack/ExerciseDetail/ExerciseDetail';
-import CreateCustom from './src/CustomStack/CreateCustom/CreateCustom';
-import CustomList from './src/CustomStack/CustomList/CustomList';
-import CustomRoutine from './src/CustomStack/CustomRoutine/CustomRoutine';
-import Settings from './src/SettingsStack/Settings/Settings';
-import Licenses from './src/SettingsStack/Licenses/Licenses';
-import Acknowledgements from './src/SettingsStack/Acknowledgements/Acknowledgements';
-import HeaderButton from './src/Components/HeaderButton/HeaderButton';
-
-import {PreferencesContext, PreferencesProvider} from './src/Model/Preferences';
+import {PreferencesProvider} from './src/Model/Preferences';
 import {setI18nConfig, translate} from './src/Translations/TranslationModel';
-import {colors, getExerciseDisplayName} from './src/Model/Model';
+import {colors} from './src/Model/Model';
+
+import RoutineStack from './src/RoutineStack/RoutineStack';
+import AllExercisesStack from './src/AllExercisesStack/AllExercisesStack';
+import CustomStack from './src/CustomStack/CustomStack';
+import SettingsStack from './src/SettingsStack/SettingsStack';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-
-/**
- * @description Displays main functionality of the app, option to start a
- * daily routine, or an option to start a routine of all of the user's
- * favorites.
- * @author Alexander Burdiss
- * @since 12/2/20
- * @version 1.0.1
- * @param {Object} navigation The navigation object provided by React 
- * Navigation
- * 
- * @component
- * @example
- * ```jsx
-<Tab.Screen
-  name="Home"
-  component={HomeStack}
-  options={{title: translate('Routine')}}
-/>
-```
- */
-const HomeStack = ({navigation}) => {
-  const DARKMODE = useDarkMode();
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
-        headerTitleStyle: {
-          color: DARKMODE ? colors.white : colors.black,
-        },
-        headerStyle: {
-          backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-          borderBottomWidth: 1,
-          borderBottomColor: DARKMODE
-            ? colors.systemGray5Dark
-            : colors.systemGray5Light,
-          shadowColor: 'transparent',
-        },
-        headerBackTitle: translate('Back'),
-      }}>
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{
-          title: translate('Brass Routines'),
-        }}
-      />
-      <Stack.Screen name="Daily Routine" component={DailyRoutine} />
-      <Stack.Screen name="Favorites Routine" component={FavoritesRoutine} />
-      <Stack.Screen
-        name="Scale Practice"
-        component={ScalePractice}
-        options={{
-          headerRight: () => (
-            <HeaderButton
-              handler={() => {
-                navigation.navigate('Arpeggio Practice');
-              }}>
-              Arpeggios
-            </HeaderButton>
-          ),
-          title: translate('Scale Practice'),
-        }}
-      />
-      <Stack.Screen
-        name="Arpeggio Practice"
-        component={ArpeggioPractice}
-        options={{
-          title: translate('Arpeggio Practice'),
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
-
-/**
- * @description A stack that shows the list of all of the elements in the app,
- * and can open each element in another screen.
- * @author Alexander Burdiss
- * @since 12/2/20
- * @version 1.0.1
- * @param {Object} navigation The navigation object provided by React
- * Navigation
- * 
- * @component
- * @example
- * ```jsx
-<Tab.Screen
-  name="List"
-  component={ListStack}
-  options={{title: translate('All Exercises')}}
-/>
-```
- */
-const ListStack = ({navigation}) => {
-  const {state} = useContext(PreferencesContext);
-  const DARKMODE = useDarkMode();
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
-        headerTitleStyle: {
-          color: DARKMODE ? colors.white : colors.black,
-        },
-        headerStyle: {
-          backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-          borderBottomWidth: 1,
-          borderBottomColor: DARKMODE
-            ? colors.systemGray5Dark
-            : colors.systemGray5Light,
-          shadowColor: 'transparent',
-        },
-        headerBackTitle: translate('Back'),
-      }}>
-      <Stack.Screen
-        name="List"
-        component={List}
-        options={{
-          title: translate('All Exercises'),
-        }}
-      />
-      <Stack.Screen
-        name="Exercise Detail"
-        component={ExerciseDetail}
-        options={({route}) => ({
-          title: getExerciseDisplayName(route.params.item, state),
-        })}
-      />
-    </Stack.Navigator>
-  );
-};
-
-/**
- * @description Contains all of the screens necessary for the user to create
- * their own routine, and save it to local storage.
- * @author Alexander Burdiss
- * @since 12/2/20
- * @version 1.0.1
- * @param {Object} navigation The navigation object provided by React
- * Navigation
- * 
- * @component
- * @example
- * ```jsx
-<Tab.Screen
-  name="Custom"
-  component={CustomStack}
-  options={{title: translate('Custom')}}
-/>
- ```
- */
-const CustomStack = ({navigation}) => {
-  const {state} = useContext(PreferencesContext);
-  const DARKMODE = useDarkMode();
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
-        headerTitleStyle: {
-          color: DARKMODE ? colors.white : colors.black,
-        },
-        headerStyle: {
-          backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-          borderBottomWidth: 1,
-          borderBottomColor: DARKMODE
-            ? colors.systemGray5Dark
-            : colors.systemGray5Light,
-          shadowColor: 'transparent',
-        },
-        headerBackTitle: translate('Back'),
-      }}>
-      <Stack.Screen
-        name="Custom List"
-        component={CustomList}
-        options={{
-          headerRight: () => (
-            <HeaderButton
-              handler={() => {
-                navigation.navigate('Create Custom');
-              }}>
-              Create
-            </HeaderButton>
-          ),
-          title: translate('Custom Routines'),
-        }}
-      />
-      <Stack.Screen
-        name="Create Custom"
-        component={CreateCustom}
-        options={{
-          title: translate('Create Routine'),
-        }}
-      />
-      <Stack.Screen
-        name="Custom Routine"
-        component={CustomRoutine}
-        options={{
-          title: translate('Custom Routine'),
-        }}
-      />
-      <Stack.Screen
-        name="Exercise Detail"
-        component={ExerciseDetail}
-        options={({route}) => ({
-          title: getExerciseDisplayName(route.params.item, state),
-        })}
-      />
-    </Stack.Navigator>
-  );
-};
-
-/**
- * @description Currently contains the settings of the app, but more resources,
- * such as fingering charts could be added here.
- * @author Alexander Burdiss
- * @since 12/2/20
- * @version 1.0.1
- * @param {Object} navigation The navigation object provided by React
- * Navigation
- * 
- * @component
- * @example
- * ```jsx
-<Tab.Screen
-  name="Settings"
-  component={SettingsStack}
-  options={{title: translate('Settings')}}
-/>
- ```
- */
-const SettingsStack = ({navigation}) => {
-  const DARKMODE = useDarkMode();
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
-        headerTitleStyle: {
-          color: DARKMODE ? colors.white : colors.black,
-        },
-        headerStyle: {
-          backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-          borderBottomWidth: 1,
-          borderBottomColor: DARKMODE
-            ? colors.systemGray5Dark
-            : colors.systemGray5Light,
-          shadowColor: 'transparent',
-        },
-        headerBackTitle: translate('Back'),
-      }}>
-      <Stack.Screen
-        name="Settings"
-        component={Settings}
-        options={{
-          title: translate('Settings'),
-        }}
-      />
-      <Stack.Screen
-        name="Licenses"
-        component={Licenses}
-        options={{
-          title: translate('Licenses'),
-        }}
-      />
-      <Stack.Screen
-        name="Acknowledgements"
-        component={Acknowledgements}
-        options={{
-          title: translate('Acknowledgements'),
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
 
 setI18nConfig();
 
@@ -391,12 +106,12 @@ const App = () => {
             }}>
             <Tab.Screen
               name="Home"
-              component={HomeStack}
+              component={RoutineStack}
               options={{title: translate('Routine')}}
             />
             <Tab.Screen
               name="List"
-              component={ListStack}
+              component={AllExercisesStack}
               options={{title: translate('All Exercises')}}
             />
             <Tab.Screen

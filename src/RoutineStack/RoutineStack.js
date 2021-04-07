@@ -1,0 +1,91 @@
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import {useDarkMode} from 'react-native-dynamic';
+
+import Home from '../RoutineStack/Home/Home';
+import DailyRoutine from '../RoutineStack/DailyRoutine/DailyRoutine';
+import FavoritesRoutine from '../RoutineStack/FavoritesRoutine/FavoritesRoutine';
+import ScalePractice from '../RoutineStack/Scales/ScalePractice/ScalePractice';
+import ArpeggioPractice from '../RoutineStack/Scales/ArpeggioPractice/ArpeggioPractice';
+import HeaderButton from '../Components/HeaderButton/HeaderButton';
+
+import {translate} from '../Translations/TranslationModel';
+import {colors} from '../Model/Model';
+
+const Stack = createStackNavigator();
+
+/**
+ * @description Displays main functionality of the app, option to start a
+ * daily routine, or an option to start a routine of all of the user's
+ * favorites.
+ * @author Alexander Burdiss
+ * @since 12/2/20
+ * @version 1.0.1
+ * @param {Object} navigation The navigation object provided by React 
+ * Navigation
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Tab.Screen
+  name="Home"
+  component={HomeStack}
+  options={{title: translate('Routine')}}
+/>
+```
+ */
+const RoutineStack = ({navigation}) => {
+  const DARKMODE = useDarkMode();
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
+        headerTitleStyle: {
+          color: DARKMODE ? colors.white : colors.black,
+        },
+        headerStyle: {
+          backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+          borderBottomWidth: 1,
+          borderBottomColor: DARKMODE
+            ? colors.systemGray5Dark
+            : colors.systemGray5Light,
+          shadowColor: 'transparent',
+        },
+        headerBackTitle: translate('Back'),
+      }}>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: translate('Brass Routines'),
+        }}
+      />
+      <Stack.Screen name="Daily Routine" component={DailyRoutine} />
+      <Stack.Screen name="Favorites Routine" component={FavoritesRoutine} />
+      <Stack.Screen
+        name="Scale Practice"
+        component={ScalePractice}
+        options={{
+          headerRight: () => (
+            <HeaderButton
+              handler={() => {
+                navigation.navigate('Arpeggio Practice');
+              }}>
+              Arpeggios
+            </HeaderButton>
+          ),
+          title: translate('Scale Practice'),
+        }}
+      />
+      <Stack.Screen
+        name="Arpeggio Practice"
+        component={ArpeggioPractice}
+        options={{
+          title: translate('Arpeggio Practice'),
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+export default RoutineStack;
