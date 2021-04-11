@@ -7,7 +7,7 @@ import {
   useDarkMode,
   useDynamicValue,
 } from 'react-native-dynamic';
-import SegmentedControl from '@react-native-community/segmented-control';
+import SegmentedControl from '@react-native-segmented-control/segmented-control';
 import RNPickerSelect from 'react-native-picker-select';
 import {useNavigation} from '@react-navigation/native';
 
