@@ -25,7 +25,7 @@ setI18nConfig();
  * @author Alexander Burdiss
  * @since 12/2/20
  * @version 1.0.1
- * 
+ *
  * @component
  * @example
  * ```jsx
