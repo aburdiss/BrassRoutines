@@ -11,12 +11,12 @@ Run this command to get the data
 import React from 'react';
 
 import LicensesList from './LicensesList';
-import {useDarkMode} from 'react-native-dynamic';
-import {colors} from '../../Model/Model';
+import { useDarkMode } from 'react-native-dynamic';
+import { colors } from '../../Model/Model';
 
 import Data from './licenses.json';
 import SafeAreaView from 'react-native-safe-area-view';
-import {capitalize} from 'underscore.string';
+import { capitalize } from 'underscore.string';
 
 /**
  * @function extractNameFromGithubUrl
@@ -62,7 +62,7 @@ function sortDataByKey(data, key) {
 }
 
 let licenseData = Object.keys(Data).map((key) => {
-  let {licenses, ...license} = Data[key];
+  let { licenses, ...license } = Data[key];
 
   let name, version;
   if (key[0] == '@') {
@@ -119,7 +119,8 @@ const Licenses = () => {
       style={{
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray2Light,
-      }}>
+      }}
+    >
       <LicensesList licenses={licenseData} />
     </SafeAreaView>
   );

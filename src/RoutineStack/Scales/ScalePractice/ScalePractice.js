@@ -1,19 +1,20 @@
-import React, {useCallback, useState} from 'react';
-import {Alert, View, ScrollView} from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { Alert, View, ScrollView } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import {debounce, random} from 'underscore';
+import { debounce, random } from 'underscore';
 
 import ScaleDisplay from '../ScaleDisplay/ScaleDisplay';
 import AllScalesButton from '../AllScalesButton/AllScalesButton';
 import MainActionButton from '../../../Components/MainActionButton/MainActionButton';
 import ScaleSwitchRow from '../ScaleSwitchRow/ScaleSwitchRow';
-import {colors} from '../../../Model/Model';
-import {translate} from '../../../Translations/TranslationModel';
+import { colors } from '../../../Model/Model';
+import { translate } from '../../../Translations/TranslationModel';
 import SafeAreaView from 'react-native-safe-area-view';
+import { useIdleScreen } from '../../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -27,6 +28,7 @@ import SafeAreaView from 'react-native-safe-area-view';
  *   <ScalePractice />
  */
 const ScalePractice = () => {
+  useIdleScreen();
   const styles = useDynamicValue(dynamicStyles);
 
   const [currentScale, setCurrentScale] = useState(
@@ -398,7 +400,8 @@ const ScalePractice = () => {
           <View style={styles.allScaleButton}>
             <AllScalesButton
               handler={selectAllScales}
-              accessibilityHint={translate('Toggles All Scales')}>
+              accessibilityHint={translate('Toggles All Scales')}
+            >
               {translate('All Scales')}
             </AllScalesButton>
           </View>
@@ -407,7 +410,7 @@ const ScalePractice = () => {
       <View style={styles.mainActionButton}>
         <MainActionButton
           handler={debouncedGenerateScales}
-          accessibilityValue={{text: `${translate(currentScale)}`}}
+          accessibilityValue={{ text: `${translate(currentScale)}` }}
           accessibilityHint={translate('Randomizes a new scale')}
           text={'Randomize'}
         />

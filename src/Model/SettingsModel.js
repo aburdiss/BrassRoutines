@@ -100,6 +100,15 @@ export const CUSTOM_ROUTINES = [
   },
 ];
 
+export const SETTINGS = [
+  {
+    id: '10.1',
+    type: 'switch',
+    value: 'Keep Screen On',
+    setting: 'keepScreenOn',
+  },
+];
+
 export const RESOURCES = [
   {
     id: '11',

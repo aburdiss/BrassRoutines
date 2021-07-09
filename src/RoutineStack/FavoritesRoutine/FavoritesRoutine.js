@@ -1,8 +1,9 @@
-import React, {useEffect, useState, useContext} from 'react';
-import {View} from 'react-native';
+import React, { useEffect, useState, useContext } from 'react';
+import { View } from 'react-native';
 import Routine from '../../Components/Routine/Routine';
-import {PreferencesContext} from '../../Model/Preferences';
-import {shuffle} from 'underscore';
+import { PreferencesContext } from '../../Model/Preferences';
+import { shuffle } from 'underscore';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A routine that randomizes the users' favorites and passes
@@ -16,10 +17,12 @@ import {shuffle} from 'underscore';
  *   <FavoritesRoutine />
  */
 const FavoritesRoutine = () => {
-  const {state} = useContext(PreferencesContext);
+  useIdleScreen();
+  const { state } = useContext(PreferencesContext);
   const [currentRoutine, setCurrentRoutine] = useState([]);
   useEffect(function () {
     setCurrentRoutine(generateFavoritesRoutine(state));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

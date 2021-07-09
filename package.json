@@ -27,6 +27,7 @@
     "react-native-dynamic": "^1.0.0",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-haptic-feedback": "^1.11.0",
+    "react-native-idle-timer": "^2.1.6",
     "react-native-image-zoom-viewer": "^3.0.1",
     "react-native-localize": "^2.0.1",
     "react-native-modal": "^11.6.1",
@@ -53,8 +54,6 @@
     "react-test-renderer": "16.13.1"
   },
   "prettier": {
-    "bracketSpacing": false,
-    "jsxBracketSameLine": true,
     "singleQuote": true,
     "trailingComma": "all"
   },

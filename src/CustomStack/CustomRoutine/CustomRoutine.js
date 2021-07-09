@@ -1,8 +1,9 @@
-import React, {useContext} from 'react';
-import {View} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import React, { useContext } from 'react';
+import { View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import Routine from '../../Components/Routine/Routine';
-import {PreferencesContext} from '../../Model/Preferences';
+import { PreferencesContext } from '../../Model/Preferences';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description Displays a custom routine.
@@ -15,8 +16,10 @@ import {PreferencesContext} from '../../Model/Preferences';
  *   <CustomRoutine />
  */
 const CustomRoutine = () => {
+  useIdleScreen();
+
   const route = useRoute();
-  const {state} = useContext(PreferencesContext);
+  const { state } = useContext(PreferencesContext);
   const exercises = route.params.item.exercises.split(',').map(function (x) {
     return parseInt(x, 10);
   });

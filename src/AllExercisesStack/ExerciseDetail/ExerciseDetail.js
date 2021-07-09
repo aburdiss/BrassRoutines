@@ -1,13 +1,13 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {View, Image, Alert, Pressable} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react';
+import { View, Image, Pressable } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {
   DynamicValue,
   DynamicStyleSheet,
   useDynamicValue,
 } from 'react-native-dynamic';
-import {PreferencesContext} from '../../Model/Preferences';
+import { PreferencesContext } from '../../Model/Preferences';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   colors,
@@ -20,8 +20,9 @@ import {
   getTubaImagePath,
 } from '../../Model/Model';
 import ZoomModal from '../../Components/ZoomModal/ZoomModal';
-import {translate} from '../../Translations/TranslationModel';
+import { translate } from '../../Translations/TranslationModel';
 import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/ChangeInstrumentModal';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description Shows an individual exercise, and allows the user to select the
@@ -35,6 +36,8 @@ import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/Change
  *   <ExerciseDetail />
  */
 const ExerciseDetail = () => {
+  useIdleScreen();
+
   const styles = useDynamicValue(dynamicStyles);
   const [zoomModalIsShowing, setZoomModalIsShowing] = useState(false);
   const [imagePath, setImagePath] = useState(undefined);
@@ -42,7 +45,7 @@ const ExerciseDetail = () => {
     changeInstrumentModalIsShowing,
     setChangeInstrumentModalIsShowing,
   ] = useState(false);
-  const {state, dispatch} = useContext(PreferencesContext);
+  const { state, dispatch } = useContext(PreferencesContext);
   const route = useRoute();
 
   useEffect(
@@ -73,6 +76,7 @@ const ExerciseDetail = () => {
           break;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [changeInstrumentModalIsShowing, state.instrument, state.bassClef],
   );
 
@@ -90,11 +94,11 @@ const ExerciseDetail = () => {
       let tempFavorites = state.favorites.filter((item) => {
         return item != currentExercise;
       });
-      dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
+      dispatch({ type: 'SET_SETTING', payload: { favorites: tempFavorites } });
     } else {
       let tempFavorites = [...state.favorites];
       tempFavorites.push(currentExercise);
-      dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
+      dispatch({ type: 'SET_SETTING', payload: { favorites: tempFavorites } });
     }
   }
 
@@ -117,7 +121,8 @@ const ExerciseDetail = () => {
           onPress={toggleChangeInstrumentModal}
           style={styles.iconPadding}
           accessibilityLabel={'Opens change instrument modal'}
-          accessible={true}>
+          accessible={true}
+        >
           <Ionicons
             name="menu-outline"
             size={28}
@@ -133,7 +138,8 @@ const ExerciseDetail = () => {
           }
           style={styles.iconPadding}
           accessible={true}
-          accessibilityHint={translate('Add exercise to favorites')}>
+          accessibilityHint={translate('Add exercise to favorites')}
+        >
           <Ionicons
             name={
               state.favorites.includes(route.params.item)
@@ -156,7 +162,8 @@ const ExerciseDetail = () => {
         accessibilityLabel={translate('Opens exercise modal')}
         onPress={() => {
           setZoomModalIsShowing(true);
-        }}>
+        }}
+      >
         <Image source={imagePath} style={styles.image} />
       </Pressable>
       <ZoomModal

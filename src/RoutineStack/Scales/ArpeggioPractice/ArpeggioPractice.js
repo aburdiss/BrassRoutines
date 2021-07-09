@@ -1,19 +1,20 @@
-import React, {useState, useCallback} from 'react';
-import {Alert, View, ScrollView} from 'react-native';
+import React, { useState, useCallback } from 'react';
+import { Alert, View, ScrollView } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
 import SafeAreaView from 'react-native-safe-area-view';
-import {debounce, random} from 'underscore';
+import { debounce, random } from 'underscore';
 
 import ScaleDisplay from '../ScaleDisplay/ScaleDisplay';
 import AllScalesButton from '../AllScalesButton/AllScalesButton';
 import MainActionButton from '../../../Components/MainActionButton/MainActionButton';
 import ScaleSwitchRow from '../ScaleSwitchRow/ScaleSwitchRow';
-import {colors} from '../../../Model/Model';
-import {translate} from '../../../Translations/TranslationModel';
+import { colors } from '../../../Model/Model';
+import { translate } from '../../../Translations/TranslationModel';
+import { useIdleScreen } from '../../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios
@@ -27,6 +28,8 @@ import {translate} from '../../../Translations/TranslationModel';
  *   <ArpeggioPractice />
  */
 const ArpeggioPractice = () => {
+  useIdleScreen();
+
   const styles = useDynamicValue(dynamicStyles);
 
   const [currentArpeggio, setCurrentArpeggio] = useState(
@@ -357,7 +360,8 @@ const ArpeggioPractice = () => {
           <View style={styles.allScaleButton}>
             <AllScalesButton
               handler={selectAllArpeggios}
-              accessibilityHint={translate('Toggles All Arpeggios')}>
+              accessibilityHint={translate('Toggles All Arpeggios')}
+            >
               {translate('All Arpeggios')}
             </AllScalesButton>
           </View>
@@ -366,7 +370,7 @@ const ArpeggioPractice = () => {
       <View style={styles.mainActionButton}>
         <MainActionButton
           handler={debouncedGenerateArpeggios}
-          accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+          accessibilityValue={{ text: `${translate(currentArpeggio)}` }}
           accessibilityHint={translate('Randomizes a new arpeggio')}
           text={'Randomize'}
         />

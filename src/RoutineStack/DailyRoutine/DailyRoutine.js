@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {View} from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { View } from 'react-native';
 import Routine from '../../Components/Routine/Routine';
-import {PreferencesContext} from '../../Model/Preferences';
+import { PreferencesContext } from '../../Model/Preferences';
 import {
   hornExercises,
   trumpetExercises,
@@ -9,7 +9,8 @@ import {
   euphoniumExercises,
   tubaExercises,
 } from '../../Model/Model';
-import {random} from 'underscore';
+import { random } from 'underscore';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description The main routine of the app, that takes the user's settings and
@@ -23,10 +24,12 @@ import {random} from 'underscore';
  *   <DailyRoutine />
  */
 const DailyRoutine = () => {
-  const {state} = useContext(PreferencesContext);
+  useIdleScreen();
+  const { state } = useContext(PreferencesContext);
   const [currentRoutine, setCurrentRoutine] = useState([]);
   useEffect(function () {
     setCurrentRoutine(generateDailyRoutine());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**

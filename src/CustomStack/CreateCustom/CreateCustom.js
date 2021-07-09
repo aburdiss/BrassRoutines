@@ -35,9 +35,10 @@ import HeaderButton from '../../Components/HeaderButton/HeaderButton';
 import AddToListButton from '../../Components/AddToListButton/AddToListButton';
 import ExercisePicker from '../ExercisePicker/ExercisePicker';
 import SwipeableRow from '../../Components/SwipeableRow/SwipeableRow';
-import {colors, getExerciseDisplayName} from '../../Model/Model';
-import {PreferencesContext} from '../../Model/Preferences';
-import {translate} from '../../Translations/TranslationModel';
+import { colors, getExerciseDisplayName } from '../../Model/Model';
+import { PreferencesContext } from '../../Model/Preferences';
+import { translate } from '../../Translations/TranslationModel';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A Component that allows the user to create a routine using the
@@ -55,10 +56,12 @@ import {translate} from '../../Translations/TranslationModel';
 ```
  */
 const CreateCustom = () => {
+  useIdleScreen();
+
   const styles = useDynamicValue(dynamicStyles);
   const navigation = useNavigation();
   const route = useRoute();
-  const {state, dispatch} = useContext(PreferencesContext);
+  const { state, dispatch } = useContext(PreferencesContext);
   const [routineName, setRoutineName] = useState('');
   const [selectedExercise, setSelectedExercise] = useState(1);
   const [currentRoutine, setCurrentRoutine] = useState([]);
@@ -85,6 +88,7 @@ const CreateCustom = () => {
         ),
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [navigation],
   );
 
@@ -144,6 +148,7 @@ const CreateCustom = () => {
    * @since 1/25/21
    * @version 1.0.0
    */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function handleBackButtonPress() {
     Alert.alert(
       translate('All changes will be lost!'),
@@ -190,6 +195,7 @@ const CreateCustom = () => {
       setIsPortrait(getIsPortrait());
       setIsSmallScreen(getIsSmallScreen());
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
@@ -277,7 +283,7 @@ const CreateCustom = () => {
       } else {
         tempRoutines.push(currentRoutineObject);
       }
-      dispatch({type: 'ADD_TO_CUSTOM_ROUTINES', payload: tempRoutines});
+      dispatch({ type: 'ADD_TO_CUSTOM_ROUTINES', payload: tempRoutines });
       navigation.pop();
     }
   };
@@ -332,7 +338,7 @@ const CreateCustom = () => {
    * @version 1.0
    * @param {{[Number]}} {data} The new order that the routine should be in.
    */
-  function setNewRoutineOrder({data}) {
+  function setNewRoutineOrder({ data }) {
     setCurrentRoutine(data);
   }
 
@@ -375,12 +381,13 @@ const CreateCustom = () => {
         keyExtractor={(item, index) => String(index)}
         onDragEnd={setNewRoutineOrder}
         onDragBegin={triggerHapticFeedback}
-        renderItem={({item, drag}) => (
+        renderItem={({ item, drag }) => (
           <SwipeableRow
             key={`${item}${counter}`}
             styles={styles}
             delete={deleteElement}
-            item={item}>
+            item={item}
+          >
             <Pressable
               onPress={() => {
                 navigation.navigate('Exercise Detail', {
@@ -397,7 +404,8 @@ const CreateCustom = () => {
                   : '')
               }
               onLongPress={drag}
-              style={({pressed}) => ({opacity: pressed ? 0.7 : 1})}>
+              style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
+            >
               <View style={styles.listItemContainer}>
                 <View style={styles.listItemTextContainer}>
                   {state.favorites.includes(item) ? (
@@ -408,7 +416,8 @@ const CreateCustom = () => {
                       name={'heart'}
                       color={styles.listIcon.color}
                       size={20}
-                      style={{paddingRight: 5}}
+                      // eslint-disable-next-line react-native/no-inline-styles
+                      style={{ paddingRight: 5 }}
                     />
                   ) : null}
                   <Text style={styles.listItemText}>
@@ -446,25 +455,31 @@ const CreateCustom = () => {
     </View>
   ) : (
     <SafeAreaView
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         ...styles.container,
         flexDirection: 'row',
-      }}>
-      <View style={{flex: 1}}>
+      }}
+    >
+      {/* eslint-disable-next-line react-native/no-inline-styles */}
+      <View style={{ flex: 1 }}>
         <ExercisePicker
           selectedExercise={selectedExercise}
           setSelectedExercise={setSelectedExercise}
         />
-        <View style={{flex: 1}} />
+        {/* eslint-disable-next-line react-native/no-inline-styles */}
+        <View style={{ flex: 1 }} />
         <View style={styles.buttonContainer}>
           <ResetButton handler={removeAllExercises} />
           <AddToListButton handler={addToExerciseList} />
         </View>
       </View>
       <View
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           flex: 1,
-        }}>
+        }}
+      >
         <TextInput
           value={routineName}
           placeholder={translate('Routine Name')}
@@ -478,12 +493,13 @@ const CreateCustom = () => {
           keyExtractor={(item, index) => String(index)}
           onDragEnd={setNewRoutineOrder}
           onDragBegin={triggerHapticFeedback}
-          renderItem={({item, drag}) => (
+          renderItem={({ item, drag }) => (
             <SwipeableRow
               key={`${item}${counter}`}
               styles={styles}
               delete={deleteElement}
-              item={item}>
+              item={item}
+            >
               <Pressable
                 onPress={() => {
                   navigation.navigate('Exercise Detail', {
@@ -500,7 +516,8 @@ const CreateCustom = () => {
                     : '')
                 }
                 onLongPress={drag}
-                style={({pressed}) => ({opacity: pressed ? 0.7 : 1})}>
+                style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
+              >
                 <View style={styles.listItemContainer}>
                   <View style={styles.listItemTextContainer}>
                     {state.favorites.includes(item) ? (
@@ -511,7 +528,8 @@ const CreateCustom = () => {
                         name={'heart'}
                         color={styles.listIcon.color}
                         size={20}
-                        style={{paddingRight: 5}}
+                        // eslint-disable-next-line react-native/no-inline-styles
+                        style={{ paddingRight: 5 }}
                       />
                     ) : null}
                     <Text style={styles.listItemText}>
