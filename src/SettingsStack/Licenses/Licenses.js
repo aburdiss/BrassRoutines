@@ -34,7 +34,7 @@ function extractNameFromGithubUrl(url) {
     return null;
   }
 
-  const reg = /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_]{1,15})(\/([-a-z]{1,20}))?/i;
+  const reg = /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_-]{1,30})(\/([-a-z]{1,40}))?/i;
   const components = reg.exec(url);
 
   if (components && components.length > 5) {
@@ -61,11 +61,16 @@ function sortDataByKey(data, key) {
   return data;
 }
 
-let licenses = Object.keys(Data).map((key) => {
+let licenseData = Object.keys(Data).map((key) => {
   let {licenses, ...license} = Data[key];
-  let [name, version] = key.split('@');
 
-  const reg = /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_]{1,15})(\/([-a-z]{1,20}))?/i;
+  let name, version;
+  if (key[0] == '@') {
+    [, name, version] = key.split('@');
+  } else {
+    [name, version] = key.split('@');
+  }
+
   let username =
     extractNameFromGithubUrl(license.repository) ||
     extractNameFromGithubUrl(license.licenseUrl);
@@ -90,7 +95,7 @@ let licenses = Object.keys(Data).map((key) => {
   };
 });
 
-sortDataByKey(licenses, 'username');
+sortDataByKey(licenseData, 'username');
 
 /**
  * @description A wrapper for the LicensesList component that processes the
@@ -99,22 +104,23 @@ sortDataByKey(licenses, 'username');
  * @author Alexander Burdiss
  * @since 12/17/20
  * @version 1.0.1
- * 
+ *
  * @component
  * @example
  * ```jsx
-<Licenses />
-```
+ * <Licenses />
+ * ```
  */
 const Licenses = () => {
   const DARKMODE = useDarkMode();
   return (
     <SafeAreaView
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray2Light,
       }}>
-      <LicensesList licenses={licenses} />
+      <LicensesList licenses={licenseData} />
     </SafeAreaView>
   );
 };
