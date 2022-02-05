@@ -6,7 +6,8 @@ import {
   useDynamicValue,
 } from 'react-native-dynamic';
 import SafeAreaView from 'react-native-safe-area-view';
-import { debounce, random } from 'underscore';
+import { debounce } from '../../../utils/debounce/debounce';
+import { random } from '../../../utils/random/random';
 
 import ScaleDisplay from '../ScaleDisplay/ScaleDisplay';
 import AllScalesButton from '../AllScalesButton/AllScalesButton';

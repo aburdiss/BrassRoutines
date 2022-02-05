@@ -154,11 +154,5 @@
         "repository": "https://github.com/facebook/react",
         "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
         "parents": "brass-routines"
-    },
-    "underscore@1.13.1": {
-        "licenses": "MIT",
-        "repository": "https://github.com/jashkenas/underscore",
-        "licenseUrl": "https://github.com/jashkenas/underscore/raw/master/LICENSE",
-        "parents": "brass-routines"
     }
 }
