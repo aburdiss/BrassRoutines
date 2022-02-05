@@ -1,15 +1,15 @@
-import React, {useContext, useState} from 'react';
-import {Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {useDarkMode} from 'react-native-dynamic';
+import React, { useContext, useState } from 'react';
+import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useDarkMode } from 'react-native-dynamic';
 import SafeAreaView from 'react-native-safe-area-view';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import {ScrollView} from 'react-native-gesture-handler';
-import {capitalize} from 'underscore.string';
+import { ScrollView } from 'react-native-gesture-handler';
+import { capitalize } from '../../utils/capitalize/capitalize';
 
-import {colors} from '../../Model/Model';
-import {PreferencesContext} from '../../Model/Preferences';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { PreferencesContext } from '../../Model/Preferences';
+import { translate } from '../../Translations/TranslationModel';
 import HomeButton from '../../Components/HomeButton/HomeButton';
 import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/ChangeInstrumentModal';
 
@@ -18,17 +18,15 @@ import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/Change
  * @author Alexander Burdiss
  * @since 12/3/20
  * @version 1.2.0
- * 
+ *
  * @component
  * @example
- * ```jsx
-<Home />
-```
+ * <Home />
  */
 const Home = () => {
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
-  const {state} = useContext(PreferencesContext);
+  const { state } = useContext(PreferencesContext);
   const [
     changeInstrumentModalIsShowing,
     setChangeInstrumentModalIsShowing,
@@ -112,7 +110,8 @@ const Home = () => {
       style={{
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
-      }}>
+      }}
+    >
       <ScrollView>
         <HomeButton
           accessibilityHint={translate('Starts daily routine')}
@@ -120,7 +119,8 @@ const Home = () => {
           onLongPress={() => {
             setChangeInstrumentModalIsShowing(true);
             triggerHapticFeedback();
-          }}>
+          }}
+        >
           {translate('Begin Routine') +
             ' (' +
             translate(capitalize(state?.instrument)) +
@@ -128,14 +128,16 @@ const Home = () => {
         </HomeButton>
         <HomeButton
           accessibilityHint={translate('Randomizes favorite exercises')}
-          onPress={launchFavoritesRoutine}>
+          onPress={launchFavoritesRoutine}
+        >
           {translate('Randomize Favorites')}
         </HomeButton>
         <HomeButton
           accessibilityHint={translate('Opens Scale Practice')}
           onPress={() => {
             navigation.navigate('Scale Practice');
-          }}>
+          }}
+        >
           {translate('Scale Practice')}
         </HomeButton>
       </ScrollView>
