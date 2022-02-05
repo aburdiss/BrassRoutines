@@ -11,7 +11,7 @@
         "licenseUrl": "https://github.com/react-native-community/react-native-masked-view",
         "parents": "brass-routines"
     },
-    "@react-native-picker/picker@1.15.0": {
+    "@react-native-picker/picker@1.16.8": {
         "licenses": "MIT",
         "repository": "https://github.com/react-native-picker/picker",
         "licenseUrl": "https://github.com/react-native-picker/picker/raw/master/LICENSE",
@@ -83,6 +83,12 @@
         "licenseUrl": "https://github.com/mkuczera/react-native-haptic-feedback/raw/master/LICENSE",
         "parents": "brass-routines"
     },
+    "react-native-idle-timer@2.1.6": {
+        "licenses": "UNKNOWN",
+        "repository": "https://github.com/marcshilling/react-native-idle-timer",
+        "licenseUrl": "https://github.com/marcshilling/react-native-idle-timer/raw/master/LICENSE.md",
+        "parents": "brass-routines"
+    },
     "react-native-image-zoom-viewer@3.0.1": {
         "licenses": "MIT",
         "repository": "https://github.com/ascoders/react-native-image-viewer",
@@ -137,22 +143,16 @@
         "licenseUrl": "https://github.com/oblador/react-native-vector-icons/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native@0.64.1": {
+    "react-native@0.67.2": {
         "licenses": "MIT",
         "repository": "github:facebook/react-native",
         "licenseUrl": "github:facebook/react-native",
         "parents": "brass-routines"
     },
-    "react@17.0.1": {
+    "react@17.0.2": {
         "licenses": "MIT",
         "repository": "https://github.com/facebook/react",
         "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
-        "parents": "brass-routines"
-    },
-    "underscore.string@3.3.5": {
-        "licenses": "MIT",
-        "repository": "https://github.com/epeli/underscore.string",
-        "licenseUrl": "https://github.com/epeli/underscore.string",
         "parents": "brass-routines"
     },
     "underscore@1.13.1": {
