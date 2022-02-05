@@ -1,15 +1,15 @@
 import 'react-native-gesture-handler';
-import React, {useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React, { useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {useDarkMode} from 'react-native-dynamic';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { useDarkMode } from 'react-native-dynamic';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as RNLocalize from 'react-native-localize';
 
-import {PreferencesProvider} from './src/Model/Preferences';
-import {setI18nConfig, translate} from './src/Translations/TranslationModel';
-import {colors} from './src/Model/Model';
+import { PreferencesProvider } from './src/Model/Preferences';
+import { setI18nConfig, translate } from './src/Translations/TranslationModel';
+import { colors } from './src/Model/Model';
 
 import RoutineStack from './src/RoutineStack/RoutineStack';
 import AllExercisesStack from './src/AllExercisesStack/AllExercisesStack';
@@ -75,27 +75,25 @@ const App = () => {
       <PreferencesProvider>
         <NavigationContainer>
           <Tab.Navigator
-            screenOptions={({route}) => ({
-              tabBarIcon: ({color, size}) => {
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color, size }) => {
                 let iconName;
-                if (route.name === 'Home') {
+                if (route.name === 'HomeStack') {
                   iconName = 'book';
-                } else if (route.name === 'List') {
+                } else if (route.name === 'ListStack') {
                   iconName = 'list';
-                } else if (route.name === 'Custom') {
+                } else if (route.name === 'CustomStack') {
                   iconName = 'create';
-                } else if (route.name === 'Settings') {
+                } else if (route.name === 'SettingsStack') {
                   iconName = 'options';
                 }
                 return <Ionicons name={iconName} size={size} color={color} />;
               },
-            })}
-            tabBarOptions={{
-              activeTintColor: DARKMODE
+              tabBarActiveTintColor: DARKMODE
                 ? colors.orangeDark
                 : colors.orangeLight,
-              inactiveTintColor: colors.systemGray,
-              style: {
+              tabBarInactiveTintColor: colors.systemGray,
+              tabBarStyle: {
                 backgroundColor: DARKMODE
                   ? colors.systemGray6Dark
                   : colors.white,
@@ -103,26 +101,28 @@ const App = () => {
                   ? colors.systemGray5Dark
                   : colors.systemGray5Light,
               },
-            }}>
+              headerShown: false,
+            })}
+          >
             <Tab.Screen
-              name="Home"
+              name="HomeStack"
               component={RoutineStack}
-              options={{title: translate('Routine')}}
+              options={{ title: translate('Routine') }}
             />
             <Tab.Screen
-              name="List"
+              name="ListStack"
               component={AllExercisesStack}
-              options={{title: translate('All Exercises')}}
+              options={{ title: translate('All Exercises') }}
             />
             <Tab.Screen
-              name="Custom"
+              name="CustomStack"
               component={CustomStack}
-              options={{title: translate('Custom')}}
+              options={{ title: translate('Custom') }}
             />
             <Tab.Screen
-              name="Settings"
+              name="SettingsStack"
               component={SettingsStack}
-              options={{title: translate('Settings')}}
+              options={{ title: translate('Settings') }}
             />
           </Tab.Navigator>
         </NavigationContainer>
