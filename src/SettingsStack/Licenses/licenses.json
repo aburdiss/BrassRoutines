@@ -1,41 +1,41 @@
 {
-    "@react-native-async-storage/async-storage@1.15.4": {
+    "@react-native-async-storage/async-storage@1.15.17": {
         "licenses": "MIT",
         "repository": "https://github.com/react-native-async-storage/async-storage",
         "licenseUrl": "https://github.com/react-native-async-storage/async-storage/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "@react-native-community/masked-view@0.1.11": {
+    "@react-native-masked-view/masked-view@0.2.6": {
         "licenses": "MIT",
-        "repository": "https://github.com/react-native-community/react-native-masked-view",
-        "licenseUrl": "https://github.com/react-native-community/react-native-masked-view",
+        "repository": "https://github.com/react-native-masked-view/masked-view",
+        "licenseUrl": "https://github.com/react-native-masked-view/masked-view/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "@react-native-picker/picker@1.16.8": {
+    "@react-native-picker/picker@2.2.1": {
         "licenses": "MIT",
         "repository": "https://github.com/react-native-picker/picker",
         "licenseUrl": "https://github.com/react-native-picker/picker/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "@react-native-segmented-control/segmented-control@2.3.0": {
+    "@react-native-segmented-control/segmented-control@2.4.0": {
         "licenses": "MIT",
-        "repository": "https://github.com/react-native-community/segmented-control",
-        "licenseUrl": "https://github.com/react-native-community/segmented-control/raw/master/LICENSE",
+        "repository": "https://github.com/react-native-segmented-control/segmented-control",
+        "licenseUrl": "https://github.com/react-native-segmented-control/segmented-control/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "@react-navigation/bottom-tabs@5.11.10": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-navigation/react-navigation",
-        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
-        "parents": "brass-routines"
-    },
-    "@react-navigation/native@5.9.4": {
+    "@react-navigation/bottom-tabs@6.2.0": {
         "licenses": "MIT",
         "repository": "https://github.com/react-navigation/react-navigation",
         "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "@react-navigation/stack@5.14.4": {
+    "@react-navigation/native@6.0.8": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-navigation/react-navigation",
+        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+        "parents": "brass-routines"
+    },
+    "@react-navigation/stack@6.1.1": {
         "licenses": "MIT",
         "repository": "https://github.com/react-navigation/react-navigation",
         "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
@@ -53,13 +53,13 @@
         "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-device-info@7.4.0": {
+    "react-native-device-info@8.4.9": {
         "licenses": "MIT",
         "repository": "https://github.com/react-native-device-info/react-native-device-info",
         "licenseUrl": "https://github.com/react-native-device-info/react-native-device-info/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-draggable-flatlist@2.6.1": {
+    "react-native-draggable-flatlist@3.0.5": {
         "licenses": "MIT",
         "repository": "https://github.com/computerjazz/react-native-draggable-flatlist",
         "licenseUrl": "https://github.com/computerjazz/react-native-draggable-flatlist/raw/master/LICENSE.txt",
@@ -77,14 +77,14 @@
         "licenseUrl": "https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-haptic-feedback@1.11.0": {
+    "react-native-haptic-feedback@1.13.0": {
         "licenses": "MIT",
         "repository": "https://github.com/mkuczera/react-native-haptic-feedback",
         "licenseUrl": "https://github.com/mkuczera/react-native-haptic-feedback/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-idle-timer@2.1.6": {
-        "licenses": "UNKNOWN",
+    "react-native-idle-timer@2.1.7": {
+        "licenses": "MIT",
         "repository": "https://github.com/marcshilling/react-native-idle-timer",
         "licenseUrl": "https://github.com/marcshilling/react-native-idle-timer/raw/master/LICENSE.md",
         "parents": "brass-routines"
@@ -95,13 +95,13 @@
         "licenseUrl": "https://github.com/ascoders/react-native-image-viewer/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-localize@2.0.3": {
+    "react-native-localize@2.1.9": {
         "licenses": "MIT",
         "repository": "https://github.com/zoontek/react-native-localize",
         "licenseUrl": "https://github.com/zoontek/react-native-localize/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-modal@11.10.0": {
+    "react-native-modal@13.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/react-native-community/react-native-modal",
         "licenseUrl": "https://github.com/react-native-community/react-native-modal/raw/master/LICENSE.md",
@@ -119,7 +119,7 @@
         "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-safe-area-context@3.2.0": {
+    "react-native-safe-area-context@3.3.2": {
         "licenses": "MIT",
         "repository": "https://github.com/th3rdwave/react-native-safe-area-context",
         "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
@@ -131,13 +131,13 @@
         "licenseUrl": "https://github.com/react-community/react-native-safe-area-view/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-screens@2.18.1": {
+    "react-native-screens@3.10.2": {
         "licenses": "MIT",
-        "repository": "https://github.com/kmagiera/react-native-screens",
-        "licenseUrl": "https://github.com/kmagiera/react-native-screens/raw/master/LICENSE",
+        "repository": "https://github.com/software-mansion/react-native-screens",
+        "licenseUrl": "https://github.com/software-mansion/react-native-screens/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-vector-icons@7.1.0": {
+    "react-native-vector-icons@9.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/oblador/react-native-vector-icons",
         "licenseUrl": "https://github.com/oblador/react-native-vector-icons/raw/master/LICENSE",
