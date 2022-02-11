@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { View, SectionList, Text } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -50,7 +50,7 @@ const Settings = () => {
   useEffect(() => {}, []);
 
   return (
-    <SafeAreaView style={styles.sectionList}>
+    <SafeAreaView style={styles.sectionList} edges={['left', 'right']}>
       <SectionList
         sections={[
           { title: translate('Instrument'), data: INSTRUMENT },

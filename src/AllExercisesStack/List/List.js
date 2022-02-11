@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {SectionList, Text} from 'react-native';
+import React, { useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { SectionList, Text } from 'react-native';
 import {
   colors,
   hornExercises,
@@ -10,14 +10,14 @@ import {
   tubaExercises,
 } from '../../Model/Model';
 import ListRow from './ListRow';
-import SafeAreaView from 'react-native-safe-area-view';
-import {PreferencesContext} from '../../Model/Preferences';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { PreferencesContext } from '../../Model/Preferences';
 import {
   useDynamicValue,
   DynamicStyleSheet,
   DynamicValue,
 } from 'react-native-dynamic';
-import {translate} from '../../Translations/TranslationModel';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A list of all of the exercises in the app, with icons to show
@@ -33,7 +33,7 @@ import {translate} from '../../Translations/TranslationModel';
 const List = () => {
   const styles = useDynamicValue(dynamicStyles);
   const navigation = useNavigation();
-  const {state} = useContext(PreferencesContext);
+  const { state } = useContext(PreferencesContext);
 
   /**
    * @function List~getSections
@@ -67,26 +67,26 @@ const List = () => {
         throw new Error('Invalid Instrument');
     }
     return [
-      {title: translate('Long Tones'), data: instrument.longTones},
-      {title: translate('Slow Lip Slurs'), data: instrument.slowLipSlurs},
-      {title: translate('Fast Lip Slurs'), data: instrument.fastLipSlurs},
-      {title: translate('Articulation'), data: instrument.articulation},
-      {title: translate('Coordination'), data: instrument.coordination},
-      {title: translate('Major Scales'), data: instrument.majorScales},
-      {title: translate('High Range'), data: instrument.highRange},
-      {title: translate('Low Range'), data: instrument.lowRange},
+      { title: translate('Long Tones'), data: instrument.longTones },
+      { title: translate('Slow Lip Slurs'), data: instrument.slowLipSlurs },
+      { title: translate('Fast Lip Slurs'), data: instrument.fastLipSlurs },
+      { title: translate('Articulation'), data: instrument.articulation },
+      { title: translate('Coordination'), data: instrument.coordination },
+      { title: translate('Major Scales'), data: instrument.majorScales },
+      { title: translate('High Range'), data: instrument.highRange },
+      { title: translate('Low Range'), data: instrument.lowRange },
     ];
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['left', 'right']}>
       <SectionList
         android_ripple={{
           color: colors.systemGray,
         }}
         sections={getSections()}
         keyExtractor={(item, index) => index}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <ListRow
             text={item}
             onPress={() => {
@@ -97,7 +97,7 @@ const List = () => {
             }}
           />
         )}
-        renderSectionHeader={({section: {title}}) => (
+        renderSectionHeader={({ section: { title } }) => (
           <Text style={styles.sectionHeader}>{title}</Text>
         )}
         stickySectionHeadersEnabled={false}

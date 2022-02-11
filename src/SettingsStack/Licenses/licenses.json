@@ -1,5 +1,5 @@
 {
-    "@react-native-async-storage/async-storage@1.15.17": {
+    "@react-native-async-storage/async-storage@1.16.1": {
         "licenses": "MIT",
         "repository": "https://github.com/react-native-async-storage/async-storage",
         "licenseUrl": "https://github.com/react-native-async-storage/async-storage/raw/master/LICENSE",
@@ -125,13 +125,7 @@
         "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
         "parents": "brass-routines"
     },
-    "react-native-safe-area-view@1.1.1": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-community/react-native-safe-area-view",
-        "licenseUrl": "https://github.com/react-community/react-native-safe-area-view/raw/master/LICENSE",
-        "parents": "brass-routines"
-    },
-    "react-native-screens@3.10.2": {
+    "react-native-screens@3.11.0": {
         "licenses": "MIT",
         "repository": "https://github.com/software-mansion/react-native-screens",
         "licenseUrl": "https://github.com/software-mansion/react-native-screens/raw/master/LICENSE",

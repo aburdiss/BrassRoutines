@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {View, Image, Alert, Pressable} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import SafeAreaView from 'react-native-safe-area-view';
+import React, { useContext, useEffect, useState } from 'react';
+import { View, Image, Alert, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   useDynamicStyleSheet,
@@ -20,8 +20,8 @@ import {
 } from '../../Model/Model';
 import ZoomModal from '../ZoomModal/ZoomModal';
 import HeaderButton from '../HeaderButton/HeaderButton';
-import {PreferencesContext} from '../../Model/Preferences';
-import {translate} from '../../Translations/TranslationModel';
+import { PreferencesContext } from '../../Model/Preferences';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description Handles the funcitonality for making a routine from a list of
@@ -35,9 +35,9 @@ import {translate} from '../../Translations/TranslationModel';
  * @example
  *   <Routine exercises={[1, 2, 3, 4, 5]} />
  */
-const Routine = ({exercises}) => {
+const Routine = ({ exercises }) => {
   const styles = useDynamicStyleSheet(dynamicStyles);
-  const {state, dispatch} = useContext(PreferencesContext);
+  const { state, dispatch } = useContext(PreferencesContext);
   const navigation = useNavigation();
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [zoomModalIsShowing, setZoomModalIsShowing] = useState(false);
@@ -101,11 +101,11 @@ const Routine = ({exercises}) => {
       let tempFavorites = state.favorites.filter((item) => {
         return item != currentExercise;
       });
-      dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
+      dispatch({ type: 'SET_SETTING', payload: { favorites: tempFavorites } });
     } else {
       let tempFavorites = [...state.favorites];
       tempFavorites.push(currentExercise);
-      dispatch({type: 'SET_SETTING', payload: {favorites: tempFavorites}});
+      dispatch({ type: 'SET_SETTING', payload: { favorites: tempFavorites } });
     }
   }
 
@@ -148,7 +148,11 @@ const Routine = ({exercises}) => {
   }
 
   return (
-    <SafeAreaView style={styles.container} forceInset="top">
+    <SafeAreaView
+      style={styles.container}
+      forceInset="top"
+      edges={['left', 'right']}
+    >
       <View style={styles.heartContainer} accessibilityRole="toolbar">
         <Pressable
           onPress={addToFavorites}
@@ -158,7 +162,8 @@ const Routine = ({exercises}) => {
               : translate('This is not a favorite exercise')
           }
           accessible={true}
-          accessibilityHint={translate('Add exercise to favorites')}>
+          accessibilityHint={translate('Add exercise to favorites')}
+        >
           <Ionicons
             name={
               state.favorites.includes(exercises[currentExerciseIndex])
@@ -181,7 +186,8 @@ const Routine = ({exercises}) => {
         accessibilityLabel={translate('Opens exercise modal')}
         onPress={() => {
           setZoomModalIsShowing(true);
-        }}>
+        }}
+      >
         <Image
           accessibilityLiveRegion="polite"
           source={getInstrumentImagePath(exercises[currentExerciseIndex])}

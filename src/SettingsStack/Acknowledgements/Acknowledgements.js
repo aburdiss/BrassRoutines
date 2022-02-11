@@ -1,16 +1,16 @@
 import React from 'react';
-import {SectionList, Text} from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SectionList, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
 
-import {colors} from '../../Model/Model';
-import {TRANSLATIONS, EXERCISES} from '../../Model/AcknowledgementsModel';
-import {TextListItem} from '../Settings/SettingsListItems';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { TRANSLATIONS, EXERCISES } from '../../Model/AcknowledgementsModel';
+import { TextListItem } from '../Settings/SettingsListItems';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A View that displays the people who directly assisted with
@@ -29,15 +29,15 @@ const Acknowledgements = () => {
   const styles = useDynamicValue(dynamicStyles);
 
   return (
-    <SafeAreaView style={styles.sectionList}>
+    <SafeAreaView style={styles.sectionList} edges={['left', 'right']}>
       <SectionList
         sections={[
-          {title: translate('Translations'), data: TRANSLATIONS},
-          {title: translate('exercises'), data: EXERCISES},
+          { title: translate('Translations'), data: TRANSLATIONS },
+          { title: translate('exercises'), data: EXERCISES },
         ]}
         keyExtractor={(item, index) => index}
-        renderItem={({item}) => <TextListItem item={item} />}
-        renderSectionHeader={({section: {title}}) => (
+        renderItem={({ item }) => <TextListItem item={item} />}
+        renderSectionHeader={({ section: { title } }) => (
           <Text style={styles.listHeader}>{title}</Text>
         )}
         stickySectionHeadersEnabled={false}

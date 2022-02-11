@@ -19,7 +19,7 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import {
@@ -460,6 +460,7 @@ const CreateCustom = () => {
         ...styles.container,
         flexDirection: 'row',
       }}
+      edges={['left', 'right']}
     >
       {/* eslint-disable-next-line react-native/no-inline-styles */}
       <View style={{ flex: 1 }}>

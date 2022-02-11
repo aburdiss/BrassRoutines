@@ -5,6 +5,8 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { debounce } from '../../../utils/debounce/debounce';
 import { random } from '../../../utils/random/random';
 
@@ -14,7 +16,6 @@ import MainActionButton from '../../../Components/MainActionButton/MainActionBut
 import ScaleSwitchRow from '../ScaleSwitchRow/ScaleSwitchRow';
 import { colors } from '../../../Model/Model';
 import { translate } from '../../../Translations/TranslationModel';
-import SafeAreaView from 'react-native-safe-area-view';
 import { useIdleScreen } from '../../../utils/useIdleScreen/useIdleScreen';
 
 /**
@@ -340,7 +341,7 @@ const ScalePractice = () => {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['left', 'right']}>
       <View style={styles.scaleDisplay}>
         <ScaleDisplay accessibilityLiveRegion="assertive">
           {currentScale}

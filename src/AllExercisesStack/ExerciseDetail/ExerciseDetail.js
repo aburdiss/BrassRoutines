@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { View, Image, Pressable } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   DynamicValue,
   DynamicStyleSheet,
@@ -41,10 +41,8 @@ const ExerciseDetail = () => {
   const styles = useDynamicValue(dynamicStyles);
   const [zoomModalIsShowing, setZoomModalIsShowing] = useState(false);
   const [imagePath, setImagePath] = useState(undefined);
-  const [
-    changeInstrumentModalIsShowing,
-    setChangeInstrumentModalIsShowing,
-  ] = useState(false);
+  const [changeInstrumentModalIsShowing, setChangeInstrumentModalIsShowing] =
+    useState(false);
   const { state, dispatch } = useContext(PreferencesContext);
   const route = useRoute();
 
@@ -115,7 +113,11 @@ const ExerciseDetail = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container} forceInset="top">
+    <SafeAreaView
+      style={styles.container}
+      forceInset="top"
+      edges={['left', 'right']}
+    >
       <View style={styles.heartContainer} accessibilityRole="toolbar">
         <Pressable
           onPress={toggleChangeInstrumentModal}

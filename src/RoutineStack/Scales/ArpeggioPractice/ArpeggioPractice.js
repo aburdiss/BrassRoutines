@@ -5,7 +5,7 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { debounce } from '../../../utils/debounce/debounce';
 import { random } from '../../../utils/random/random';
 
@@ -73,10 +73,8 @@ const ArpeggioPractice = () => {
   const toggleAugmentedSeventhSwitch = () =>
     setAugmentedSeventhSwitch((previousState) => !previousState);
 
-  const [
-    halfDiminishedSeventhSwitch,
-    setHalfDiminishedSeventhSwitch,
-  ] = useState(false);
+  const [halfDiminishedSeventhSwitch, setHalfDiminishedSeventhSwitch] =
+    useState(false);
   const toggleHalfDiminishedSeventhSwitch = () =>
     setHalfDiminishedSeventhSwitch((previousState) => !previousState);
 
@@ -295,7 +293,7 @@ const ArpeggioPractice = () => {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['left', 'right']}>
       <View style={styles.scaleDisplay}>
         <ScaleDisplay accessibilityLiveRegion="assertive">
           {currentArpeggio}

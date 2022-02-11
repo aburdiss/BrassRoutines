@@ -15,7 +15,7 @@ import { useDarkMode } from 'react-native-dynamic';
 import { colors } from '../../Model/Model';
 
 import Data from './licenses.json';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { capitalize } from '../../utils/capitalize/capitalize';
 
 /**
@@ -34,7 +34,8 @@ function extractNameFromGithubUrl(url) {
     return null;
   }
 
-  const reg = /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_-]{1,30})(\/([-a-z]{1,40}))?/i;
+  const reg =
+    /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_-]{1,30})(\/([-a-z]{1,40}))?/i;
   const components = reg.exec(url);
 
   if (components && components.length > 5) {
@@ -120,6 +121,7 @@ const Licenses = () => {
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray2Light,
       }}
+      edges={['left', 'right']}
     >
       <LicensesList licenses={licenseData} />
     </SafeAreaView>

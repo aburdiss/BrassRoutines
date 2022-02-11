@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDarkMode } from 'react-native-dynamic';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { ScrollView } from 'react-native-gesture-handler';
 import { capitalize } from '../../utils/capitalize/capitalize';
@@ -27,10 +27,8 @@ const Home = () => {
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
   const { state } = useContext(PreferencesContext);
-  const [
-    changeInstrumentModalIsShowing,
-    setChangeInstrumentModalIsShowing,
-  ] = useState(false);
+  const [changeInstrumentModalIsShowing, setChangeInstrumentModalIsShowing] =
+    useState(false);
 
   /**
    * @function Home~launchDailyRoutine
@@ -111,6 +109,7 @@ const Home = () => {
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
       }}
+      edges={['left', 'right']}
     >
       <ScrollView>
         <HomeButton

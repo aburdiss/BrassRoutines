@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
-import SafeAreaView from 'react-native-safe-area-view';
-import {PreferencesContext} from '../../Model/Preferences';
-import {useNavigation} from '@react-navigation/native';
+import React, { useContext } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { PreferencesContext } from '../../Model/Preferences';
+import { useNavigation } from '@react-navigation/native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
-import {colors} from '../../Model/Model';
+import { colors } from '../../Model/Model';
 import {
   DynamicValue,
   DynamicStyleSheet,
@@ -13,7 +13,7 @@ import {
 import HomeButton from '../../Components/HomeButton/HomeButton';
 import CustomListRow from './CustomListRow';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import {translate} from '../../Translations/TranslationModel';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A list of all of the custom routines the user has created. When
@@ -28,7 +28,7 @@ import {translate} from '../../Translations/TranslationModel';
  */
 const CustomList = () => {
   const styles = useDynamicValue(dynamicStyles);
-  const {state, dispatch} = useContext(PreferencesContext);
+  const { state, dispatch } = useContext(PreferencesContext);
   const navigation = useNavigation();
   /**
    * @function CustomList~updateCustomRoutines
@@ -40,8 +40,8 @@ const CustomList = () => {
    * @param {{[Number]}} {data} The new order that the custom routines should
    * be in.
    */
-  function updateCustomRoutines({data}) {
-    dispatch({type: 'SET_SETTING', payload: {customRoutines: data}});
+  function updateCustomRoutines({ data }) {
+    dispatch({ type: 'SET_SETTING', payload: { customRoutines: data } });
   }
 
   /**
@@ -59,12 +59,13 @@ const CustomList = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['left', 'right']}>
       {state.customRoutines.length == 0 ? (
         <HomeButton
           onPress={() => {
             navigation.navigate('Create Custom');
-          }}>
+          }}
+        >
           {translate('Create Routine')}
         </HomeButton>
       ) : (
