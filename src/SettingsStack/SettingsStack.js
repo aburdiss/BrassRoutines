@@ -1,13 +1,13 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {useDarkMode} from 'react-native-dynamic';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useDarkMode } from '../utils';
 
 import Settings from '../SettingsStack/Settings/Settings';
 import Licenses from '../SettingsStack/Licenses/Licenses';
 import Acknowledgements from '../SettingsStack/Acknowledgements/Acknowledgements';
 
-import {translate} from '../Translations/TranslationModel';
-import {colors} from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
+import { colors } from '../Model/Model';
 
 const Stack = createStackNavigator();
 
@@ -19,18 +19,16 @@ const Stack = createStackNavigator();
  * @version 1.0.1
  * @param {Object} navigation The navigation object provided by React
  * Navigation
- * 
+ *
  * @component
  * @example
- * ```jsx
-<Tab.Screen
-  name="Settings"
-  component={SettingsStack}
-  options={{title: translate('Settings')}}
-/>
- ```
+ * <Tab.Screen
+ *   name="Settings"
+ *   component={SettingsStack}
+ *   options={{title: translate('Settings')}}
+ * />
  */
-const SettingsStack = ({navigation}) => {
+const SettingsStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -48,7 +46,8 @@ const SettingsStack = ({navigation}) => {
           shadowColor: 'transparent',
         },
         headerBackTitle: translate('Back'),
-      }}>
+      }}
+    >
       <Stack.Screen
         name="Settings"
         component={Settings}

@@ -1,8 +1,8 @@
 import React from 'react';
 import Modal from 'react-native-modal';
 import ImageViewer from 'react-native-image-zoom-viewer';
-import {useDarkMode} from 'react-native-dynamic';
-import {colors} from '../../Model/Model';
+import { useDarkMode } from '../../utils';
+import { colors } from '../../Model/Model';
 
 /**
  * @description A modal that allows the user to zoom in on the image. Fades in
@@ -24,15 +24,20 @@ import {colors} from '../../Model/Model';
  *     setZoomModalIsShowing={setZoomModalIsShowing}
  *   />
  */
-const ZoomModal = ({imagePath, zoomModalIsShowing, setZoomModalIsShowing}) => {
+const ZoomModal = ({
+  imagePath,
+  zoomModalIsShowing,
+  setZoomModalIsShowing,
+}) => {
   const DARKMODE = useDarkMode();
   return (
     <Modal
       coverScreen={true}
       animationIn="fadeIn"
       animationOut="fadeOut"
-      style={{margin: 0}}
-      isVisible={zoomModalIsShowing}>
+      style={{ margin: 0 }}
+      isVisible={zoomModalIsShowing}
+    >
       <ImageViewer
         backgroundColor={DARKMODE ? colors.black : colors.white}
         imageUrls={[

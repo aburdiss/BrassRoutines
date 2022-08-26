@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Modal from 'react-native-modal';
-import { useDarkMode } from 'react-native-dynamic';
+import { useDarkMode } from '../../utils';
 
 import { colors } from '../../Model/Model';
 import InstrumentButton from '../InstrumentButton/InstrumentButton';

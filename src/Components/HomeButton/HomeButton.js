@@ -1,9 +1,9 @@
 import React from 'react';
-import {Pressable, View, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
-import {colors} from '../../Model/Model';
+import { Pressable, View, Text } from 'react-native';
+import { useDarkMode } from '../../utils';
+import { colors } from '../../Model/Model';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {translate} from '../../Translations/TranslationModel';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A styled button that renders on the home page of the app. This
@@ -21,7 +21,7 @@ import {translate} from '../../Translations/TranslationModel';
  *     Hello, World!
  *   </HomeButton>
  */
-const HomeButton = ({onPress, children, onLongPress}) => {
+const HomeButton = ({ onPress, children, onLongPress }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -32,7 +32,7 @@ const HomeButton = ({onPress, children, onLongPress}) => {
         accessibilityRole="link"
         onPress={onPress}
         onLongPress={onLongPress}
-        style={({pressed}) => ({
+        style={({ pressed }) => ({
           padding: 20,
           paddingBottom: children.startsWith('Begin Routine') ? 5 : 20,
           marginTop: 15,
@@ -50,20 +50,23 @@ const HomeButton = ({onPress, children, onLongPress}) => {
           shadowOpacity: 0.23,
           shadowRadius: 2.62,
           elevation: 4,
-        })}>
+        })}
+      >
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'flex-end',
-          }}>
+          }}
+        >
           <Text
             style={{
               fontSize: 20,
               color: colors.black,
               textAlign: 'right',
               flex: 1,
-            }}>
+            }}
+          >
             {children}
           </Text>
           <Ionicons
@@ -80,7 +83,8 @@ const HomeButton = ({onPress, children, onLongPress}) => {
             style={{
               alignSelf: 'flex-end',
               paddingRight: 27,
-            }}>
+            }}
+          >
             {translate('Hold to change instrument')}
           </Text>
         ) : null}

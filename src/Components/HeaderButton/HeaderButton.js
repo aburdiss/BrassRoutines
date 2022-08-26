@@ -1,11 +1,11 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Text, Pressable} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
+import { View } from 'react-native';
+import { Text, Pressable } from 'react-native';
+import { useDarkMode } from '../../utils';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A simple button to live on the header and provide additional
@@ -24,7 +24,7 @@ import {translate} from '../../Translations/TranslationModel';
  *     Hello, World!
  *   </HeaderButton />
  */
-const HeaderButton = ({children, handler}) => {
+const HeaderButton = ({ children, handler }) => {
   const DARKMODE = useDarkMode();
   return (
     <Pressable
@@ -39,14 +39,16 @@ const HeaderButton = ({children, handler}) => {
       style={{
         padding: 8,
         marginRight: 4,
-      }}>
-      {({pressed}) => (
+      }}
+    >
+      {({ pressed }) => (
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
             opacity: pressed ? 0.7 : 1,
-          }}>
+          }}
+        >
           {children == 'Back' ? (
             <Ionicons
               name="chevron-back-outline"
@@ -63,7 +65,8 @@ const HeaderButton = ({children, handler}) => {
             style={{
               color: DARKMODE ? colors.orangeDark : colors.orangeLight,
               fontSize: 16,
-            }}>
+            }}
+          >
             {translate(children)}
           </Text>
           {children == 'Next' ? (

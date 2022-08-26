@@ -4,11 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
-  useDynamicStyleSheet,
-  DynamicStyleSheet,
-  DynamicValue,
-} from 'react-native-dynamic';
-import {
   colors,
   getHornImagePath,
   getTrumpetImagePath,
@@ -22,6 +17,7 @@ import ZoomModal from '../ZoomModal/ZoomModal';
 import HeaderButton from '../HeaderButton/HeaderButton';
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
+import { useDarkMode } from '../../utils';
 
 /**
  * @description Handles the funcitonality for making a routine from a list of
@@ -36,7 +32,35 @@ import { translate } from '../../Translations/TranslationModel';
  *   <Routine exercises={[1, 2, 3, 4, 5]} />
  */
 const Routine = ({ exercises }) => {
-  const styles = useDynamicStyleSheet(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    container: {
+      height: '100%',
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    imageContainer: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    imageModal: {
+      backgroundColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
+    },
+    image: {
+      width: '100%',
+      resizeMode: 'contain',
+    },
+    heartContainer: {
+      alignItems: 'flex-end',
+      zIndex: 5,
+      marginBottom: -34,
+    },
+    heart: {
+      paddingRight: 10,
+      paddingTop: 6,
+      opacity: 0.8,
+    },
+  };
   const { state, dispatch } = useContext(PreferencesContext);
   const navigation = useNavigation();
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
@@ -202,34 +226,5 @@ const Routine = ({ exercises }) => {
     </SafeAreaView>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  container: {
-    height: '100%',
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  imageContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  imageModal: {
-    backgroundColor: new DynamicValue(colors.orangeLight, colors.orangeDark),
-  },
-  image: {
-    width: '100%',
-    resizeMode: 'contain',
-  },
-  heartContainer: {
-    alignItems: 'flex-end',
-    zIndex: 5,
-    marginBottom: -34,
-  },
-  heart: {
-    paddingRight: 10,
-    paddingTop: 6,
-    opacity: 0.8,
-  },
-});
 
 export default Routine;

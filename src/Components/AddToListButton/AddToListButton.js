@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Pressable, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
+import { View, Pressable, Text } from 'react-native';
+import { useDarkMode } from '../../utils';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A styled button that is used to add a selected exercise to a
@@ -18,7 +18,7 @@ import {translate} from '../../Translations/TranslationModel';
  * @example
  *   <AddToListButton handler={function} />
  */
-const AddToListButton = ({handler}) => {
+const AddToListButton = ({ handler }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -29,7 +29,7 @@ const AddToListButton = ({handler}) => {
         }}
         accessibilityRole="button"
         accessibilityHint={translate('Adds the selected exercise to the list')}
-        style={({pressed}) => ({
+        style={({ pressed }) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.greenDark : colors.greenLight,
           opacity: pressed ? 0.8 : 1,
@@ -38,13 +38,15 @@ const AddToListButton = ({handler}) => {
           padding: 14,
           overflow: 'hidden',
         })}
-        onPress={handler}>
+        onPress={handler}
+      >
         <Text
           style={{
             textAlign: 'center',
             color: DARKMODE ? colors.greenDark : colors.greenLight,
             fontSize: 16,
-          }}>
+          }}
+        >
           {translate('Add To List')}
         </Text>
       </Pressable>

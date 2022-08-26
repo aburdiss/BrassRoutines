@@ -1,10 +1,10 @@
 import React from 'react';
-import {Alert} from 'react-native';
-import {View, Pressable, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
+import { Alert } from 'react-native';
+import { View, Pressable, Text } from 'react-native';
+import { useDarkMode } from '../../utils';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A styled button that is used as a reset button on lists.
@@ -18,7 +18,7 @@ import {translate} from '../../Translations/TranslationModel';
  * @example
  *   <ResetButton handler={function} />
  */
-const ResetButton = ({handler}) => {
+const ResetButton = ({ handler }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -29,7 +29,7 @@ const ResetButton = ({handler}) => {
         }}
         accessibilityRole="button"
         accessibilityHint={translate('Resets exercise list')}
-        style={({pressed}) => ({
+        style={({ pressed }) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.redDark : colors.redLight,
           opacity: pressed ? 0.8 : 1,
@@ -54,13 +54,15 @@ const ResetButton = ({handler}) => {
               },
             ],
           );
-        }}>
+        }}
+      >
         <Text
           style={{
             textAlign: 'center',
             color: DARKMODE ? colors.redDark : colors.redLight,
             fontSize: 16,
-          }}>
+          }}
+        >
           {translate('Reset')}
         </Text>
       </Pressable>

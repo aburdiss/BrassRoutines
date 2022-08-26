@@ -1,18 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {View, Pressable, Text, Linking, Switch, Alert} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Pressable, Text, Linking, Switch, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDarkMode,
-  useDynamicValue,
-} from 'react-native-dynamic';
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
 import RNPickerSelect from 'react-native-picker-select';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
+import { useDarkMode } from '../../utils';
 
 /**
  * @description A rendered Text list item. This will not translate 
@@ -28,14 +23,33 @@ import {translate} from '../../Translations/TranslationModel';
 <TextListItem item={item} />
 ```
  */
-export const TextListItem = ({item}) => {
-  const styles = useDynamicValue(dynamicStyles);
+export const TextListItem = ({ item }) => {
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listRowContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      paddingVertical: 8,
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+    },
+    listRowText: {
+      color: DARKMODE ? colors.white : colors.black,
+      paddingVertical: 5,
+    },
+  };
   return (
     <View style={styles.listRowContainer}>
       <Text
         maxFontSizeMultiplier={1.8}
         style={styles.listRowText}
-        accessibilityRole="text">
+        accessibilityRole="text"
+      >
         {item.value.includes('Alexander Burdiss')
           ? item.value
           : translate(item.value)}
@@ -62,13 +76,31 @@ export const TextListItem = ({item}) => {
 />
 ```
  */
-export const LinkListItem = ({item, state}) => {
-  const styles = useDynamicValue(dynamicStyles);
+export const LinkListItem = ({ item, state }) => {
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listRowContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      paddingVertical: 8,
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+    },
+    linkText: {
+      color: DARKMODE ? colors.orangeDark : colors.orangeLight,
+      paddingRight: 5,
+    },
+  };
   const isHidden = item.instrument && state.instrument != item.instrument;
 
   return isHidden ? null : (
     <Pressable
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         opacity: pressed ? 0.7 : 1,
       })}
       accessible={true}
@@ -78,7 +110,8 @@ export const LinkListItem = ({item, state}) => {
         Linking.openURL(item.link).catch((err) =>
           console.warn("Couldn't load page", err),
         );
-      }}>
+      }}
+    >
       <View style={styles.listRowContainer}>
         <Text maxFontSizeMultiplier={1.8} style={styles.linkText}>
           {translate(item.value)}
@@ -109,13 +142,31 @@ export const LinkListItem = ({item, state}) => {
 <InternalListItem item={item} />
 ```
  */
-export const InternalListItem = ({item}) => {
-  const styles = useDynamicValue(dynamicStyles);
+export const InternalListItem = ({ item }) => {
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listRowContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      paddingVertical: 8,
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+    },
+    linkText: {
+      color: DARKMODE ? colors.orangeDark : colors.orangeLight,
+      paddingRight: 5,
+    },
+  };
   const navigation = useNavigation();
 
   return (
     <Pressable
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         opacity: pressed ? 0.7 : 1,
       })}
       accessible={true}
@@ -123,7 +174,8 @@ export const InternalListItem = ({item}) => {
       accessibilityRole="link"
       onPress={() => {
         navigation.navigate(item.component);
-      }}>
+      }}
+    >
       <View style={styles.listRowContainer}>
         <Text maxFontSizeMultiplier={1.8} style={styles.linkText}>
           {translate(item.value)}
@@ -159,12 +211,30 @@ export const InternalListItem = ({item}) => {
 />
 ```
  */
-export const SwitchListItem = ({item, state, dispatch}) => {
-  const styles = useDynamicValue(dynamicStyles);
+export const SwitchListItem = ({ item, state, dispatch }) => {
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listRowContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      paddingVertical: 8,
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+    },
+    listRowText: {
+      color: DARKMODE ? colors.white : colors.black,
+      paddingVertical: 5,
+    },
+  };
   function updateValue() {
     let updatedState = !state[item.setting];
-    let newSetting = {[item.setting]: updatedState};
-    dispatch({type: 'SET_SETTING', payload: newSetting});
+    let newSetting = { [item.setting]: updatedState };
+    dispatch({ type: 'SET_SETTING', payload: newSetting });
   }
   return (
     <Pressable
@@ -172,11 +242,12 @@ export const SwitchListItem = ({item, state, dispatch}) => {
       onPress={updateValue}
       accessible={true}
       accessibilityLabel={translate(item.value)}
-      accessibilityState={{checked: state[item.setting]}}
+      accessibilityState={{ checked: state[item.setting] }}
       accessibilityRole="switch"
       accessibilityHint={
         translate('Toggles setting') + ' ' + translate(item.value)
-      }>
+      }
+    >
       <Text maxFontSizeMultiplier={1.8} style={styles.listRowText}>
         {translate(item.value)}
       </Text>
@@ -203,8 +274,27 @@ export const SwitchListItem = ({item, state, dispatch}) => {
 />
 ```
  */
-export const ButtonListItem = ({item, dispatch}) => {
-  const styles = useDynamicValue(dynamicStyles);
+export const ButtonListItem = ({ item, dispatch }) => {
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listButtonRowContainer: {
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      paddingVertical: 8,
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      height: 45,
+    },
+    linkText: {
+      color: DARKMODE ? colors.orangeDark : colors.orangeLight,
+      paddingRight: 5,
+    },
+  };
 
   return (
     <Pressable
@@ -222,7 +312,7 @@ export const ButtonListItem = ({item, dispatch}) => {
                 text: translate('Reset'),
                 style: 'destructive',
                 onPress: () => {
-                  dispatch({type: 'RESET_FAVORITES'});
+                  dispatch({ type: 'RESET_FAVORITES' });
                 },
               },
             ],
@@ -240,7 +330,7 @@ export const ButtonListItem = ({item, dispatch}) => {
                 text: translate('Reset'),
                 style: 'destructive',
                 onPress: () => {
-                  dispatch({type: 'RESET_CUSTOM_ROUTINES'});
+                  dispatch({ type: 'RESET_CUSTOM_ROUTINES' });
                 },
               },
             ],
@@ -258,7 +348,7 @@ export const ButtonListItem = ({item, dispatch}) => {
                 text: translate('Reset'),
                 style: 'destructive',
                 onPress: () => {
-                  dispatch({type: 'RESET_PREFERENCES'});
+                  dispatch({ type: 'RESET_PREFERENCES' });
                 },
               },
             ],
@@ -267,9 +357,10 @@ export const ButtonListItem = ({item, dispatch}) => {
       }}
       accessible={true}
       accessibilityLabel={translate(item.value)}
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         opacity: pressed ? 0.7 : 1,
-      })}>
+      })}
+    >
       <View style={styles.listButtonRowContainer}>
         <Text maxFontSizeMultiplier={1.8} style={styles.linkText}>
           {translate(item.value)}
@@ -301,7 +392,7 @@ export const ButtonListItem = ({item, dispatch}) => {
 />
 ```
  */
-export const SegmentedFilterListItem = ({item, state, dispatch}) => {
+export const SegmentedFilterListItem = ({ item, state, dispatch }) => {
   let choices;
   switch (item.setting) {
     case 'routineLength':
@@ -318,7 +409,19 @@ export const SegmentedFilterListItem = ({item, state, dispatch}) => {
       throw new Error('Item Setting does not match any choices.');
   }
 
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listSegmentedRowContainer: {
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      justifyContent: 'center',
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      height: 45,
+    },
+  };
   // Hide Filter if the setting is "bassClef" and instrument is not Euphonium
   let isHidden =
     state.instrument != 'euphonium' &&
@@ -331,8 +434,8 @@ export const SegmentedFilterListItem = ({item, state, dispatch}) => {
         selectedIndex={state[item.setting]}
         onChange={(event) => {
           let index = event.nativeEvent.selectedSegmentIndex;
-          let setting = {[item.setting]: index};
-          dispatch({type: 'SET_SETTING', payload: setting});
+          let setting = { [item.setting]: index };
+          dispatch({ type: 'SET_SETTING', payload: setting });
         }}
       />
     </View>
@@ -360,9 +463,23 @@ export const SegmentedFilterListItem = ({item, state, dispatch}) => {
 />
 ```
  */
-export const PickerListItem = ({item, state, dispatch}) => {
-  const styles = useDynamicValue(dynamicStyles);
+export const PickerListItem = ({ item, state, dispatch }) => {
   const DARKMODE = useDarkMode();
+  const styles = {
+    listSegmentedRowContainer: {
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      justifyContent: 'center',
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      height: 45,
+    },
+    linkText: {
+      color: DARKMODE ? colors.orangeDark : colors.orangeLight,
+    },
+  };
   const [currentInstrument, setCurrentInstrument] = useState(state.instrument);
   useEffect(() => {
     setCurrentInstrument(state.instrument);
@@ -408,7 +525,7 @@ export const PickerListItem = ({item, state, dispatch}) => {
       <RNPickerSelect
         onValueChange={(value) => {
           setCurrentInstrument(value);
-          dispatch({type: 'SET_SETTING', payload: {instrument: value}});
+          dispatch({ type: 'SET_SETTING', payload: { instrument: value } });
         }}
         value={currentInstrument}
         items={values}
@@ -446,66 +563,3 @@ export const PickerListItem = ({item, state, dispatch}) => {
     </View>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  listItemSeparator: {
-    height: 0.5,
-    width: '100%',
-    backgroundColor: new DynamicValue(
-      colors.systemGray3Light,
-      colors.systemGray3Dark,
-    ),
-  },
-  listSegmentedRowContainer: {
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    height: 45,
-  },
-  listButtonRowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-    paddingVertical: 8,
-    paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    height: 45,
-  },
-  listPickerContainer: {
-    flexDirection: 'row',
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-    height: 45,
-    alignItems: 'center',
-  },
-  listRowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-    paddingVertical: 8,
-    paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-  },
-  listRowText: {
-    color: new DynamicValue(colors.black, colors.white),
-    paddingVertical: 5,
-  },
-  linkText: {
-    color: new DynamicValue(colors.orangeLight, colors.orangeDark),
-    paddingRight: 5,
-  },
-});

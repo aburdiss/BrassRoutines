@@ -1,12 +1,15 @@
-import React, {useContext} from 'react';
-import {View, Pressable, Text} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
-import {useDarkMode} from 'react-native-dynamic';
-import {PreferencesContext} from '../../Model/Preferences';
-import {colors, getExerciseDisplayName} from '../../Model/Model';
-import {useNavigation} from '@react-navigation/native';
-import {translate} from '../../Translations/TranslationModel';
-import {previewExercise, getInstrumentExercises} from './exercisePickerHelpers';
+import React, { useContext } from 'react';
+import { View, Pressable, Text } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import { useDarkMode } from '../../utils';
+import { PreferencesContext } from '../../Model/Preferences';
+import { colors, getExerciseDisplayName } from '../../Model/Model';
+import { useNavigation } from '@react-navigation/native';
+import { translate } from '../../Translations/TranslationModel';
+import {
+  previewExercise,
+  getInstrumentExercises,
+} from './exercisePickerHelpers';
 
 /**
  * @description Renders an android styled picker displaying all of the
@@ -30,8 +33,8 @@ import {previewExercise, getInstrumentExercises} from './exercisePickerHelpers';
  *
  * @todo Restyle these to work on android.
  */
-const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
-  const {state} = useContext(PreferencesContext);
+const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
+  const { state } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
 
@@ -40,7 +43,8 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
       style={{
         flexDirection: 'row',
         alignItems: 'center',
-      }}>
+      }}
+    >
       <View
         style={{
           width: '80%',
@@ -48,7 +52,8 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
           borderWidth: 1,
           borderRadius: 8,
           marginHorizontal: 10,
-        }}>
+        }}
+      >
         <Picker
           accessibilityLiveRegion="assertive"
           accessibilityLabel={String(selectedExercise)}
@@ -59,7 +64,8 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
           dropdownIconColor={DARKMODE ? '#FF9F0A' : '#FF9500'}
           itemStyle={{
             color: DARKMODE ? colors.white : colors.black,
-          }}>
+          }}
+        >
           {getInstrumentExercises(state).map((exercise) => (
             <Picker.Item
               label={`${
@@ -78,12 +84,14 @@ const ExercisePicker = ({selectedExercise, setSelectedExercise}) => {
           accessibilityHint="Opens Exercise"
           onPress={() => previewExercise(state, navigation, selectedExercise)}
           hitSlop={10}
-          style={({pressed}) => ({opacity: pressed ? 0.7 : 1})}>
+          style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
+        >
           <Text
             style={{
               color: DARKMODE ? colors.orangeDark : colors.orangeLight,
               fontSize: 16,
-            }}>
+            }}
+          >
             {translate('Preview')}
           </Text>
         </Pressable>

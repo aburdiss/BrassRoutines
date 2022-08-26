@@ -5,15 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import { colors } from '../../Model/Model';
-import {
-  DynamicValue,
-  DynamicStyleSheet,
-  useDynamicValue,
-} from 'react-native-dynamic';
 import HomeButton from '../../Components/HomeButton/HomeButton';
 import CustomListRow from './CustomListRow';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { translate } from '../../Translations/TranslationModel';
+import { useDarkMode } from '../../utils';
 
 /**
  * @description A list of all of the custom routines the user has created. When
@@ -27,7 +23,13 @@ import { translate } from '../../Translations/TranslationModel';
  *   <CustomList />
  */
 const CustomList = () => {
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    container: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+  };
   const { state, dispatch } = useContext(PreferencesContext);
   const navigation = useNavigation();
   /**
@@ -80,12 +82,5 @@ const CustomList = () => {
     </SafeAreaView>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  container: {
-    flex: 1,
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-});
 
 export default CustomList;

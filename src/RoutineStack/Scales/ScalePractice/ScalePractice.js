@@ -1,14 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Alert, View, ScrollView } from 'react-native';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { debounce } from '../../../utils/debounce/debounce';
-import { random } from '../../../utils/random/random';
 
 import ScaleDisplay from '../ScaleDisplay/ScaleDisplay';
 import AllScalesButton from '../AllScalesButton/AllScalesButton';
@@ -16,7 +8,7 @@ import MainActionButton from '../../../Components/MainActionButton/MainActionBut
 import ScaleSwitchRow from '../ScaleSwitchRow/ScaleSwitchRow';
 import { colors } from '../../../Model/Model';
 import { translate } from '../../../Translations/TranslationModel';
-import { useIdleScreen } from '../../../utils/useIdleScreen/useIdleScreen';
+import { useDarkMode, useIdleScreen, random, debounce } from '../../../utils';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -31,7 +23,30 @@ import { useIdleScreen } from '../../../utils/useIdleScreen/useIdleScreen';
  */
 const ScalePractice = () => {
   useIdleScreen();
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    allScaleButton: {
+      paddingHorizontal: 10,
+    },
+    container: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    mainActionButton: {
+      borderColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+      borderTopWidth: 1,
+    },
+    scaleDisplay: {
+      borderBottomWidth: 1,
+      borderColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+    },
+    switchesContainer: {
+      flex: 1,
+      alignSelf: 'center',
+      width: '100%',
+      marginHorizontal: 10,
+    },
+  };
 
   const [currentScale, setCurrentScale] = useState(
     translate('No Scale Selected'),
@@ -420,35 +435,5 @@ const ScalePractice = () => {
     </SafeAreaView>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  allScaleButton: {
-    paddingHorizontal: 10,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  mainActionButton: {
-    borderColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  scaleDisplay: {
-    borderBottomWidth: 1,
-    borderColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-  },
-  switchesContainer: {
-    flex: 1,
-    alignSelf: 'center',
-    width: '100%',
-    marginHorizontal: 10,
-  },
-});
 
 export default ScalePractice;

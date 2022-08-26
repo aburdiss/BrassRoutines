@@ -1,9 +1,9 @@
 import React from 'react';
-import {Pressable, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
+import { Pressable, Text } from 'react-native';
+import { useDarkMode } from '../../utils';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A purple button meant to trigger the randomize process of the
@@ -21,7 +21,7 @@ import {translate} from '../../Translations/TranslationModel';
  *     Hello, World!
  *   </MainActionButton>
  */
-const MainActionButton = ({handler, text}) => {
+const MainActionButton = ({ handler, text }) => {
   const DARKMODE = useDarkMode();
   return (
     <Pressable
@@ -30,7 +30,7 @@ const MainActionButton = ({handler, text}) => {
       }}
       accessibilityRole="button"
       onPress={handler}
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         borderRadius: 8,
         borderColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
         borderWidth: 1,
@@ -38,13 +38,15 @@ const MainActionButton = ({handler, text}) => {
         padding: 10,
         opacity: pressed ? 0.8 : 1,
         overflow: 'hidden',
-      })}>
+      })}
+    >
       <Text
         style={{
           textAlign: 'center',
           color: DARKMODE ? colors.orangeDark : colors.orangeLight,
           fontSize: 24,
-        }}>
+        }}
+      >
         {translate(text)}
       </Text>
     </Pressable>

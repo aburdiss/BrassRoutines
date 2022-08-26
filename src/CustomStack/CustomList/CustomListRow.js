@@ -1,17 +1,13 @@
-import React, {useContext} from 'react';
-import {View, Text, Pressable} from 'react-native';
-import {
-  DynamicValue,
-  DynamicStyleSheet,
-  useDynamicValue,
-} from 'react-native-dynamic';
+import React, { useContext } from 'react';
+import { View, Text, Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import SwipeableRow from '../../Components/SwipeableRow/SwipeableRow';
-import {colors} from '../../Model/Model';
-import {PreferencesContext} from '../../Model/Preferences';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { PreferencesContext } from '../../Model/Preferences';
+import { translate } from '../../Translations/TranslationModel';
+import { useDarkMode } from '../../utils';
 
 /**
  * @description One list row on the CustomList.js screen. Displays the user
@@ -26,10 +22,49 @@ import {translate} from '../../Translations/TranslationModel';
  * @example
  *   <CustomListRow item={item} />
  */
-const CustomListRow = ({item}) => {
-  const styles = useDynamicValue(dynamicStyles);
+const CustomListRow = ({ item }) => {
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listItemContainer: {
+      paddingHorizontal: 20,
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+    },
+    listItemText: {
+      paddingVertical: 15,
+      color: DARKMODE ? colors.white : colors.black,
+    },
+    listItemTextContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderBottomWidth: 1,
+    },
+    rightAction: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      backgroundColor: DARKMODE ? colors.redDark : colors.redLight,
+      justifyContent: 'flex-end',
+    },
+    trashIcon: {
+      paddingRight: 10,
+      paddingLeft: 50,
+    },
+    pencilIcon: {
+      paddingLeft: 10,
+      paddingRight: 50,
+    },
+    leftAction: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      backgroundColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
+      justifyContent: 'flex-end',
+    },
+  };
   const navigation = useNavigation();
-  const {state, dispatch} = useContext(PreferencesContext);
+  const { state, dispatch } = useContext(PreferencesContext);
 
   /**
    * @function CustomListRow~deleteItem
@@ -42,7 +77,7 @@ const CustomListRow = ({item}) => {
     let filteredRoutines = state.customRoutines.filter(function (routine) {
       return routine.name !== item.item.name;
     });
-    dispatch({type: 'ADD_TO_CUSTOM_ROUTINES', payload: filteredRoutines});
+    dispatch({ type: 'ADD_TO_CUSTOM_ROUTINES', payload: filteredRoutines });
   }
 
   /**
@@ -92,7 +127,7 @@ const CustomListRow = ({item}) => {
    * Component.
    */
   function startCustomRoutine(item) {
-    navigation.navigate('Custom Routine', {item});
+    navigation.navigate('Custom Routine', { item });
   }
 
   return (
@@ -100,15 +135,17 @@ const CustomListRow = ({item}) => {
       styles={styles}
       delete={deleteItem}
       item={item}
-      edit={openEditRoutine}>
+      edit={openEditRoutine}
+    >
       <Pressable
-        style={({pressed}) => ({
+        style={({ pressed }) => ({
           opacity: pressed ? 0.7 : 1,
         })}
         onPress={() => {
           startCustomRoutine(item.item);
         }}
-        onLongPress={item.drag}>
+        onLongPress={item.drag}
+      >
         <View style={styles.listItemContainer}>
           <View style={styles.listItemTextContainer}>
             <Text style={styles.listItemText}>{`${
@@ -118,7 +155,8 @@ const CustomListRow = ({item}) => {
               hitSlop={10}
               onPress={() => {
                 openEditRoutine(item);
-              }}>
+              }}
+            >
               <Ionicons
                 name="pencil-outline"
                 size={20}
@@ -131,46 +169,5 @@ const CustomListRow = ({item}) => {
     </SwipeableRow>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  listItemContainer: {
-    paddingHorizontal: 20,
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-  },
-  listItemText: {
-    paddingVertical: 15,
-    color: new DynamicValue(colors.black, colors.white),
-  },
-  listItemTextContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderBottomWidth: 1,
-  },
-  rightAction: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
-    justifyContent: 'flex-end',
-  },
-  trashIcon: {
-    paddingRight: 10,
-    paddingLeft: 50,
-  },
-  pencilIcon: {
-    paddingLeft: 10,
-    paddingRight: 50,
-  },
-  leftAction: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    backgroundColor: new DynamicValue(colors.orangeLight, colors.orangeDark),
-    justifyContent: 'flex-end',
-  },
-});
 
 export default CustomListRow;

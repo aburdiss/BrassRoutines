@@ -14,11 +14,6 @@ import {
   Dimensions,
   BackHandler,
 } from 'react-native';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DraggableFlatList from 'react-native-draggable-flatlist';
@@ -39,6 +34,7 @@ import { colors, getExerciseDisplayName } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { useDarkMode } from '../../utils';
 
 /**
  * @description A Component that allows the user to create a routine using the
@@ -58,7 +54,85 @@ import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 const CreateCustom = () => {
   useIdleScreen();
 
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginHorizontal: 0,
+    },
+    smallScreenButtonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderTopWidth: 1,
+    },
+    container: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    list: {
+      flex: 1,
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderTopWidth: 1,
+    },
+    landscapeList: {
+      flex: 1,
+      borderRadius: 8,
+      marginHorizontal: 10,
+    },
+    listIcon: {
+      color: DARKMODE ? colors.pinkDark : colors.pinkLight,
+    },
+    listItemContainer: {
+      paddingLeft: 20,
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+    },
+    listItemText: {
+      paddingVertical: 15,
+      color: DARKMODE ? colors.white : colors.black,
+    },
+    listItemTextContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderBottomWidth: 1,
+    },
+    mainActionButton: {
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderTopWidth: 1,
+    },
+    placeholder: {
+      color: colors.systemGray,
+    },
+    textInput: {
+      borderColor: colors.systemGray,
+      borderWidth: 1,
+      borderRadius: 8,
+      margin: 10,
+      padding: 10,
+      fontSize: 16,
+      color: DARKMODE ? colors.white : colors.black,
+    },
+    rightAction: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      backgroundColor: DARKMODE ? colors.redDark : colors.redLight,
+      justifyContent: 'flex-end',
+    },
+    trashIcon: {
+      paddingRight: 10,
+      paddingLeft: 50,
+    },
+  };
   const navigation = useNavigation();
   const route = useRoute();
   const { state, dispatch } = useContext(PreferencesContext);
@@ -553,88 +627,5 @@ const CreateCustom = () => {
     </SafeAreaView>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 0,
-  },
-  smallScreenButtonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    borderTopColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  list: {
-    flex: 1,
-    borderTopColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  landscapeList: {
-    flex: 1,
-    borderRadius: 8,
-    marginHorizontal: 10,
-  },
-  listIcon: {
-    color: new DynamicValue(colors.pinkLight, colors.pinkDark),
-  },
-  listItemContainer: {
-    paddingLeft: 20,
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-  },
-  listItemText: {
-    paddingVertical: 15,
-    color: new DynamicValue(colors.black, colors.white),
-  },
-  listItemTextContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderBottomWidth: 1,
-  },
-  mainActionButton: {
-    borderTopColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  placeholder: {
-    color: colors.systemGray,
-  },
-  textInput: {
-    borderColor: colors.systemGray,
-    borderWidth: 1,
-    borderRadius: 8,
-    margin: 10,
-    padding: 10,
-    fontSize: 16,
-    color: new DynamicValue(colors.black, colors.white),
-  },
-  rightAction: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
-    justifyContent: 'flex-end',
-  },
-  trashIcon: {
-    paddingRight: 10,
-    paddingLeft: 50,
-  },
-});
 
 export default CreateCustom;

@@ -1,10 +1,9 @@
-import React, {useContext} from 'react';
-import {Pressable, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
-import {PreferencesContext} from '../../Model/Preferences';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import React, { useContext } from 'react';
+import { Pressable, Text } from 'react-native';
+import { useDarkMode } from '../../utils';
+import { PreferencesContext } from '../../Model/Preferences';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description One button on the Change Instrument Modal.
@@ -21,8 +20,8 @@ import {translate} from '../../Translations/TranslationModel';
 />
 ```
  */
-const InstrumentButton = ({text, setIsShowing}) => {
-  const {state, dispatch} = useContext(PreferencesContext);
+const InstrumentButton = ({ text, setIsShowing }) => {
+  const { state, dispatch } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
 
   return (
@@ -30,11 +29,11 @@ const InstrumentButton = ({text, setIsShowing}) => {
       onPress={() => {
         dispatch({
           type: 'SET_SETTING',
-          payload: {instrument: text.toLowerCase()},
+          payload: { instrument: text.toLowerCase() },
         });
         setIsShowing(false);
       }}
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         opacity: pressed ? 0.7 : 1.0,
         flexDirection: 'row',
         alignItems: 'center',
@@ -49,7 +48,8 @@ const InstrumentButton = ({text, setIsShowing}) => {
       })}
       accessibile={true}
       accessibilityHint={translate('Changes instrument')}
-      accessibilityLabel={translate(text)}>
+      accessibilityLabel={translate(text)}
+    >
       <Text
         style={{
           fontSize: 16,
@@ -59,7 +59,8 @@ const InstrumentButton = ({text, setIsShowing}) => {
               : DARKMODE
               ? colors.white
               : colors.black,
-        }}>
+        }}
+      >
         {translate(text)}
       </Text>
     </Pressable>

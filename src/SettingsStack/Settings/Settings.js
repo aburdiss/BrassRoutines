@@ -1,11 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { View, SectionList, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { colors } from '../../Model/Model';
@@ -29,6 +24,7 @@ import {
   PickerListItem,
 } from './SettingsListItems';
 import { translate } from '../../Translations/TranslationModel';
+import { useDarkMode } from '../../utils';
 
 /**
  * @description A View that allows the user to set custom settings, or view
@@ -44,10 +40,45 @@ import { translate } from '../../Translations/TranslationModel';
 ```
  */
 const Settings = () => {
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listHeader: {
+      textTransform: 'uppercase',
+      paddingLeft: 20,
+      paddingTop: 30,
+      paddingBottom: 10,
+      color: DARKMODE ? colors.systemGray : colors.systemGray,
+    },
+    sectionList: {
+      height: '100%',
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    iconContainer: {
+      flexDirection: 'row',
+    },
+    icon: {
+      paddingHorizontal: 5,
+    },
+    javascriptBackground: {
+      backgroundColor: colors.black,
+      height: 20,
+      width: 20,
+      marginLeft: 7,
+      marginTop: 3,
+      zIndex: -1,
+      position: 'absolute',
+    },
+    footerContainer: {
+      paddingTop: 30,
+      alignItems: 'center',
+    },
+    footerText: {
+      color: colors.systemGray,
+      paddingTop: 10,
+      paddingBottom: 30,
+    },
+  };
   const { state, dispatch } = useContext(PreferencesContext);
-
-  useEffect(() => {}, []);
 
   return (
     <SafeAreaView style={styles.sectionList} edges={['left', 'right']}>
@@ -126,43 +157,5 @@ const Settings = () => {
     </SafeAreaView>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  listHeader: {
-    textTransform: 'uppercase',
-    paddingLeft: 20,
-    paddingTop: 30,
-    paddingBottom: 10,
-    color: new DynamicValue(colors.systemGray, colors.systemGray),
-  },
-  sectionList: {
-    height: '100%',
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  iconContainer: {
-    flexDirection: 'row',
-  },
-  icon: {
-    paddingHorizontal: 5,
-  },
-  javascriptBackground: {
-    backgroundColor: colors.black,
-    height: 20,
-    width: 20,
-    marginLeft: 7,
-    marginTop: 3,
-    zIndex: -1,
-    position: 'absolute',
-  },
-  footerContainer: {
-    paddingTop: 30,
-    alignItems: 'center',
-  },
-  footerText: {
-    color: colors.systemGray,
-    paddingTop: 10,
-    paddingBottom: 30,
-  },
-});
 
 export default Settings;

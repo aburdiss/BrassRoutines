@@ -11,12 +11,11 @@ Run this command to get the data
 import React from 'react';
 
 import LicensesList from './LicensesList';
-import { useDarkMode } from 'react-native-dynamic';
 import { colors } from '../../Model/Model';
 
 import Data from './licenses.json';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { capitalize } from '../../utils/capitalize/capitalize';
+import { capitalize, useDarkMode } from '../../utils';
 
 /**
  * @function extractNameFromGithubUrl

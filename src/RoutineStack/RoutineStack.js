@@ -1,6 +1,6 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {useDarkMode} from 'react-native-dynamic';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useDarkMode } from '../utils';
 
 import Home from '../RoutineStack/Home/Home';
 import DailyRoutine from '../RoutineStack/DailyRoutine/DailyRoutine';
@@ -9,8 +9,8 @@ import ScalePractice from '../RoutineStack/Scales/ScalePractice/ScalePractice';
 import ArpeggioPractice from '../RoutineStack/Scales/ArpeggioPractice/ArpeggioPractice';
 import HeaderButton from '../Components/HeaderButton/HeaderButton';
 
-import {translate} from '../Translations/TranslationModel';
-import {colors} from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
+import { colors } from '../Model/Model';
 
 const Stack = createStackNavigator();
 
@@ -34,7 +34,7 @@ const Stack = createStackNavigator();
 />
 ```
  */
-const RoutineStack = ({navigation}) => {
+const RoutineStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -52,7 +52,8 @@ const RoutineStack = ({navigation}) => {
           shadowColor: 'transparent',
         },
         headerBackTitle: translate('Back'),
-      }}>
+      }}
+    >
       <Stack.Screen
         name="Home"
         component={Home}
@@ -70,7 +71,8 @@ const RoutineStack = ({navigation}) => {
             <HeaderButton
               handler={() => {
                 navigation.navigate('Arpeggio Practice');
-              }}>
+              }}
+            >
               Arpeggios
             </HeaderButton>
           ),

@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
-import {View, Pressable, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
+import React, { useContext } from 'react';
+import { View, Pressable, Text } from 'react-native';
+import { useDarkMode } from '../../utils';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {colors, getExerciseDisplayName} from '../../Model/Model';
-import {PreferencesContext} from '../../Model/Preferences';
-import {translate} from '../../Translations/TranslationModel';
+import { colors, getExerciseDisplayName } from '../../Model/Model';
+import { PreferencesContext } from '../../Model/Preferences';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A component that renders the default list row on the listView.
@@ -20,8 +20,8 @@ import {translate} from '../../Translations/TranslationModel';
  * @example
  *   <ListRow onPress={onPress} text="Hello, World!" />
  */
-const ListRow = ({onPress, text}) => {
-  const {state} = useContext(PreferencesContext);
+const ListRow = ({ onPress, text }) => {
+  const { state } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
 
   return (
@@ -36,9 +36,10 @@ const ListRow = ({onPress, text}) => {
           : '')
       }
       onPress={onPress}
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         opacity: pressed ? 0.7 : 1,
-      })}>
+      })}
+    >
       <View
         style={{
           flexDirection: 'row',
@@ -52,16 +53,19 @@ const ListRow = ({onPress, text}) => {
           borderBottomColor: DARKMODE
             ? colors.systemGray5Dark
             : colors.systemGray5Light,
-        }}>
+        }}
+      >
         <Text
           maxFontSizeMultiplier={1.8}
-          style={{color: DARKMODE ? colors.white : colors.black}}>
+          style={{ color: DARKMODE ? colors.white : colors.black }}
+        >
           {getExerciseDisplayName(text, state)}
         </Text>
         <View
           style={{
             flexDirection: 'row',
-          }}>
+          }}
+        >
           {state.favorites.includes(text) ? (
             <Ionicons
               name="heart"

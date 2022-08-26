@@ -1,14 +1,14 @@
-import React, {useContext} from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
-import {useDarkMode} from 'react-native-dynamic';
+import React, { useContext } from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useDarkMode } from '../utils';
 
 import List from '../AllExercisesStack/List/List';
 import ExerciseDetail from '../AllExercisesStack/ExerciseDetail/ExerciseDetail';
 
-import {PreferencesContext} from '../Model/Preferences';
-import {translate} from '../Translations/TranslationModel';
-import {colors, getExerciseDisplayName} from '../Model/Model';
+import { PreferencesContext } from '../Model/Preferences';
+import { translate } from '../Translations/TranslationModel';
+import { colors, getExerciseDisplayName } from '../Model/Model';
 
 const Stack = createStackNavigator();
 
@@ -31,8 +31,8 @@ const Stack = createStackNavigator();
 />
 ```
  */
-const AllExercisesStack = ({navigation}) => {
-  const {state} = useContext(PreferencesContext);
+const AllExercisesStack = ({ navigation }) => {
+  const { state } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -50,7 +50,8 @@ const AllExercisesStack = ({navigation}) => {
           shadowColor: 'transparent',
         },
         headerBackTitle: translate('Back'),
-      }}>
+      }}
+    >
       <Stack.Screen
         name="List"
         component={List}
@@ -61,7 +62,7 @@ const AllExercisesStack = ({navigation}) => {
       <Stack.Screen
         name="Exercise Detail"
         component={ExerciseDetail}
-        options={({route}) => ({
+        options={({ route }) => ({
           title: getExerciseDisplayName(route.params.item, state),
         })}
       />

@@ -2,11 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { View, Image, Pressable } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-  DynamicValue,
-  DynamicStyleSheet,
-  useDynamicValue,
-} from 'react-native-dynamic';
 import { PreferencesContext } from '../../Model/Preferences';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
@@ -23,6 +18,7 @@ import ZoomModal from '../../Components/ZoomModal/ZoomModal';
 import { translate } from '../../Translations/TranslationModel';
 import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/ChangeInstrumentModal';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { useDarkMode } from '../../utils';
 
 /**
  * @description Shows an individual exercise, and allows the user to select the
@@ -38,7 +34,49 @@ import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 const ExerciseDetail = () => {
   useIdleScreen();
 
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    container: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    changeInstrumentModal: {
+      backgroundColor: DARKMODE ? colors.systemGray5Dark : colors.white,
+      width: '100%',
+      marginHorizontal: 0,
+    },
+    iconPadding: {
+      paddingHorizontal: 6,
+      paddingVertical: 6,
+    },
+    imageContainer: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    image: {
+      width: '100%',
+      resizeMode: 'contain',
+    },
+    heartContainer: {
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      alignItems: 'flex-end',
+      zIndex: 5,
+      marginBottom: -34,
+    },
+    heart: {
+      paddingRight: 10,
+      paddingTop: 6,
+      opacity: 0.8,
+    },
+    heartSelectedColor: {
+      color: DARKMODE ? colors.pinkDark : colors.pinkLight,
+    },
+    iconColor: {
+      color: DARKMODE ? colors.orangeDark : colors.orangeLight,
+    },
+  };
   const [zoomModalIsShowing, setZoomModalIsShowing] = useState(false);
   const [imagePath, setImagePath] = useState(undefined);
   const [changeInstrumentModalIsShowing, setChangeInstrumentModalIsShowing] =
@@ -180,48 +218,5 @@ const ExerciseDetail = () => {
     </SafeAreaView>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  container: {
-    flex: 1,
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  changeInstrumentModal: {
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray5Dark),
-    width: '100%',
-    marginHorizontal: 0,
-  },
-  iconPadding: {
-    paddingHorizontal: 6,
-    paddingVertical: 6,
-  },
-  imageContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
-    width: '100%',
-    resizeMode: 'contain',
-  },
-  heartContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    zIndex: 5,
-    marginBottom: -34,
-  },
-  heart: {
-    paddingRight: 10,
-    paddingTop: 6,
-    opacity: 0.8,
-  },
-  heartSelectedColor: {
-    color: new DynamicValue(colors.pinkLight, colors.pinkDark),
-  },
-  iconColor: {
-    color: new DynamicValue(colors.orangeLight, colors.orangeDark),
-  },
-});
 
 export default ExerciseDetail;

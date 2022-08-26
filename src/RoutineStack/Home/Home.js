@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useDarkMode } from 'react-native-dynamic';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { ScrollView } from 'react-native-gesture-handler';
-import { capitalize } from '../../utils/capitalize/capitalize';
+
+import { useDarkMode, capitalize } from '../../utils';
 
 import { colors } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';

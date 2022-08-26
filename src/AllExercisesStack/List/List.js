@@ -12,12 +12,8 @@ import {
 import ListRow from './ListRow';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PreferencesContext } from '../../Model/Preferences';
-import {
-  useDynamicValue,
-  DynamicStyleSheet,
-  DynamicValue,
-} from 'react-native-dynamic';
 import { translate } from '../../Translations/TranslationModel';
+import { useDarkMode } from '../../utils';
 
 /**
  * @description A list of all of the exercises in the app, with icons to show
@@ -31,7 +27,20 @@ import { translate } from '../../Translations/TranslationModel';
  *   <List />
  */
 const List = () => {
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    container: {
+      height: '100%',
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    sectionHeader: {
+      textTransform: 'uppercase',
+      paddingLeft: 20,
+      paddingTop: 30,
+      paddingBottom: 10,
+      color: colors.systemGray,
+    },
+  };
   const navigation = useNavigation();
   const { state } = useContext(PreferencesContext);
 
@@ -105,19 +114,5 @@ const List = () => {
     </SafeAreaView>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  container: {
-    height: '100%',
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  sectionHeader: {
-    textTransform: 'uppercase',
-    paddingLeft: 20,
-    paddingTop: 30,
-    paddingBottom: 10,
-    color: colors.systemGray,
-  },
-});
 
 export default List;

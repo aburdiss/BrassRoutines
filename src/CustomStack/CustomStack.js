@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {useDarkMode} from 'react-native-dynamic';
+import React, { useContext } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useDarkMode } from '../utils';
 
 import ExerciseDetail from '../AllExercisesStack/ExerciseDetail/ExerciseDetail';
 import CreateCustom from '../CustomStack/CreateCustom/CreateCustom';
@@ -8,9 +8,9 @@ import CustomList from '../CustomStack/CustomList/CustomList';
 import CustomRoutine from '../CustomStack/CustomRoutine/CustomRoutine';
 import HeaderButton from '../Components/HeaderButton/HeaderButton';
 
-import {PreferencesContext} from '../Model/Preferences';
-import {translate} from '../Translations/TranslationModel';
-import {colors, getExerciseDisplayName} from '../Model/Model';
+import { PreferencesContext } from '../Model/Preferences';
+import { translate } from '../Translations/TranslationModel';
+import { colors, getExerciseDisplayName } from '../Model/Model';
 
 const Stack = createStackNavigator();
 
@@ -33,8 +33,8 @@ const Stack = createStackNavigator();
 />
  ```
  */
-const CustomStack = ({navigation}) => {
-  const {state} = useContext(PreferencesContext);
+const CustomStack = ({ navigation }) => {
+  const { state } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -52,7 +52,8 @@ const CustomStack = ({navigation}) => {
           shadowColor: 'transparent',
         },
         headerBackTitle: translate('Back'),
-      }}>
+      }}
+    >
       <Stack.Screen
         name="Custom List"
         component={CustomList}
@@ -61,7 +62,8 @@ const CustomStack = ({navigation}) => {
             <HeaderButton
               handler={() => {
                 navigation.navigate('Create Custom');
-              }}>
+              }}
+            >
               Create
             </HeaderButton>
           ),
@@ -85,7 +87,7 @@ const CustomStack = ({navigation}) => {
       <Stack.Screen
         name="Exercise Detail"
         component={ExerciseDetail}
-        options={({route}) => ({
+        options={({ route }) => ({
           title: getExerciseDisplayName(route.params.item, state),
         })}
       />
