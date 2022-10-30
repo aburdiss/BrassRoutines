@@ -17,8 +17,7 @@ import {
 import ZoomModal from '../../Components/ZoomModal/ZoomModal';
 import { translate } from '../../Translations/TranslationModel';
 import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/ChangeInstrumentModal';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
-import { useDarkMode } from '../../utils';
+import { useIdleScreen, useDarkMode } from '../../utils';
 
 /**
  * @description Shows an individual exercise, and allows the user to select the

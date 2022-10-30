@@ -33,8 +33,7 @@ import SwipeableRow from '../../Components/SwipeableRow/SwipeableRow';
 import { colors, getExerciseDisplayName } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
-import { useDarkMode } from '../../utils';
+import { useIdleScreen, useDarkMode } from '../../utils';
 
 /**
  * @description A Component that allows the user to create a routine using the

@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Alert, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { debounce } from '../../../utils/debounce/debounce';
-import { random } from '../../../utils/random/random';
 
 import ScaleDisplay from '../ScaleDisplay/ScaleDisplay';
 import AllScalesButton from '../AllScalesButton/AllScalesButton';
@@ -10,8 +8,8 @@ import MainActionButton from '../../../Components/MainActionButton/MainActionBut
 import ScaleSwitchRow from '../ScaleSwitchRow/ScaleSwitchRow';
 import { colors } from '../../../Model/Model';
 import { translate } from '../../../Translations/TranslationModel';
-import { useIdleScreen } from '../../../utils/useIdleScreen/useIdleScreen';
-import { useDarkMode } from '../../../utils';
+
+import { useDarkMode, useIdleScreen, random, debounce } from '../../../utils';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios

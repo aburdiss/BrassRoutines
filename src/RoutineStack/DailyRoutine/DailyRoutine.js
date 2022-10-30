@@ -9,8 +9,7 @@ import {
   euphoniumExercises,
   tubaExercises,
 } from '../../Model/Model';
-import { random } from '../../utils/random/random';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { useIdleScreen, random } from '../../utils';
 
 /**
  * @description The main routine of the app, that takes the user's settings and

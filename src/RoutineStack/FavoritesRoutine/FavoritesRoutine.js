@@ -2,8 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { View } from 'react-native';
 import Routine from '../../Components/Routine/Routine';
 import { PreferencesContext } from '../../Model/Preferences';
-import { shuffle } from '../../utils/shuffle/shuffle';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { useIdleScreen, shuffle } from '../../utils';
 
 /**
  * @description A routine that randomizes the users' favorites and passes

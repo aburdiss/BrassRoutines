@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import Routine from '../../Components/Routine/Routine';
 import { PreferencesContext } from '../../Model/Preferences';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { useIdleScreen } from '../../utils';
 
 /**
  * @description Displays a custom routine.
