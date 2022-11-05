@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint .",
-    "licenses": "npm-license-crawler --onlyDirectDependencies --json src/SettingsStack/Licenses/licenses.json && prettier --write src/SettingsStack/Licenses/licenses.json",
+    "licenses": "npm-license-crawler --onlyDirectDependencies --json src/Screens/Licenses/licenses.json && prettier --write src/Screens/Licenses/licenses.json",
     "reset": "./scripts/reset.sh",
     "gen": "./scripts/generateComponent.sh",
     "check-packages": "node ./scripts/checkForMaliciousPackages.js",

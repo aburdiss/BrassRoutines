@@ -11,10 +11,10 @@ import { PreferencesProvider } from './src/Model/Preferences';
 import { setI18nConfig, translate } from './src/Translations/TranslationModel';
 import { colors } from './src/Model/Model';
 
-import RoutineStack from './src/RoutineStack/RoutineStack';
-import AllExercisesStack from './src/AllExercisesStack/AllExercisesStack';
-import CustomStack from './src/CustomStack/CustomStack';
-import SettingsStack from './src/SettingsStack/SettingsStack';
+import RoutineStack from './src/Navigation/RoutineStack';
+import AllExercisesStack from './src/Navigation/AllExercisesStack';
+import CustomStack from './src/Navigation/CustomStack';
+import SettingsStack from './src/Navigation/SettingsStack';
 
 const Tab = createBottomTabNavigator();
 
