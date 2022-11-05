@@ -105,6 +105,7 @@ const Home = () => {
 
   return (
     <SafeAreaView
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,

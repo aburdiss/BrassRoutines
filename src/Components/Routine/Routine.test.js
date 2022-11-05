@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import {render} from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 
 import Routine from './Routine';
 import MockContext from '../../../jest/MockContext';

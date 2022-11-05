@@ -10,7 +10,7 @@ import { translate } from '../../Translations/TranslationModel';
  * @author Alexander Burdiss
  * @since 1/25/21
  * @version 1.1.0
- * 
+ *
  * @component
  * @example
  * ```jsx
@@ -40,7 +40,7 @@ const InstrumentButton = ({ text, setIsShowing }) => {
         justifyContent: 'space-between',
         padding: 20,
         backgroundColor:
-          state.instrument == text.toLowerCase()
+          state?.instrument == text.toLowerCase()
             ? DARKMODE
               ? colors.orangeDark
               : colors.orangeLight
@@ -51,10 +51,11 @@ const InstrumentButton = ({ text, setIsShowing }) => {
       accessibilityLabel={translate(text)}
     >
       <Text
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           fontSize: 16,
           color:
-            state.instrument == text.toLowerCase()
+            state?.instrument == text.toLowerCase()
               ? colors.black
               : DARKMODE
               ? colors.white

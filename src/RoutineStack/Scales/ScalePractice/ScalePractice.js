@@ -339,6 +339,7 @@ const ScalePractice = () => {
    * @since 1/5/21
    * @version 1.0.0
    */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedGenerateScales = useCallback(
     debounce(generateScales, 150, true),
     [

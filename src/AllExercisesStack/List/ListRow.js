@@ -41,6 +41,7 @@ const ListRow = ({ onPress, text }) => {
       })}
     >
       <View
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -62,6 +63,7 @@ const ListRow = ({ onPress, text }) => {
           {getExerciseDisplayName(text, state)}
         </Text>
         <View
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             flexDirection: 'row',
           }}

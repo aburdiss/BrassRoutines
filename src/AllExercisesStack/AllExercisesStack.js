@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useDarkMode } from '../utils';
 
@@ -20,7 +19,7 @@ const Stack = createStackNavigator();
  * @version 1.0.1
  * @param {Object} navigation The navigation object provided by React
  * Navigation
- * 
+ *
  * @component
  * @example
  * ```jsx

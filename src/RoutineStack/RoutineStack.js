@@ -21,9 +21,9 @@ const Stack = createStackNavigator();
  * @author Alexander Burdiss
  * @since 12/2/20
  * @version 1.0.1
- * @param {Object} navigation The navigation object provided by React 
+ * @param {Object} navigation The navigation object provided by React
  * Navigation
- * 
+ *
  * @component
  * @example
  * ```jsx

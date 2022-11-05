@@ -1,17 +1,17 @@
 {
-  "@react-native-async-storage/async-storage@1.16.1": {
+  "@react-native-async-storage/async-storage@1.17.10": {
     "licenses": "MIT",
     "repository": "https://github.com/react-native-async-storage/async-storage",
     "licenseUrl": "https://github.com/react-native-async-storage/async-storage/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "@react-native-masked-view/masked-view@0.2.6": {
+  "@react-native-masked-view/masked-view@0.2.8": {
     "licenses": "MIT",
     "repository": "https://github.com/react-native-masked-view/masked-view",
     "licenseUrl": "https://github.com/react-native-masked-view/masked-view/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "@react-native-picker/picker@2.2.1": {
+  "@react-native-picker/picker@2.4.8": {
     "licenses": "MIT",
     "repository": "https://github.com/react-native-picker/picker",
     "licenseUrl": "https://github.com/react-native-picker/picker/raw/master/LICENSE",
@@ -23,25 +23,25 @@
     "licenseUrl": "https://github.com/react-native-segmented-control/segmented-control/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "@react-navigation/bottom-tabs@6.2.0": {
+  "@react-navigation/bottom-tabs@6.4.0": {
     "licenses": "MIT",
     "repository": "https://github.com/react-navigation/react-navigation",
     "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "@react-navigation/native@6.0.8": {
+  "@react-navigation/native@6.0.13": {
     "licenses": "MIT",
     "repository": "https://github.com/react-navigation/react-navigation",
     "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "@react-navigation/stack@6.1.1": {
+  "@react-navigation/stack@6.3.3": {
     "licenses": "MIT",
     "repository": "https://github.com/react-navigation/react-navigation",
     "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "i18n-js@3.8.0": {
+  "i18n-js@3.9.2": {
     "licenses": "MIT",
     "repository": "https://github.com/fnando/i18n-js",
     "licenseUrl": "https://github.com/fnando/i18n-js",
@@ -53,25 +53,19 @@
     "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-device-info@8.4.9": {
+  "react-native-device-info@10.3.0": {
     "licenses": "MIT",
     "repository": "https://github.com/react-native-device-info/react-native-device-info",
     "licenseUrl": "https://github.com/react-native-device-info/react-native-device-info/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-draggable-flatlist@3.0.5": {
-    "licenses": "MIT",
-    "repository": "https://github.com/computerjazz/react-native-draggable-flatlist",
-    "licenseUrl": "https://github.com/computerjazz/react-native-draggable-flatlist/raw/master/LICENSE.txt",
-    "parents": "brass-routines"
-  },
-  "react-native-gesture-handler@1.10.3": {
+  "react-native-gesture-handler@2.8.0": {
     "licenses": "MIT",
     "repository": "https://github.com/software-mansion/react-native-gesture-handler",
     "licenseUrl": "https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-haptic-feedback@1.13.0": {
+  "react-native-haptic-feedback@1.14.0": {
     "licenses": "MIT",
     "repository": "https://github.com/mkuczera/react-native-haptic-feedback",
     "licenseUrl": "https://github.com/mkuczera/react-native-haptic-feedback/raw/master/LICENSE",
@@ -89,13 +83,13 @@
     "licenseUrl": "https://github.com/ascoders/react-native-image-viewer/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-localize@2.1.9": {
+  "react-native-localize@2.2.4": {
     "licenses": "MIT",
     "repository": "https://github.com/zoontek/react-native-localize",
     "licenseUrl": "https://github.com/zoontek/react-native-localize/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-modal@13.0.0": {
+  "react-native-modal@13.0.1": {
     "licenses": "MIT",
     "repository": "https://github.com/react-native-community/react-native-modal",
     "licenseUrl": "https://github.com/react-native-community/react-native-modal/raw/master/LICENSE.md",
@@ -107,37 +101,37 @@
     "licenseUrl": "https://github.com/lawnstarter/react-native-picker-select/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-reanimated@1.13.3": {
+  "react-native-reanimated@2.12.0": {
     "licenses": "MIT",
     "repository": "https://github.com/software-mansion/react-native-reanimated",
     "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-safe-area-context@3.3.2": {
+  "react-native-safe-area-context@4.4.1": {
     "licenses": "MIT",
     "repository": "https://github.com/th3rdwave/react-native-safe-area-context",
     "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-screens@3.11.0": {
+  "react-native-screens@3.18.2": {
     "licenses": "MIT",
     "repository": "https://github.com/software-mansion/react-native-screens",
     "licenseUrl": "https://github.com/software-mansion/react-native-screens/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-vector-icons@9.0.0": {
+  "react-native-vector-icons@9.2.0": {
     "licenses": "MIT",
     "repository": "https://github.com/oblador/react-native-vector-icons",
     "licenseUrl": "https://github.com/oblador/react-native-vector-icons/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native@0.67.2": {
+  "react-native@0.70.4": {
     "licenses": "MIT",
     "repository": "github:facebook/react-native",
     "licenseUrl": "github:facebook/react-native",
     "parents": "brass-routines"
   },
-  "react@17.0.2": {
+  "react@18.1.0": {
     "licenses": "MIT",
     "repository": "https://github.com/facebook/react",
     "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",

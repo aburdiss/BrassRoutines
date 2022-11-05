@@ -1,4 +1,4 @@
-import {translate} from '../Translations/TranslationModel';
+import { translate } from '../Translations/TranslationModel';
 
 // iOS System Colors
 export const colors = {

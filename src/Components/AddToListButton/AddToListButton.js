@@ -41,6 +41,7 @@ const AddToListButton = ({ handler }) => {
         onPress={handler}
       >
         <Text
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             textAlign: 'center',
             color: DARKMODE ? colors.greenDark : colors.greenLight,

@@ -57,6 +57,7 @@ const ResetButton = ({ handler }) => {
         }}
       >
         <Text
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             textAlign: 'center',
             color: DARKMODE ? colors.redDark : colors.redLight,

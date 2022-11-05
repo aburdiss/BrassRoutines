@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {RectButton, Swipeable} from 'react-native-gesture-handler';
+import React, { Component } from 'react';
+import { RectButton, Swipeable } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {translate} from '../../Translations/TranslationModel';
-import {colors} from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
 
 /**
  * @class SwipeableRow
@@ -42,18 +42,19 @@ class SwipeableRow extends Component {
    * @param {Number} dragX Passed in from Swipeable
    */
   renderLeftActions = (progress, dragX) => {
-    const scale = dragX.interpolate({
-      inputRange: [0, 80],
-      outputRange: [0, 1],
-      extrapolate: 'clamp',
-    });
+    // const scale = dragX.interpolate({
+    //   inputRange: [0, 80],
+    //   outputRange: [0, 1],
+    //   extrapolate: 'clamp',
+    // });
     return this.props.edit ? (
       <RectButton
         accessible={true}
         accessibilityLabel={translate('Edit Routine')}
         accessibilityRole="button"
         style={this.props.styles.leftAction}
-        onPress={() => this.props.edit(this.props.item)}>
+        onPress={() => this.props.edit(this.props.item)}
+      >
         <Ionicons
           name="pencil"
           size={20}
@@ -74,18 +75,19 @@ class SwipeableRow extends Component {
    * @param {Number} dragX Passed in from Swipeable
    */
   renderRightActions = (progress, dragX) => {
-    const scale = dragX.interpolate({
-      inputRange: [-80, 0],
-      outputRange: [1, 0],
-      extrapolate: 'clamp',
-    });
+    // const scale = dragX.interpolate({
+    //   inputRange: [-80, 0],
+    //   outputRange: [1, 0],
+    //   extrapolate: 'clamp',
+    // });
     return (
       <RectButton
         accessible={true}
         accessibilityLabel={translate('Delete Routine')}
         accessibilityRole="button"
         style={this.props.styles.rightAction}
-        onPress={() => this.props.delete(this.props.item)}>
+        onPress={() => this.props.delete(this.props.item)}
+      >
         <Ionicons
           name="trash"
           size={20}
@@ -104,7 +106,7 @@ class SwipeableRow extends Component {
    * @version 1.0
    */
   render() {
-    const {children} = this.props;
+    const { children } = this.props;
     return (
       <Swipeable
         ref={this.updateRef}
@@ -112,7 +114,8 @@ class SwipeableRow extends Component {
         leftThreshold={80}
         rightThreshold={20}
         renderLeftActions={this.renderLeftActions}
-        renderRightActions={this.renderRightActions}>
+        renderRightActions={this.renderRightActions}
+      >
         {children}
       </Swipeable>
     );

@@ -81,6 +81,7 @@ const Routine = ({ exercises }) => {
         headerLeft: () => <HeaderButton handler={reverse}>Back</HeaderButton>,
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentExerciseIndex, exercises],
   );
 

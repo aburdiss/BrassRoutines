@@ -36,6 +36,7 @@ const HeaderButton = ({ children, handler }) => {
       accessible={true}
       accessibilityLabel={translate(children)}
       accessibilityHint={translate('Navigates to') + ' ' + translate(children)}
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         padding: 8,
         marginRight: 4,
@@ -43,6 +44,7 @@ const HeaderButton = ({ children, handler }) => {
     >
       {({ pressed }) => (
         <View
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             flexDirection: 'row',
             alignItems: 'center',
@@ -54,6 +56,7 @@ const HeaderButton = ({ children, handler }) => {
               name="chevron-back-outline"
               size={25}
               color={DARKMODE ? colors.orangeDark : colors.orangeLight}
+              // eslint-disable-next-line react-native/no-inline-styles
               style={{
                 marginBottom: -10,
                 marginTop: -8,
@@ -62,6 +65,7 @@ const HeaderButton = ({ children, handler }) => {
           ) : null}
           <Text
             maxFontSizeMultiplier={1.8}
+            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               color: DARKMODE ? colors.orangeDark : colors.orangeLight,
               fontSize: 16,
@@ -74,6 +78,7 @@ const HeaderButton = ({ children, handler }) => {
               name="chevron-forward-outline"
               size={25}
               color={DARKMODE ? colors.orangeDark : colors.orangeLight}
+              // eslint-disable-next-line react-native/no-inline-styles
               style={{
                 marginBottom: -10,
                 marginTop: -8,

@@ -11,7 +11,7 @@ import {
 } from './SettingsListItems';
 import MockContext from '../../../jest/MockContext';
 
-import {render} from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 
 test('TextListItem renders correctly', () => {
   render(

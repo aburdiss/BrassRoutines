@@ -41,6 +41,7 @@ const MainActionButton = ({ handler, text }) => {
       })}
     >
       <Text
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           textAlign: 'center',
           color: DARKMODE ? colors.orangeDark : colors.orangeLight,

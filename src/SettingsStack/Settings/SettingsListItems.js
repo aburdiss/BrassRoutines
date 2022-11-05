@@ -10,13 +10,13 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 
 /**
- * @description A rendered Text list item. This will not translate 
+ * @description A rendered Text list item. This will not translate
  * copyright information.
  * @author Alexander Burdiss
  * @since 1/3/21
  * @version 1.1.0
  * @param {Object} props.item The text to be rendered in the list item.
- * 
+ *
  * @component
  * @example
  * ```jsx
@@ -66,7 +66,7 @@ export const TextListItem = ({ item }) => {
  * @param {Object} props.item The list item containing a link and some text.
  * @param {Object} props.state The app state, containing all of the user's
  * preferences.
- * 
+ *
  * @component
  * @example
  * jsx```
@@ -135,7 +135,7 @@ export const LinkListItem = ({ item, state }) => {
  * @version 1.0.2
  * @param {Object} props.item The Internal list item to be rendered containing
  * a Component name to render to, and the text to be rendered.
- * 
+ *
  * @component
  * @example
  * ```jsx
@@ -200,7 +200,7 @@ export const InternalListItem = ({ item }) => {
  * preferences.
  * @param {Function} props.dispatch A function to make a reducer call to update
  * state.
- * 
+ *
  * @component
  * @example
  * ```jsx
@@ -264,7 +264,7 @@ export const SwitchListItem = ({ item, state, dispatch }) => {
  * @param {Object} props.item The data to be rendered in this list item
  * @param {Function} props.dispatch A function to call a reducer and update
  * app state.
- * 
+ *
  * @component
  * @example
  * ```jsx
@@ -381,7 +381,7 @@ export const ButtonListItem = ({ item, dispatch }) => {
  * @param {Object} props.state The current user app state
  * @param {Function} props.dispatch A function to call to the reducer to
  * update the user state of the app.
- * 
+ *
  * @component
  * @example
  * ```jsx
@@ -452,7 +452,7 @@ export const SegmentedFilterListItem = ({ item, state, dispatch }) => {
  * preferences.
  * @param {Function} props.dispatch A funciton to call to the reducer to update
  * app state.
- * 
+ *
  * @component
  * @example
  * ```jsx

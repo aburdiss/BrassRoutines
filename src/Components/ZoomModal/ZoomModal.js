@@ -35,6 +35,7 @@ const ZoomModal = ({
       coverScreen={true}
       animationIn="fadeIn"
       animationOut="fadeOut"
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{ margin: 0 }}
       isVisible={zoomModalIsShowing}
     >

@@ -16,10 +16,12 @@ const ChangeInstrumentModal = ({
       isVisible={changeInstrumentModalIsShowing}
       onSwipeComplete={() => setChangeInstrumentModalIsShowing(false)}
       swipeDirection={['down']}
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{ margin: 0, justifyContent: 'flex-end' }}
       onBackdropPress={() => setChangeInstrumentModalIsShowing(false)}
     >
       <SafeAreaView
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           backgroundColor: DARKMODE ? colors.systemGray5Dark : colors.white,
           width: '100%',

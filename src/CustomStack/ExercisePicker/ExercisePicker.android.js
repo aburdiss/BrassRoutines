@@ -40,12 +40,14 @@ const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
 
   return (
     <View
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         flexDirection: 'row',
         alignItems: 'center',
       }}
     >
       <View
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           width: '80%',
           borderColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
@@ -87,6 +89,7 @@ const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
           style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
         >
           <Text
+            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               color: DARKMODE ? colors.orangeDark : colors.orangeLight,
               fontSize: 16,

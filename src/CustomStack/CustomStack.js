@@ -22,7 +22,7 @@ const Stack = createStackNavigator();
  * @version 1.0.1
  * @param {Object} navigation The navigation object provided by React
  * Navigation
- * 
+ *
  * @component
  * @example
  * ```jsx

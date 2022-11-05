@@ -1,4 +1,4 @@
-import { capitalize } from './capitalize';
+import { capitalize } from './index';
 
 test('utility is a function', () => {
   expect(typeof capitalize).toEqual('function');

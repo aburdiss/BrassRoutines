@@ -21,6 +21,7 @@ const ScaleDisplay = ({ children }) => {
   const DARKMODE = useDarkMode();
   return (
     <View
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         alignItems: 'center',
         justifyContent: 'flex-end',
@@ -28,6 +29,7 @@ const ScaleDisplay = ({ children }) => {
       }}
     >
       <Text
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           backgroundColor: DARKMODE
             ? colors.systemGray2Dark

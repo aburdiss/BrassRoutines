@@ -53,6 +53,7 @@ const HomeButton = ({ onPress, children, onLongPress }) => {
         })}
       >
         <View
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             flexDirection: 'row',
             alignItems: 'center',
@@ -60,6 +61,7 @@ const HomeButton = ({ onPress, children, onLongPress }) => {
           }}
         >
           <Text
+            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               fontSize: 20,
               color: colors.black,
@@ -73,6 +75,7 @@ const HomeButton = ({ onPress, children, onLongPress }) => {
             name="play"
             size={20}
             color={colors.black}
+            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               paddingLeft: 8,
             }}
@@ -80,6 +83,7 @@ const HomeButton = ({ onPress, children, onLongPress }) => {
         </View>
         {children.endsWith(')') ? (
           <Text
+            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               alignSelf: 'flex-end',
               paddingRight: 27,

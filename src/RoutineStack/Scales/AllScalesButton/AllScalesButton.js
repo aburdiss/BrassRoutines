@@ -40,6 +40,7 @@ const AllScalesButton = ({ children, handler }) => {
       })}
     >
       <Text
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           textAlign: 'center',
           color: DARKMODE ? colors.systemGray : colors.systemGray,

@@ -292,6 +292,7 @@ const ArpeggioPractice = () => {
    * @since 1/13/21
    * @version 1.0.0
    */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedGenerateArpeggios = useCallback(
     debounce(generateArpeggios, 150, true),
     [

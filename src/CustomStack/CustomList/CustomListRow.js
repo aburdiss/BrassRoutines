@@ -73,9 +73,9 @@ const CustomListRow = ({ item }) => {
    * @since 12/29/20
    * @version 1.0.0
    */
-  function deleteItem(item) {
+  function deleteItem(itemToDelete) {
     let filteredRoutines = state.customRoutines.filter(function (routine) {
-      return routine.name !== item.item.name;
+      return routine.name !== itemToDelete.item.name;
     });
     dispatch({ type: 'ADD_TO_CUSTOM_ROUTINES', payload: filteredRoutines });
   }
@@ -91,10 +91,10 @@ const CustomListRow = ({ item }) => {
    * @todo make sure editing this routine either deletes the old one from state
    * or modifies the old one.
    */
-  function openEditRoutine(item) {
+  function openEditRoutine(itemToEdit) {
     navigation.navigate('Create Custom', {
-      item: item.item,
-      index: item.index,
+      item: itemToEdit.item,
+      index: itemToEdit.index,
     });
   }
 
@@ -126,8 +126,8 @@ const CustomListRow = ({ item }) => {
    * @param {[Number]} item The Routine Object to pass to the Custom Routine
    * Component.
    */
-  function startCustomRoutine(item) {
-    navigation.navigate('Custom Routine', { item });
+  function startCustomRoutine(itemToStart) {
+    navigation.navigate('Custom Routine', { itemToStart });
   }
 
   return (

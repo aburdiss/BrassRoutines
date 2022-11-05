@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import {render} from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 
 import IosExercisePicker from './ExercisePicker.ios';
 import AndroidExercisePicker from './ExercisePicker.android';
