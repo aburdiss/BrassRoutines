@@ -59,7 +59,13 @@
     "licenseUrl": "https://github.com/react-native-device-info/react-native-device-info/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-gesture-handler@2.8.0": {
+  "react-native-draggable-flatlist@2.5.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/computerjazz/react-native-draggable-flatlist",
+    "licenseUrl": "https://github.com/computerjazz/react-native-draggable-flatlist/raw/master/LICENSE.txt",
+    "parents": "brass-routines"
+  },
+  "react-native-gesture-handler@1.10.3": {
     "licenses": "MIT",
     "repository": "https://github.com/software-mansion/react-native-gesture-handler",
     "licenseUrl": "https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE",
@@ -101,7 +107,7 @@
     "licenseUrl": "https://github.com/lawnstarter/react-native-picker-select/raw/master/LICENSE",
     "parents": "brass-routines"
   },
-  "react-native-reanimated@2.12.0": {
+  "react-native-reanimated@1.13.4": {
     "licenses": "MIT",
     "repository": "https://github.com/software-mansion/react-native-reanimated",
     "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",

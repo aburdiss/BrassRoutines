@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PreferencesContext } from '../../Model/Preferences';
@@ -8,7 +7,7 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { colors } from '../../Model/Model';
 import HomeButton from '../../Components/HomeButton/HomeButton';
 import CustomListRow from './CustomListRow';
-// import DraggableFlatList from 'react-native-draggable-flatlist';
+import DraggableFlatList from 'react-native-draggable-flatlist';
 import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 
@@ -72,14 +71,13 @@ const CustomList = () => {
           {translate('Create Routine')}
         </HomeButton>
       ) : (
-        <HomeButton>test</HomeButton>
-        // <DraggableFlatList
-        //   data={state.customRoutines}
-        //   keyExtractor={(item) => item.name}
-        //   renderItem={(item) => <CustomListRow item={item} />}
-        //   onDragEnd={updateCustomRoutines}
-        //   onDragBegin={triggerHapticFeedback}
-        // />
+        <DraggableFlatList
+          data={state.customRoutines}
+          keyExtractor={(item) => item.name}
+          renderItem={(item) => <CustomListRow item={item} />}
+          onDragEnd={updateCustomRoutines}
+          onDragBegin={triggerHapticFeedback}
+        />
       )}
     </SafeAreaView>
   );

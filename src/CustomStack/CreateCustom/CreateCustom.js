@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, {
   useContext,
   useEffect,
@@ -17,7 +16,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-// import DraggableFlatList from 'react-native-draggable-flatlist';
+import DraggableFlatList from 'react-native-draggable-flatlist';
 import {
   useNavigation,
   useRoute,
@@ -449,7 +448,7 @@ const CreateCustom = () => {
           <AddToListButton handler={addToExerciseList} />
         </View>
       ) : null}
-      {/* <DraggableFlatList
+      <DraggableFlatList
         style={styles.list}
         data={currentRoutine}
         keyExtractor={(item, index) => String(index)}
@@ -502,7 +501,7 @@ const CreateCustom = () => {
             </Pressable>
           </SwipeableRow>
         )}
-      /> */}
+      />
       {isSmallScreen ? (
         <View style={styles.smallScreenButtonContainer}>
           <ResetButton handler={removeAllExercises} />
@@ -562,7 +561,7 @@ const CreateCustom = () => {
           style={styles.textInput}
           placeholderTextColor={styles.placeholder.color}
         />
-        {/* <DraggableFlatList
+        <DraggableFlatList
           style={styles.landscapeList}
           data={currentRoutine}
           keyExtractor={(item, index) => String(index)}
@@ -615,7 +614,7 @@ const CreateCustom = () => {
               </Pressable>
             </SwipeableRow>
           )}
-        /> */}
+        />
         <MainActionButton
           accessibilityLabel={
             editMode ? translate('Save Routine') : translate('Create Routine')
