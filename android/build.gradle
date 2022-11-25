@@ -48,3 +48,11 @@ allprojects {
         maven { url 'https://www.jitpack.io' }
     }
 }
+
+// Fix Using React Native Reanimated in the build
+// https://github.com/software-mansion/react-native-reanimated/issues/3242#issuecomment-1145423942
+subprojects { subproject ->
+        if(project['name'] == 'react-native-reanimated'){
+            project.configurations { compile { } }
+        }
+}
