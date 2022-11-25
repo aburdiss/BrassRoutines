@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { View, SectionList, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import DeviceInfo from 'react-native-device-info';
 
 import { colors } from '../../Model/Model';
 import {
@@ -35,11 +36,9 @@ import { useDarkMode } from '../../utils';
  *
  * @component
  * @example
- * ```jsx
-<Settings />
-```
+ * <Settings />
  */
-const Settings = () => {
+export default function Settings() {
   const DARKMODE = useDarkMode();
   const styles = {
     listHeader: {
@@ -70,12 +69,12 @@ const Settings = () => {
     },
     footerContainer: {
       paddingTop: 30,
+      paddingBottom: 30,
       alignItems: 'center',
     },
     footerText: {
       color: colors.systemGray,
       paddingTop: 10,
-      paddingBottom: 30,
     },
   };
   const { state, dispatch } = useContext(PreferencesContext);
@@ -151,11 +150,10 @@ const Settings = () => {
             <Text style={styles.footerText}>
               {translate('Made with ❤️ in Dayton, Ohio')}
             </Text>
+            <Text style={styles.footerText}>{DeviceInfo.getVersion()}</Text>
           </View>
         }
       />
     </SafeAreaView>
   );
-};
-
-export default Settings;
+}

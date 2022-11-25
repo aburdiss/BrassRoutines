@@ -20,7 +20,7 @@ import { useDarkMode } from '../../utils';
  *
  * @component
  * @example
- *   <CustomListRow item={item} />
+ * <CustomListRow item={item} />
  */
 const CustomListRow = ({ item }) => {
   const DARKMODE = useDarkMode();
@@ -127,7 +127,7 @@ const CustomListRow = ({ item }) => {
    * Component.
    */
   function startCustomRoutine(itemToStart) {
-    navigation.navigate('Custom Routine', { itemToStart });
+    navigation.navigate('Custom Routine', { item: itemToStart });
   }
 
   return (

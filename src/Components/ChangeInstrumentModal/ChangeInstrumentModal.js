@@ -1,16 +1,18 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Modal from 'react-native-modal';
 import { useDarkMode } from '../../utils';
 
 import { colors } from '../../Model/Model';
 import InstrumentButton from '../InstrumentButton/InstrumentButton';
 
-const ChangeInstrumentModal = ({
+export default function ChangeInstrumentModal({
   changeInstrumentModalIsShowing,
   setChangeInstrumentModalIsShowing,
-}) => {
+}) {
   const DARKMODE = useDarkMode();
+  const insets = useSafeAreaInsets();
   return (
     <Modal
       isVisible={changeInstrumentModalIsShowing}
@@ -20,13 +22,15 @@ const ChangeInstrumentModal = ({
       style={{ margin: 0, justifyContent: 'flex-end' }}
       onBackdropPress={() => setChangeInstrumentModalIsShowing(false)}
     >
-      <SafeAreaView
+      <View
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
           backgroundColor: DARKMODE ? colors.systemGray5Dark : colors.white,
           width: '100%',
           marginHorizontal: 0,
+          paddingBottom: insets.bottom,
         }}
+        mode="margin"
       >
         <InstrumentButton
           text="Horn"
@@ -48,9 +52,7 @@ const ChangeInstrumentModal = ({
           text="Tuba"
           setIsShowing={setChangeInstrumentModalIsShowing}
         />
-      </SafeAreaView>
+      </View>
     </Modal>
   );
-};
-
-export default ChangeInstrumentModal;
+}

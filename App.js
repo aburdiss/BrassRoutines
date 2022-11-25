@@ -21,30 +21,38 @@ const Tab = createBottomTabNavigator();
 setI18nConfig();
 
 /**
- * @description The main tab navigation of the app.
- * @author Alexander Burdiss
- * @since 12/2/20
- * @version 1.0.1
- *
- * @component
- * @example
- * ```jsx
-<App />
-```
+ * @namespace App
  */
-const App = () => {
+
+/**
+ * @function App
+ * @component
+ * @description The main tab navigation of the app.
+ * Created 11/17/20
+ *
+ * @copyright 2022 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 11/6/22
+ * @version 1.0.2
+ * @example
+ * <App />
+ */
+export default function App() {
   const DARKMODE = useDarkMode();
 
   useEffect(
     /**
-     * @function App~useEffect~updateLocalizationOnChange
+     * @function updateLocalizationOnChange
+     * @memberof App
      * @description On App mount and unmount, check to see if the localization
      * has changed, and translate the app accordingly
-     * @author Alexander Burdiss
-     * @since 1/3/21
-     * @version 1.0.1
+     * Created 1/3/21
      * @returns {Function} A callback to clean up the localization settings on
      * component unmount.
+     *
+     * @author Alexander Burdiss
+     * @since 11/6/22
+     * @version 1.0.2
      */
     function updateLocalizationOnChange() {
       RNLocalize.addEventListener('change', handleLocalizationChange);
@@ -56,11 +64,13 @@ const App = () => {
   );
 
   /**
-   * @function App~handleLocalizationChange
+   * @function handleLocalizationChange
+   * @memberof App
    * @description Updates internationalization settings in the app.
+   *
    * @author Alexander Burdiss
-   * @since 1/3/21
-   * @version 1.0.1
+   * @since 11/6/22
+   * @version 1.0.2
    */
   const handleLocalizationChange = () => {
     setI18nConfig()
@@ -129,6 +139,4 @@ const App = () => {
       </PreferencesProvider>
     </SafeAreaProvider>
   );
-};
-
-export default App;
+}
