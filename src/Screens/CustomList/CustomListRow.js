@@ -133,7 +133,7 @@ export default function CustomListRow({ item }) {
   return (
     <SwipeableRow
       styles={styles}
-      delete={deleteItem}
+      deleteElement={deleteItem}
       item={item}
       edit={openEditRoutine}
     >

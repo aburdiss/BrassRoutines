@@ -471,7 +471,7 @@ export default function CreateCustom() {
           <SwipeableRow
             key={`${item}${counter}`}
             styles={styles}
-            delete={deleteElement}
+            deleteElement={deleteElement}
             item={item}
           >
             <Pressable
@@ -569,7 +569,7 @@ export default function CreateCustom() {
             <SwipeableRow
               key={`${item}${counter}`}
               styles={styles}
-              delete={deleteElement}
+              deleteElement={deleteElement}
               item={item}
             >
               <Pressable
