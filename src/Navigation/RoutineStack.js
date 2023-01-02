@@ -34,7 +34,7 @@ const Stack = createStackNavigator();
 />
 ```
  */
-const RoutineStack = ({ navigation }) => {
+export default function RoutineStack({ navigation }) {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -88,6 +88,4 @@ const RoutineStack = ({ navigation }) => {
       />
     </Stack.Navigator>
   );
-};
-
-export default RoutineStack;
+}

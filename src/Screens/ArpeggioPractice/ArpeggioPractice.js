@@ -22,7 +22,7 @@ import { useDarkMode, useIdleScreen, random, debounce } from '../../utils';
  * @example
  *   <ArpeggioPractice />
  */
-const ArpeggioPractice = () => {
+export default function ArpeggioPractice() {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
@@ -394,6 +394,4 @@ const ArpeggioPractice = () => {
       </View>
     </SafeAreaView>
   );
-};
-
-export default ArpeggioPractice;
+}

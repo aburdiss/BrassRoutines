@@ -30,7 +30,7 @@ const Stack = createStackNavigator();
 />
 ```
  */
-const AllExercisesStack = ({ navigation }) => {
+export default function AllExercisesStack({ navigation }) {
   const { state } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
   return (
@@ -67,6 +67,4 @@ const AllExercisesStack = ({ navigation }) => {
       />
     </Stack.Navigator>
   );
-};
-
-export default AllExercisesStack;
+}

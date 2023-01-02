@@ -1,8 +1,8 @@
 import React from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {PreferencesContext} from '../src/Model/Preferences';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { PreferencesContext } from '../src/Model/Preferences';
 
-const MockContext = ({children}) => {
+export default function MockContext({ children }) {
   let state = {
     instrument: 'horn',
     bassClef: 1,
@@ -22,11 +22,9 @@ const MockContext = ({children}) => {
 
   return (
     <SafeAreaProvider>
-      <PreferencesContext.Provider value={{state, dispatch}}>
+      <PreferencesContext.Provider value={{ state, dispatch }}>
         {children}
       </PreferencesContext.Provider>
     </SafeAreaProvider>
   );
-};
-
-export default MockContext;
+}

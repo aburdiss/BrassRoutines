@@ -21,7 +21,7 @@ import { translate } from '../../Translations/TranslationModel';
  *     Hello, World!
  *   </HomeButton>
  */
-const HomeButton = ({ onPress, children, onLongPress }) => {
+export default function HomeButton({ onPress, children, onLongPress }) {
   const DARKMODE = useDarkMode();
 
   const styles = StyleSheet.create({
@@ -93,6 +93,4 @@ const HomeButton = ({ onPress, children, onLongPress }) => {
       </Pressable>
     </View>
   );
-};
-
-export default HomeButton;
+}

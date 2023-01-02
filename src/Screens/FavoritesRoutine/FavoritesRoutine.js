@@ -15,7 +15,7 @@ import { useIdleScreen, shuffle } from '../../utils';
  * @example
  *   <FavoritesRoutine />
  */
-const FavoritesRoutine = () => {
+export default function FavoritesRoutine() {
   useIdleScreen();
   const { state } = useContext(PreferencesContext);
   const [currentRoutine, setCurrentRoutine] = useState([]);
@@ -29,7 +29,7 @@ const FavoritesRoutine = () => {
       <Routine exercises={currentRoutine} />
     </View>
   );
-};
+}
 
 /**
  * @description Shuffles the favorites using the Fisher-Yates (aka Knuth)
@@ -41,9 +41,7 @@ const FavoritesRoutine = () => {
  * @param {[String]} state The array of items to be shuffled.
  * @returns {Array} A shuffled array of the users' favorites.
  */
-const generateFavoritesRoutine = (state) => {
+function generateFavoritesRoutine(state) {
   let tempFavorites = shuffle(state.favorites);
   return tempFavorites;
-};
-
-export default FavoritesRoutine;
+}

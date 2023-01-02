@@ -18,12 +18,12 @@ import {
  * Navigation.
  * @param {Number} selectedExercise The currently selected Exercise.
  */
-export const previewExercise = (state, navigation, selectedExercise) => {
+export function previewExercise(state, navigation, selectedExercise) {
   navigation.navigate('Exercise Detail', {
     instrument: state.instrument,
     item: selectedExercise,
   });
-};
+}
 
 /**
  * @function getInstrumentExercises
@@ -36,7 +36,7 @@ export const previewExercise = (state, navigation, selectedExercise) => {
  * @returns {Array} An array of all instrument exercises for the currently
  * selected instrument.
  */
-export const getInstrumentExercises = (state) => {
+export function getInstrumentExercises(state) {
   switch (state.instrument) {
     case 'horn':
       return allHornExercises;
@@ -51,4 +51,4 @@ export const getInstrumentExercises = (state) => {
     default:
       throw new Error('Invalid Instrument');
   }
-};
+}

@@ -51,7 +51,7 @@ import { useIdleScreen, useDarkMode } from '../../utils';
 <CreateCustom />
 ```
  */
-const CreateCustom = () => {
+export default function CreateCustom() {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
@@ -294,10 +294,10 @@ const CreateCustom = () => {
    * @returns {Boolean} A boolean of whether or not the screen is in portrait
    * mode.
    */
-  const getIsPortrait = () => {
+  function getIsPortrait() {
     const dim = Dimensions.get('screen');
     return dim.height >= dim.width;
-  };
+  }
 
   /**
    * @function CreateCustom~getIsSmallScreen
@@ -342,7 +342,7 @@ const CreateCustom = () => {
    * @since 12/27/20
    * @version 1.0.0
    */
-  const createRoutine = () => {
+  function createRoutine() {
     if (routineName == '') {
       Alert.alert(translate('Please enter a name'));
     } else if (currentRoutine.length == 0) {
@@ -372,7 +372,7 @@ const CreateCustom = () => {
       dispatch({ type: 'ADD_TO_CUSTOM_ROUTINES', payload: tempRoutines });
       navigation.pop();
     }
-  };
+  }
 
   /**
    * @function CreateCustom~removeAllExercises
@@ -381,9 +381,9 @@ const CreateCustom = () => {
    * @since 12/27/20
    * @version 1.0.0
    */
-  const removeAllExercises = () => {
+  function removeAllExercises() {
     setCurrentRoutine([]);
-  };
+  }
 
   /**
    * @function CreateCustom~addToExerciseList
@@ -392,10 +392,10 @@ const CreateCustom = () => {
    * @since 12/27/20
    * @version 1.0.0
    */
-  const addToExerciseList = () => {
+  function addToExerciseList() {
     setCurrentRoutine([...currentRoutine, selectedExercise]);
     setCounter(counter + 1);
-  };
+  }
 
   /**
    * @function CreateCustom~deleteElement
@@ -406,14 +406,14 @@ const CreateCustom = () => {
    * @version 1.0.0
    * @param {Number} element The exercise to be removed from the list.
    */
-  const deleteElement = (element) => {
+  function deleteElement(element) {
     let temporaryExercises = [...currentRoutine];
     let index = temporaryExercises.indexOf(element);
     if (index !== -1) {
       temporaryExercises.splice(index, 1);
     }
     setCurrentRoutine(temporaryExercises);
-  };
+  }
 
   /**
    * @function CreateCustom~setNewRoutineOrder
@@ -622,6 +622,4 @@ const CreateCustom = () => {
       </View>
     </SafeAreaView>
   );
-};
-
-export default CreateCustom;
+}

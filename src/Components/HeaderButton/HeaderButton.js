@@ -23,7 +23,7 @@ import { translate } from '../../Translations/TranslationModel';
  *     Hello, World!
  *   </HeaderButton />
  */
-const HeaderButton = ({ children, handler }) => {
+export default function HeaderButton({ children, handler }) {
   const DARKMODE = useDarkMode();
 
   const styles = StyleSheet.create({
@@ -83,6 +83,4 @@ const HeaderButton = ({ children, handler }) => {
       )}
     </Pressable>
   );
-};
-
-export default HeaderButton;
+}

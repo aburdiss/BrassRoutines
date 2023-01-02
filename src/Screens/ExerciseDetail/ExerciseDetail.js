@@ -30,7 +30,7 @@ import { useIdleScreen, useDarkMode } from '../../utils';
  * @example
  *   <ExerciseDetail />
  */
-const ExerciseDetail = () => {
+export default function ExerciseDetail() {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
@@ -217,6 +217,4 @@ const ExerciseDetail = () => {
       />
     </SafeAreaView>
   );
-};
-
-export default ExerciseDetail;
+}

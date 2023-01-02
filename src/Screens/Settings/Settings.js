@@ -93,7 +93,7 @@ export default function Settings() {
           { title: translate('About'), data: ABOUT },
         ]}
         keyExtractor={(item, index) => index}
-        renderItem={({ item }) => {
+        renderItem={function ({ item }) {
           switch (item.type) {
             case 'link':
               return <LinkListItem item={item} state={state} />;

@@ -17,7 +17,7 @@ import { colors } from '../../Model/Model';
  *     Hello, World!
  *   </ScaleDisplay>
  */
-const ScaleDisplay = ({ children }) => {
+export default function ScaleDisplay({ children }) {
   const DARKMODE = useDarkMode();
 
   const styles = StyleSheet.create({
@@ -45,6 +45,4 @@ const ScaleDisplay = ({ children }) => {
       <Text style={styles.text}>{children}</Text>
     </View>
   );
-};
-
-export default ScaleDisplay;
+}

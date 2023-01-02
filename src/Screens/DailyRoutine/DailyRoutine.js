@@ -22,7 +22,7 @@ import { useIdleScreen, random } from '../../utils';
  * @example
  *   <DailyRoutine />
  */
-const DailyRoutine = () => {
+export default function DailyRoutine() {
   useIdleScreen();
   const { state } = useContext(PreferencesContext);
   const [currentRoutine, setCurrentRoutine] = useState([]);
@@ -43,7 +43,7 @@ const DailyRoutine = () => {
    * @returns {Array} A daily routine of exercises ready to plug into the
    * Routine component.
    */
-  const generateDailyRoutine = () => {
+  function generateDailyRoutine() {
     switch (state.instrument) {
       case 'horn':
         return generateRoutine(state, hornExercises);
@@ -58,14 +58,14 @@ const DailyRoutine = () => {
       default:
         throw new Error('Invalid Instrument');
     }
-  };
+  }
 
   return (
     <View>
       <Routine exercises={currentRoutine} />
     </View>
   );
-};
+}
 
 /**
  * @function generateRoutine
@@ -78,7 +78,7 @@ const DailyRoutine = () => {
  * @param {*} exercises The exercises for the selected instrument in state.
  * @returns An array of Numbers that can be passed into the Routine component.
  */
-const generateRoutine = (state, exercises) => {
+function generateRoutine(state, exercises) {
   let tempExercise;
   let newRoutine = [];
 
@@ -189,7 +189,7 @@ const generateRoutine = (state, exercises) => {
   }
 
   return newRoutine;
-};
+}
 
 /**
  * @function randomElement
@@ -201,8 +201,6 @@ const generateRoutine = (state, exercises) => {
  * @param {[String]} array
  * @returns A random element from the parameter
  */
-const randomElement = (array) => {
+function randomElement(array) {
   return array[random(array.length - 1)];
-};
-
-export default DailyRoutine;
+}

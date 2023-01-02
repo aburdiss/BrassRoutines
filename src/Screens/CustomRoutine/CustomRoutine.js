@@ -15,7 +15,7 @@ import { useIdleScreen } from '../../utils';
  * @example
  *   <CustomRoutine />
  */
-const CustomRoutine = () => {
+export default function CustomRoutine() {
   useIdleScreen();
 
   const route = useRoute();
@@ -28,6 +28,4 @@ const CustomRoutine = () => {
       <Routine exercises={exercises} instrument={state.instrument} />
     </View>
   );
-};
-
-export default CustomRoutine;
+}

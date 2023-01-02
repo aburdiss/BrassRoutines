@@ -31,7 +31,7 @@ import { useDarkMode } from '../../utils';
 <TextListItem item={item} />
 ```
  */
-export const TextListItem = ({ item }) => {
+export function TextListItem({ item }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     listRowContainer: {
@@ -65,7 +65,7 @@ export const TextListItem = ({ item }) => {
       </Text>
     </View>
   );
-};
+}
 
 /**
  * @description A rendered Link list item with a chevron and theme colored text
@@ -85,7 +85,7 @@ export const TextListItem = ({ item }) => {
 />
 ```
  */
-export const LinkListItem = ({ item, state }) => {
+export function LinkListItem({ item, state }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     listRowContainer: {
@@ -134,7 +134,7 @@ export const LinkListItem = ({ item, state }) => {
       </View>
     </Pressable>
   );
-};
+}
 
 /**
  * @description A rendered link list item that opens a page inside the app on
@@ -152,7 +152,7 @@ export const LinkListItem = ({ item, state }) => {
 <InternalListItem item={item} />
 ```
  */
-export const InternalListItem = ({ item }) => {
+export function InternalListItem({ item }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     listRowContainer: {
@@ -198,7 +198,7 @@ export const InternalListItem = ({ item }) => {
       </View>
     </Pressable>
   );
-};
+}
 
 /**
  * @description A rendered Switch list item that updates saved preferences.
@@ -221,7 +221,7 @@ export const InternalListItem = ({ item }) => {
 />
 ```
  */
-export const SwitchListItem = ({ item, state, dispatch }) => {
+export function SwitchListItem({ item, state, dispatch }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     listRowContainer: {
@@ -265,7 +265,7 @@ export const SwitchListItem = ({ item, state, dispatch }) => {
       <Switch value={state[item.setting]} onValueChange={updateValue} />
     </Pressable>
   );
-};
+}
 
 /**
  * @description A rendered Button list item that updates saved preferences.
@@ -285,7 +285,7 @@ export const SwitchListItem = ({ item, state, dispatch }) => {
 />
 ```
  */
-export const ButtonListItem = ({ item, dispatch }) => {
+export function ButtonListItem({ item, dispatch }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     listButtonRowContainer: {
@@ -380,7 +380,7 @@ export const ButtonListItem = ({ item, dispatch }) => {
       </View>
     </Pressable>
   );
-};
+}
 
 /**
  * @description A rendered Segmented filter list item that updates saved
@@ -403,7 +403,7 @@ export const ButtonListItem = ({ item, dispatch }) => {
 />
 ```
  */
-export const SegmentedFilterListItem = ({ item, state, dispatch }) => {
+export function SegmentedFilterListItem({ item, state, dispatch }) {
   let choices;
   switch (item.setting) {
     case 'routineLength':
@@ -451,7 +451,7 @@ export const SegmentedFilterListItem = ({ item, state, dispatch }) => {
       />
     </View>
   );
-};
+}
 
 /**
  * @description A rendered Picker list item that updates saved preferences.
@@ -474,7 +474,7 @@ export const SegmentedFilterListItem = ({ item, state, dispatch }) => {
 />
 ```
  */
-export const PickerListItem = ({ item, state, dispatch }) => {
+export function PickerListItem({ item, state, dispatch }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     listSegmentedRowContainer: {
@@ -574,4 +574,4 @@ export const PickerListItem = ({ item, state, dispatch }) => {
       />
     </View>
   );
-};
+}

@@ -18,7 +18,7 @@ import { translate } from '../../Translations/TranslationModel';
  * @example
  *   <ResetButton handler={function} />
  */
-const ResetButton = ({ handler }) => {
+export default function ResetButton({ handler }) {
   const DARKMODE = useDarkMode();
 
   const styles = StyleSheet.create({
@@ -71,6 +71,4 @@ const ResetButton = ({ handler }) => {
       </Pressable>
     </View>
   );
-};
-
-export default ResetButton;
+}

@@ -40,7 +40,7 @@ import { useDarkMode } from '../../../utils';
 <LicensesListItem {...item} />
 ```
  */
-const LicensesListItem = ({
+export default function LicensesListItem({
   image,
   userUrl,
   username,
@@ -49,7 +49,7 @@ const LicensesListItem = ({
   licenses,
   repository,
   licenseUrl,
-}) => {
+}) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     card: {
@@ -140,7 +140,7 @@ const LicensesListItem = ({
       </View>
     </View>
   );
-};
+}
 
 /**
  * @description One link item that opens the main software link in the
@@ -161,14 +161,14 @@ const LicensesListItem = ({
 </Link>
 ```
  */
-const Link = ({ url, style, children }) => (
-  <Text
-    style={style}
-    numberOfLines={1}
-    onPress={() => url && Linking.openURL(url)}
-  >
-    {children}
-  </Text>
-);
-
-export default LicensesListItem;
+function Link({ url, style, children }) {
+  return (
+    <Text
+      style={style}
+      numberOfLines={1}
+      onPress={() => url && Linking.openURL(url)}
+    >
+      {children}
+    </Text>
+  );
+}

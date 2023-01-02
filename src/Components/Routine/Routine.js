@@ -31,7 +31,7 @@ import { useDarkMode } from '../../utils';
  * @example
  *   <Routine exercises={[1, 2, 3, 4, 5]} />
  */
-const Routine = ({ exercises }) => {
+export default function Routine({ exercises }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     container: {
@@ -227,6 +227,4 @@ const Routine = ({ exercises }) => {
       />
     </SafeAreaView>
   );
-};
-
-export default Routine;
+}

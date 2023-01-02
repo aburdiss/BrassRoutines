@@ -16,7 +16,7 @@ import LicensesListItem from './LicensesListItem/LicensesListItem';
 <LicensesList licenses={licenses} />
 ```
  */
-const LicensesList = ({ licenses }) => {
+export default function LicensesList({ licenses }) {
   return (
     <FlatList
       style={styles.list}
@@ -25,12 +25,10 @@ const LicensesList = ({ licenses }) => {
       renderItem={({ item }) => <LicensesListItem {...item} />}
     />
   );
-};
+}
 
 const styles = StyleSheet.create({
   list: {
     flex: 1,
   },
 });
-
-export default LicensesList;

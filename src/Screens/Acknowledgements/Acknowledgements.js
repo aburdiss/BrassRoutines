@@ -19,7 +19,7 @@ import { useDarkMode } from '../../utils';
  * @example
  * <Acknowledgements />
  */
-const Acknowledgements = () => {
+export default function Acknowledgements() {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     listHeader: {
@@ -66,6 +66,4 @@ const Acknowledgements = () => {
       />
     </SafeAreaView>
   );
-};
-
-export default Acknowledgements;
+}

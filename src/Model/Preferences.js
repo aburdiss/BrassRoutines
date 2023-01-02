@@ -50,7 +50,7 @@ const PreferencesContext = createContext();
  * @param {*} state
  * @param {*} action
  */
-const preferencesReducer = (state, action) => {
+function preferencesReducer(state, action) {
   let newState;
   switch (action.type) {
     case 'SET_ALL_PREFERENCES':
@@ -82,7 +82,7 @@ const preferencesReducer = (state, action) => {
   }
   save(newState);
   return newState;
-};
+}
 
 const initialPreferencesState = {
   instrument: 'horn',
@@ -114,7 +114,7 @@ const initialPreferencesState = {
  *     {..}
  *   </PreferencesProvider>
  */
-const PreferencesProvider = ({ children }) => {
+function PreferencesProvider({ children }) {
   const [state, dispatch] = useReducer(preferencesReducer);
 
   useEffect(() => {
@@ -135,6 +135,6 @@ const PreferencesProvider = ({ children }) => {
       {children}
     </PreferencesContext.Provider>
   );
-};
+}
 
 export { PreferencesContext, PreferencesProvider };

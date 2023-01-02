@@ -21,7 +21,7 @@ import { useDarkMode, useIdleScreen, random, debounce } from '../../utils';
  * @example
  *   <ScalePractice />
  */
-const ScalePractice = () => {
+export default function ScalePractice() {
   useIdleScreen();
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
@@ -435,6 +435,4 @@ const ScalePractice = () => {
       </View>
     </SafeAreaView>
   );
-};
-
-export default ScalePractice;
+}

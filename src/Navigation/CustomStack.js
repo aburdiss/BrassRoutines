@@ -33,7 +33,7 @@ const Stack = createStackNavigator();
 />
  ```
  */
-const CustomStack = ({ navigation }) => {
+export default function CustomStack({ navigation }) {
   const { state } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
   return (
@@ -93,6 +93,4 @@ const CustomStack = ({ navigation }) => {
       />
     </Stack.Navigator>
   );
-};
-
-export default CustomStack;
+}

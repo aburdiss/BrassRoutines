@@ -23,7 +23,7 @@ import { StyleSheet } from 'react-native';
  * @example
  *   <CustomList />
  */
-const CustomList = () => {
+export default function CustomList() {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     container: {
@@ -83,6 +83,4 @@ const CustomList = () => {
       )}
     </SafeAreaView>
   );
-};
-
-export default CustomList;
+}

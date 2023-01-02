@@ -28,7 +28,7 @@ const Stack = createStackNavigator();
  *   options={{title: translate('Settings')}}
  * />
  */
-const SettingsStack = ({ navigation }) => {
+export default function SettingsStack({ navigation }) {
   const DARKMODE = useDarkMode();
   return (
     <Stack.Navigator
@@ -71,6 +71,4 @@ const SettingsStack = ({ navigation }) => {
       />
     </Stack.Navigator>
   );
-};
-
-export default SettingsStack;
+}

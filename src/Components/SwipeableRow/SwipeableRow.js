@@ -31,7 +31,7 @@ import { colors } from '../../Model/Model';
  *     {..}
  *   </SwipeableRow>
  */
-class SwipeableRow extends Component {
+export default class SwipeableRow extends Component {
   /**
    * @function SwipeableRow~renderLeftActions
    * @description Renders the left button of the swipeable.
@@ -111,5 +111,3 @@ class SwipeableRow extends Component {
     );
   }
 }
-
-export default SwipeableRow;

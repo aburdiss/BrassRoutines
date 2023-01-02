@@ -20,7 +20,7 @@ import { translate } from '../../Translations/TranslationModel';
  * @example
  *   <ListRow onPress={onPress} text="Hello, World!" />
  */
-const ListRow = ({ onPress, text }) => {
+export default function ListRow({ onPress, text }) {
   const { state } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
 
@@ -83,6 +83,4 @@ const ListRow = ({ onPress, text }) => {
       </View>
     </Pressable>
   );
-};
-
-export default ListRow;
+}

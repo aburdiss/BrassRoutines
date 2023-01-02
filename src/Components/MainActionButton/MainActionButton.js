@@ -21,7 +21,7 @@ import { translate } from '../../Translations/TranslationModel';
  *     Hello, World!
  *   </MainActionButton>
  */
-const MainActionButton = ({ handler, text }) => {
+export default function MainActionButton({ handler, text }) {
   const DARKMODE = useDarkMode();
 
   const styles = StyleSheet.create({
@@ -54,6 +54,4 @@ const MainActionButton = ({ handler, text }) => {
       <Text style={styles.text}>{translate(text)}</Text>
     </Pressable>
   );
-};
-
-export default MainActionButton;
+}

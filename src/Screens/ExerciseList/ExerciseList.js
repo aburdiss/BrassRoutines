@@ -53,9 +53,9 @@ export default function ExerciseList() {
    * @author Alexander Burdiss
    * @since 12/18/20
    * @version 1.0.0
-   * @returns A formatted list of data ready to be passed into the SectionList.
+   * @returns A formatted list of data ready to be passed into the SectionList
    */
-  const getSections = () => {
+  function getSections() {
     let instrument;
     switch (state.instrument) {
       case 'horn':
@@ -86,7 +86,7 @@ export default function ExerciseList() {
       { title: translate('High Range'), data: instrument.highRange },
       { title: translate('Low Range'), data: instrument.lowRange },
     ];
-  };
+  }
 
   return (
     <SafeAreaView style={styles.container} edges={['left', 'right']}>

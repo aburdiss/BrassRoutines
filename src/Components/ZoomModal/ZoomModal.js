@@ -25,11 +25,11 @@ import { StyleSheet } from 'react-native';
  *     setZoomModalIsShowing={setZoomModalIsShowing}
  *   />
  */
-const ZoomModal = ({
+export default function ZoomModal({
   imagePath,
   zoomModalIsShowing,
   setZoomModalIsShowing,
-}) => {
+}) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     modal: {
@@ -62,6 +62,4 @@ const ZoomModal = ({
       />
     </Modal>
   );
-};
-
-export default ZoomModal;
+}

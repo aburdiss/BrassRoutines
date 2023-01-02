@@ -112,7 +112,7 @@ sortDataByKey(licenseData, 'username');
  * <Licenses />
  * ```
  */
-const Licenses = () => {
+export default function Licenses() {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     container: {
@@ -125,6 +125,4 @@ const Licenses = () => {
       <LicensesList licenses={licenseData} />
     </SafeAreaView>
   );
-};
-
-export default Licenses;
+}

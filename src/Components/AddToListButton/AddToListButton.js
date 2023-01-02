@@ -18,7 +18,7 @@ import { translate } from '../../Translations/TranslationModel';
  * @example
  *   <AddToListButton handler={function} />
  */
-const AddToListButton = ({ handler }) => {
+export default function AddToListButton({ handler }) {
   const DARKMODE = useDarkMode();
 
   const styles = {
@@ -55,6 +55,4 @@ const AddToListButton = ({ handler }) => {
       </Pressable>
     </View>
   );
-};
-
-export default AddToListButton;
+}

@@ -30,10 +30,11 @@ import {
  *     selectedExercise={selectedExercise}
  *     setSelectedExercise={setSelectedExercise}
  *   />
- *
- * @todo Restyle these to work on android.
  */
-const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
+export default function ExercisePicker({
+  selectedExercise,
+  setSelectedExercise,
+}) {
   const { state } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
@@ -97,6 +98,4 @@ const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
       </View>
     </View>
   );
-};
-
-export default ExercisePicker;
+}

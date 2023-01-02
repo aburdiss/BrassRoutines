@@ -39,7 +39,7 @@ export const translate = memoize(
  * @since 12/1/20
  * @version 1.0.1
  */
-export const setI18nConfig = () => {
+export function setI18nConfig() {
   const fallback = { languageTag: 'en' };
   const { languageTag } =
     RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) ||
@@ -49,4 +49,4 @@ export const setI18nConfig = () => {
 
   i18n.translations = { [languageTag]: translationGetters[languageTag]() };
   i18n.locale = languageTag;
-};
+}

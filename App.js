@@ -56,7 +56,7 @@ export default function App() {
      */
     function updateLocalizationOnChange() {
       RNLocalize.addEventListener('change', handleLocalizationChange);
-      return () => {
+      return function cleanup() {
         RNLocalize.removeEventListener('change', handleLocalizationChange);
       };
     },
@@ -72,13 +72,13 @@ export default function App() {
    * @since 11/6/22
    * @version 1.0.2
    */
-  const handleLocalizationChange = () => {
+  function handleLocalizationChange() {
     setI18nConfig()
       .then(() => this.forceUpdate())
       .catch((error) => {
         console.error(error);
       });
-  };
+  }
 
   return (
     <SafeAreaProvider>
@@ -86,7 +86,7 @@ export default function App() {
         <NavigationContainer>
           <Tab.Navigator
             screenOptions={({ route }) => ({
-              tabBarIcon: ({ color, size }) => {
+              tabBarIcon: function ({ color, size }) {
                 let iconName;
                 if (route.name === 'HomeStack') {
                   iconName = 'book';

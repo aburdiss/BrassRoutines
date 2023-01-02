@@ -22,7 +22,7 @@ import { useDarkMode } from '../../utils';
  * @example
  * <CustomListRow item={item} />
  */
-const CustomListRow = ({ item }) => {
+export default function CustomListRow({ item }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     listItemContainer: {
@@ -168,6 +168,4 @@ const CustomListRow = ({ item }) => {
       </Pressable>
     </SwipeableRow>
   );
-};
-
-export default CustomListRow;
+}

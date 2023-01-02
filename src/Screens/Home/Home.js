@@ -23,7 +23,7 @@ import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/Change
  * @example
  * <Home />
  */
-const Home = () => {
+export default function Home() {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     container: {
@@ -47,7 +47,7 @@ const Home = () => {
    * @since 1/3/21
    * @version 1.0.1
    */
-  const launchDailyRoutine = () => {
+  function launchDailyRoutine() {
     if (
       !state.longTones &&
       !state.slowLipSlurs &&
@@ -78,7 +78,7 @@ const Home = () => {
     } else {
       navigation.navigate('Daily Routine');
     }
-  };
+  }
 
   /**
    * @function Home~launchFavoritesRoutine
@@ -88,13 +88,13 @@ const Home = () => {
    * @since 1/3/21
    * @version 1.0.1
    */
-  const launchFavoritesRoutine = () => {
+  function launchFavoritesRoutine() {
     if (state.favorites.length === 0) {
       Alert.alert(translate('No Favorites Selected!'));
     } else {
       navigation.navigate('Favorites Routine');
     }
-  };
+  }
 
   /**
    * @function Home~triggerHapticFeedback
@@ -147,6 +147,4 @@ const Home = () => {
       />
     </SafeAreaView>
   );
-};
-
-export default Home;
+}

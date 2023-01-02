@@ -20,7 +20,7 @@ import { translate } from '../../Translations/TranslationModel';
 />
 ```
  */
-const InstrumentButton = ({ text, setIsShowing }) => {
+export default function InstrumentButton({ text, setIsShowing }) {
   const { state, dispatch } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
 
@@ -68,6 +68,4 @@ const InstrumentButton = ({ text, setIsShowing }) => {
       <Text style={styles.text}>{translate(text)}</Text>
     </Pressable>
   );
-};
-
-export default InstrumentButton;
+}

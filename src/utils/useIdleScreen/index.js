@@ -25,7 +25,7 @@ export function useIdleScreen() {
         IdleTimerManager.setIdleTimerDisabled(false);
       }
 
-      return () => {
+      return function cleanup() {
         IdleTimerManager.setIdleTimerDisabled(false);
       };
     },

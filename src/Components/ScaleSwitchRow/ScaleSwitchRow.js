@@ -25,7 +25,7 @@ import { useDarkMode } from '../../utils';
  *     text="Hello, World!"
  *   />
  */
-const ScaleSwitchRow = ({ value, onValueChange, text }) => {
+export default function ScaleSwitchRow({ value, onValueChange, text }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     switchRow: {
@@ -53,6 +53,4 @@ const ScaleSwitchRow = ({ value, onValueChange, text }) => {
       <Switch onValueChange={onValueChange} value={value} />
     </Pressable>
   );
-};
-
-export default ScaleSwitchRow;
+}
