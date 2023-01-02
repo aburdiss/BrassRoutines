@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
 import { View, Pressable, Text } from 'react-native';
 import { useDarkMode } from '../../utils';
 
@@ -21,6 +21,22 @@ import { translate } from '../../Translations/TranslationModel';
 const ResetButton = ({ handler }) => {
   const DARKMODE = useDarkMode();
 
+  const styles = StyleSheet.create({
+    outerWrapper: {
+      borderRadius: 8,
+      borderColor: DARKMODE ? colors.redDark : colors.redLight,
+      borderWidth: 1,
+      margin: 10,
+      padding: 14,
+      overflow: 'hidden',
+    },
+    text: {
+      textAlign: 'center',
+      color: DARKMODE ? colors.redDark : colors.redLight,
+      fontSize: 16,
+    },
+  });
+
   return (
     <View>
       <Pressable
@@ -30,13 +46,8 @@ const ResetButton = ({ handler }) => {
         accessibilityRole="button"
         accessibilityHint={translate('Resets exercise list')}
         style={({ pressed }) => ({
-          borderRadius: 8,
-          borderColor: DARKMODE ? colors.redDark : colors.redLight,
           opacity: pressed ? 0.8 : 1,
-          borderWidth: 1,
-          margin: 10,
-          padding: 14,
-          overflow: 'hidden',
+          ...styles.outerWrapper,
         })}
         onPress={() => {
           Alert.alert(
@@ -56,16 +67,7 @@ const ResetButton = ({ handler }) => {
           );
         }}
       >
-        <Text
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{
-            textAlign: 'center',
-            color: DARKMODE ? colors.redDark : colors.redLight,
-            fontSize: 16,
-          }}
-        >
-          {translate('Reset')}
-        </Text>
+        <Text style={styles.text}>{translate('Reset')}</Text>
       </Pressable>
     </View>
   );

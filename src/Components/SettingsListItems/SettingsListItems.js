@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, Pressable, Text, Linking, Switch, Alert } from 'react-native';
+import {
+  View,
+  Pressable,
+  Text,
+  Linking,
+  Switch,
+  Alert,
+  StyleSheet,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
 import RNPickerSelect from 'react-native-picker-select';
@@ -25,7 +33,7 @@ import { useDarkMode } from '../../utils';
  */
 export const TextListItem = ({ item }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listRowContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -42,7 +50,8 @@ export const TextListItem = ({ item }) => {
       color: DARKMODE ? colors.white : colors.black,
       paddingVertical: 5,
     },
-  };
+  });
+
   return (
     <View style={styles.listRowContainer}>
       <Text
@@ -78,7 +87,7 @@ export const TextListItem = ({ item }) => {
  */
 export const LinkListItem = ({ item, state }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listRowContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -95,7 +104,8 @@ export const LinkListItem = ({ item, state }) => {
       color: DARKMODE ? colors.orangeDark : colors.orangeLight,
       paddingRight: 5,
     },
-  };
+  });
+
   const isHidden = item.instrument && state.instrument != item.instrument;
 
   return isHidden ? null : (
@@ -144,7 +154,7 @@ export const LinkListItem = ({ item, state }) => {
  */
 export const InternalListItem = ({ item }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listRowContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -161,7 +171,7 @@ export const InternalListItem = ({ item }) => {
       color: DARKMODE ? colors.orangeDark : colors.orangeLight,
       paddingRight: 5,
     },
-  };
+  });
   const navigation = useNavigation();
 
   return (
@@ -213,7 +223,7 @@ export const InternalListItem = ({ item }) => {
  */
 export const SwitchListItem = ({ item, state, dispatch }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listRowContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -230,7 +240,8 @@ export const SwitchListItem = ({ item, state, dispatch }) => {
       color: DARKMODE ? colors.white : colors.black,
       paddingVertical: 5,
     },
-  };
+  });
+
   function updateValue() {
     let updatedState = !state[item.setting];
     let newSetting = { [item.setting]: updatedState };
@@ -276,7 +287,7 @@ export const SwitchListItem = ({ item, state, dispatch }) => {
  */
 export const ButtonListItem = ({ item, dispatch }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listButtonRowContainer: {
       flexDirection: 'row',
       justifyContent: 'flex-start',
@@ -294,7 +305,7 @@ export const ButtonListItem = ({ item, dispatch }) => {
       color: DARKMODE ? colors.orangeDark : colors.orangeLight,
       paddingRight: 5,
     },
-  };
+  });
 
   return (
     <Pressable
@@ -410,7 +421,7 @@ export const SegmentedFilterListItem = ({ item, state, dispatch }) => {
   }
 
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listSegmentedRowContainer: {
       backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
       justifyContent: 'center',
@@ -421,7 +432,7 @@ export const SegmentedFilterListItem = ({ item, state, dispatch }) => {
         : colors.systemGray5Light,
       height: 45,
     },
-  };
+  });
   // Hide Filter if the setting is "bassClef" and instrument is not Euphonium
   let isHidden =
     state.instrument != 'euphonium' &&
@@ -465,7 +476,7 @@ export const SegmentedFilterListItem = ({ item, state, dispatch }) => {
  */
 export const PickerListItem = ({ item, state, dispatch }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listSegmentedRowContainer: {
       backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
       justifyContent: 'center',
@@ -479,7 +490,8 @@ export const PickerListItem = ({ item, state, dispatch }) => {
     linkText: {
       color: DARKMODE ? colors.orangeDark : colors.orangeLight,
     },
-  };
+  });
+
   const [currentInstrument, setCurrentInstrument] = useState(state.instrument);
   useEffect(() => {
     setCurrentInstrument(state.instrument);

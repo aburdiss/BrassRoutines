@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Pressable, Text } from 'react-native';
+import { Pressable, Text, StyleSheet } from 'react-native';
 import { useDarkMode } from '../../utils';
 import { PreferencesContext } from '../../Model/Preferences';
 import { colors } from '../../Model/Model';
@@ -24,6 +24,33 @@ const InstrumentButton = ({ text, setIsShowing }) => {
   const { state, dispatch } = useContext(PreferencesContext);
   const DARKMODE = useDarkMode();
 
+  const styles = StyleSheet.create({
+    pressable: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: 20,
+      backgroundColor:
+        state?.instrument == text.toLowerCase()
+          ? DARKMODE
+            ? colors.orangeDark
+            : colors.orangeLight
+          : null,
+    },
+    text: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: 20,
+      backgroundColor:
+        state?.instrument == text.toLowerCase()
+          ? DARKMODE
+            ? colors.orangeDark
+            : colors.orangeLight
+          : null,
+    },
+  });
+
   return (
     <Pressable
       onPress={() => {
@@ -35,35 +62,13 @@ const InstrumentButton = ({ text, setIsShowing }) => {
       }}
       style={({ pressed }) => ({
         opacity: pressed ? 0.7 : 1.0,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 20,
-        backgroundColor:
-          state?.instrument == text.toLowerCase()
-            ? DARKMODE
-              ? colors.orangeDark
-              : colors.orangeLight
-            : null,
+        ...styles.pressable,
       })}
       accessibile={true}
       accessibilityHint={translate('Changes instrument')}
       accessibilityLabel={translate(text)}
     >
-      <Text
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          fontSize: 16,
-          color:
-            state?.instrument == text.toLowerCase()
-              ? colors.black
-              : DARKMODE
-              ? colors.white
-              : colors.black,
-        }}
-      >
-        {translate(text)}
-      </Text>
+      <Text style={styles.text}>{translate(text)}</Text>
     </Pressable>
   );
 };

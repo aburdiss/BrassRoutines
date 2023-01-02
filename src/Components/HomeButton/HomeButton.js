@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, View, Text } from 'react-native';
+import { Pressable, View, Text, StyleSheet } from 'react-native';
 import { useDarkMode } from '../../utils';
 import { colors } from '../../Model/Model';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -24,6 +24,50 @@ import { translate } from '../../Translations/TranslationModel';
 const HomeButton = ({ onPress, children, onLongPress }) => {
   const DARKMODE = useDarkMode();
 
+  const styles = StyleSheet.create({
+    playIcon: {
+      fontSize: 20,
+      color: colors.black,
+      textAlign: 'right',
+      flex: 1,
+    },
+    pressable: {
+      padding: 20,
+      paddingBottom: children.startsWith('Begin Routine') ? 5 : 20,
+      marginTop: 15,
+      marginHorizontal: 10,
+      backgroundColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
+      borderRadius: 8,
+      borderBottomColor: DARKMODE ? colors.yellowDark : colors.yellowLight,
+      borderBottomWidth: 1,
+      shadowColor: DARKMODE ? colors.white : colors.black,
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.23,
+      shadowRadius: 2.62,
+      elevation: 4,
+    },
+    text: {
+      fontSize: 20,
+      color: colors.black,
+      textAlign: 'right',
+      flex: 1,
+    },
+    textWrapper: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+    },
+    translateText: {
+      fontSize: 20,
+      color: colors.black,
+      textAlign: 'right',
+      flex: 1,
+    },
+  });
+
   return (
     <View>
       <Pressable
@@ -33,62 +77,21 @@ const HomeButton = ({ onPress, children, onLongPress }) => {
         onPress={onPress}
         onLongPress={onLongPress}
         style={({ pressed }) => ({
-          padding: 20,
-          paddingBottom: children.startsWith('Begin Routine') ? 5 : 20,
-          marginTop: 15,
-          marginHorizontal: 10,
-          backgroundColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
           opacity: pressed ? 0.7 : 1,
-          borderRadius: 8,
-          borderBottomColor: DARKMODE ? colors.yellowDark : colors.yellowLight,
-          borderBottomWidth: 1,
-          shadowColor: DARKMODE ? colors.white : colors.black,
-          shadowOffset: {
-            width: 0,
-            height: 2,
-          },
-          shadowOpacity: 0.23,
-          shadowRadius: 2.62,
-          elevation: 4,
+          ...styles.pressable,
         })}
       >
-        <View
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-          }}
-        >
-          <Text
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={{
-              fontSize: 20,
-              color: colors.black,
-              textAlign: 'right',
-              flex: 1,
-            }}
-          >
-            {children}
-          </Text>
+        <View style={styles.textWrapper}>
+          <Text style={styles.text}>{children}</Text>
           <Ionicons
             name="play"
             size={20}
             color={colors.black}
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={{
-              paddingLeft: 8,
-            }}
+            style={styles.playIcon}
           />
         </View>
         {children.endsWith(')') ? (
-          <Text
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={{
-              alignSelf: 'flex-end',
-              paddingRight: 27,
-            }}
-          >
+          <Text style={styles.translateText}>
             {translate('Hold to change instrument')}
           </Text>
         ) : null}

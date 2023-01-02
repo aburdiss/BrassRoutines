@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Switch, Pressable } from 'react-native';
+import { Text, Switch, Pressable, StyleSheet } from 'react-native';
 
 import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
@@ -27,7 +27,7 @@ import { useDarkMode } from '../../utils';
  */
 const ScaleSwitchRow = ({ value, onValueChange, text }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     switchRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -38,7 +38,7 @@ const ScaleSwitchRow = ({ value, onValueChange, text }) => {
     switchText: {
       color: DARKMODE ? colors.white : colors.black,
     },
-  };
+  });
 
   return (
     <Pressable

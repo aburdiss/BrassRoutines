@@ -23,6 +23,22 @@ import { colors } from '../../Model/Model';
 const AllScalesButton = ({ children, handler }) => {
   const DARKMODE = useDarkMode();
 
+  const styles = {
+    pressable: {
+      borderRadius: 8,
+      borderColor: DARKMODE ? colors.systemGray : colors.systemGray,
+      borderWidth: 1,
+      marginVertical: 10,
+      padding: 10,
+      overflow: 'hidden',
+    },
+    text: {
+      textAlign: 'center',
+      color: DARKMODE ? colors.systemGray : colors.systemGray,
+      fontSize: 16,
+    },
+  };
+
   return (
     <Pressable
       android_ripple={{
@@ -30,25 +46,11 @@ const AllScalesButton = ({ children, handler }) => {
       }}
       onPress={handler}
       style={({ pressed }) => ({
-        borderRadius: 8,
-        borderColor: DARKMODE ? colors.systemGray : colors.systemGray,
-        borderWidth: 1,
-        marginVertical: 10,
-        padding: 10,
         opacity: pressed ? 0.8 : 1,
-        overflow: 'hidden',
+        ...styles.pressable,
       })}
     >
-      <Text
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          textAlign: 'center',
-          color: DARKMODE ? colors.systemGray : colors.systemGray,
-          fontSize: 16,
-        }}
-      >
-        {children}
-      </Text>
+      <Text style={styles.text}>{children}</Text>
     </Pressable>
   );
 };

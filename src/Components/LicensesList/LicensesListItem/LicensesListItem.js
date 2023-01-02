@@ -1,5 +1,12 @@
 import React from 'react';
-import { Text, Pressable, View, Linking, Image } from 'react-native';
+import {
+  Text,
+  Pressable,
+  View,
+  Linking,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../../Model/Model';
 import { useDarkMode } from '../../../utils';
@@ -44,13 +51,16 @@ const LicensesListItem = ({
   licenseUrl,
 }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     card: {
       overflow: 'hidden',
       flexDirection: 'row',
       backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
       alignItems: 'center',
       paddingLeft: 12,
+    },
+    forwardChevron: {
+      alignSelf: 'center',
     },
     item: {
       paddingVertical: 12,
@@ -66,23 +76,25 @@ const LicensesListItem = ({
         : colors.systemGray5Light,
       borderBottomWidth: 1,
     },
-    name: {
-      color: DARKMODE ? colors.white : colors.black,
-      fontWeight: 'bold',
-      fontSize: 16,
-    },
     image: {
       aspectRatio: 1,
       width: 58,
       borderRadius: 29,
       backgroundColor: 'white',
     },
-
+    name: {
+      color: DARKMODE ? colors.white : colors.black,
+      fontWeight: 'bold',
+      fontSize: 16,
+    },
     text: {
       color: DARKMODE ? colors.systemGray : colors.systemGray,
       marginTop: 3,
     },
-  };
+    textContainer: {
+      maxWidth: '90%',
+    },
+  });
 
   let title = name;
   if (username) {
@@ -110,8 +122,7 @@ const LicensesListItem = ({
               ...styles.item,
             })}
           >
-            {/* eslint-disable-next-line react-native/no-inline-styles */}
-            <View style={{ maxWidth: '90%' }}>
+            <View style={styles.textContainer}>
               <Text style={styles.name}>{title}</Text>
               <Link style={styles.text} url={licenseUrl}>
                 {licenses}
@@ -119,8 +130,7 @@ const LicensesListItem = ({
               <Link style={styles.text}>{version}</Link>
             </View>
             <Ionicons
-              // eslint-disable-next-line react-native/no-inline-styles
-              style={{ alignSelf: 'center' }}
+              style={styles.forwardChevron}
               color={DARKMODE ? colors.orangeDark : colors.orangeLight}
               size={25}
               name={'chevron-forward-outline'}

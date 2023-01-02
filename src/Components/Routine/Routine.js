@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, Image, Alert, Pressable } from 'react-native';
+import { View, Image, Alert, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -33,7 +33,7 @@ import { useDarkMode } from '../../utils';
  */
 const Routine = ({ exercises }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     container: {
       height: '100%',
       backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
@@ -60,7 +60,8 @@ const Routine = ({ exercises }) => {
       paddingTop: 6,
       opacity: 0.8,
     },
-  };
+  });
+
   const { state, dispatch } = useContext(PreferencesContext);
   const navigation = useNavigation();
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);

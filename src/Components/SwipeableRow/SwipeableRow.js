@@ -42,11 +42,6 @@ class SwipeableRow extends Component {
    * @param {Number} dragX Passed in from Swipeable
    */
   renderLeftActions = (progress, dragX) => {
-    // const scale = dragX.interpolate({
-    //   inputRange: [0, 80],
-    //   outputRange: [0, 1],
-    //   extrapolate: 'clamp',
-    // });
     return this.props.edit ? (
       <RectButton
         accessible={true}
@@ -75,11 +70,6 @@ class SwipeableRow extends Component {
    * @param {Number} dragX Passed in from Swipeable
    */
   renderRightActions = (progress, dragX) => {
-    // const scale = dragX.interpolate({
-    //   inputRange: [-80, 0],
-    //   outputRange: [1, 0],
-    //   extrapolate: 'clamp',
-    // });
     return (
       <RectButton
         accessible={true}

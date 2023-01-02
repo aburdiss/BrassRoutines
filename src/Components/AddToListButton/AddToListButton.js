@@ -21,6 +21,22 @@ import { translate } from '../../Translations/TranslationModel';
 const AddToListButton = ({ handler }) => {
   const DARKMODE = useDarkMode();
 
+  const styles = {
+    pressable: {
+      borderRadius: 8,
+      borderColor: DARKMODE ? colors.greenDark : colors.greenLight,
+      borderWidth: 1,
+      margin: 10,
+      padding: 14,
+      overflow: 'hidden',
+    },
+    text: {
+      textAlign: 'center',
+      color: DARKMODE ? colors.greenDark : colors.greenLight,
+      fontSize: 16,
+    },
+  };
+
   return (
     <View>
       <Pressable
@@ -30,26 +46,12 @@ const AddToListButton = ({ handler }) => {
         accessibilityRole="button"
         accessibilityHint={translate('Adds the selected exercise to the list')}
         style={({ pressed }) => ({
-          borderRadius: 8,
-          borderColor: DARKMODE ? colors.greenDark : colors.greenLight,
           opacity: pressed ? 0.8 : 1,
-          borderWidth: 1,
-          margin: 10,
-          padding: 14,
-          overflow: 'hidden',
+          ...styles.pressable,
         })}
         onPress={handler}
       >
-        <Text
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{
-            textAlign: 'center',
-            color: DARKMODE ? colors.greenDark : colors.greenLight,
-            fontSize: 16,
-          }}
-        >
-          {translate('Add To List')}
-        </Text>
+        <Text style={styles.text}>{translate('Add To List')}</Text>
       </Pressable>
     </View>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useDarkMode } from '../../utils';
 
 import { colors } from '../../Model/Model';
@@ -19,32 +19,30 @@ import { colors } from '../../Model/Model';
  */
 const ScaleDisplay = ({ children }) => {
   const DARKMODE = useDarkMode();
+
+  const styles = StyleSheet.create({
+    outerWrapper: {
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      padding: 10,
+    },
+    text: {
+      backgroundColor: DARKMODE
+        ? colors.systemGray2Dark
+        : colors.systemGray2Light,
+      color: DARKMODE ? colors.white : colors.black,
+      overflow: 'hidden',
+      textAlign: 'center',
+      width: '100%',
+      padding: 16,
+      fontSize: 18,
+      borderRadius: 8,
+    },
+  });
+
   return (
-    <View
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: 10,
-      }}
-    >
-      <Text
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          backgroundColor: DARKMODE
-            ? colors.systemGray2Dark
-            : colors.systemGray2Light,
-          color: DARKMODE ? colors.white : colors.black,
-          overflow: 'hidden',
-          textAlign: 'center',
-          width: '100%',
-          padding: 16,
-          fontSize: 18,
-          borderRadius: 8,
-        }}
-      >
-        {children}
-      </Text>
+    <View style={styles.outerWrapper}>
+      <Text style={styles.text}>{children}</Text>
     </View>
   );
 };

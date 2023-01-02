@@ -3,6 +3,7 @@ import Modal from 'react-native-modal';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import { useDarkMode } from '../../utils';
 import { colors } from '../../Model/Model';
+import { StyleSheet } from 'react-native';
 
 /**
  * @description A modal that allows the user to zoom in on the image. Fades in
@@ -30,13 +31,18 @@ const ZoomModal = ({
   setZoomModalIsShowing,
 }) => {
   const DARKMODE = useDarkMode();
+  const styles = StyleSheet.create({
+    modal: {
+      margin: 0,
+    },
+  });
+
   return (
     <Modal
       coverScreen={true}
       animationIn="fadeIn"
       animationOut="fadeOut"
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{ margin: 0 }}
+      style={styles.modal}
       isVisible={zoomModalIsShowing}
     >
       <ImageViewer

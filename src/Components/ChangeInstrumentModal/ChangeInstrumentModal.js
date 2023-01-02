@@ -13,25 +13,29 @@ export default function ChangeInstrumentModal({
 }) {
   const DARKMODE = useDarkMode();
   const insets = useSafeAreaInsets();
+
+  const styles = {
+    modal: {
+      margin: 0,
+      justifyContent: 'flex-end',
+    },
+    modalInnerWrapper: {
+      backgroundColor: DARKMODE ? colors.systemGray5Dark : colors.white,
+      width: '100%',
+      marginHorizontal: 0,
+      paddingBottom: insets.bottom,
+    },
+  };
+
   return (
     <Modal
       isVisible={changeInstrumentModalIsShowing}
       onSwipeComplete={() => setChangeInstrumentModalIsShowing(false)}
       swipeDirection={['down']}
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{ margin: 0, justifyContent: 'flex-end' }}
+      style={styles.modal}
       onBackdropPress={() => setChangeInstrumentModalIsShowing(false)}
     >
-      <View
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          backgroundColor: DARKMODE ? colors.systemGray5Dark : colors.white,
-          width: '100%',
-          marginHorizontal: 0,
-          paddingBottom: insets.bottom,
-        }}
-        mode="margin"
-      >
+      <View style={styles.modalInnerWrapper} mode="margin">
         <InstrumentButton
           text="Horn"
           setIsShowing={setChangeInstrumentModalIsShowing}

@@ -38,24 +38,30 @@ const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
 
+  const styles = {
+    exerciseButtonText: {
+      color: DARKMODE ? colors.orangeDark : colors.orangeLight,
+      fontSize: 16,
+    },
+    innerWrapper: {
+      width: '80%',
+      borderColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
+      borderWidth: 1,
+      borderRadius: 8,
+      marginHorizontal: 10,
+    },
+    outerWrapper: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    pickerItem: {
+      color: DARKMODE ? colors.white : colors.black,
+    },
+  };
+
   return (
-    <View
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-      }}
-    >
-      <View
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          width: '80%',
-          borderColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
-          borderWidth: 1,
-          borderRadius: 8,
-          marginHorizontal: 10,
-        }}
-      >
+    <View style={styles.outerWrapper}>
+      <View style={styles.innerWrapper}>
         <Picker
           accessibilityLiveRegion="assertive"
           accessibilityLabel={String(selectedExercise)}
@@ -64,9 +70,7 @@ const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
             setSelectedExercise(itemValue)
           }
           dropdownIconColor={DARKMODE ? '#FF9F0A' : '#FF9500'}
-          itemStyle={{
-            color: DARKMODE ? colors.white : colors.black,
-          }}
+          itemStyle={styles.pickerItem}
         >
           {getInstrumentExercises(state).map((exercise) => (
             <Picker.Item
@@ -88,15 +92,7 @@ const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
           hitSlop={10}
           style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
         >
-          <Text
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={{
-              color: DARKMODE ? colors.orangeDark : colors.orangeLight,
-              fontSize: 16,
-            }}
-          >
-            {translate('Preview')}
-          </Text>
+          <Text style={styles.exerciseButtonText}>{translate('Preview')}</Text>
         </Pressable>
       </View>
     </View>

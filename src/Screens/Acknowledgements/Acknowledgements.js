@@ -1,5 +1,5 @@
 import React from 'react';
-import { SectionList, Text } from 'react-native';
+import { SectionList, StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { colors } from '../../Model/Model';
@@ -21,7 +21,7 @@ import { useDarkMode } from '../../utils';
  */
 const Acknowledgements = () => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listHeader: {
       textTransform: 'uppercase',
       paddingLeft: 20,
@@ -48,7 +48,7 @@ const Acknowledgements = () => {
       paddingTop: 10,
       paddingBottom: 30,
     },
-  };
+  });
 
   return (
     <SafeAreaView style={styles.sectionList} edges={['left', 'right']}>

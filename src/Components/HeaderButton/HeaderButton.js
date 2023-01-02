@@ -1,6 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Text, Pressable } from 'react-native';
+import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { useDarkMode } from '../../utils';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -26,6 +25,25 @@ import { translate } from '../../Translations/TranslationModel';
  */
 const HeaderButton = ({ children, handler }) => {
   const DARKMODE = useDarkMode();
+
+  const styles = StyleSheet.create({
+    icon: {
+      marginBottom: -10,
+      marginTop: -8,
+    },
+    innerWrapper: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    outerWrapper: {
+      color: DARKMODE ? colors.white : colors.black,
+    },
+    text: {
+      color: DARKMODE ? colors.orangeDark : colors.orangeLight,
+      fontSize: 16,
+    },
+  });
+
   return (
     <Pressable
       android_ripple={{
@@ -36,41 +54,20 @@ const HeaderButton = ({ children, handler }) => {
       accessible={true}
       accessibilityLabel={translate(children)}
       accessibilityHint={translate('Navigates to') + ' ' + translate(children)}
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        padding: 8,
-        marginRight: 4,
-      }}
+      style={styles.outerWrapper}
     >
       {({ pressed }) => (
-        <View
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            opacity: pressed ? 0.7 : 1,
-          }}
-        >
+        // eslint-disable-next-line react-native/no-inline-styles
+        <View style={{ opacity: pressed ? 0.7 : 1, ...styles.innerWrapper }}>
           {children == 'Back' ? (
             <Ionicons
               name="chevron-back-outline"
               size={25}
               color={DARKMODE ? colors.orangeDark : colors.orangeLight}
-              // eslint-disable-next-line react-native/no-inline-styles
-              style={{
-                marginBottom: -10,
-                marginTop: -8,
-              }}
+              style={styles.icon}
             />
           ) : null}
-          <Text
-            maxFontSizeMultiplier={1.8}
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={{
-              color: DARKMODE ? colors.orangeDark : colors.orangeLight,
-              fontSize: 16,
-            }}
-          >
+          <Text maxFontSizeMultiplier={1.8} style={styles.text}>
             {translate(children)}
           </Text>
           {children == 'Next' ? (
@@ -78,11 +75,7 @@ const HeaderButton = ({ children, handler }) => {
               name="chevron-forward-outline"
               size={25}
               color={DARKMODE ? colors.orangeDark : colors.orangeLight}
-              // eslint-disable-next-line react-native/no-inline-styles
-              style={{
-                marginBottom: -10,
-                marginTop: -8,
-              }}
+              style={styles.icon}
             />
           ) : null}
         </View>

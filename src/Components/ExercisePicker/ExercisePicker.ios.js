@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Pressable, Text } from 'react-native';
+import { View, Pressable, Text, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useDarkMode } from '../../utils';
 import { PreferencesContext } from '../../Model/Preferences';
@@ -36,29 +36,33 @@ const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
   const DARKMODE = useDarkMode();
   const navigation = useNavigation();
 
+  const styles = StyleSheet.create({
+    exerciseButtonText: {
+      color: DARKMODE ? colors.orangeDark : colors.orangeLight,
+      fontSize: 16,
+    },
+    innerWrapper: {
+      width: '80%',
+    },
+    outerWrapper: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    pickerItem: {
+      color: DARKMODE ? colors.white : colors.black,
+    },
+  });
+
   return (
-    <View
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-      }}
-    >
-      <View
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          width: '80%',
-        }}
-      >
+    <View style={styles.outerWrapper}>
+      <View style={styles.innerWrapper}>
         <Picker
           accessibilityLabel={selectedExercise}
           selectedValue={selectedExercise}
           onValueChange={(itemValue, itemIndex) =>
             setSelectedExercise(itemValue)
           }
-          itemStyle={{
-            color: DARKMODE ? colors.white : colors.black,
-          }}
+          itemStyle={styles.pickerItem}
         >
           {getInstrumentExercises(state).map((exercise) => (
             <Picker.Item
@@ -79,15 +83,7 @@ const ExercisePicker = ({ selectedExercise, setSelectedExercise }) => {
           hitSlop={10}
           style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
         >
-          <Text
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={{
-              color: DARKMODE ? colors.orangeDark : colors.orangeLight,
-              fontSize: 16,
-            }}
-          >
-            {translate('Preview')}
-          </Text>
+          <Text style={styles.exerciseButtonText}>{translate('Preview')}</Text>
         </Pressable>
       </View>
     </View>
