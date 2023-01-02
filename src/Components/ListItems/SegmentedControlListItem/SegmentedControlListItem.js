@@ -7,25 +7,29 @@ import { translate } from '../../../Translations/TranslationModel';
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function SegmentedControlListItem
+ * @component
  * @description A rendered Segmented Control list item that updates saved
  * preferences.
- * @author Alexander Burdiss
- * @since 12/17/20
- * @version 1.0.1
+ * Created 12/17/20
+ * @param {Object} props JSX props passed to this React component
  * @param {Object} props.item The data to render in this list item
  * @param {Object} props.state The current user app state
  * @param {Function} props.dispatch A function to call to the reducer to
  * update the user state of the app.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.2
+ *
  * @example
- * ```jsx
-<SegmentedControlListItem
-  item={item}
-  state={state}
-  dispatch={dispatch}
-/>
-```
+ * <SegmentedControlListItem
+ *   item={item}
+ *   state={state}
+ *   dispatch={dispatch}
+ * />
  */
 export default function SegmentedControlListItem({ item, state, dispatch }) {
   let choices;

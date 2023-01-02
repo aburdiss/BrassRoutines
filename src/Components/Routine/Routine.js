@@ -20,16 +20,22 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 
 /**
+ * @function Routine
+ * @component
  * @description Handles the funcitonality for making a routine from a list of
  * exercises
- * @author Alexander Burdiss
- * @since 12/21/20
- * @version 1.1.1
- * @param {Array} props.exercises The list of exercises to play in the Routine.
+ * Created 12/21/20
+ * @param {Object} props JSX props passed to this React component
+ * @param {number[]} props.exercises The list of exercises to play in the Routine.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.1.2
+ *
  * @example
- *   <Routine exercises={[1, 2, 3, 4, 5]} />
+ * <Routine exercises={[1, 2, 3, 4, 5]} />
  */
 export default function Routine({ exercises }) {
   const DARKMODE = useDarkMode();

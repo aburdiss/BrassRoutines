@@ -7,22 +7,26 @@ import { translate } from '../../../Translations/TranslationModel';
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function LinkListItem
+ * @component
  * @description A rendered Link list item with a chevron and theme colored text
- * @author Alexander Burdiss
- * @since 11/15/20
- * @version 1.0.2
+ * Created 11/15/20
+ * @param {Object} props JSX props passed to this React Component
  * @param {Object} props.item The list item containing a link and some text.
  * @param {Object} props.state The app state, containing all of the user's
  * preferences.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.3
+ *
  * @example
- * jsx```
-<LinkListItem
-  item={item}
-  state={state}
-/>
-```
+ * <LinkListItem
+ *   item={item}
+ *   state={state}
+ * />
  */
 export default function LinkListItem({ item, state }) {
   const DARKMODE = useDarkMode();

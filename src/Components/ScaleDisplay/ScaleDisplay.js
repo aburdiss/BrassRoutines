@@ -5,17 +5,24 @@ import { useDarkMode } from '../../utils';
 import { colors } from '../../Model/Model';
 
 /**
- * @description A styled text box that shows the currently selected scale
- * @author Alexander Burdiss
- * @since 10/11/20
- * @version 1.0.1
- * @param {Text} props.children The text to display in this component.
- *
+ * @function ScaleDisplay
  * @component
+ * @description A styled text box that shows the currently selected scale
+ * Created 10/11/20
+ * @param {Object} props JSX props passed to this React component
+ * @param {string|JSX.Element} props.children The text to display in this
+ * component.
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.2
+ *
  * @example
- *   <ScaleDisplay>
- *     Hello, World!
- *   </ScaleDisplay>
+ * <ScaleDisplay>
+ *   Hello, World!
+ * </ScaleDisplay>
  */
 export default function ScaleDisplay({ children }) {
   const DARKMODE = useDarkMode();

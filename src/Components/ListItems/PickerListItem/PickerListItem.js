@@ -8,25 +8,29 @@ import { translate } from '../../../Translations/TranslationModel';
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function PickerListItem
+ * @component
  * @description A rendered Picker list item that updates saved preferences.
- * @author Alexander Burdiss
- * @since 12/25/20
- * @version 1.0.1
+ * Created 12/25/20
+ * @param {Object} props JSX props passed to this React Component
  * @param {Object} props.item The data to be rendered inside this list row.
  * @param {Object} props.state The current app state, including user
  * preferences.
  * @param {Function} props.dispatch A funciton to call to the reducer to update
  * app state.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.2
+ *
  * @example
- * ```jsx
-<PickerListItem
-  item={item}
-  state={state}
-  dispatch={dispatch}
-/>
-```
+ * <PickerListItem
+ *   item={item}
+ *   state={state}
+ *   dispatch={dispatch}
+ * />
  */
 export default function PickerListItem({ item, state, dispatch }) {
   const DARKMODE = useDarkMode();

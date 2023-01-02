@@ -8,17 +8,23 @@ import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function ListRow
+ * @component
  * @description A component that renders the default list row on the listView.
- * @author Alexander Burdiss
- * @since 12/14/2020
- * @version 1.1.2
+ * Created 12/14/20
+ * @param {Object} props JSX props passed to this React component
  * @param {Function} props.onPress The function to call when this exercise is
  * pressed
  * @param {String} props.text The text to render in this row.
+ * @returns {JSX.Element} JSX Render Instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.1.3
+ *
  * @example
- *   <ListRow onPress={onPress} text="Hello, World!" />
+ * <ListRow onPress={onPress} text="Hello, World!" />
  */
 export default function ListRow({ onPress, text }) {
   const { state } = useContext(PreferencesContext);

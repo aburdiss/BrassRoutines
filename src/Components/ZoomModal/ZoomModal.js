@@ -6,24 +6,29 @@ import { colors } from '../../Model/Model';
 import { StyleSheet } from 'react-native';
 
 /**
+ * @function ZoomModal
+ * @component
  * @description A modal that allows the user to zoom in on the image. Fades in
  * and out, and can be cancelled by swiping down, or tapping.
- * @author Alexander Burdiss
- * @since 1/2/21
- * @version 1.0.0
- * @param {Object} props.imagePath The path to the image. The return value from the
- * require() function.
- * @param {Boolean} props.zoomModalIsShowing A state variable on whether or not to
- * render this component.
- * @param
+ * Created 1/2/21
+ * @param {Object} props JSX props passed to this React Component
+ * @param {Object} props.imagePath The path to the image. The return value from
+ * the require() function.
+ * @param {boolean} props.zoomModalIsShowing A state variable on whether or not
+ * to render this component.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.1
+ *
  * @example
- *   <ZoomModal
- *     imagePath={imagePath}
- *     zoomModalIsShowing={zoomModalIsShowing}
- *     setZoomModalIsShowing={setZoomModalIsShowing}
- *   />
+ * <ZoomModal
+ *   imagePath={imagePath}
+ *   zoomModalIsShowing={zoomModalIsShowing}
+ *   setZoomModalIsShowing={setZoomModalIsShowing}
+ * />
  */
 export default function ZoomModal({
   imagePath,

@@ -6,18 +6,22 @@ import { translate } from '../../../Translations/TranslationModel';
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function TextListItem
+ * @component
  * @description A rendered Text list item. This will not translate
  * copyright information.
- * @author Alexander Burdiss
- * @since 1/3/21
- * @version 1.1.0
+ * Created 1/3/21
+ * @param {Object} props JSX props passed to this React Component
  * @param {Object} props.item The text to be rendered in the list item.
+ * @returns {JSX.Element} JSX Render Instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.1.1
+ *
  * @example
- * ```jsx
-<TextListItem item={item} />
-```
+ * <TextListItem item={item} />
  */
 export default function TextListItem({ item }) {
   const DARKMODE = useDarkMode();

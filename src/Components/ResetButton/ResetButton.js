@@ -7,16 +7,22 @@ import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function ResetButton
+ * @component
  * @description A styled button that is used as a reset button on lists.
- * @author Alexander Burdiss
- * @since 12/27/20
- * @version 1.0.1
+ * Created 12/27/20 by Alexander Burdiss
+ * @param {Object} props JSX props passed to this React Component
  * @param {Function} props.handler The function to call when the button is
  * pressed.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.1
+ *
  * @example
- *   <ResetButton handler={function} />
+ * <ResetButton handler={function} />
  */
 export default function ResetButton({ handler }) {
   const DARKMODE = useDarkMode();

@@ -6,25 +6,29 @@ import { translate } from '../../../Translations/TranslationModel';
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function SwitchListItem
+ * @component
  * @description A rendered Switch list item that updates saved preferences.
- * @author Alexander Burdiss
- * @since 1/5/21
- * @version 1.0.2
+ * Created 1/5/21
+ * @param {Object} props JSX props passed to this React component
  * @param {Object} props.item The data to be rendered in this component.
  * @param {Object} props.state The current state of the app, including user
  * preferences.
  * @param {Function} props.dispatch A function to make a reducer call to update
  * state.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.3
+ *
  * @example
- * ```jsx
-<SwitchListItem
-  item={item}
-  state={state}
-  dispatch={dispatch}
-/>
-```
+ * <SwitchListItem
+ *   item={item}
+ *   state={state}
+ *   dispatch={dispatch}
+ * />
  */
 export default function SwitchListItem({ item, state, dispatch }) {
   const DARKMODE = useDarkMode();
@@ -52,6 +56,7 @@ export default function SwitchListItem({ item, state, dispatch }) {
     let newSetting = { [item.setting]: updatedState };
     dispatch({ type: 'SET_SETTING', payload: newSetting });
   }
+
   return (
     <Pressable
       style={styles.listRowContainer}
