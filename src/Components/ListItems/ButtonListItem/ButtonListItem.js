@@ -7,22 +7,26 @@ import { translate } from '../../../Translations/TranslationModel';
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function ButtonListItem
+ * @component
  * @description A rendered Button list item that updates saved preferences.
- * @author Alexander Burdiss
- * @since 12/17/20
- * @version 1.0.2
+ * Created 12/17/20
+ * @param {Object} props JSX props passed to this React component
  * @param {Object} props.item The data to be rendered in this list item
  * @param {Function} props.dispatch A function to call a reducer and update
  * app state.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.3
+ *
  * @example
- * ```jsx
-<ButtonListItem
-  item={item}
-  dispatch={dispatch}
-/>
-```
+ * <ButtonListItem
+ *   item={item}
+ *   dispatch={dispatch}
+ * />
  */
 export default function ButtonListItem({ item, dispatch }) {
   const DARKMODE = useDarkMode();

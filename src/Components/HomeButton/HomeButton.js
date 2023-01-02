@@ -6,16 +6,22 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function HomeButton
+ * @component
  * @description A styled button that renders on the home page of the app. This
  * is the main stylistic component of the front page of the app.
- * @author Alexander Burdiss
- * @since 12/3/20
- * @version 1.0.1
+ * Created 12/3/20
+ * @param {Object} props JSX props passed to this React Component
  * @param {Function} props.onPress The function to call when the button is
  * pressed.
- * @param {String} props.children The text to render on the button.
+ * @param {string} props.children The text to render on the button.
+ * @returns {JSX.Element} JSX Render Instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.2
+ *
  * @example
  *   <HomeButton onPress={function}>
  *     Hello, World!

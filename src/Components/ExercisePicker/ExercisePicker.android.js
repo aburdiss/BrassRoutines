@@ -6,32 +6,41 @@ import { PreferencesContext } from '../../Model/Preferences';
 import { colors, getExerciseDisplayName } from '../../Model/Model';
 import { useNavigation } from '@react-navigation/native';
 import { translate } from '../../Translations/TranslationModel';
-import {
-  previewExercise,
-  getInstrumentExercises,
-} from './exercisePickerHelpers';
+import { previewExercise } from './utils/previewExercise';
+import { getInstrumentExercises } from './utils/getInstrumentExercises';
 
 /**
+ * @namespace ExercisePicker
+ */
+
+/**
+ * @function ExercisePickerAndroid
+ * @memberof ExercisePicker
+ * @component
  * @description Renders an android styled picker displaying all of the
  * exercises for whatever instrument is selected. Handles the logic for
  * checking the current instrument, and displays a preview button that will
  * open ExerciseDetail.js with the correct instrument exercise. Will also
  * indicate whether or not the exercise is a favorite in the picker.
- * @author Alexander Burdiss
- * @since 1/13/21
- * @version 1.1.1
- * @param {Number} props.selectedExercise The currently selected exercise.
+ * Created 1/13/21
+ * @param {Object} props JSX props passed to this React component
+ * @param {number} props.selectedExercise The currently selected exercise.
  * @param {Function} props.setSelectedExercise A function to update
  * props.selectedExercise
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.1.2
+ *
  * @example
  *   <ExercisePicker
  *     selectedExercise={selectedExercise}
  *     setSelectedExercise={setSelectedExercise}
  *   />
  */
-export default function ExercisePicker({
+export default function ExercisePickerAndroid({
   selectedExercise,
   setSelectedExercise,
 }) {

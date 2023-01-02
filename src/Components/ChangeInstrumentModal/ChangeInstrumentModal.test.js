@@ -8,10 +8,7 @@ import MockContext from '../../../jest/MockContext';
 test('changeInstrumentModal renders correctly', () => {
   render(
     <MockContext>
-      <ChangeInstrumentModal
-        changeInstrumentModalIsShowing={true}
-        setChangeInstrumentModalIsShowing={jest.fn}
-      />
+      <ChangeInstrumentModal isShowing={true} setIsShowing={jest.fn()} />
     </MockContext>,
   );
 });

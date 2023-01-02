@@ -6,19 +6,26 @@ import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
- * @description One button on the Change Instrument Modal.
- * @author Alexander Burdiss
- * @since 1/25/21
- * @version 1.1.0
- *
+ * @function InstrumentButton
  * @component
+ * @description One button on the Change Instrument Modal.
+ * Created 1/25/21
+ * @param {Object} props JSX props passed to this React component
+ * @param {string} props.text Text to render on this button
+ * @param {Function} props.setIsShowing A function that sets whether or not
+ * the parent modal is showing
+ * @returns {JSX.Element} JSX Render Instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.1.1
+ *
  * @example
- * ```jsx
-<InstrumentButton
-  text={text}
-  setIsShowing={setIsShowing}
-/>
-```
+ * <InstrumentButton
+ *   text={text}
+ *   setIsShowing={setIsShowing}
+ * />
  */
 export default function InstrumentButton({ text, setIsShowing }) {
   const { state, dispatch } = useContext(PreferencesContext);

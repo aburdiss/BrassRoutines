@@ -12,33 +12,36 @@ import { colors } from '../../../Model/Model';
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function LicensesListItem
+ * @component
  * @description A styled list item that contains links to the authors of the
  * various softwares used throughout the app, and the users who contributed
  * to them.
- * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
- * @author Alexander Burdiss
- * @date 12/17/20
- * @version 1.0.2
- * @param {String} props.image The url of the image to display.
- * @param {String} props.userUrl The url of the author of this software.
- * @param {String} props.username The username of the author of the software
+ * Created 12/17/20
+ * @param {Object} props JSX props passed to this React Component
+ * @param {string} props.image The url of the image to display.
+ * @param {string} props.userUrl The url of the author of this software.
+ * @param {string} props.username The username of the author of the software
  * using this license.
- * @param {String} props.name The name of the author of the software using this
+ * @param {string} props.name The name of the author of the software using this
  * license.
- * @param {String} props.version The version number of the software using this
+ * @param {string} props.version The version number of the software using this
  * license.
- * @param {String} props.licenses The text to render inside the main section
+ * @param {string} props.licenses The text to render inside the main section
  * of this license link.
- * @param {String} props.repository The url of the Github repository to link
+ * @param {string} props.repository The url of the Github repository to link
  * to.
- * @param {String} props.licenseUrl The url to the currently referenced
+ * @param {string} props.licenseUrl The url to the currently referenced
  * license.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.3
+ *
  * @example
- * ```jsx
-<LicensesListItem {...item} />
-```
+ * <LicensesListItem {...item} />
  */
 export default function LicensesListItem({
   image,

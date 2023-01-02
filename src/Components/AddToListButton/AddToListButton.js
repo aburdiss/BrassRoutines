@@ -1,27 +1,33 @@
 import React from 'react';
-import { View, Pressable, Text } from 'react-native';
+import { View, Pressable, Text, StyleSheet } from 'react-native';
 import { useDarkMode } from '../../utils';
 
 import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function AddToListButton
+ * @component
  * @description A styled button that is used to add a selected exercise to a
  * list
- * @author Alexander Burdiss
- * @since 12/27/20
- * @version 1.0.1
- * @param {function} props.handler The function to call when the button is
+ * Created 12/27/2020
+ * @param {Object} props JSX props passed to this React component
+ * @param {Function} props.handler The function to call when the button is
  * pressed.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.2
+ *
  * @example
- *   <AddToListButton handler={function} />
+ * <AddToListButton handler={function} />
  */
 export default function AddToListButton({ handler }) {
   const DARKMODE = useDarkMode();
 
-  const styles = {
+  const styles = StyleSheet.create({
     pressable: {
       borderRadius: 8,
       borderColor: DARKMODE ? colors.greenDark : colors.greenLight,
@@ -35,7 +41,7 @@ export default function AddToListButton({ handler }) {
       color: DARKMODE ? colors.greenDark : colors.greenLight,
       fontSize: 16,
     },
-  };
+  });
 
   return (
     <View>

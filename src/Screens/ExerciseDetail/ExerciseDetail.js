@@ -212,8 +212,8 @@ export default function ExerciseDetail() {
         setZoomModalIsShowing={setZoomModalIsShowing}
       />
       <ChangeInstrumentModal
-        changeInstrumentModalIsShowing={changeInstrumentModalIsShowing}
-        setChangeInstrumentModalIsShowing={setChangeInstrumentModalIsShowing}
+        isShowing={changeInstrumentModalIsShowing}
+        setIsShowing={setChangeInstrumentModalIsShowing}
       />
     </SafeAreaView>
   );

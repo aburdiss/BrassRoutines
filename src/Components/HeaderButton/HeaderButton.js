@@ -7,17 +7,23 @@ import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function HeaderButton
+ * @component
  * @description A simple button to live on the header and provide additional
  * navigation options in the app. This component handles translation of the
  * text that is passed in to it.
- * @author Alexander Burdiss
- * @since 1/3/21
- * @version 1.0.2
+ * Created 1/3/21
+ * @param {Object} props JSX props passed to this React component
  * @param {Function} props.handler The function to call when the button is
  * pressed.
  * @param {String} props.children The Text to render in the header button.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/2/23
+ * @version 1.0.2
+ *
  * @example
  *   <HeaderButton handler={handler}>
  *     Hello, World!

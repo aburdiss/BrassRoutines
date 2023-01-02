@@ -4,9 +4,9 @@ import {
   allTromboneExercises,
   allEuphoniumExcercises,
   allTubaExercises,
-} from '../../Model/Model';
+} from '../../../../Model/Model';
 
-import { getInstrumentExercises } from './exercisePickerHelpers';
+import { getInstrumentExercises } from './index';
 
 test('getInstrumentExercises returns correct exercises', () => {
   let hornExercises = getInstrumentExercises({ instrument: 'horn' });
