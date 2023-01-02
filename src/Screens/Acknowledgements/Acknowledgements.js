@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { colors } from '../../Model/Model';
 import { TRANSLATIONS, EXERCISES } from '../../Model/AcknowledgementsModel';
-import { TextListItem } from '../../Components/SettingsListItems/SettingsListItems';
+import TextListItem from '../../Components/ListItems/TextListItem/TextListItem';
 import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 

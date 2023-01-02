@@ -15,15 +15,13 @@ import {
   RESOURCES,
 } from '../../Model/SettingsModel';
 import { PreferencesContext } from '../../Model/Preferences';
-import {
-  TextListItem,
-  LinkListItem,
-  InternalListItem,
-  SwitchListItem,
-  ButtonListItem,
-  SegmentedFilterListItem,
-  PickerListItem,
-} from '../../Components/SettingsListItems/SettingsListItems';
+import TextListItem from '../../Components/ListItems/TextListItem/TextListItem';
+import LinkListItem from '../../Components/ListItems/LinkListItem/LinkListItem';
+import InternalListItem from '../../Components/ListItems/InternalListItem/InternalListItem';
+import SwitchListItem from '../../Components/ListItems/SwitchListItem/SwitchListItem';
+import ButtonListItem from '../../Components/ListItems/ButtonListItem/ButtonListItem';
+import SegmentedControlListItem from '../../Components/ListItems/SegmentedControlListItem/SegmentedControlListItem';
+import PickerListItem from '../../Components/ListItems/PickerListItem/PickerListItem';
 import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 
@@ -109,7 +107,7 @@ export default function Settings() {
               return <ButtonListItem item={item} dispatch={dispatch} />;
             case 'segmentedFilter':
               return (
-                <SegmentedFilterListItem
+                <SegmentedControlListItem
                   item={item}
                   state={state}
                   dispatch={dispatch}
