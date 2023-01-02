@@ -3,16 +3,14 @@ import { View, Image, Alert, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {
-  colors,
-  getHornImagePath,
-  getTrumpetImagePath,
-  getTromboneImagePath,
-  getTromboneBassClefOnlyImagePath,
-  getEuphoniumBassClefImagePath,
-  getEuphoniumTrebleClefImagePath,
-  getTubaImagePath,
-} from '../../Model/Model';
+import { colors } from '../../Model/Model';
+import { getHornImagePath } from '../../utils/getHornImagePath';
+import { getTrumpetImagePath } from '../../utils/getTrumpetImagePath';
+import { getTromboneImagePath } from '../../utils/getTromboneImagePath';
+import { getTromboneBassClefOnlyImagePath } from '../../utils/getTromboneBassClefOnlyImagePath';
+import { getEuphoniumTrebleClefImagePath } from '../../utils/getEuphoniumTrebleClefImagePath';
+import { getEuphoniumBassClefImagePath } from '../../utils/getEuphoniumBassClefImagePath';
+import { getTubaImagePath } from '../../utils/getTubaImagePath';
 import ZoomModal from '../ZoomModal/ZoomModal';
 import HeaderButton from '../HeaderButton/HeaderButton';
 import { PreferencesContext } from '../../Model/Preferences';

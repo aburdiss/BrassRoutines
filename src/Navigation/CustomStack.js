@@ -10,7 +10,8 @@ import HeaderButton from '../Components/HeaderButton/HeaderButton';
 
 import { PreferencesContext } from '../Model/Preferences';
 import { translate } from '../Translations/TranslationModel';
-import { colors, getExerciseDisplayName } from '../Model/Model';
+import { colors } from '../Model/Model';
+import { getExerciseDisplayName } from '../utils/getExerciseDisplayName';
 
 const Stack = createStackNavigator();
 

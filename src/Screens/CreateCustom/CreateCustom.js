@@ -31,10 +31,11 @@ import HeaderButton from '../../Components/HeaderButton/HeaderButton';
 import AddToListButton from '../../Components/AddToListButton/AddToListButton';
 import ExercisePicker from '../../Components/ExercisePicker/ExercisePicker';
 import SwipeableRow from '../../Components/SwipeableRow/SwipeableRow';
-import { colors, getExerciseDisplayName } from '../../Model/Model';
+import { colors } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 import { useIdleScreen, useDarkMode } from '../../utils';
+import { getExerciseDisplayName } from '../../utils/getExerciseDisplayName';
 
 /**
  * @description A Component that allows the user to create a routine using the

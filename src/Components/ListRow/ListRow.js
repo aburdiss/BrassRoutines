@@ -3,7 +3,8 @@ import { View, Pressable, Text, StyleSheet } from 'react-native';
 import { useDarkMode } from '../../utils';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { colors, getExerciseDisplayName } from '../../Model/Model';
+import { colors } from '../../Model/Model';
+import { getExerciseDisplayName } from '../../utils/getExerciseDisplayName';
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 

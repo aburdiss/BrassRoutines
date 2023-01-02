@@ -7,7 +7,8 @@ import ExerciseDetail from '../Screens/ExerciseDetail/ExerciseDetail';
 
 import { PreferencesContext } from '../Model/Preferences';
 import { translate } from '../Translations/TranslationModel';
-import { colors, getExerciseDisplayName } from '../Model/Model';
+import { colors } from '../Model/Model';
+import { getExerciseDisplayName } from '../utils/getExerciseDisplayName';
 
 const Stack = createStackNavigator();
 
