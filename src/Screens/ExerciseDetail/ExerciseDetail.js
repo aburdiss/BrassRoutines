@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, Image, Pressable } from 'react-native';
+import { View, Image, Pressable, StyleSheet } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PreferencesContext } from '../../Model/Preferences';
@@ -34,7 +34,7 @@ const ExerciseDetail = () => {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
@@ -75,7 +75,8 @@ const ExerciseDetail = () => {
     iconColor: {
       color: DARKMODE ? colors.orangeDark : colors.orangeLight,
     },
-  };
+  });
+
   const [zoomModalIsShowing, setZoomModalIsShowing] = useState(false);
   const [imagePath, setImagePath] = useState(undefined);
   const [changeInstrumentModalIsShowing, setChangeInstrumentModalIsShowing] =

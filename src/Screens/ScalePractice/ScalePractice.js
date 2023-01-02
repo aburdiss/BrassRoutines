@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Alert, View, ScrollView } from 'react-native';
+import { Alert, View, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
@@ -24,7 +24,7 @@ import { useDarkMode, useIdleScreen, random, debounce } from '../../utils';
 const ScalePractice = () => {
   useIdleScreen();
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     allScaleButton: {
       paddingHorizontal: 10,
     },
@@ -46,7 +46,7 @@ const ScalePractice = () => {
       width: '100%',
       marginHorizontal: 10,
     },
-  };
+  });
 
   const [currentScale, setCurrentScale] = useState(
     translate('No Scale Selected'),

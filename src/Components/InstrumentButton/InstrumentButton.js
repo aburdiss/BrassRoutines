@@ -38,16 +38,13 @@ const InstrumentButton = ({ text, setIsShowing }) => {
           : null,
     },
     text: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      padding: 20,
-      backgroundColor:
+      fontSize: 16,
+      color:
         state?.instrument == text.toLowerCase()
-          ? DARKMODE
-            ? colors.orangeDark
-            : colors.orangeLight
-          : null,
+          ? colors.black
+          : DARKMODE
+          ? colors.white
+          : colors.black,
     },
   });
 

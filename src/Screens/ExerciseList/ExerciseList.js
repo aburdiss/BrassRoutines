@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { SectionList, Text } from 'react-native';
+import { SectionList, StyleSheet, Text } from 'react-native';
 import {
   colors,
   hornExercises,
@@ -28,7 +28,7 @@ import { useDarkMode } from '../../utils';
  */
 export default function ExerciseList() {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     container: {
       height: '100%',
       backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
@@ -40,7 +40,8 @@ export default function ExerciseList() {
       paddingBottom: 10,
       color: colors.systemGray,
     },
-  };
+  });
+
   const navigation = useNavigation();
   const { state } = useContext(PreferencesContext);
 
@@ -94,7 +95,7 @@ export default function ExerciseList() {
           color: colors.systemGray,
         }}
         sections={getSections()}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(_, index) => index}
         renderItem={({ item }) => (
           <ListRow
             text={item}

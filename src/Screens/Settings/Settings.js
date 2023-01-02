@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, SectionList, Text } from 'react-native';
+import { View, SectionList, Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DeviceInfo from 'react-native-device-info';
@@ -40,7 +40,7 @@ import { useDarkMode } from '../../utils';
  */
 export default function Settings() {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listHeader: {
       textTransform: 'uppercase',
       paddingLeft: 20,
@@ -76,7 +76,8 @@ export default function Settings() {
       color: colors.systemGray,
       paddingTop: 10,
     },
-  };
+  });
+
   const { state, dispatch } = useContext(PreferencesContext);
 
   return (

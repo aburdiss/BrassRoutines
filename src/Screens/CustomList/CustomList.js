@@ -10,6 +10,7 @@ import CustomListRow from './CustomListRow';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
+import { StyleSheet } from 'react-native';
 
 /**
  * @description A list of all of the custom routines the user has created. When
@@ -24,12 +25,13 @@ import { useDarkMode } from '../../utils';
  */
 const CustomList = () => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
     },
-  };
+  });
+
   const { state, dispatch } = useContext(PreferencesContext);
   const navigation = useNavigation();
   /**

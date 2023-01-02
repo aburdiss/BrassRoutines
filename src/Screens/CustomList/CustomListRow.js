@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -24,7 +24,7 @@ import { useDarkMode } from '../../utils';
  */
 const CustomListRow = ({ item }) => {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     listItemContainer: {
       paddingHorizontal: 20,
       backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
@@ -62,7 +62,7 @@ const CustomListRow = ({ item }) => {
       backgroundColor: DARKMODE ? colors.orangeDark : colors.orangeLight,
       justifyContent: 'flex-end',
     },
-  };
+  });
   const navigation = useNavigation();
   const { state, dispatch } = useContext(PreferencesContext);
 

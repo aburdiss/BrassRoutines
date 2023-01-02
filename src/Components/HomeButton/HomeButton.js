@@ -26,10 +26,7 @@ const HomeButton = ({ onPress, children, onLongPress }) => {
 
   const styles = StyleSheet.create({
     playIcon: {
-      fontSize: 20,
-      color: colors.black,
-      textAlign: 'right',
-      flex: 1,
+      paddingLeft: 8,
     },
     pressable: {
       padding: 20,
@@ -60,11 +57,9 @@ const HomeButton = ({ onPress, children, onLongPress }) => {
       alignItems: 'center',
       justifyContent: 'flex-end',
     },
-    translateText: {
-      fontSize: 20,
-      color: colors.black,
-      textAlign: 'right',
-      flex: 1,
+    subText: {
+      alignSelf: 'flex-end',
+      paddingRight: 27,
     },
   });
 
@@ -91,7 +86,7 @@ const HomeButton = ({ onPress, children, onLongPress }) => {
           />
         </View>
         {children.endsWith(')') ? (
-          <Text style={styles.translateText}>
+          <Text style={styles.subText}>
             {translate('Hold to change instrument')}
           </Text>
         ) : null}

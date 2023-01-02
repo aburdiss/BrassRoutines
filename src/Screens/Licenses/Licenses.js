@@ -9,12 +9,13 @@ Run this command to get the data
 */
 
 import React from 'react';
+import { StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import LicensesList from '../../Components/LicensesList/LicensesList';
 import { colors } from '../../Model/Model';
 
 import Data from './licenses.json';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { capitalize, useDarkMode } from '../../utils';
 
 /**
@@ -113,15 +114,14 @@ sortDataByKey(licenseData, 'username');
  */
 const Licenses = () => {
   const DARKMODE = useDarkMode();
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray2Light,
+    },
+  });
   return (
-    <SafeAreaView
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        flex: 1,
-        backgroundColor: DARKMODE ? colors.black : colors.systemGray2Light,
-      }}
-      edges={['left', 'right']}
-    >
+    <SafeAreaView style={styles.container} edges={['left', 'right']}>
       <LicensesList licenses={licenseData} />
     </SafeAreaView>
   );

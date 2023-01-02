@@ -36,7 +36,8 @@ const HeaderButton = ({ children, handler }) => {
       alignItems: 'center',
     },
     outerWrapper: {
-      color: DARKMODE ? colors.white : colors.black,
+      padding: 8,
+      marginRight: 4,
     },
     text: {
       color: DARKMODE ? colors.orangeDark : colors.orangeLight,

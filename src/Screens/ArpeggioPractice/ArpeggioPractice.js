@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Alert, View, ScrollView } from 'react-native';
+import { Alert, View, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
@@ -26,7 +26,7 @@ const ArpeggioPractice = () => {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     allScaleButton: {
       paddingHorizontal: 10,
     },
@@ -48,7 +48,7 @@ const ArpeggioPractice = () => {
       width: '100%',
       marginHorizontal: 10,
     },
-  };
+  });
 
   const [currentArpeggio, setCurrentArpeggio] = useState(
     translate('No Arpeggio Selected'),

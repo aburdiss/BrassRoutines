@@ -13,6 +13,7 @@ import {
   Pressable,
   Dimensions,
   BackHandler,
+  StyleSheet,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -54,23 +55,28 @@ const CreateCustom = () => {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     buttonContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       marginHorizontal: 0,
     },
-    smallScreenButtonContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      borderTopColor: DARKMODE
-        ? colors.systemGray5Dark
-        : colors.systemGray5Light,
-      borderTopWidth: 1,
-    },
     container: {
       flex: 1,
       backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    containerLandscape: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+      flexDirection: 'row',
+    },
+    favoriteIcon: {
+      paddingRight: 5,
+    },
+    landscapeList: {
+      flex: 1,
+      borderRadius: 8,
+      marginHorizontal: 10,
     },
     list: {
       flex: 1,
@@ -78,11 +84,6 @@ const CreateCustom = () => {
         ? colors.systemGray5Dark
         : colors.systemGray5Light,
       borderTopWidth: 1,
-    },
-    landscapeList: {
-      flex: 1,
-      borderRadius: 8,
-      marginHorizontal: 10,
     },
     listIcon: {
       color: DARKMODE ? colors.pinkDark : colors.pinkLight,
@@ -112,6 +113,23 @@ const CreateCustom = () => {
     placeholder: {
       color: colors.systemGray,
     },
+    rightAction: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      backgroundColor: DARKMODE ? colors.redDark : colors.redLight,
+      justifyContent: 'flex-end',
+    },
+    smallScreenButtonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderTopWidth: 1,
+    },
+    spacer: {
+      flex: 1,
+    },
     textInput: {
       borderColor: colors.systemGray,
       borderWidth: 1,
@@ -121,17 +139,12 @@ const CreateCustom = () => {
       fontSize: 16,
       color: DARKMODE ? colors.white : colors.black,
     },
-    rightAction: {
-      alignItems: 'center',
-      flexDirection: 'row',
-      backgroundColor: DARKMODE ? colors.redDark : colors.redLight,
-      justifyContent: 'flex-end',
-    },
     trashIcon: {
       paddingRight: 10,
       paddingLeft: 50,
     },
-  };
+  });
+
   const navigation = useNavigation();
   const route = useRoute();
   const { state, dispatch } = useContext(PreferencesContext);
@@ -489,8 +502,7 @@ const CreateCustom = () => {
                       name={'heart'}
                       color={styles.listIcon.color}
                       size={20}
-                      // eslint-disable-next-line react-native/no-inline-styles
-                      style={{ paddingRight: 5 }}
+                      style={styles.favoriteIcon}
                     />
                   ) : null}
                   <Text style={styles.listItemText}>
@@ -527,33 +539,19 @@ const CreateCustom = () => {
       )}
     </View>
   ) : (
-    <SafeAreaView
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        ...styles.container,
-        flexDirection: 'row',
-      }}
-      edges={['left', 'right']}
-    >
-      {/* eslint-disable-next-line react-native/no-inline-styles */}
-      <View style={{ flex: 1 }}>
+    <SafeAreaView style={styles.containerLandscape} edges={['left', 'right']}>
+      <View style={styles.spacer}>
         <ExercisePicker
           selectedExercise={selectedExercise}
           setSelectedExercise={setSelectedExercise}
         />
-        {/* eslint-disable-next-line react-native/no-inline-styles */}
-        <View style={{ flex: 1 }} />
+        <View style={styles.spacer} />
         <View style={styles.buttonContainer}>
           <ResetButton handler={removeAllExercises} />
           <AddToListButton handler={addToExerciseList} />
         </View>
       </View>
-      <View
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          flex: 1,
-        }}
-      >
+      <View style={styles.spacer}>
         <TextInput
           value={routineName}
           placeholder={translate('Routine Name')}
@@ -602,8 +600,7 @@ const CreateCustom = () => {
                         name={'heart'}
                         color={styles.listIcon.color}
                         size={20}
-                        // eslint-disable-next-line react-native/no-inline-styles
-                        style={{ paddingRight: 5 }}
+                        style={styles.favoriteIcon}
                       />
                     ) : null}
                     <Text style={styles.listItemText}>

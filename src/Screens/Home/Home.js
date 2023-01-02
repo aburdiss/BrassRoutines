@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
@@ -25,6 +25,13 @@ import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/Change
  */
 const Home = () => {
   const DARKMODE = useDarkMode();
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+  });
+
   const navigation = useNavigation();
   const { state } = useContext(PreferencesContext);
   const [changeInstrumentModalIsShowing, setChangeInstrumentModalIsShowing] =
@@ -104,14 +111,7 @@ const Home = () => {
   }
 
   return (
-    <SafeAreaView
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        flex: 1,
-        backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
-      }}
-      edges={['left', 'right']}
-    >
+    <SafeAreaView style={styles.container} edges={['left', 'right']}>
       <ScrollView>
         <HomeButton
           accessibilityHint={translate('Starts daily routine')}
