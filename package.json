@@ -60,6 +60,7 @@
     "metro-react-native-babel-preset": "0.72.3",
     "node-fetch": "^2.6.1",
     "npm-license-crawler": "^0.2.1",
+    "prettier": "^2.7.1",
     "react-test-renderer": "18.1.0",
     "ua-parser-js": "0.7.31"
   },

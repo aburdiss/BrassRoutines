@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# 
-# pre-commit hook for ScalePractice
+#
+# pre-commit hook for BrassRoutines
 # Created by Alexander Burdiss on 10/25/22
 # Version 1.0.0
 #
