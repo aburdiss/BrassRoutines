@@ -38,19 +38,21 @@ import { useIdleScreen, useDarkMode } from '../../utils';
 import { getExerciseDisplayName } from '../../utils/getExerciseDisplayName';
 
 /**
+ * @function CreateCustom
+ * @component
  * @description A Component that allows the user to create a routine using the
  * different exercises in the app, and save it to internal memory. This
  * component is also used when editing a routine, and will remove the routine
  * in memory, and save the current routine in its place.
- * @author Alexander Burdiss
- * @since 1/2/21
- * @version 1.1.0
+ * Created 1/2/21
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.1.1
+ *
  * @example
- * ```jsx
-<CreateCustom />
-```
+ * <CreateCustom />
  */
 export default function CreateCustom() {
   useIdleScreen();

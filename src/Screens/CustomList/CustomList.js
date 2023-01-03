@@ -13,15 +13,24 @@ import { useDarkMode } from '../../utils';
 import { StyleSheet } from 'react-native';
 
 /**
+ * @namespace CustomList
+ */
+
+/**
+ * @function CustomList
+ * @memberof CustomList
+ * @component
  * @description A list of all of the custom routines the user has created. When
  * the list is empty, a button to create a routine renders in its place.
- * @author Alexander Burdiss
- * @since 1/2/21
- * @version 1.1.0
+ * Created 1/2/21
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.1.1
+ *
  * @example
- *   <CustomList />
+ * <CustomList />
  */
 export default function CustomList() {
   const DARKMODE = useDarkMode();
@@ -35,22 +44,26 @@ export default function CustomList() {
   const { state, dispatch } = useContext(PreferencesContext);
   const navigation = useNavigation();
   /**
-   * @function CustomList~updateCustomRoutines
+   * @function updateCustomRoutines
+   * @memberof CustomList
    * @description Updates the custom routines data in state. This is called
    * when the drag operation is complete.
+   * @param {{[Number]}} {data} The new order that the custom routines should
+   * be in.
+   *
    * @author Alexander Burdiss
    * @since 1/2/21
    * @version 1.0.0
-   * @param {{[Number]}} {data} The new order that the custom routines should
-   * be in.
    */
   function updateCustomRoutines({ data }) {
     dispatch({ type: 'SET_SETTING', payload: { customRoutines: data } });
   }
 
   /**
-   * @function CustomList~triggerHapticFeedback
+   * @function triggerHapticFeedback
+   * @memberof CustomList
    * @description Triggers the standard haptic feedback option.
+   *
    * @author Alexander Burdiss
    * @since 2/8/21
    * @version 1.0.0

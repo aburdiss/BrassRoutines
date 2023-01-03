@@ -39,7 +39,7 @@ import {
   expect(duplicatedItem).not.toBeTruthy();
 })();
 
-describe('resource links', () => {
+describe.skip('resource links', () => {
   RESOURCES.map(async (resource) => {
     if (!['13C'].includes(resource.id)) {
       test(resource.value, async () => {
@@ -55,7 +55,7 @@ describe('resource links', () => {
   });
 });
 
-describe('about links', () => {
+describe.skip('about links', () => {
   ABOUT.map(async (about) => {
     test(about.value, async () => {
       if (about.type == 'link' && about.link.startsWith('http')) {

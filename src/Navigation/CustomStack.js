@@ -16,23 +16,27 @@ import { getExerciseDisplayName } from '../utils/getExerciseDisplayName';
 const Stack = createStackNavigator();
 
 /**
+ * @function CustomStack
+ * @component
  * @description Contains all of the screens necessary for the user to create
  * their own routine, and save it to local storage.
- * @author Alexander Burdiss
- * @since 12/2/20
- * @version 1.0.1
- * @param {Object} navigation The navigation object provided by React
+ * Created 12/2/20
+ * @param {Object} props JSX props passed to this React component
+ * @param {Object} props.navigation The navigation object provided by React
  * Navigation
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.0.1
+ *
  * @example
- * ```jsx
-<Tab.Screen
-  name="Custom"
-  component={CustomStack}
-  options={{title: translate('Custom')}}
-/>
- ```
+ * <Tab.Screen
+ *   name="Custom"
+ *   component={CustomStack}
+ *   options={{title: translate('Custom')}}
+ * />
  */
 export default function CustomStack({ navigation }) {
   const { state } = useContext(PreferencesContext);

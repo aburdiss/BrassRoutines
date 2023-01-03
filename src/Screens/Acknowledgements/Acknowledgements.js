@@ -9,13 +9,17 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 
 /**
+ * @function Acknowledgements
+ * @component
  * @description A View that displays the people who directly assisted with
  * this project
- * @author Alexander Burdiss
- * @since 12/14/20
- * @version 1.0.2
+ * Created 12/14/20
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.0.3
+ *
  * @example
  * <Acknowledgements />
  */

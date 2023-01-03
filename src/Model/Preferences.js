@@ -4,12 +4,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 /**
  * @function load
  * @description Loads Data from Local Storage
- * @author Alexander Burdiss
- * @since 12/11/20
- * @version 1.0.2
- * @param {String} type Type of data to load.
+ * Created 12/11/20
+ * @param {string} type Type of data to load.
  * @returns {JSON|null} The stored value or null, depending on if the data is
  * successfully retrieved.
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.0.3
  */
 export async function load() {
   try {
@@ -23,11 +26,14 @@ export async function load() {
 /**
  * @function save
  * @description Stores Data in Local Storage
- * @author Alexander Burdiss
- * @since 12/11/20
- * @version 1.0.1
- * @param {String} type Type of data to store.
+ * Created 12/11/20
+ * @param {string} type Type of data to store.
  * @param {Object} data Data to be stored in local storage
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.0.2
  */
 export async function save(data) {
   try {
@@ -38,17 +44,21 @@ export async function save(data) {
   }
 }
 
-const PreferencesContext = createContext();
+export const PreferencesContext = createContext();
 
 /**
  * @function preferencesReducer
  * @description A reducer that handles updating the state stored in context,
  * and updates the same state in local storage on the device.
+ * Created 12/14/20
+ * @param {Object} state The existing State
+ * @param {Object} action The new action, with a type and payload
+ * @returns {Object} The new state
+ *
+ * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/14/20
- * @version 1.0.0
- * @param {*} state
- * @param {*} action
+ * @since 1/3/23
+ * @version 1.0.1
  */
 function preferencesReducer(state, action) {
   let newState;
@@ -102,19 +112,25 @@ const initialPreferencesState = {
 };
 
 /**
- * @description Provides the user preferences throughout the app.
- * @author Alexander Burdiss
- * @since 12/14/20
- * @version 1.0.0
- * @param {*} props
- *
+ * @function PreferencesProvider
  * @component
+ * @description Provides the user preferences throughout the app.
+ * Created 12/14/20
+ * @param {Object} props JSX props passed to this React component
+ * @param {*} props.children React Children to render inside this component
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.0.1
+ *
  * @example
- *   <PreferencesProvider>
- *     {..}
- *   </PreferencesProvider>
+ * <PreferencesProvider>
+ *   {..}
+ * </PreferencesProvider>
  */
-function PreferencesProvider({ children }) {
+export function PreferencesProvider({ children }) {
   const [state, dispatch] = useReducer(preferencesReducer);
 
   useEffect(() => {
@@ -136,5 +152,3 @@ function PreferencesProvider({ children }) {
     </PreferencesContext.Provider>
   );
 }
-
-export { PreferencesContext, PreferencesProvider };

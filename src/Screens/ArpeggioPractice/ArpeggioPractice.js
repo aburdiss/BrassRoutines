@@ -12,15 +12,19 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode, useIdleScreen, random, debounce } from '../../utils';
 
 /**
+ * @function ArpeggioPractice
+ * @component
  * @description A view that allows the user to randomize all of the arpeggios
  * in a particular category.
- * @author Alexander Burdiss
- * @since 10/10/20
- * @version 1.0.0
+ * Created 10/10/20
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.0.1
+ *
  * @example
- *   <ArpeggioPractice />
+ * <ArpeggioPractice />
  */
 export default function ArpeggioPractice() {
   useIdleScreen();

@@ -12,15 +12,21 @@ import { colors } from '../Model/Model';
 const Stack = createStackNavigator();
 
 /**
+ * @function SettingsStack
+ * @component
  * @description Currently contains the settings of the app, but more resources,
  * such as fingering charts could be added here.
- * @author Alexander Burdiss
- * @since 12/2/20
- * @version 1.0.1
+ * Created 12/2/20
+ * @param {Object} props JSX props passed to this React component
  * @param {Object} navigation The navigation object provided by React
  * Navigation
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.0.1
+ *
  * @example
  * <Tab.Screen
  *   name="Settings"

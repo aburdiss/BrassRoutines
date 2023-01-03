@@ -15,24 +15,28 @@ import { colors } from '../Model/Model';
 const Stack = createStackNavigator();
 
 /**
+ * @function RoutineStack
+ * @component
  * @description Displays main functionality of the app, option to start a
  * daily routine, or an option to start a routine of all of the user's
  * favorites.
- * @author Alexander Burdiss
- * @since 12/2/20
- * @version 1.0.1
+ * Created 12/2/20
+ * @param {Object} props JSX props passed to this React component
  * @param {Object} navigation The navigation object provided by React
  * Navigation
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/3/23
+ * @version 1.0.2
+ *
  * @example
- * ```jsx
-<Tab.Screen
-  name="Home"
-  component={HomeStack}
-  options={{title: translate('Routine')}}
-/>
-```
+ * <Tab.Screen
+ *   name="Home"
+ *   component={HomeStack}
+ *   options={{title: translate('Routine')}}
+ * />
  */
 export default function RoutineStack({ navigation }) {
   const DARKMODE = useDarkMode();
