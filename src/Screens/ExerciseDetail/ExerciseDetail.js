@@ -18,15 +18,20 @@ import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/Change
 import { useIdleScreen, useDarkMode } from '../../utils';
 
 /**
+ * @function ExerciseDetail
+ * @component
  * @description Shows an individual exercise, and allows the user to select the
  * exercise as a favorite.
- * @author Alexander Burdiss
- * @since 12/25/20
- * @version 1.1.0
+ * Created 12/25/20
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/4/23
+ * @version 1.1.1
+ *
  * @example
- *   <ExerciseDetail />
+ * <ExerciseDetail />
  */
 export default function ExerciseDetail() {
   useIdleScreen();
@@ -115,12 +120,16 @@ export default function ExerciseDetail() {
   );
 
   /**
-   * @function ExerciseDetail~addToFavorites
+   * @function addToFavorites
+   * @memberof ExerciseDetail
    * @description Adds the current exercise to favorites, or removes it if it
    * already exists.
+   * Created 12/25/20
+   *
+   * @copyright 2023 Alexander Burdiss
    * @author Alexander Burdiss
-   * @since 12/25/20
-   * @version 1.0.0
+   * @since 1/4/23
+   * @version 1.0.1
    */
   function addToFavorites() {
     let currentExercise = route.params.item;
@@ -137,12 +146,16 @@ export default function ExerciseDetail() {
   }
 
   /**
-   * @function ExerciseDetail~toggleChangeInstrumentModal
+   * @function toggleChangeInstrumentModal
+   * @memberof ExerciseDetail
    * @description Opens the change instrument modal, to view the current
    * exercise in a different instrument.
+   * Created 1/25/21
+   *
+   * @copyright 2023 Alexander Burdiss
    * @author Alexander Burdiss
-   * @since 1/25/21
-   * @version 1.0.0
+   * @since 1/4/23
+   * @version 1.0.1
    */
   function toggleChangeInstrumentModal() {
     setChangeInstrumentModalIsShowing(true);

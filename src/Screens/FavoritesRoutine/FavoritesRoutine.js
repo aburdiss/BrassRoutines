@@ -5,15 +5,24 @@ import { PreferencesContext } from '../../Model/Preferences';
 import { useIdleScreen, shuffle } from '../../utils';
 
 /**
+ * @namespace FavoritesRoutine
+ */
+
+/**
+ * @function FavoritesRoutine
+ * @component
  * @description A routine that randomizes the users' favorites and passes
  * the array into Routine.
- * @author Alexander Burdiss
- * @since 12/22/20
- * @version 1.0.0
+ * Created 12/22/20
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/4/22
+ * @version 1.0.1
+ *
  * @example
- *   <FavoritesRoutine />
+ * <FavoritesRoutine />
  */
 export default function FavoritesRoutine() {
   useIdleScreen();
@@ -32,14 +41,18 @@ export default function FavoritesRoutine() {
 }
 
 /**
+ * @function generateFavoritesRoutine
  * @description Shuffles the favorites using the Fisher-Yates (aka Knuth)
  * Shuffle. This will not be empty, because that is checked before mounting
  * this component.
+ * Created 1/13/21
+ * @param {Object} state The array of items to be shuffled.
+ * @returns {string[]} A shuffled array of the users' favorites.
+ *
+ * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 1/13/21
- * @version 1.1.1
- * @param {[String]} state The array of items to be shuffled.
- * @returns {Array} A shuffled array of the users' favorites.
+ * @since 1/4/23
+ * @version 1.1.2
  */
 function generateFavoritesRoutine(state) {
   let tempFavorites = shuffle(state.favorites);

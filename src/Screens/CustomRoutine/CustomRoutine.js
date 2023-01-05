@@ -6,14 +6,19 @@ import { PreferencesContext } from '../../Model/Preferences';
 import { useIdleScreen } from '../../utils';
 
 /**
- * @description Displays a custom routine.
- * @author Alexander Burdiss
- * @since 12/29/20
- * @version 1.0.0
- *
+ * @function CustomRoutine
  * @component
+ * @description Displays a custom routine.
+ * Created 12/29/20
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/4/23
+ * @version 1.0.1
+ *
  * @example
- *   <CustomRoutine />
+ * <CustomRoutine />
  */
 export default function CustomRoutine() {
   useIdleScreen();

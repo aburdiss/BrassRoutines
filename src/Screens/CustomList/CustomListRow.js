@@ -10,15 +10,22 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 
 /**
+ * @function CustomListRow
+ * @component
+ * @memberof CustomList
  * @description One list row on the CustomList.js screen. Displays the user
  * inputted name as well as number of exercises. Allows user to delete or edit
  * routine from this swipeable row.
- * @author Alexander Burdiss
- * @since 1/3/21
- * @version 1.0.0
+ * Created 1/3/21
+ * @param {Object} props JSX props passed to this React Component
  * @param {Object} props.item The custom Routine item.
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdis
+ * @since 1/4/23
+ * @version 1.0.1
+ *
  * @example
  * <CustomListRow item={item} />
  */

@@ -16,15 +16,24 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 
 /**
+ * @namespace ExerciseList
+ */
+
+/**
+ * @function ExerciseList
+ * @component
  * @description A list of all of the exercises in the app, with icons to show
  * if they are in favorites or not.
- * @author Alexander Burdiss
- * @since 12/18/20
- * @version 1.1.0
+ * Created 12/18/20
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/4/23
+ * @version 1.1.1
+ *
  * @example
- *   <List />
+ * <ExerciseList />
  */
 export default function ExerciseList() {
   const DARKMODE = useDarkMode();
@@ -46,14 +55,19 @@ export default function ExerciseList() {
   const { state } = useContext(PreferencesContext);
 
   /**
-   * @function List~getSections
+   * @function getSections
+   * @memberof ExerciseList
    * @description Gets the section data depending on the instrument that is
    * selected, and returns a formatted list ready to pass into a
    * SectionList component.
+   * Created 12/18/20
+   * @returns {number[]} A formatted list of data ready to be passed into the
+   * SectionList
+   *
+   * @copyright 2023 Alexander Burdiss
    * @author Alexander Burdiss
-   * @since 12/18/20
-   * @version 1.0.0
-   * @returns A formatted list of data ready to be passed into the SectionList
+   * @since 1/4/23
+   * @version 1.0.1
    */
   function getSections() {
     let instrument;

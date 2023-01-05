@@ -14,12 +14,22 @@ import HomeButton from '../../Components/HomeButton/HomeButton';
 import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/ChangeInstrumentModal';
 
 /**
- * @description The initial view when the app starts.
- * @author Alexander Burdiss
- * @since 12/3/20
- * @version 1.2.0
- *
+ * @namespace Home
+ */
+
+/**
+ * @function Home
+ * @memberof Home
  * @component
+ * @description The initial view when the app starts.
+ * Created 12/3/20
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/4/23
+ * @version 1.2.1
+ *
  * @example
  * <Home />
  */
@@ -38,14 +48,18 @@ export default function Home() {
     useState(false);
 
   /**
-   * @function Home~launchDailyRoutine
+   * @function launchDailyRoutine
+   * @memberof Home
    * @description Launches the main function of the app, the daily routine.
    * This function checks to make sure the configuration will allow a daily
    * routine to exist, and will alert the user if not, and will not allow them
    * to navigate if not.
+   * Created 1/3/21
+   *
+   * @copyright 2023 Alexander Burdiss
    * @author Alexander Burdiss
-   * @since 1/3/21
-   * @version 1.0.1
+   * @since 1/4/23
+   * @version 1.0.2
    */
   function launchDailyRoutine() {
     if (
@@ -81,12 +95,16 @@ export default function Home() {
   }
 
   /**
-   * @function Home~launchFavoritesRoutine
+   * @function launchFavoritesRoutine
+   * @memberof Home
    * @description Launches a daily routine with the favorites the user has
    * selected.
+   * Created 1/3/21
+   *
+   * @copyright 2023 Alexander Burdiss
    * @author Alexander Burdiss
-   * @since 1/3/21
-   * @version 1.0.1
+   * @since 1/4/23
+   * @version 1.0.2
    */
   function launchFavoritesRoutine() {
     if (state.favorites.length === 0) {
@@ -97,11 +115,15 @@ export default function Home() {
   }
 
   /**
-   * @function Home~triggerHapticFeedback
+   * @function triggerHapticFeedback
+   * @memberof Home
    * @description Triggers the standard haptic feedback option.
+   * Created 2/8/21
+   *
+   * @copyright 2023 Alexander Burdiss
    * @author Alexander Burdiss
-   * @since 2/8/21
-   * @version 1.0.0
+   * @since 1/4/23
+   * @version 1.0.1
    */
   function triggerHapticFeedback() {
     ReactNativeHapticFeedback.trigger('selection', {

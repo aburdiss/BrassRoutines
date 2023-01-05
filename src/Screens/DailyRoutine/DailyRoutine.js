@@ -12,15 +12,25 @@ import {
 import { useIdleScreen, random } from '../../utils';
 
 /**
+ * @namespace DailyRoutine
+ */
+
+/**
+ * @function DailyRoutine
+ * @memberof DailyRoutine
+ * @component
  * @description The main routine of the app, that takes the user's settings and
  * generates a randomized routine based on their preferences.
- * @author Alexander Burdiss
- * @since 12/18/20
- * @version 1.0.0
+ * Created 12/18/20
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/4/23
+ * @version 1.0.1
+ *
  * @example
- *   <DailyRoutine />
+ * <DailyRoutine />
  */
 export default function DailyRoutine() {
   useIdleScreen();
@@ -32,16 +42,20 @@ export default function DailyRoutine() {
   }, []);
 
   /**
-   * @function DailyRoutine~generateDailyRoutine
+   * @function generateDailyRoutine
+   * @memberof DailyRoutine
    * @description Generates a daily routine based off the user settings. This
    * function is called on mount so that a new routine is always created. This
    * function calls the generateRoutine function, passing in the necessary
    * exercises and state.
-   * @author Alexander Burdiss
-   * @since 12/18/20
-   * @version 1.0.1
-   * @returns {Array} A daily routine of exercises ready to plug into the
+   * Created 12/18/20
+   * @returns {number[]} A daily routine of exercises ready to plug into the
    * Routine component.
+   *
+   * @copyright 2023 Alexander Burdiss
+   * @author Alexander Burdiss
+   * @since 1/4/23
+   * @version 1.0.2
    */
   function generateDailyRoutine() {
     switch (state.instrument) {
@@ -69,14 +83,20 @@ export default function DailyRoutine() {
 
 /**
  * @function generateRoutine
+ * @memberof DailyRoutine
  * @description Generates a routine of random exercises based on the users'
  * settings and instrument selected.
+ * Created 12/18/20
+ * @param {Object} state The preferences state of the app.
+ * @param {Object} exercises The exercises for the selected instrument in
+ * state.
+ * @returns {number[]} An array of Numbers that can be passed into the Routine
+ * component.
+ *
+ * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/18/20
+ * @since 1/4/23
  * @version 1.0.1
- * @param {*} state The preferences state of the app.
- * @param {*} exercises The exercises for the selected instrument in state.
- * @returns An array of Numbers that can be passed into the Routine component.
  */
 function generateRoutine(state, exercises) {
   let tempExercise;
@@ -193,13 +213,17 @@ function generateRoutine(state, exercises) {
 
 /**
  * @function randomElement
+ * @memberof DailyRoutine
  * @description Takes a string array and returns a random element from the
  * input array
+ * Created 1/13/21
+ * @param {*[]} array An array of elements to get a random element from
+ * @returns {*} A random element from the parameter
+ *
+ * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 1/13/21
- * @version 1.1.0
- * @param {[String]} array
- * @returns A random element from the parameter
+ * @since 1/4/23
+ * @version 1.1.1
  */
 function randomElement(array) {
   return array[random(array.length - 1)];
