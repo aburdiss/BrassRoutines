@@ -1,13 +1,3 @@
-/*
-
-Download this lib: https://www.npmjs.com/package/npm-license-crawler
-I did it globally: `npm i npm-license-crawler -g`
-
-Run this command to get the data
-`npm-license-crawler --onlyDirectDependencies --json src/SettingsStack/Licenses/licenses.json`
-
-*/
-
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -19,15 +9,27 @@ import Data from './licenses.json';
 import { capitalize, useDarkMode } from '../../utils';
 
 /**
+ * @namespace Licenses
+ * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
+ * Download this lib: https://www.npmjs.com/package/npm-license-crawler
+ * I did it globally: `npm i npm-license-crawler -g`
+ * Run this command to get the data
+ * `npm-license-crawler --onlyDirectDependencies --json src/SettingsStack/Licenser/licenses.json`
+ */
+
+/**
  * @function extractNameFromGithubUrl
+ * @memberof Licenses
  * @description Takes a url to a gitHub repository and returns the username of
  * the author of the software.
- * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
+ * Created 12/17/20
+ * @param {string} url The GitHub url of a piece of software.
+ * @returns {string} The GitHub username
+ *
+ * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @version 1.0.1
- * @since 12/17/20
- * @param {String} url The GitHub url of a piece of software.
- * @returns {String} The GitHub username
+ * @version 1.0.2
+ * @since 1/10/23
  */
 function extractNameFromGithubUrl(url) {
   if (!url) {
@@ -46,14 +48,17 @@ function extractNameFromGithubUrl(url) {
 
 /**
  * @function sortDataByKey
+ * @memberof Licenses
  * @description Sorts the licenses data by key.
- * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
+ * Created 12/17/20
+ * @param {Object[]} data The list of licenses.
+ * @param {string|number} key An object key inside each member of data.
+ * @returns {Object[]} A sorted version of the data array that is passed in.
+ *
+ * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/17/20
+ * @since 1/10/23
  * @version 1.0.1
- * @param {Array} data The list of licenses.
- * @param {String|Number} key An object key inside each member of data.
- * @returns {Array} A sorted version of the data array that is passed in.
  */
 function sortDataByKey(data, key) {
   data.sort(function (a, b) {
@@ -99,18 +104,20 @@ let licenseData = Object.keys(Data).map((key) => {
 sortDataByKey(licenseData, 'username');
 
 /**
+ * @function Licenses
+ * @component
  * @description A wrapper for the LicensesList component that processes the
  * data and passes it in.
- * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
- * @author Alexander Burdiss
- * @since 12/17/20
- * @version 1.0.1
+ * Created 12/17/20
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/10/23
+ * @version 1.0.2
+ *
  * @example
- * ```jsx
  * <Licenses />
- * ```
  */
 export default function Licenses() {
   const DARKMODE = useDarkMode();

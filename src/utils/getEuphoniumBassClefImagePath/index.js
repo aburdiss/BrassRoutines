@@ -2,11 +2,14 @@
  * @function getEuphoniumBassClefImagePath
  * @description Returns the path to the Euphonium Exercise with the specified
  * number in Bass Clef
- * @param {Number} number Exercise Number
- * @return require(path) of desired Euphonium Exercise
+ * Created 12/25/20
+ * @param {number} number Exercise Number
+ * @return {Object} require(path) of desired Euphonium Exercise
+ *
+ * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/25/20
- * @version 1.1.0
+ * @since 1/10/23
+ * @version 1.1.1
  */
 export function getEuphoniumBassClefImagePath(number) {
   switch (number) {

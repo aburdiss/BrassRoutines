@@ -26,13 +26,18 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 
 /**
+ * @function Settings
+ * @component
  * @description A View that allows the user to set custom settings, or view
  * additional resources.
- * @author Alexander Burdiss
- * @since 12/14/20
- * @version 1.0.1
+ * Created 12/14/20
+ * @returns {JSX.Element}
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/10/23
+ * @version 1.0.2
+ *
  * @example
  * <Settings />
  */

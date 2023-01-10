@@ -11,15 +11,25 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode, useIdleScreen, random, debounce } from '../../utils';
 
 /**
+ * @namespace ScalePractice
+ */
+
+/**
+ * @function ScalePractice
+ * @memberof ScalePractice
+ * @component
  * @description A View that allows the user to randomize all of the scales in
  * a particular category.
- * @author Alexander Burdiss
- * @since 10/10/20
- * @version 1.1.0
+ * Created 10/10/20
+ * @returns {JSX.Element} JSX render instructions
  *
- * @component
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/10/23
+ * @version 1.1.1
+ *
  * @example
- *   <ScalePractice />
+ * <ScalePractice />
  */
 export default function ScalePractice() {
   useIdleScreen();
@@ -93,9 +103,12 @@ export default function ScalePractice() {
     setWholeToneSwitch((previousState) => !previousState);
 
   /**
-   * @function ScalePractice~selectAllScales
+   * @function selectAllScales
+   * @memberof ScalePractice
    * @description A function that toggles all scale switches to true. If all are
    * currently selected, toggles all off except major.
+   * Created 10/12/20
+   *
    * @author Alexander Burdiss
    * @since 10/12/20
    * @version 1.0.1
@@ -158,9 +171,12 @@ export default function ScalePractice() {
   }
 
   /**
-   * @function ScalePractice~generateScales
+   * @function generateScales
+   * @memberof ScalePractice
    * @description A function that parses what switches are turned on, and
    * generates a random scale based on the user preferences.
+   * Created 10/11/20
+   *
    * @author Alexander Burdiss
    * @since 10/11/20
    * @version 1.0.1
@@ -310,16 +326,18 @@ export default function ScalePractice() {
   }
 
   /**
-   * @function ScalePractice~createScaleArrayFromParts
+   * @function createScaleArrayFromParts
+   * @memberof ScalePractice
    * @description Constructs the scale name and scale note together to form one
    * string to display on the screen.
+   * Created 10/12/20
+   * @param {string[]} letterNames
+   * @param {string[]} scaleNames
+   * @returns {string[]} array of all transpositions of a scale
+   *
    * @author Alexander Burdiss
    * @since 10/12/20
    * @version 1.0.2
-   *
-   * @param {[String]} letterNames
-   * @param {[String]} scaleNames
-   * @returns {[String]} array of all transpositions of a scale
    */
   function createScaleArrayFromParts(letterNames, scaleNames) {
     let allLetterNamesOfScale = [];
@@ -332,9 +350,12 @@ export default function ScalePractice() {
   }
 
   /**
-   * @function ScalePractice~debouncedGenerateScales
+   * @function debouncedGenerateScales
+   * @memberof ScalePractice
    * @description Prevents the user from clicking the generate button within
    * 150 ms of another press.
+   * Created 1/5/21
+   *
    * @author Alexander Burdiss
    * @since 1/5/21
    * @version 1.0.0
