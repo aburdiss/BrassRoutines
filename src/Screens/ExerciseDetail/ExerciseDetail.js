@@ -5,17 +5,20 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { PreferencesContext } from '../../Model/Preferences';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../Model/Model';
-import { getHornImagePath } from '../../utils/getHornImagePath';
-import { getTrumpetImagePath } from '../../utils/getTrumpetImagePath';
-import { getTromboneImagePath } from '../../utils/getTromboneImagePath';
-import { getTromboneBassClefOnlyImagePath } from '../../utils/getTromboneBassClefOnlyImagePath';
-import { getEuphoniumTrebleClefImagePath } from '../../utils/getEuphoniumTrebleClefImagePath';
-import { getEuphoniumBassClefImagePath } from '../../utils/getEuphoniumBassClefImagePath';
-import { getTubaImagePath } from '../../utils/getTubaImagePath';
 import ZoomModal from '../../Components/ZoomModal/ZoomModal';
 import { translate } from '../../Translations/TranslationModel';
 import ChangeInstrumentModal from '../../Components/ChangeInstrumentModal/ChangeInstrumentModal';
-import { useIdleScreen, useDarkMode } from '../../utils';
+import {
+  getHornImagePath,
+  getTrumpetImagePath,
+  getTromboneImagePath,
+  getTromboneBassClefOnlyImagePath,
+  getEuphoniumTrebleClefImagePath,
+  getEuphoniumBassClefImagePath,
+  getTubaImagePath,
+  useIdleScreen,
+  useDarkMode
+} from '../../utils';
 
 /**
  * @function ExerciseDetail
