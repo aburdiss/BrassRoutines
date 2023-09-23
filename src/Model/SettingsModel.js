@@ -213,6 +213,6 @@ export const ABOUT = [
     id: '17',
     type: 'link',
     value: 'Send Feedback',
-    link: 'mailto:aburdiss@icloud.com?subject=Brass%20Routines%20Feedback',
+    link: 'mailto:brassroutines@alexanderburdiss.com?subject=Brass%20Routines%20Feedback',
   },
 ];
